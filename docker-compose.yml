@@ -24,6 +24,7 @@ services:
       - USER=odoo
       - PASSWORD=odoo_secure_db_pass
     volumes:
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
       - ./nfd_petrosol_demo:/mnt/extra-addons/nfd_petrosol_demo:ro
       - nfd-odoo-data:/var/lib/odoo
     networks:

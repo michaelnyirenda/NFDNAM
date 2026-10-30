@@ -67,12 +67,12 @@ Run the following commands to provision the `nfd_demo` database, install standar
 docker exec nfd-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
 
 # 2. Install base system and core dependency modules
-docker exec nfd-odoo19 odoo -d nfd_demo -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
 
 # 3. Install the NFD & Petrosol Demo Module and seed records
-docker exec nfd-odoo19 odoo -d nfd_demo -i nfd_petrosol_demo --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i nfd_petrosol_demo --stop-after-init
 ```
-*(Note: If you are using your own existing containers, replace `nfd-db` and `nfd-odoo19` with your container names, e.g. `odoo-db` and `odoo19`.)*
+*(Note: Explicitly passing `--db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass` ensures the CLI connects to the database container over TCP port 5432 instead of defaulting to a local UNIX domain socket. If you are using your own existing containers, replace `nfd-db` and `nfd-odoo19` with your container names, e.g. `odoo-db` and `odoo19`.)*
 
 ### 2.5 Accessing Odoo & Logins
 Once initialized, the Odoo server is accessible at:
@@ -108,7 +108,7 @@ If any adjustments were made to views or Python models, sync and re-initialize t
 docker cp ./nfd_petrosol_demo nfd-odoo19:/mnt/extra-addons/
 
 # 2. Upgrade the module in the demo database
-docker exec nfd-odoo19 odoo -d nfd_demo -u nfd_petrosol_demo --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -u nfd_petrosol_demo --stop-after-init
 
 # 3. Restart Odoo server process (or ensure background daemon is active)
 # Accessible at: http://localhost:8069 (Select Database: nfd_demo)

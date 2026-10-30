@@ -26,8 +26,8 @@ docker compose up -d
 
 # 2. Initialize database and install module with demo seed data
 docker exec nfd-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
-docker exec nfd-odoo19 odoo -d nfd_demo -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
-docker exec nfd-odoo19 odoo -d nfd_demo -i nfd_petrosol_demo --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i nfd_petrosol_demo --stop-after-init
 
 # 3. Open Odoo in your browser
 # URL: http://localhost:8069 (Database: nfd_demo)
