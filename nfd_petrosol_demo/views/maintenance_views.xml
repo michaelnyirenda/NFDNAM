@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Equipment Form View Inheritance -->
+    <record id="hr_equipment_view_form_inherit_nfd" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.inherit.nfd</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="x_asset_category"/>
+                <field name="x_linked_vehicle_id" invisible="x_asset_category != 'fleet_truck'"/>
+                <field name="x_site_partner_id" invisible="x_asset_category not in ['customer_bulk_tank', 'petrosol_forecourt_pump']"/>
+                <field name="x_tank_capacity_liters" invisible="x_asset_category not in ['depot_gantry', 'customer_bulk_tank']"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Equipment List View Inheritance -->
+    <record id="hr_equipment_view_tree_inherit_nfd" model="ir.ui.view">
+        <field name="name">maintenance.equipment.list.inherit.nfd</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="x_asset_category" optional="show"/>
+                <field name="x_site_partner_id" optional="show"/>
+                <field name="x_tank_capacity_liters" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Maintenance Request Form View Inheritance -->
+    <record id="hr_equipment_request_view_form_inherit_nfd" model="ir.ui.view">
+        <field name="name">maintenance.request.form.inherit.nfd</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='maintenance_type']" position="after">
+                <field name="x_asset_category"/>
+                <field name="x_service_agreement_type"/>
+                <field name="x_site_partner_id"/>
+                <field name="x_dispatch_log_id" invisible="not x_dispatch_log_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Maintenance Request List View Inheritance -->
+    <record id="hr_equipment_request_view_tree_inherit_nfd" model="ir.ui.view">
+        <field name="name">maintenance.request.list.inherit.nfd</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="equipment_id"/>
+                <field name="x_asset_category" optional="show"/>
+                <field name="x_site_partner_id" optional="show"/>
+                <field name="x_service_agreement_type" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

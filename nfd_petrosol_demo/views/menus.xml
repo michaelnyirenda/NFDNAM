@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top-Level App Menu -->
+    <menuitem id="menu_nfd_root"
+              name="NFD Fuel Logistics"
+              web_icon="nfd_petrosol_demo,static/description/icon.png"
+              sequence="10"/>
+
+    <!-- 1. Dispatch & Reconciliation Category -->
+    <menuitem id="menu_nfd_dispatch_category"
+              name="Cargo Dispatch &amp; Dip Logs"
+              parent="menu_nfd_root"
+              sequence="10"/>
+
+    <menuitem id="menu_nfd_fuel_dispatch_log"
+              name="Fuel Dispatch &amp; Variance Logs"
+              parent="menu_nfd_dispatch_category"
+              action="action_nfd_fuel_dispatch_log"
+              sequence="10"/>
+
+    <!-- 2. Fleet & Equipment Category -->
+    <menuitem id="menu_nfd_fleet_category"
+              name="Fleet &amp; Assets"
+              parent="menu_nfd_root"
+              sequence="20"/>
+
+    <menuitem id="menu_nfd_fleet_vehicles"
+              name="Tankers &amp; Rigids"
+              parent="menu_nfd_fleet_category"
+              action="fleet.fleet_vehicle_action"
+              sequence="10"/>
+
+    <menuitem id="menu_nfd_workshop_assets"
+              name="Workshop Equipment &amp; Forecourt Pumps"
+              parent="menu_nfd_fleet_category"
+              action="maintenance.hr_equipment_action"
+              sequence="20"/>
+
+    <menuitem id="menu_nfd_maintenance_requests"
+              name="Maintenance Work Orders"
+              parent="menu_nfd_fleet_category"
+              action="maintenance.hr_equipment_request_action"
+              sequence="30"/>
+
+    <!-- 3. HESMS & Personnel Category -->
+    <menuitem id="menu_nfd_hesms_category"
+              name="HESMS &amp; Driver Safety"
+              parent="menu_nfd_root"
+              sequence="30"/>
+
+    <menuitem id="menu_nfd_driver_compliance"
+              name="Hazchem Drivers &amp; AA Compliance"
+              parent="menu_nfd_hesms_category"
+              action="hr.open_view_employee_list_my"
+              sequence="10"/>
+
+    <!-- 4. Bulk Stock & Shrinkage Category -->
+    <menuitem id="menu_nfd_stock_category"
+              name="Depot Stock &amp; Losses"
+              parent="menu_nfd_root"
+              sequence="40"/>
+
+    <menuitem id="menu_nfd_depot_inventory"
+              name="Fuel &amp; Lubricant Inventory"
+              parent="menu_nfd_stock_category"
+              action="stock.product_template_action_product"
+              sequence="10"/>
+
+    <menuitem id="menu_nfd_shrinkage_scraps"
+              name="Fuel Shrinkage &amp; Scraps"
+              parent="menu_nfd_stock_category"
+              action="stock.action_stock_scrap"
+              sequence="20"/>
+
+    <!-- Integration: Also inject Fuel Dispatch Logs under standard Fleet App -->
+    <menuitem id="menu_fleet_nfd_dispatch_log"
+              name="Bulk Fuel Dispatches"
+              parent="fleet.fleet_vehicles"
+              action="action_nfd_fuel_dispatch_log"
+              sequence="5"/>
+</odoo>

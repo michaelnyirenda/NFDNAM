@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <!-- ============================================================== -->
+    <!-- 1. WAREHOUSE & STOCK LOCATIONS (OTJIWARONGO DEPOT)            -->
+    <!-- ============================================================== -->
+    <record id="stock.warehouse0" model="stock.warehouse">
+        <field name="name">Otjiwarongo Bulk Fuel Depot</field>
+        <field name="code">OTJ</field>
+    </record>
+
+    <!-- Depot Bulk Storage Tank Farm Location -->
+    <record id="location_depot_bulk" model="stock.location">
+        <field name="name">Bulk Fuel Tank Farm</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="usage">internal</field>
+    </record>
+
+    <!-- Tank 1: 500,000L Diesel 50ppm -->
+    <record id="location_tank_1_diesel" model="stock.location">
+        <field name="name">Tank 1 - Diesel 50ppm (500,000L)</field>
+        <field name="location_id" ref="location_depot_bulk"/>
+        <field name="usage">internal</field>
+    </record>
+
+    <!-- Tank 2: 200,000L ULP 95 Petrol -->
+    <record id="location_tank_2_ulp95" model="stock.location">
+        <field name="name">Tank 2 - ULP 95 (200,000L)</field>
+        <field name="location_id" ref="location_depot_bulk"/>
+        <field name="usage">internal</field>
+    </record>
+
+    <!-- Otjiwarongo Workshop Store -->
+    <record id="location_workshop_store" model="stock.location">
+        <field name="name">Otjiwarongo Workshop Store (Lubricants &amp; Spares)</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="usage">internal</field>
+    </record>
+
+    <!-- Mobile Tankers Transit Location -->
+    <record id="location_transit_tankers" model="stock.location">
+        <field name="name">Transit - Mobile Tankers</field>
+        <field name="location_id" ref="stock.stock_location_company"/>
+        <field name="usage">internal</field>
+    </record>
+
+    <!-- Virtual Shrinkage / Leakage Write-Off Location -->
+    <record id="location_fuel_shrinkage" model="stock.location">
+        <field name="name">Fuel Shrinkage / Leakage Write-Off</field>
+        <field name="location_id" ref="stock.stock_location_company"/>
+        <field name="usage">inventory</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 2. PRODUCTS (FUELS, LUBRICANTS & WORKSHOP SPARES)             -->
+    <!-- ============================================================== -->
+    <!-- Diesel 50ppm Bulk -->
+    <record id="product_diesel_50ppm" model="product.product">
+        <field name="name">Diesel 50ppm Bulk</field>
+        <field name="default_code">DSL-50PPM</field>
+        <field name="is_storable">True</field>
+        <field name="uom_id" ref="uom.product_uom_litre"/>
+        <field name="standard_price">21.50</field>
+        <field name="list_price">23.85</field>
+    </record>
+
+    <!-- ULP 95 Petrol Bulk -->
+    <record id="product_ulp_95" model="product.product">
+        <field name="name">ULP 95 Petrol Bulk</field>
+        <field name="default_code">ULP-95</field>
+        <field name="is_storable">True</field>
+        <field name="uom_id" ref="uom.product_uom_litre"/>
+        <field name="standard_price">22.10</field>
+        <field name="list_price">24.50</field>
+    </record>
+
+    <!-- Heavy-Duty Engine Oil 15W-40 (210L Drum) -->
+    <record id="product_oil_15w40" model="product.product">
+        <field name="name">Heavy-Duty Engine Oil 15W-40 (210L Drum)</field>
+        <field name="default_code">LUB-15W40-210L</field>
+        <field name="is_storable">True</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="standard_price">9800.00</field>
+        <field name="list_price">12500.00</field>
+    </record>
+
+    <!-- Chassis Grease EP2 (20kg) -->
+    <record id="product_grease_ep2" model="product.product">
+        <field name="name">Chassis Grease EP2 (20kg)</field>
+        <field name="default_code">LUB-EP2-20KG</field>
+        <field name="is_storable">True</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="standard_price">1450.00</field>
+        <field name="list_price">1950.00</field>
+    </record>
+
+    <!-- Scania Fuel Filter Kit -->
+    <record id="product_scania_filter_kit" model="product.product">
+        <field name="name">Scania Fuel Filter Kit</field>
+        <field name="default_code">SP-SCN-FFK</field>
+        <field name="is_storable">True</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="standard_price">850.00</field>
+        <field name="list_price">1200.00</field>
+    </record>
+
+    <!-- Tanker Bottom-Loading Seal Kit -->
+    <record id="product_tanker_seal_kit" model="product.product">
+        <field name="name">Tanker Bottom-Loading Seal Kit</field>
+        <field name="default_code">SP-TNK-BLSK</field>
+        <field name="is_storable">True</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="standard_price">1650.00</field>
+        <field name="list_price">2400.00</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 3. FLEET BRANDS, MODELS & VEHICLES                            -->
+    <!-- ============================================================== -->
+    <record id="brand_scania" model="fleet.vehicle.model.brand">
+        <field name="name">Scania</field>
+    </record>
+
+    <record id="brand_mercedes" model="fleet.vehicle.model.brand">
+        <field name="name">Mercedes-Benz</field>
+    </record>
+
+    <record id="brand_freightliner" model="fleet.vehicle.model.brand">
+        <field name="name">Freightliner</field>
+    </record>
+
+    <record id="model_scania_r500" model="fleet.vehicle.model">
+        <field name="name">R500 6x4 Heavy Hauler</field>
+        <field name="brand_id" ref="brand_scania"/>
+    </record>
+
+    <record id="model_actros_2645" model="fleet.vehicle.model">
+        <field name="name">Actros 2645 6x4</field>
+        <field name="brand_id" ref="brand_mercedes"/>
+    </record>
+
+    <record id="model_argosy" model="fleet.vehicle.model">
+        <field name="name">Argosy Prime Mover</field>
+        <field name="brand_id" ref="brand_freightliner"/>
+    </record>
+
+    <record id="model_axor_rigid" model="fleet.vehicle.model">
+        <field name="name">Axor 17,500L Rigid Tanker</field>
+        <field name="brand_id" ref="brand_mercedes"/>
+    </record>
+
+    <record id="model_scania_p360" model="fleet.vehicle.model">
+        <field name="name">P360 16,000L Rigid Tanker</field>
+        <field name="brand_id" ref="brand_scania"/>
+    </record>
+
+    <!-- Vehicle 1: Scania R500 (N 4201 OT) - Compliant Semi -->
+    <record id="vehicle_scania_r500" model="fleet.vehicle">
+        <field name="model_id" ref="model_scania_r500"/>
+        <field name="license_plate">N 4201 OT</field>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_max_volume_liters">42000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_has_diesel_meter">False</field>
+        <field name="x_geotab_device_id">GT-NFD-01</field>
+        <field name="x_manufacture_year">2021</field>
+        <field name="x_avg_fuel_consumption">48.5</field>
+    </record>
+
+    <!-- Vehicle 2: Mercedes Actros 2645 (N 4202 OT) - Compliant Semi -->
+    <record id="vehicle_actros_2645" model="fleet.vehicle">
+        <field name="model_id" ref="model_actros_2645"/>
+        <field name="license_plate">N 4202 OT</field>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_max_volume_liters">42000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_has_diesel_meter">False</field>
+        <field name="x_geotab_device_id">GT-NFD-02</field>
+        <field name="x_manufacture_year">2019</field>
+        <field name="x_avg_fuel_consumption">49.2</field>
+    </record>
+
+    <!-- Vehicle 3: Freightliner Argosy (N 1809 OT) - 17 Yrs -> Warning! -->
+    <record id="vehicle_argosy" model="fleet.vehicle">
+        <field name="model_id" ref="model_argosy"/>
+        <field name="license_plate">N 1809 OT</field>
+        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_max_volume_liters">36000.0</field>
+        <field name="x_compartment_count">6</field>
+        <field name="x_has_diesel_meter">False</field>
+        <field name="x_geotab_device_id">GT-NFD-09</field>
+        <field name="x_manufacture_year">2009</field>
+        <field name="x_avg_fuel_consumption">54.0</field>
+    </record>
+
+    <!-- Vehicle 4: Mercedes Axor 17,500L (N 1750 OT) - Metered Rigid Tanker -->
+    <record id="vehicle_axor_rigid" model="fleet.vehicle">
+        <field name="model_id" ref="model_axor_rigid"/>
+        <field name="license_plate">N 1750 OT</field>
+        <field name="x_unit_classification">rigid_tanker</field>
+        <field name="x_max_volume_liters">17500.0</field>
+        <field name="x_compartment_count">4</field>
+        <field name="x_has_diesel_meter">True</field>
+        <field name="x_geotab_device_id">GT-NFD-14</field>
+        <field name="x_manufacture_year">2022</field>
+        <field name="x_avg_fuel_consumption">32.5</field>
+    </record>
+
+    <!-- Vehicle 5: Scania P360 16,000L (N 1601 OT) - 14 Yrs -> Warning! -->
+    <record id="vehicle_scania_rigid" model="fleet.vehicle">
+        <field name="model_id" ref="model_scania_p360"/>
+        <field name="license_plate">N 1601 OT</field>
+        <field name="x_unit_classification">rigid_tanker</field>
+        <field name="x_max_volume_liters">16000.0</field>
+        <field name="x_compartment_count">4</field>
+        <field name="x_has_diesel_meter">True</field>
+        <field name="x_geotab_device_id">GT-NFD-15</field>
+        <field name="x_manufacture_year">2012</field>
+        <field name="x_avg_fuel_consumption">33.8</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 4. CUSTOMERS & RECEIVING SITES (MINING, ROADS, PETROSOL)      -->
+    <!-- ============================================================== -->
+    <record id="partner_husab_mine" model="res.partner">
+        <field name="name">Husab Mine (Swakop Uranium)</field>
+        <field name="street">B2 Highway, Erongo Region</field>
+        <field name="city">Arandis / Swakopmund</field>
+        <field name="country_id" ref="base.na"/>
+        <field name="customer_rank">1</field>
+        <field name="comment">Mining Bulk Fuel Distribution Agreement (&gt;1,500,000L/month) with 60,000L on-site containerized mobile tanks.</field>
+    </record>
+
+    <record id="partner_b2gold_mine" model="res.partner">
+        <field name="name">B2Gold Otjikoto Mine</field>
+        <field name="street">B1 Highway</field>
+        <field name="city">Otavi</field>
+        <field name="country_id" ref="base.na"/>
+        <field name="customer_rank">1</field>
+        <field name="comment">Mining Bulk 50ppm Diesel Supply Contract.</field>
+    </record>
+
+    <record id="partner_grinaker_lta" model="res.partner">
+        <field name="name">Grinaker-LTA Road Project</field>
+        <field name="street">Section 2 Construction Camp</field>
+        <field name="city">Otjiwarongo / Okahandja</field>
+        <field name="country_id" ref="base.na"/>
+        <field name="customer_rank">1</field>
+        <field name="comment">Namibian National Road Construction Upgrading Project (B1 Highway rehabilitation).</field>
+    </record>
+
+    <record id="partner_petrosol_outjo" model="res.partner">
+        <field name="name">Petrosol Service Station - Outjo (CODO)</field>
+        <field name="street">Hage Geingob Avenue</field>
+        <field name="city">Outjo</field>
+        <field name="country_id" ref="base.na"/>
+        <field name="customer_rank">1</field>
+        <field name="comment">Company-Owned Dealer-Operated Retail Fuel Station + ILAMO Convenience Store (Free Forecourt Maintenance Agreement).</field>
+    </record>
+
+    <record id="partner_petrosol_khorixas" model="res.partner">
+        <field name="name">Petrosol Service Station - Khorixas (DODO)</field>
+        <field name="street">Main Street</field>
+        <field name="city">Khorixas</field>
+        <field name="country_id" ref="base.na"/>
+        <field name="customer_rank">1</field>
+        <field name="comment">Dealer-Owned Dealer-Operated Retail Fuel Station + ILAMO Convenience Store.</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 5. EMPLOYEES & HESMS COMPLIANCE                               -->
+    <!-- ============================================================== -->
+    <record id="employee_johan_botes" model="hr.employee">
+        <field name="name">Johan Botes</field>
+        <field name="job_title">Managing Member / General Manager</field>
+        <field name="work_phone">+264 67 304 881</field>
+        <field name="work_email">johan@nfdnamibia.com</field>
+        <field name="x_aa_category">general</field>
+    </record>
+
+    <record id="employee_pierre_fourie" model="hr.employee">
+        <field name="name">Pierre Fourie</field>
+        <field name="job_title">Financial Manager</field>
+        <field name="work_phone">+264 67 304 882</field>
+        <field name="work_email">pierre@nfdnamibia.com</field>
+        <field name="x_aa_category">general</field>
+    </record>
+
+    <record id="employee_hendrik_shilongo" model="hr.employee">
+        <field name="name">Hendrik Shilongo</field>
+        <field name="job_title">Senior Hazchem Bulk Tanker Driver</field>
+        <field name="work_phone">+264 81 294 1001</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-08-15</field>
+        <field name="x_defensive_driving_expiry">2027-06-30</field>
+        <field name="x_medical_fitness_expiry">2027-04-10</field>
+    </record>
+
+    <record id="employee_matheus_shikongo" model="hr.employee">
+        <field name="name">Matheus Shikongo</field>
+        <field name="job_title">Hazchem Tanker Driver</field>
+        <field name="work_phone">+264 81 334 2002</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2026-11-01</field>
+        <field name="x_defensive_driving_expiry">2027-05-20</field>
+        <field name="x_medical_fitness_expiry">2027-03-15</field>
+    </record>
+
+    <record id="employee_lukas_van_wyk" model="hr.employee">
+        <field name="name">Lukas Van Wyk</field>
+        <field name="job_title">Senior Diesel &amp; Petrol Workshop Mechanic</field>
+        <field name="work_phone">+264 81 405 3003</field>
+        <field name="x_aa_category">designated_namibian</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 6. MAINTENANCE TEAMS, CATEGORIES & EQUIPMENT                  -->
+    <!-- ============================================================== -->
+    <record id="maintenance_team_otjiwarongo" model="maintenance.team">
+        <field name="name">Otjiwarongo Mechanical Workshop</field>
+    </record>
+
+    <record id="maintenance_cat_fleet_truck" model="maintenance.equipment.category">
+        <field name="name">Tanker Fleet &amp; Rigids</field>
+        <field name="technician_user_id" ref="base.user_admin"/>
+    </record>
+
+    <record id="maintenance_cat_forecourt" model="maintenance.equipment.category">
+        <field name="name">Forecourt Dispenser Pumps</field>
+        <field name="technician_user_id" ref="base.user_admin"/>
+    </record>
+
+    <record id="maintenance_cat_bulk_tank" model="maintenance.equipment.category">
+        <field name="name">Customer On-Site Bulk Storage Tanks</field>
+        <field name="technician_user_id" ref="base.user_admin"/>
+    </record>
+
+    <!-- Equipment 1: Scania R500 Manifold & Meter Rig -->
+    <record id="equipment_scania_r500" model="maintenance.equipment">
+        <field name="name">Scania R500 (N 4201 OT) - Tanker Manifold &amp; Meter Rig</field>
+        <field name="category_id" ref="maintenance_cat_fleet_truck"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="x_asset_category">fleet_truck</field>
+        <field name="x_linked_vehicle_id" ref="vehicle_scania_r500"/>
+    </record>
+
+    <!-- Equipment 2: Axor 17,500L Manifold & Meter Rig -->
+    <record id="equipment_axor_rigid" model="maintenance.equipment">
+        <field name="name">Mercedes-Benz Axor (N 1750 OT) - Tanker Manifold &amp; Meter Rig</field>
+        <field name="category_id" ref="maintenance_cat_fleet_truck"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="x_asset_category">fleet_truck</field>
+        <field name="x_linked_vehicle_id" ref="vehicle_axor_rigid"/>
+    </record>
+
+    <!-- Equipment 3: Petrosol Outjo Dispenser Pump #1 -->
+    <record id="equipment_petrosol_outjo_pump" model="maintenance.equipment">
+        <field name="name">Petrosol Outjo - Wayne Helix Multi-Product Dispenser #1</field>
+        <field name="category_id" ref="maintenance_cat_forecourt"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="x_asset_category">petrosol_forecourt_pump</field>
+        <field name="x_site_partner_id" ref="partner_petrosol_outjo"/>
+    </record>
+
+    <!-- Equipment 4: Husab Mine 60,000L Self-Bunded Mobile Fuel Tank -->
+    <record id="equipment_husab_tank" model="maintenance.equipment">
+        <field name="name">Husab Mine - 60,000L Self-Bunded Mobile Fuel Tank #1</field>
+        <field name="category_id" ref="maintenance_cat_bulk_tank"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="x_asset_category">customer_bulk_tank</field>
+        <field name="x_site_partner_id" ref="partner_husab_mine"/>
+        <field name="x_tank_capacity_liters">60000.0</field>
+    </record>
+
+    <!-- Equipment 5: Otjiwarongo Depot Gantry Bay 1 -->
+    <record id="equipment_depot_gantry" model="maintenance.equipment">
+        <field name="name">Otjiwarongo Gantry Bay 1 Bottom-Loading Arm</field>
+        <field name="category_id" ref="maintenance_cat_bulk_tank"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="x_asset_category">depot_gantry</field>
+        <field name="x_tank_capacity_liters">500000.0</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 7. MAINTENANCE REQUESTS                                       -->
+    <!-- ============================================================== -->
+    <!-- Request 1: Scania R500 Preventive Service -->
+    <record id="req_scania_pm" model="maintenance.request">
+        <field name="name">50,000km Preventive Chassis &amp; Manifold Service - Scania R500 (N 4201 OT)</field>
+        <field name="equipment_id" ref="equipment_scania_r500"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="maintenance_type">preventive</field>
+        <field name="priority">2</field>
+        <field name="x_service_agreement_type">internal_fleet</field>
+        <field name="description">Scheduled preventive maintenance: oil drain (15W-40), replacement of fuel filters, grease chassis points with EP2, pressure test tanker vapor lines.</field>
+    </record>
+
+    <!-- Request 2: Petrosol Outjo Forecourt Maintenance -->
+    <record id="req_petrosol_outjo" model="maintenance.request">
+        <field name="name">Monthly Dispenser Nozzle &amp; Meter Recalibration - Petrosol Outjo</field>
+        <field name="equipment_id" ref="equipment_petrosol_outjo_pump"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="maintenance_type">preventive</field>
+        <field name="priority">1</field>
+        <field name="x_service_agreement_type">free_retail_forecourt</field>
+        <field name="description">Monthly free forecourt maintenance visit: 20L prover can test, filter strainer cleaning, breakaway coupling inspection.</field>
+    </record>
+
+    <!-- Request 3: Husab Mine Mobile Tank Inspection -->
+    <record id="req_husab_tank" model="maintenance.request">
+        <field name="name">60,000L Mobile Tank Dip Probe &amp; Overfill Sensor Calibration - Husab Mine</field>
+        <field name="equipment_id" ref="equipment_husab_tank"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="maintenance_type">preventive</field>
+        <field name="priority">2</field>
+        <field name="x_service_agreement_type">customer_contract</field>
+        <field name="description">Annual on-site compliance calibration of electronic ATG level sensors and overfill alarm at Husab Mine pit tank.</field>
+    </record>
+
+    <!-- Request 4: Emergency Leakage Investigation on Axor Rigid -->
+    <record id="req_axor_leakage" model="maintenance.request">
+        <field name="name">URGENT: Inspect Tanker Manifold/Delivery Meter for Fuel Leakage - Mercedes-Benz Axor (DISP/2026/0102)</field>
+        <field name="equipment_id" ref="equipment_axor_rigid"/>
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="maintenance_type">corrective</field>
+        <field name="priority">3</field>
+        <field name="x_service_agreement_type">internal_fleet</field>
+        <field name="description">AUTOMATED LEAKAGE ALERT TRIGGERED:
+- Dispatch Log: DISP/2026/0102
+- Tanker: Mercedes-Benz Axor 17,500L Rigid (N 1750 OT)
+- Driver: Hendrik Shilongo
+- Receiving Client: Grinaker-LTA Road Project
+- Depot Loaded: 17,500.00 L
+- Delivered Reading: 17,246.25 L
+- Thermal Variance Allowed: 43.75 L
+- NET DISCREPANCY: 210.00 L (Exceeds 50L Safety Limit)
+- Seals Affixed: NFD-SEAL-9012 to 9015
+
+ACTION REQUIRED BY OTJIWARONGO WORKSHOP:
+1. Pressure test bottom-loading manifold and foot valves.
+2. Calibrate onboard digital flow meter.
+3. Inspect discharge hoses and vapor recovery connections for weeping.</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 8. CARGO FUEL DISPATCH & LEAKAGE LOGS                         -->
+    <!-- ============================================================== -->
+    <!-- Dispatch 1 (Normal): Scania R500 (42,000L) to B2Gold Otjikoto Mine -->
+    <record id="dispatch_log_001" model="nfd.fuel.dispatch.log">
+        <field name="name">DISP/2026/0101</field>
+        <field name="date" eval="datetime.now().strftime('%Y-%m-%d 06:30:00')"/>
+        <field name="vehicle_id" ref="vehicle_scania_r500"/>
+        <field name="driver_id" ref="employee_hendrik_shilongo"/>
+        <field name="customer_id" ref="partner_b2gold_mine"/>
+        <field name="fuel_product_id" ref="product_diesel_50ppm"/>
+        <field name="source_location_id" ref="location_tank_1_diesel"/>
+        <field name="destination_location_id" ref="location_transit_tankers"/>
+        <field name="depot_loaded_liters">42000.0</field>
+        <field name="truck_meter_delivered_liters">41895.0</field>
+        <field name="customer_dip_received_liters">41890.0</field>
+        <field name="temp_allowance_liters">105.0</field>
+        <field name="net_variance_liters">0.0</field>
+        <field name="leakage_status">normal</field>
+        <field name="pre_trip_hse_passed">True</field>
+        <field name="compartment_seal_numbers">NFD-SEAL-8891 to 8897</field>
+        <field name="state">delivered</field>
+        <field name="notes">Standard delivery of bulk 50ppm diesel to B2Gold Otjikoto Mine bulk tanks. Volumetric thermal variation within standard 0.25% Namibian tolerance.</field>
+    </record>
+
+    <!-- Dispatch 2 (LEAKAGE ALERT!): Axor 17,500L to Grinaker-LTA -> 210L discrepancy! -->
+    <record id="dispatch_log_002" model="nfd.fuel.dispatch.log">
+        <field name="name">DISP/2026/0102</field>
+        <field name="date" eval="datetime.now().strftime('%Y-%m-%d 09:15:00')"/>
+        <field name="vehicle_id" ref="vehicle_axor_rigid"/>
+        <field name="driver_id" ref="employee_hendrik_shilongo"/>
+        <field name="customer_id" ref="partner_grinaker_lta"/>
+        <field name="fuel_product_id" ref="product_diesel_50ppm"/>
+        <field name="source_location_id" ref="location_tank_1_diesel"/>
+        <field name="destination_location_id" ref="location_transit_tankers"/>
+        <field name="depot_loaded_liters">17500.0</field>
+        <field name="truck_meter_delivered_liters">17246.25</field>
+        <field name="customer_dip_received_liters">17240.0</field>
+        <field name="temp_allowance_liters">43.75</field>
+        <field name="net_variance_liters">210.0</field>
+        <field name="leakage_status">leakage_alert</field>
+        <field name="pre_trip_hse_passed">True</field>
+        <field name="compartment_seal_numbers">NFD-SEAL-9012 to 9015</field>
+        <field name="state">investigation</field>
+        <field name="maintenance_request_id" ref="req_axor_leakage"/>
+        <field name="notes">LEAKAGE ALERT: 210.00 Liters unaccounted loss detected at Grinaker-LTA road construction depot. Weeping manifold foot-valve suspected. Corrective maintenance work order automatically dispatched to Otjiwarongo Workshop.</field>
+    </record>
+
+    <!-- Link dispatch log back to maintenance request -->
+    <record id="req_axor_leakage" model="maintenance.request">
+        <field name="x_dispatch_log_id" ref="dispatch_log_002"/>
+    </record>
+</odoo>

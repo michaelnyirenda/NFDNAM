@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Employee Form View -->
+    <record id="view_employee_form_inherit_nfd" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.nfd</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="HESMS &amp; Affirmative Action" name="hesms_aa_compliance">
+                    <group>
+                        <group string="Namibian Affirmative Action (AA) Classification">
+                            <field name="x_aa_category"/>
+                            <div class="text-muted small mt-1" colspan="2">
+                                <i class="fa fa-balance-scale me-1" title="Affirmative Action Act"/>
+                                In compliance with the Namibian Affirmative Action (Employment) Act 29 of 1998.
+                            </div>
+                        </group>
+                        <group string="HESMS Safety &amp; Hazchem Compliance">
+                            <field name="x_hazchem_expiry"/>
+                            <field name="x_defensive_driving_expiry"/>
+                            <field name="x_medical_fitness_expiry"/>
+                            <field name="x_hse_compliant" widget="boolean_toggle"/>
+                            <field name="x_hse_status_badge" widget="badge"
+                                   decoration-success="x_hse_status_badge == 'compliant'"
+                                   decoration-warning="x_hse_status_badge == 'expiring_soon'"
+                                   decoration-danger="x_hse_status_badge == 'expired'"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Employee List / Tree View -->
+    <record id="view_employee_tree_inherit_nfd" model="ir.ui.view">
+        <field name="name">hr.employee.list.inherit.nfd</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="x_aa_category" optional="show"/>
+                <field name="x_hse_status_badge" widget="badge"
+                       decoration-success="x_hse_status_badge == 'compliant'"
+                       decoration-warning="x_hse_status_badge == 'expiring_soon'"
+                       decoration-danger="x_hse_status_badge == 'expired'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

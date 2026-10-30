@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nfd_fuel_dispatch_log_user,nfd.fuel.dispatch.log.user,model_nfd_fuel_dispatch_log,base.group_user,1,1,1,1
+access_nfd_fuel_dispatch_log_fleet_user,nfd.fuel.dispatch.log.fleet.user,model_nfd_fuel_dispatch_log,fleet.fleet_group_user,1,1,1,1
+access_nfd_fuel_dispatch_log_fleet_manager,nfd.fuel.dispatch.log.fleet.manager,model_nfd_fuel_dispatch_log,fleet.fleet_group_manager,1,1,1,1
+access_nfd_fuel_dispatch_log_stock_user,nfd.fuel.dispatch.log.stock.user,model_nfd_fuel_dispatch_log,stock.group_stock_user,1,1,1,1
+access_nfd_fuel_dispatch_log_stock_manager,nfd.fuel.dispatch.log.stock.manager,model_nfd_fuel_dispatch_log,stock.group_stock_manager,1,1,1,1

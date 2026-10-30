@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Fleet Vehicle Form View -->
+    <record id="fleet_vehicle_view_form_inherit_nfd" model="ir.ui.view">
+        <field name="name">fleet.vehicle.view.form.inherit.nfd</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="NFD Fuel Fleet &amp; Policy Specs" name="nfd_fuel_specs">
+                    <group>
+                        <group string="Bulk Tanker Specifications">
+                            <field name="x_unit_classification"/>
+                            <field name="x_max_volume_liters"/>
+                            <field name="x_compartment_count"/>
+                            <field name="x_has_diesel_meter" widget="boolean_toggle"/>
+                            <field name="x_geotab_device_id"/>
+                            <field name="x_avg_fuel_consumption"/>
+                        </group>
+                        <group string="Fleet Replacement Policy (NFD Governance)">
+                            <field name="x_manufacture_year"/>
+                            <field name="x_vehicle_age"/>
+                            <field name="x_replacement_policy_status" widget="badge"
+                                   decoration-success="x_replacement_policy_status == 'compliant'"
+                                   decoration-warning="x_replacement_policy_status == 'warning'"
+                                   decoration-danger="x_replacement_policy_status == 'replace_due'"/>
+                            <div class="text-muted mt-2 small" colspan="2">
+                                <i class="fa fa-info-circle me-1" title="Fleet Policy Information"/>
+                                <strong>NFD Replacement Governance:</strong><br/>
+                                • Prime Movers (Tractors): Life limit &lt; 18 years.<br/>
+                                • Rigid Tankers &amp; Trailers: Life limit &lt; 15 years.<br/>
+                                • Amber warning triggers 1 year before mandatory replacement.
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Fleet Vehicle List / Tree View -->
+    <record id="fleet_vehicle_view_tree_inherit_nfd" model="ir.ui.view">
+        <field name="name">fleet.vehicle.view.list.inherit.nfd</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='model_id']" position="after">
+                <field name="x_unit_classification"/>
+                <field name="x_max_volume_liters"/>
+                <field name="x_compartment_count" optional="show"/>
+                <field name="x_has_diesel_meter" widget="boolean_toggle" optional="show"/>
+                <field name="x_geotab_device_id" optional="show"/>
+                <field name="x_vehicle_age" optional="show"/>
+                <field name="x_replacement_policy_status" widget="badge"
+                       decoration-success="x_replacement_policy_status == 'compliant'"
+                       decoration-warning="x_replacement_policy_status == 'warning'"
+                       decoration-danger="x_replacement_policy_status == 'replace_due'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Filter for Replacement Warning in Vehicle Search View -->
+    <record id="fleet_vehicle_view_search_inherit_nfd" model="ir.ui.view">
+        <field name="name">fleet.vehicle.view.search.inherit.nfd</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='alert_true']" position="after">
+                <separator/>
+                <filter string="Replacement Due / Warning" name="filter_replacement_alert"
+                        domain="[('x_replacement_policy_status', 'in', ['warning', 'replace_due'])]"/>
+                <filter string="Fitted with Calibrated Meter" name="filter_calibrated_meter"
+                        domain="[('x_has_diesel_meter', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
