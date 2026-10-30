@@ -25,9 +25,9 @@ End-to-end Odoo 19 implementation and demo suite for **Northern Fuel Distributor
 docker compose up -d
 
 # 2. Initialize database and install module with demo seed data
-docker exec odoo-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
-docker exec odoo19 odoo -d nfd_demo -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
-docker exec odoo19 odoo -d nfd_demo -i nfd_petrosol_demo --stop-after-init
+docker exec nfd-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
+docker exec nfd-odoo19 odoo -d nfd_demo -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo -i nfd_petrosol_demo --stop-after-init
 
 # 3. Open Odoo in your browser
 # URL: http://localhost:8069 (Database: nfd_demo)

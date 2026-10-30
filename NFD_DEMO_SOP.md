@@ -37,7 +37,7 @@ cd NFDNAM
 ```
 
 ### 2.3 Spin Up Docker Containers
-The repository contains a pre-configured [`docker-compose.yml`](file:///home/mikedotmp3/dev/projects/NFDNAM/docker-compose.yml) linking PostgreSQL 16 and Odoo 19 with the custom addon mounted into `/mnt/extra-addons`:
+The repository contains a pre-configured [`docker-compose.yml`](file:///home/mikedotmp3/dev/projects/NFDNAM/docker-compose.yml) linking PostgreSQL 16 (`nfd-db`) and Odoo 19 (`nfd-odoo19`) with the custom addon mounted into `/mnt/extra-addons`:
 
 ```bash
 # Start PostgreSQL 16 and Odoo 19 in background
@@ -47,24 +47,32 @@ docker compose up -d
 docker compose ps
 ```
 
-> **Note on Existing Odoo 19 Containers:** If you already have running containers named `odoo19` and `odoo-db`, you can copy the module directly into your existing setup:
-> ```bash
-> docker cp ./nfd_petrosol_demo odoo19:/mnt/extra-addons/
-> ```
+> **Handling Name Conflicts with Existing Odoo/Postgres Containers:**
+> If you already have existing containers using generic names (like `odoo-db` or `odoo19`) or port 8069:
+> - **Option A (Use your existing Odoo 19 setup):** If you already run an Odoo 19 instance, you do not need docker compose. Simply copy the addon into your container:
+>   ```bash
+>   docker cp ./nfd_petrosol_demo odoo19:/mnt/extra-addons/
+>   ```
+> - **Option B (Clean up old stopped containers):** If the conflict is from an old stopped test container, remove it:
+>   ```bash
+>   docker rm -f odoo-db odoo19
+>   docker compose up -d
+>   ```
 
 ### 2.4 Initialize Database & Install Addon
 Run the following commands to provision the `nfd_demo` database, install standard dependencies, and install the `nfd_petrosol_demo` module with all seed data:
 
 ```bash
 # 1. Create the dedicated demo database in Postgres
-docker exec odoo-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
+docker exec nfd-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
 
 # 2. Install base system and core dependency modules
-docker exec odoo19 odoo -d nfd_demo -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
 
 # 3. Install the NFD & Petrosol Demo Module and seed records
-docker exec odoo19 odoo -d nfd_demo -i nfd_petrosol_demo --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo -i nfd_petrosol_demo --stop-after-init
 ```
+*(Note: If you are using your own existing containers, replace `nfd-db` and `nfd-odoo19` with your container names, e.g. `odoo-db` and `odoo19`.)*
 
 ### 2.5 Accessing Odoo & Logins
 Once initialized, the Odoo server is accessible at:
@@ -81,14 +89,14 @@ Once initialized, the Odoo server is accessible at:
 Execute these verification steps 30 minutes before joining the demonstration session with Johan Botes and Pierre Fourie.
 
 ### 3.1 Container & Database Health Check
-Ensure Docker containers `odoo19` and `odoo-db` are running and responsive:
+Ensure Docker containers are running and responsive:
 
 ```bash
 # 1. Verify container status
-docker ps --filter "name=odoo" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+docker ps --filter "name=nfd" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
 # 2. Confirm database connectivity
-docker exec odoo-db psql -U odoo -d nfd_demo -c "SELECT count(*) FROM ir_module_module WHERE name = 'nfd_petrosol_demo' AND state = 'installed';"
+docker exec nfd-db psql -U odoo -d nfd_demo -c "SELECT count(*) FROM ir_module_module WHERE name = 'nfd_petrosol_demo' AND state = 'installed';"
 # Expected output: 1
 ```
 
@@ -97,10 +105,10 @@ If any adjustments were made to views or Python models, sync and re-initialize t
 
 ```bash
 # 1. Sync repository files to Odoo extra-addons mount
-docker cp ./nfd_petrosol_demo odoo19:/mnt/extra-addons/
+docker cp ./nfd_petrosol_demo nfd-odoo19:/mnt/extra-addons/
 
 # 2. Upgrade the module in the demo database
-docker exec odoo19 odoo -d nfd_demo -u nfd_petrosol_demo --stop-after-init
+docker exec nfd-odoo19 odoo -d nfd_demo -u nfd_petrosol_demo --stop-after-init
 
 # 3. Restart Odoo server process (or ensure background daemon is active)
 # Accessible at: http://localhost:8069 (Select Database: nfd_demo)
@@ -110,7 +118,7 @@ docker exec odoo19 odoo -d nfd_demo -u nfd_petrosol_demo --stop-after-init
 Run the pre-flight verification script inside the Odoo Python shell:
 
 ```bash
-docker exec odoo19 python3 -c "
+docker exec nfd-odoo19 python3 -c "
 import odoo
 from odoo.modules.registry import Registry
 
