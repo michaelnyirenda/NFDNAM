@@ -21,11 +21,66 @@ Northern Fuel Distributors CC (NFD) and their retail subsidiary brand Petrosol P
 
 ---
 
-## 2. Pre-Demo Environment Verification Checklist
+## 2. Complete Local Environment Setup & Replication Guide (For Colleagues)
+
+Follow these exact steps to clone, spin up, initialize, and run the NFD & Petrosol demo environment from scratch on any workstation with Docker installed.
+
+### 2.1 Prerequisites
+Ensure the host machine has:
+- **Git** (`git --version`)
+- **Docker & Docker Compose** (`docker --version`, `docker compose version`)
+
+### 2.2 Clone the Repository
+```bash
+git clone https://github.com/michaelnyirenda/NFDNAM.git
+cd NFDNAM
+```
+
+### 2.3 Spin Up Docker Containers
+The repository contains a pre-configured [`docker-compose.yml`](file:///home/mikedotmp3/dev/projects/NFDNAM/docker-compose.yml) linking PostgreSQL 16 and Odoo 19 with the custom addon mounted into `/mnt/extra-addons`:
+
+```bash
+# Start PostgreSQL 16 and Odoo 19 in background
+docker compose up -d
+
+# Verify both containers are up and healthy
+docker compose ps
+```
+
+> **Note on Existing Odoo 19 Containers:** If you already have running containers named `odoo19` and `odoo-db`, you can copy the module directly into your existing setup:
+> ```bash
+> docker cp ./nfd_petrosol_demo odoo19:/mnt/extra-addons/
+> ```
+
+### 2.4 Initialize Database & Install Addon
+Run the following commands to provision the `nfd_demo` database, install standard dependencies, and install the `nfd_petrosol_demo` module with all seed data:
+
+```bash
+# 1. Create the dedicated demo database in Postgres
+docker exec odoo-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
+
+# 2. Install base system and core dependency modules
+docker exec odoo19 odoo -d nfd_demo -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
+
+# 3. Install the NFD & Petrosol Demo Module and seed records
+docker exec odoo19 odoo -d nfd_demo -i nfd_petrosol_demo --stop-after-init
+```
+
+### 2.5 Accessing Odoo & Logins
+Once initialized, the Odoo server is accessible at:
+- **URL:** [http://localhost:8069](http://localhost:8069)
+- **Database:** Select `nfd_demo` (if prompted, or via `http://localhost:8069/web/database/selector`)
+- **Default Master / Admin Credentials:**
+  - **Email / Username:** `admin`
+  - **Password:** `admin` (or configured password)
+
+---
+
+## 3. Pre-Demo Environment Verification Checklist
 
 Execute these verification steps 30 minutes before joining the demonstration session with Johan Botes and Pierre Fourie.
 
-### 2.1 Container & Database Health Check
+### 3.1 Container & Database Health Check
 Ensure Docker containers `odoo19` and `odoo-db` are running and responsive:
 
 ```bash
@@ -37,12 +92,12 @@ docker exec odoo-db psql -U odoo -d nfd_demo -c "SELECT count(*) FROM ir_module_
 # Expected output: 1
 ```
 
-### 2.2 Addon Hot-Reload / Upgrade Verification
+### 3.2 Addon Hot-Reload / Upgrade Verification
 If any adjustments were made to views or Python models, sync and re-initialize the addon:
 
 ```bash
 # 1. Sync repository files to Odoo extra-addons mount
-docker cp /home/mikedotmp3/dev/projects/NFDNAM/nfd_petrosol_demo odoo19:/mnt/extra-addons/
+docker cp ./nfd_petrosol_demo odoo19:/mnt/extra-addons/
 
 # 2. Upgrade the module in the demo database
 docker exec odoo19 odoo -d nfd_demo -u nfd_petrosol_demo --stop-after-init
@@ -51,7 +106,7 @@ docker exec odoo19 odoo -d nfd_demo -u nfd_petrosol_demo --stop-after-init
 # Accessible at: http://localhost:8069 (Select Database: nfd_demo)
 ```
 
-### 2.3 Automated Sanity Smoke Test
+### 3.3 Automated Sanity Smoke Test
 Run the pre-flight verification script inside the Odoo Python shell:
 
 ```bash
@@ -83,7 +138,7 @@ with registry.cursor() as cr:
 "
 ```
 
-### 2.4 Presenter Setup & Screen Pre-requisites
+### 3.4 Presenter Setup & Screen Pre-requisites
 - **Browser Window 1:** Chrome logged into Odoo as `Administrator` (or `Johan Botes` persona).
 - **Default Database:** `nfd_demo`.
 - **Zoom/Meet Window:** Shared at 1080p, display scaled to 110% for crisp projector/remote viewing.
@@ -94,7 +149,7 @@ with registry.cursor() as cr:
 
 ---
 
-## 3. 25-Minute Guided Live Demonstration Script
+## 4. 25-Minute Guided Live Demonstration Script
 
 ### Timeline & Persona Agenda
 | Elapsed Time | Target Stakeholder | Demonstration Focus Area | Key Impact Metric |
@@ -245,7 +300,7 @@ with registry.cursor() as cr:
 
 ---
 
-## 4. End-to-End Functional Test Matrix (QA Verification)
+## 5. End-to-End Functional Test Matrix (QA Verification)
 
 | Test ID | Feature / Workflow Area | Test Objective & Pre-conditions | Step-by-Step Test Actions | Expected Results | Verification Command / Screen | Pass / Fail |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -260,7 +315,8 @@ with registry.cursor() as cr:
 
 ---
 
-## 5. Post-Demo Follow-Up Checklist for OreSolve Consultants
+## 6. Post-Demo Follow-Up Checklist for OreSolve Consultants
 1. **Send Executive Summary Email** to Johan Botes (`johan@nfdnamibia.com`) and Pierre Fourie (`pierre@nfdnamibia.com`) within 2 hours of the call, recapping the 210L leakage reconciliation and the Otjiwarongo workshop workflow.
 2. **Export Seed Data Spreadsheet** containing NFD's 24 fleet units and Geotab identifiers for their review.
 3. **Schedule Technical Architecture Discovery** with NFD's IT lead for Geotab OBC API endpoint integration and digital gantry meter protocol compatibility.
+
