@@ -36,6 +36,7 @@
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
         <field name="required">True</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_driver_id" model="ir.model.fields">
@@ -46,6 +47,7 @@
         <field name="relation">hr.employee</field>
         <field name="state">manual</field>
         <field name="required">True</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_customer_id" model="ir.model.fields">
@@ -56,6 +58,7 @@
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
         <field name="required">True</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_fuel_product_id" model="ir.model.fields">
@@ -66,6 +69,7 @@
         <field name="relation">product.product</field>
         <field name="state">manual</field>
         <field name="required">True</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_source_location_id" model="ir.model.fields">
@@ -75,6 +79,7 @@
         <field name="ttype">many2one</field>
         <field name="relation">stock.location</field>
         <field name="state">manual</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_destination_location_id" model="ir.model.fields">
@@ -84,6 +89,7 @@
         <field name="ttype">many2one</field>
         <field name="relation">stock.location</field>
         <field name="state">manual</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_depot_loaded_liters" model="ir.model.fields">
@@ -236,6 +242,7 @@
         <field name="relation">maintenance.request</field>
         <field name="state">manual</field>
         <field name="readonly">True</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_scrap_id" model="ir.model.fields">
@@ -246,6 +253,7 @@
         <field name="relation">stock.scrap</field>
         <field name="state">manual</field>
         <field name="readonly">True</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_x_nfd_fuel_dispatch_log_x_notes" model="ir.model.fields">
@@ -580,6 +588,7 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_maintenance_equipment_x_site_partner_id" model="ir.model.fields">
@@ -589,6 +598,7 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_maintenance_equipment_x_tank_capacity_liters" model="ir.model.fields">
@@ -621,6 +631,7 @@ for record in self:
         <field name="related">equipment_id.x_linked_vehicle_id</field>
         <field name="readonly">True</field>
         <field name="state">manual</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_maintenance_request_x_site_partner_id" model="ir.model.fields">
@@ -630,6 +641,7 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_maintenance_request_x_dispatch_log_id" model="ir.model.fields">
@@ -640,6 +652,7 @@ for record in self:
         <field name="relation">x_nfd_fuel_dispatch_log</field>
         <field name="state">manual</field>
         <field name="readonly">True</field>
+        <field name="on_delete">restrict</field>
     </record>
 
     <record id="field_maintenance_request_x_service_agreement_type" model="ir.model.fields">
