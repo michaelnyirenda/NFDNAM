@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Partner List View for Breakdown Network -->
+    <record id="view_partner_tree_breakdown_nfd" model="ir.ui.view">
+        <field name="name">res.partner.list.breakdown.nfd</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <list string="24/7 Emergency Breakdown Network">
+                <field name="name" string="Service Provider / Contact"/>
+                <field name="x_breakdown_coverage_area" string="Town / Coverage Area"/>
+                <field name="x_breakdown_service_type" widget="badge"
+                       decoration-info="x_breakdown_service_type == 'mechanical'"
+                       decoration-warning="x_breakdown_service_type == 'auto_electrical'"
+                       decoration-danger="x_breakdown_service_type == 'towing'"
+                       decoration-success="x_breakdown_service_type == 'all_round'"/>
+                <field name="phone"/>
+                <field name="email" optional="show"/>
+                <field name="city" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- 24/7 Emergency Breakdown Network Action -->
+    <record id="action_nfd_breakdown_network" model="ir.actions.act_window">
+        <field name="name">24/7 Emergency Breakdown Network</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="view_id" ref="view_partner_tree_breakdown_nfd"/>
+        <field name="domain">[('x_is_breakdown_partner', '=', True)]</field>
+        <field name="context">{
+            'default_x_is_breakdown_partner': True,
+            'default_is_company': True,
+            'search_default_group_town': 1
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                24/7 Namibian Emergency Breakdown Network
+            </p>
+            <p>
+                Directory of pre-contracted roadside assistance, heavy towing, tyre replacement,
+                and mechanical repair vendors across all major Namibian transport corridors.
+            </p>
+        </field>
+    </record>
+
+    <!-- Inherit Partner Form View for Breakdown Fields -->
+    <record id="view_partner_form_inherit_breakdown_nfd" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.breakdown.nfd</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="24/7 Breakdown Network" name="breakdown_network">
+                    <group>
+                        <group string="Emergency Roadside Discipline">
+                            <field name="x_is_breakdown_partner" widget="boolean_toggle"/>
+                            <field name="x_breakdown_service_type"/>
+                            <field name="x_breakdown_coverage_area"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Search View Filters for Breakdown Network -->
+    <record id="view_res_partner_filter_inherit_breakdown_nfd" model="ir.ui.view">
+        <field name="name">res.partner.search.inherit.breakdown.nfd</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='type_company']" position="after">
+                <separator/>
+                <filter string="24/7 Breakdown Network" name="filter_breakdown_partners"
+                        domain="[('x_is_breakdown_partner', '=', True)]"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="Coverage Area / Town" name="group_town"
+                        domain="[]" context="{'group_by': 'x_breakdown_coverage_area'}"/>
+                <filter string="Breakdown Capability" name="group_service_type"
+                        domain="[]" context="{'group_by': 'x_breakdown_service_type'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

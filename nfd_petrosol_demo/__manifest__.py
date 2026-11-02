@@ -25,6 +25,7 @@ Key Capabilities:
     'depends': [
         'base',
         'fleet',
+        'hr_fleet',
         'maintenance',
         'stock',
         'hr',
@@ -40,14 +41,16 @@ Key Capabilities:
     'data': [
         'security/ir.model.access.csv',
         'data/sequences.xml',
+        'data/demo_data.xml',
         'views/fuel_dispatch_log_views.xml',
         'views/fuel_consumption_views.xml',
         'views/fleet_vehicle_views.xml',
         'views/hr_employee_views.xml',
         'views/maintenance_views.xml',
+        'views/res_partner_views.xml',
         'views/menus.xml',
-        'data/demo_data.xml',
     ],
+
     'post_init_hook': 'post_init_hook',
     'demo': [],
     'installable': True,
