@@ -1064,4 +1064,543 @@ for record in self:
         <field name="name">Odometer / Logsheet Anomaly</field>
         <field name="sequence">3</field>
     </record>
+
+    <!-- ============================================================== -->
+    <!-- 8. EXTENSION: FLEET WORKSHOP, STATUTORY & COUPLING FIELDS      -->
+    <!-- ============================================================== -->
+    <record id="field_fleet_vehicle_x_trailer_comp1_id" model="ir.model.fields">
+        <field name="name">x_trailer_comp1_id</field>
+        <field name="field_description">Coupled Trailer 1 / Comp 1</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">many2one</field>
+        <field name="relation">fleet.vehicle</field>
+        <field name="state">manual</field>
+        <field name="ondelete">restrict</field>
+        <field name="on_delete">restrict</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_trailer_comp2_id" model="ir.model.fields">
+        <field name="name">x_trailer_comp2_id</field>
+        <field name="field_description">Coupled Trailer 2 / Comp 2</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">many2one</field>
+        <field name="relation">fleet.vehicle</field>
+        <field name="state">manual</field>
+        <field name="ondelete">restrict</field>
+        <field name="on_delete">restrict</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_diesel_capacity" model="ir.model.fields">
+        <field name="name">x_diesel_capacity</field>
+        <field name="field_description">Diesel Carrying Capacity (L)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_ulp_capacity" model="ir.model.fields">
+        <field name="name">x_ulp_capacity</field>
+        <field name="field_description">ULP 95 Carrying Capacity (L)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_last_service_date" model="ir.model.fields">
+        <field name="name">x_last_service_date</field>
+        <field name="field_description">Last Service Date</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_last_service_km" model="ir.model.fields">
+        <field name="name">x_last_service_km</field>
+        <field name="field_description">Last Service Odometer (KM)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_service_interval_km" model="ir.model.fields">
+        <field name="name">x_service_interval_km</field>
+        <field name="field_description">Service Interval (KM)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_next_service_km" model="ir.model.fields">
+        <field name="name">x_next_service_km</field>
+        <field name="field_description">Next Service Milestone (KM)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_km_until_service" model="ir.model.fields">
+        <field name="name">x_km_until_service</field>
+        <field name="field_description">KM Until Service Due</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_service_status" model="ir.model.fields">
+        <field name="name">x_service_status</field>
+        <field name="field_description">Service Status</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_veh_srv_ok" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_service_status"/>
+        <field name="value">ok</field>
+        <field name="name">Service OK</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_veh_srv_due_soon" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_service_status"/>
+        <field name="value">due_soon</field>
+        <field name="name">Service Due Soon (&lt; 5,000 KM)</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_veh_srv_overdue" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_service_status"/>
+        <field name="value">overdue</field>
+        <field name="name">Service Overdue</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_licence_expiry_date" model="ir.model.fields">
+        <field name="name">x_licence_expiry_date</field>
+        <field name="field_description">NaTIS Vehicle Licence Expiry</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_fitness_certificate_expiry" model="ir.model.fields">
+        <field name="name">x_fitness_certificate_expiry</field>
+        <field name="field_description">NaTIS Roadworthy Fitness Expiry</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_safe_loading_pass_expiry" model="ir.model.fields">
+        <field name="name">x_safe_loading_pass_expiry</field>
+        <field name="field_description">Safe Loading Pass (SLP) Expiry</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_pressure_test_expiry" model="ir.model.fields">
+        <field name="name">x_pressure_test_expiry</field>
+        <field name="field_description">Tanker Pressure Test Expiry</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_tanker_calibration_date" model="ir.model.fields">
+        <field name="name">x_tanker_calibration_date</field>
+        <field name="field_description">Depot Calibration Date</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_last_wheel_alignment_date" model="ir.model.fields">
+        <field name="name">x_last_wheel_alignment_date</field>
+        <field name="field_description">Last Wheel Alignment Date</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_pto_type" model="ir.model.fields">
+        <field name="name">x_pto_type</field>
+        <field name="field_description">PTO Drive Type</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_veh_pto_hyd" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="value">hydraulic_pto</field>
+        <field name="name">Hydraulic PTO</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_veh_pto_eng" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="value">engine_pto</field>
+        <field name="name">Auxiliary Engine PTO</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_veh_pto_both" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="value">both</field>
+        <field name="name">Dual PTO (Engine &amp; Hydraulic)</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_veh_pto_none" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="value">none</field>
+        <field name="name">None / Gravity Discharge</field>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_pto_location" model="ir.model.fields">
+        <field name="name">x_pto_location</field>
+        <field name="field_description">PTO Mounting Position</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_operational_availability" model="ir.model.fields">
+        <field name="name">x_operational_availability</field>
+        <field name="field_description">Operational Availability</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_veh_avail_active" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="value">active</field>
+        <field name="name">Active In Service</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_veh_avail_standby" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="value">standby</field>
+        <field name="name">Standby Unit</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_veh_avail_maint" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="value">maintenance</field>
+        <field name="name">In Maintenance / Workshop</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_veh_avail_accident" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="value">accident</field>
+        <field name="name">Grounded - Accident Damage</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_veh_avail_roadworthy" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="value">roadworthy</field>
+        <field name="name">Awaiting NaTIS Roadworthy</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="sel_veh_avail_for_sale" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="value">for_sale</field>
+        <field name="name">Decommissioned - For Sale</field>
+        <field name="sequence">6</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 9. EXTENSION: HR EMPLOYEE DRIVER LICENSING & STATUTORY FIELDS   -->
+    <!-- ============================================================== -->
+    <record id="field_hr_employee_x_id_number" model="ir.model.fields">
+        <field name="name">x_id_number</field>
+        <field name="field_description">National ID Number</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_hr_employee_x_licence_code" model="ir.model.fields">
+        <field name="name">x_licence_code</field>
+        <field name="field_description">Driver Licence Code</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_emp_lic_ce" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="value">CE</field>
+        <field name="name">Code CE (Heavy Articulated Motor Vehicle)</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_emp_lic_c" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="value">C</field>
+        <field name="name">Code C (Heavy Rigid Motor Vehicle)</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_emp_lic_c1" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="value">C1</field>
+        <field name="name">Code C1 (Medium Heavy Motor Vehicle)</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_emp_lic_be" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="value">BE</field>
+        <field name="name">Code BE (Articulated Light Motor Vehicle)</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_emp_lic_b" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="value">B</field>
+        <field name="name">Code B (Light Motor Vehicle)</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="field_hr_employee_x_licence_expiry_date" model="ir.model.fields">
+        <field name="name">x_licence_expiry_date</field>
+        <field name="field_description">Driver Licence Expiry Date</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_hr_employee_x_pdp_expiry_date" model="ir.model.fields">
+        <field name="name">x_pdp_expiry_date</field>
+        <field name="field_description">Public Driving Permit (PDP) Expiry</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_hr_employee_x_eye_test_expiry_date" model="ir.model.fields">
+        <field name="name">x_eye_test_expiry_date</field>
+        <field name="field_description">Eye Examination Expiry Date</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 10. EXTENSION: MAINTENANCE REQUEST WORKSHOP FIELDS             -->
+    <!-- ============================================================== -->
+    <record id="field_maintenance_request_x_job_card_number" model="ir.model.fields">
+        <field name="name">x_job_card_number</field>
+        <field name="field_description">Job Card #</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_maintenance_request_x_workshop_location" model="ir.model.fields">
+        <field name="name">x_workshop_location</field>
+        <field name="field_description">Service Location</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_mr_loc_otj" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="value">workshop_otj</field>
+        <field name="name">Otjiwarongo Main Workshop</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_mr_loc_natis" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="value">natis_otj</field>
+        <field name="name">NaTIS Testing Station (Otjiwarongo)</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_mr_loc_vivo" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="value">vivo_depo</field>
+        <field name="name">Vivo Energy Depo</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_mr_loc_cwwa" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="value">cwwa</field>
+        <field name="name">CWWA Truck Wash &amp; Degas</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_mr_loc_vinyl" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="value">gt_vinyl</field>
+        <field name="name">GT Vinyl Livery &amp; Branding</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="sel_mr_loc_breakdown" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="value">field_breakdown</field>
+        <field name="name">Field Breakdown Site</field>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="field_maintenance_request_x_assigned_mechanic" model="ir.model.fields">
+        <field name="name">x_assigned_mechanic</field>
+        <field name="field_description">Assigned Mechanic</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_mr_mech_green" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="value">green</field>
+        <field name="name">Green (Master Mechanic)</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_mr_mech_japie" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="value">japie</field>
+        <field name="name">Japie (Re-Build Specialist)</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_mr_mech_clive" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="value">clive</field>
+        <field name="name">Clive (Air &amp; Brakes)</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_mr_mech_jonie" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="value">jonie</field>
+        <field name="name">Jonie (Auto Electrician)</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_mr_mech_siisii" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="value">siisii</field>
+        <field name="name">Siisii (Suspension)</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="sel_mr_mech_manie" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="value">manie</field>
+        <field name="name">Manie (Workshop Foreman)</field>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="field_maintenance_request_x_parts_supplier_id" model="ir.model.fields">
+        <field name="name">x_parts_supplier_id</field>
+        <field name="field_description">Spare Parts Supplier</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">many2one</field>
+        <field name="relation">res.partner</field>
+        <field name="state">manual</field>
+        <field name="ondelete">restrict</field>
+        <field name="on_delete">restrict</field>
+    </record>
+
+    <record id="field_maintenance_request_x_job_type" model="ir.model.fields">
+        <field name="name">x_job_type</field>
+        <field name="field_description">Job Type</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_mr_type_repair" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="value">repair</field>
+        <field name="name">Corrective Repair</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_mr_type_service" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="value">service</field>
+        <field name="name">Scheduled Routine Service</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_mr_type_roadworthy" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="value">roadworthy</field>
+        <field name="name">NaTIS Roadworthy Inspection</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_mr_type_rebuild" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="value">rebuild</field>
+        <field name="name">Full Tanker / Engine Rebuild</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_mr_type_degas" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="value">degas</field>
+        <field name="name">Tanker Multi-Compartment Degas</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="sel_mr_type_wheel" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="value">wheel_alignment</field>
+        <field name="name">Laser Axle Alignment</field>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="field_maintenance_request_x_parts_ordered" model="ir.model.fields">
+        <field name="name">x_parts_ordered</field>
+        <field name="field_description">Parts Ordered</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_maintenance_request_x_parts_received" model="ir.model.fields">
+        <field name="name">x_parts_received</field>
+        <field name="field_description">Parts Received</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 11. EXTENSION: RES PARTNER BREAKDOWN NETWORK FIELDS            -->
+    <!-- ============================================================== -->
+    <record id="field_res_partner_x_is_breakdown_partner" model="ir.model.fields">
+        <field name="name">x_is_breakdown_partner</field>
+        <field name="field_description">24/7 Breakdown Response Partner</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_partner_x_breakdown_coverage_area" model="ir.model.fields">
+        <field name="name">x_breakdown_coverage_area</field>
+        <field name="field_description">Breakdown Coverage Area / Town</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_partner_x_breakdown_service_type" model="ir.model.fields">
+        <field name="name">x_breakdown_service_type</field>
+        <field name="field_description">Breakdown Service Capability</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_rp_st_mech" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="value">mechanical</field>
+        <field name="name">Heavy Mechanical Repairs</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_rp_st_elec" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="value">auto_electrical</field>
+        <field name="name">Auto Electrical &amp; Diagnostic</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_rp_st_tow" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="value">towing</field>
+        <field name="name">Heavy Recovery &amp; Towing</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_rp_st_tyres" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="value">tyres</field>
+        <field name="name">Commercial Tyres &amp; Alignment</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_rp_st_all" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="value">all_round</field>
+        <field name="name">Full Breakdown &amp; Field Service</field>
+        <field name="sequence">5</field>
+    </record>
 </odoo>

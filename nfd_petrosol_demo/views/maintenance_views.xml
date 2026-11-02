@@ -36,6 +36,13 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='maintenance_type']" position="after">
+                <field name="x_job_card_number"/>
+                <field name="x_job_type"/>
+                <field name="x_workshop_location"/>
+                <field name="x_assigned_mechanic"/>
+                <field name="x_parts_supplier_id"/>
+                <field name="x_parts_ordered" widget="boolean_toggle"/>
+                <field name="x_parts_received" widget="boolean_toggle"/>
                 <field name="x_asset_category"/>
                 <field name="x_service_agreement_type"/>
                 <field name="x_site_partner_id"/>
@@ -51,10 +58,49 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="after">
+                <field name="x_job_card_number" optional="show"/>
+                <field name="x_job_type" optional="show"/>
+                <field name="x_workshop_location" optional="show"/>
+                <field name="x_assigned_mechanic" optional="show"/>
+                <field name="x_parts_supplier_id" optional="show"/>
+                <field name="x_parts_ordered" widget="boolean_toggle" optional="hide"/>
+                <field name="x_parts_received" widget="boolean_toggle" optional="hide"/>
                 <field name="equipment_id"/>
                 <field name="x_asset_category" optional="show"/>
                 <field name="x_site_partner_id" optional="show"/>
                 <field name="x_service_agreement_type" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Maintenance Request Search View -->
+    <record id="hr_equipment_request_view_search_inherit_nfd" model="ir.ui.view">
+        <field name="name">maintenance.request.search.inherit.nfd</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='todo']" position="after">
+                <separator/>
+                <filter string="NaTIS Roadworthy Testing" name="filter_roadworthy"
+                        domain="[('x_job_type', '=', 'roadworthy')]"/>
+                <filter string="Tanker Degas &amp; Welding" name="filter_degas"
+                        domain="[('x_job_type', '=', 'degas')]"/>
+                <filter string="Routine Services" name="filter_service"
+                        domain="[('x_job_type', '=', 'service')]"/>
+                <filter string="Laser Wheel Alignment" name="filter_wheel_alignment"
+                        domain="[('x_job_type', '=', 'wheel_alignment')]"/>
+                <filter string="Awaiting Parts" name="filter_awaiting_parts"
+                        domain="[('x_parts_ordered', '=', True), ('x_parts_received', '=', False)]"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="Service Location" name="group_location"
+                        domain="[]" context="{'group_by': 'x_workshop_location'}"/>
+                <filter string="Assigned Mechanic" name="group_mechanic"
+                        domain="[]" context="{'group_by': 'x_assigned_mechanic'}"/>
+                <filter string="Job Type" name="group_job_type"
+                        domain="[]" context="{'group_by': 'x_job_type'}"/>
+                <filter string="Spare Parts Supplier" name="group_supplier"
+                        domain="[]" context="{'group_by': 'x_parts_supplier_id'}"/>
             </xpath>
         </field>
     </record>

@@ -28,6 +28,7 @@ Key Capabilities:
     'depends': [
         'base',
         'fleet',
+        'hr_fleet',
         'maintenance',
         'stock',
         'hr',
@@ -51,6 +52,7 @@ Key Capabilities:
         'views/fleet_vehicle_views.xml',
         'views/hr_employee_views.xml',
         'views/maintenance_views.xml',
+        'views/res_partner_views.xml',
         'views/menus.xml',
     ],
     'demo': [],

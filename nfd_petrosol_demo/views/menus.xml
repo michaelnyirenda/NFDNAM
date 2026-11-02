@@ -33,7 +33,7 @@
     <menuitem id="menu_nfd_fuel_dispatch_log"
               name="Fuel Dispatch &amp; Variance Logs"
               parent="menu_nfd_dispatch_category"
-              action="action_x_nfd_fuel_dispatch_log"
+              action="action_nfd_fuel_dispatch_log"
               sequence="10"/>
 
     <!-- 2. Fleet & Equipment Category -->
@@ -48,6 +48,12 @@
               action="fleet.fleet_vehicle_action"
               sequence="10"/>
 
+    <menuitem id="menu_nfd_breakdown_network"
+              name="24/7 Emergency Breakdown Network"
+              parent="menu_nfd_fleet_category"
+              action="action_nfd_breakdown_network"
+              sequence="15"/>
+
     <menuitem id="menu_nfd_workshop_assets"
               name="Workshop Equipment &amp; Forecourt Pumps"
               parent="menu_nfd_fleet_category"
@@ -59,6 +65,7 @@
               parent="menu_nfd_fleet_category"
               action="maintenance.hr_equipment_request_action"
               sequence="30"/>
+
 
     <!-- 3. HESMS & Personnel Category -->
     <menuitem id="menu_nfd_hesms_category"
@@ -112,7 +119,7 @@
     <menuitem id="menu_fleet_nfd_dispatch_log"
               name="Bulk Fuel Dispatches"
               parent="fleet.fleet_vehicles"
-              action="action_x_nfd_fuel_dispatch_log"
+              action="action_nfd_fuel_dispatch_log"
               sequence="5"/>
 
     <menuitem id="menu_fleet_nfd_consumption_log"

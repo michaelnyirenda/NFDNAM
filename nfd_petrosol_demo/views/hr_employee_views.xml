@@ -7,16 +7,16 @@
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="HESMS &amp; Affirmative Action" name="hesms_aa_compliance">
+                <page string="HESMS &amp; Driver Compliance" name="hesms_aa_compliance">
                     <group>
-                        <group string="Namibian Affirmative Action (AA) Classification">
-                            <field name="x_aa_category"/>
-                            <div class="text-muted small mt-1" colspan="2">
-                                <i class="fa fa-balance-scale me-1" title="Affirmative Action Act"/>
-                                In compliance with the Namibian Affirmative Action (Employment) Act 29 of 1998.
-                            </div>
+                        <group string="Namibian Driver Licensing &amp; Identity">
+                            <field name="x_id_number"/>
+                            <field name="x_licence_code"/>
+                            <field name="x_licence_expiry_date"/>
+                            <field name="x_pdp_expiry_date"/>
+                            <field name="x_eye_test_expiry_date"/>
                         </group>
-                        <group string="HESMS Safety &amp; Hazchem Compliance">
+                        <group string="HESMS Safety, Medical &amp; Hazchem Compliance">
                             <field name="x_hazchem_expiry"/>
                             <field name="x_defensive_driving_expiry"/>
                             <field name="x_medical_fitness_expiry"/>
@@ -26,6 +26,13 @@
                                    decoration-warning="x_hse_status_badge == 'expiring_soon'"
                                    decoration-danger="x_hse_status_badge == 'expired'"/>
                         </group>
+                    </group>
+                    <group string="Namibian Affirmative Action (AA) Classification">
+                        <field name="x_aa_category"/>
+                        <div class="text-muted small mt-1" colspan="2">
+                            <i class="fa fa-balance-scale me-1" title="Affirmative Action Act"/>
+                            In compliance with the Namibian Affirmative Action (Employment) Act 29 of 1998.
+                        </div>
                     </group>
                 </page>
             </xpath>
@@ -39,11 +46,40 @@
         <field name="inherit_id" ref="hr.view_employee_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='job_id']" position="after">
+                <field name="x_licence_code" optional="show"/>
+                <field name="x_pdp_expiry_date" optional="show"/>
+                <field name="x_hazchem_expiry" optional="show"/>
                 <field name="x_aa_category" optional="show"/>
                 <field name="x_hse_status_badge" widget="badge"
                        decoration-success="x_hse_status_badge == 'compliant'"
                        decoration-warning="x_hse_status_badge == 'expiring_soon'"
                        decoration-danger="x_hse_status_badge == 'expired'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Search View Filter for Driver Compliance -->
+    <record id="view_employee_filter_inherit_nfd" model="ir.ui.view">
+        <field name="name">hr.employee.search.inherit.nfd</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='inactive']" position="after">
+                <separator/>
+                <filter string="Permit Expired / Grounded" name="filter_hse_expired"
+                        domain="[('x_hse_status_badge', '=', 'expired')]"/>
+                <filter string="Permit Expiring Soon (30 Days)" name="filter_hse_expiring"
+                        domain="[('x_hse_status_badge', '=', 'expiring_soon')]"/>
+                <filter string="Code CE Articulated Drivers" name="filter_code_ce"
+                        domain="[('x_licence_code', '=', 'CE')]"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="HESMS Safety Status" name="group_hse_status"
+                        domain="[]" context="{'group_by': 'x_hse_status_badge'}"/>
+                <filter string="Driver Licence Code" name="group_licence_code"
+                        domain="[]" context="{'group_by': 'x_licence_code'}"/>
+                <filter string="Affirmative Action Category" name="group_aa_category"
+                        domain="[]" context="{'group_by': 'x_aa_category'}"/>
             </xpath>
         </field>
     </record>

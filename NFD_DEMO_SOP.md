@@ -194,11 +194,12 @@ with registry.cursor() as cr:
 | Elapsed Time | Target Stakeholder | Demonstration Focus Area | Key Impact Metric |
 | :--- | :--- | :--- | :--- |
 | **00:00 - 03:00** | Johan & Pierre | Executive Welcome & Operational Architecture | 700kL Otjiwarongo Depot & 4M+ L/mo scale |
-| **03:00 - 07:30** | Johan Botes | Fleet Governance, Replacement Limits & Geotab | Aging Prime Movers (17y) & Rigid Tankers (14y) |
-| **07:30 - 13:00** | Johan & Pierre | Bulk Cargo Dispatch, Thermal Variances & Leakage | The 210L Grinaker-LTA Loss & 1-Click Action |
-| **13:00 - 19:30** | Johan & Pierre | Real Sept 2026 Fleet Consumption, Audit & Timesheets | Exact NFD Numbers, Star Savers, Tremor Bug, Workshop Hours |
-| **19:30 - 24:00** | Pierre Fourie | Financial Reconciliations, Scrap Valuation & Forecourts | Shrinkage Write-off & Free Forecourt Care |
-| **24:00 - 27:30** | Johan Botes | HESMS Driver Safety & Affirmative Action (AA) | Chevron >90% Audit Score & Hazchem Expiry |
+| **03:00 - 06:30** | Johan Botes | Fleet Governance, Replacement Limits & Geotab | Aging Prime Movers (17y) & Rigid Tankers (14y) |
+| **06:30 - 10:30** | Johan Botes | Workshop Job Cards, Statutory Compliance & Breakdown Network | 5 Active Job Cards, NaTIS/SLP Expiry & 33 Breakdown Partners |
+| **10:30 - 15:30** | Johan & Pierre | Bulk Cargo Dispatch, Thermal Variances & Leakage | The 210L Grinaker-LTA Loss & 1-Click Action |
+| **15:30 - 20:30** | Johan & Pierre | Real Sept 2026 Fleet Consumption, Audit & Timesheets | Exact NFD Numbers, Star Savers, Tremor Bug, Workshop Hours |
+| **20:30 - 24:00** | Pierre Fourie | Financial Reconciliations, Scrap Valuation & Forecourts | Shrinkage Write-off & Free Forecourt Care |
+| **24:00 - 27:30** | Johan Botes | HESMS Driver Safety & Affirmative Action (AA) | 34 Drivers, Franzua Grounded (Expired), Chevron >90% |
 | **27:30 - 30:00** | Johan & Pierre | Summary, Roadmap & Commercial Alignment | Next Steps for Pilot Go-Live |
 
 ---
@@ -248,7 +249,57 @@ with registry.cursor() as cr:
 
 ---
 
-### Act 3: The Climax — Bulk Cargo Fuel Dispatch, Meter vs. Dip & The 210L Leakage Incident (08:30 – 15:30)
+### Act 2b: Workshop Maintenance Job Cards, Statutory Compliance & 24/7 Breakdown Network (06:30 – 10:30)
+
+**Presenter Click Path:**
+1. Navigate to: **NFD Fuel Logistics > Fleet & Assets > Maintenance Work Orders**.
+   - Notice the workshop job card backlog reflecting active tickets from NFD's Otjiwarongo engineering whiteboard.
+   - Show columns: `Job Card #`, `Maintenance Request`, `Service Location`, `Assigned Mechanic`, `Job Type`, `Parts Ordered`, and `Parts Received`.
+   - Open record: **`JC-1009: Trek Links & Turntable Pin Re-Torque`**:
+     - Point out: Linked to vehicle `N 12548 OT`, assigned to master mechanic **Green**, location **Otjiwarongo Main Workshop**.
+     - Check: Both **Parts Ordered** and **Parts Received** checkboxes are checked (parts supplied by Henred / MB Truck).
+   - Open record: **`JC-1045: Multi-Compartment Degas & Internal Baffle Weld`**:
+     - Point out: Location **CWWA Truck Wash & Degas**, assigned to **Japie**, job type **Degas**.
+     - Notice: Parts Ordered is checked, but Parts Received is pending—preventing premature job card closure until hot-work gas-free certificate is issued.
+   - Open record: **`JC-1110: Hydraulic PTO Offloading Valve Leak Repair`**:
+     - Point out: Assigned to **Clive** (Air & Brakes), addressing offloading valve seals.
+   - Highlight statutory inspection tickets:
+     - **`JC-994`**: NaTIS Statutory Roadworthy Fitness Retest at **NaTIS Testing Station (Otjiwarongo)** assigned to Foreman **Manie**.
+     - **`JC-1088`**: Safe Loading Pass (SLP) Recertification at **Vivo Energy Depo** assigned to Auto Electrician **Jonie**.
+
+2. Navigate to: **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids** (Fleet Vehicles).
+   - Open any prime mover or tanker (e.g. `N 12043 OT`, `N 12916 OT`, or `N 5999 OT`).
+   - Click on the new tab: **Workshop Service & Statutory Compliance**:
+     - **NaTIS Fitness Certificate Expiry Date**: Tracks annual statutory vehicle fitness.
+     - **Safe Loading Pass (SLP) Expiry Date**: Tracks gantry access certification at major oil terminal depots (Vivo, TotalEnergies, Engen).
+     - **Pressure Test Certificate Expiry Date**: Tracks hydrostatic pressure certification for tanker vessels and manifolds.
+     - **Last Wheel Alignment Date & KMs at Alignment**: Tracks laser alignment intervals to eliminate irregular tyre wear on gravel corridors.
+     - **PTO Specifications**: Tracks PTO type (Electric, Hydraulic, Pneumatic) and exact physical mounting location (e.g. Tanker belly PTO, Truck cab PTO).
+     - **Service Status Badge**: Dynamic indicator (`ok`, `due_soon`, or `overdue`) based on odometer distance vs. next service KM target.
+     - **Trailer Couplings (Comp 1 & Comp 2)**: Full visibility into coupled interlink pup trailers and drawbars.
+
+3. Navigate to: **NFD Fuel Logistics > Fleet & Assets > 24/7 Emergency Breakdown Network**.
+   - Notice the national coverage directory featuring **33 vetted breakdown service providers** across Namibia.
+   - Filter/Group by: **Town / Corridor**:
+     - **B1 Central/North (Windhoek, Otjiwarongo, Grootfontein)**: Scania Grootfontein, Danie Breakdown, H.E.Z.F.
+     - **B2 Coastal / Trans-Kalahari Corridor (Karibib, Swakopmund, Walvis Bay)**: R J Services (Karibib), Coastal Truck Breakdown.
+     - **C38 / C39 Northern Mining & Tourism (Outjo, Khorixas, Kamanjab)**: Jaques Joubert (Khorixas), Lars Falkenberg (Kamanjab).
+     - **Eastern Corridor (Gobabis)**: H J Automotive, Gobabis Emergency Service.
+     - **Caprivi Corridor (Katima Mulilo)**: Zambezi Auto City.
+   - Explain how drivers calling the Otjiwarongo control room during a night breakdown can be routed to the nearest authorized roadside assistance provider within seconds.
+
+**Presenter Talking Points (Speaking to Johan Botes):**
+> *"Johan, fleet management isn't just about odometers—it's about keeping multi-million dollar rolling assets compliant with statutory law and ensuring rapid recovery when a breakdown hits in the middle of Damaraland or the Caprivi Strip.*
+>
+> *First, look at your Workshop Job Cards. Instead of sticky notes or paper job cards that get grease-stained and misplaced, your workshop foreman Manie has a live digital queue: JC-1009 for turntable pins assigned to Green; JC-1045 for tanker degassing at CWWA assigned to Japie with spare parts tracked from MB Truck and Henred; and JC-1110 for hydraulic PTO repairs assigned to Clive. You know exactly what stage every repair is at and whether required spare parts have arrived.*
+>
+> *Second, look at Statutory Compliance under the new Workshop Service tab on your vehicles. In petroleum transport, an expired Safe Loading Pass (SLP) means your truck is turned away at the Walvis Bay or Vivo gantry, wasting an entire day's run. An expired pressure test certificate voids your tanker insurance. In Odoo, your team has live countdowns on NaTIS roadworthy fitness, SLP passes, tanker hydrostatic pressure dates, and laser wheel alignments.*
+>
+> *Third, look at your 24/7 Emergency Breakdown Network: 33 vetted breakdown, tyre, and towing specialists covering every major Namibian corridor from Gobabis to Katima Mulilo. When a driver calls dispatch at 02:00 AM near Khorixas, your team doesn't scramble through WhatsApp—they filter by town and immediately mobilize Jaques Joubert Breakdown with 1 click."*
+
+---
+
+### Act 3: The Climax — Bulk Cargo Fuel Dispatch, Meter vs. Dip & The 210L Leakage Incident (10:30 – 15:30)
 
 **Presenter Click Path:**
 1. Navigate to: **NFD Fuel Logistics > Cargo Dispatch & Dip Logs > Fuel Dispatch & Variance Logs**.
@@ -358,20 +409,29 @@ with registry.cursor() as cr:
 
 **Presenter Click Path:**
 1. Navigate to: **NFD Fuel Logistics > HESMS & Driver Safety > Hazchem Drivers & AA Compliance** (or **HR Employees**).
-2. List view displays columns: `Name`, `Job Position`, `Affirmative Action Category`, and `HESMS Safety Status`.
-3. Point out driver: **`Hendrik Shilongo`** -> Badge: Green `Fully Compliant`.
-4. Point out driver: **`Matheus Shikongo`** -> Badge: Amber `Expiring Within 30 Days`.
-5. Open **`Matheus Shikongo`** -> Tab: **HESMS & Affirmative Action**.
-   - Show: Dangerous Goods / Hazchem Permit Expiry: **`2026-11-01`** (Expires in 5 days!).
-   - Show: Defensive Driving and Medical Fitness are valid until 2027.
-   - Point out the automated rule: Because his Hazchem permit is expiring within 30 days, Odoo prevents dispatching him once expired!
+2. List view displays columns: `Name`, `ID Number`, `Licence Code`, `Licence Expiry`, `PDP Expiry Date`, `Hazchem Expiry Date`, `Medical Fitness Expiry`, `Affirmative Action Category`, and `HESMS Safety Status`.
+3. Filter by: **Hazchem Compliance Status**:
+   - Point out driver: **`Hendrik Shilongo`** -> Badge: Green `Fully Compliant`.
+   - Point out driver: **`Matheus Shikongo`** -> Badge: Amber `Expiring Within 30 Days` (Hazchem expires 2026-11-01).
+   - Point out driver: **`Franzua Tsuseb`** -> Badge: Red `Grounded / Expired`!
+4. Open **`Franzua Tsuseb`** -> Tab: **HESMS & Driver Compliance**:
+   - Point out: Licence Code `C`, Namibian ID `870814...`, Driving Licence valid until 2028, PrDP valid until 2028-05-26.
+   - Point out the red violation: **Dangerous Goods / Hazchem Permit expired on `2026-05-25`**!
+   - Show how Odoo automatically locks the driver record with status `expired`, preventing any dispatcher from assigning Franzua to hazardous cargo runs until recertified.
+5. Highlight that all **34 active drivers** from NFD's operational roster (Niklas Ashipala, Mike Mburu, Denzel Tjombonde, Benhard Kangandi, Gabriel Tjiueza, Raymond Booysen, Andreas Iipinge, Maxi Wohler, Conrall Davids, Simon Tsaoseb, Oscar, etc.) are fully mapped with statutory licence codes (CE/C1/C), Namibian ID numbers, and affirmative action designations.
 
 **Presenter Talking Points (Speaking to Johan Botes):**
-> *"Johan, Chevron audits require a score above 90% to maintain bulk transport accreditation. That requires rigorous proof of driver fitness, dangerous goods hazchem permits, and defensive driving certifications.*
+> *"Johan, Chevron and major mining audits require a strict score above 90% to maintain bulk petroleum transport accreditation. That requires unambiguous proof that no uncertified driver ever takes the wheel of a 42,000-liter hazardous chemical rig.*
 >
-> *Notice Matheus Shikongo. His Hazchem permit expires in just 5 days (1 November 2026). The system automatically displays an amber warning badge `Expiring Within 30 Days`. If his permit lapses, the Cargo Fuel Dispatch screen will block him from being assigned to any hazardous tanker dispatch.*
+> *Look at your live driver dashboard. All 34 of your actual drivers from your Otjiwarongo roster are loaded: Niklas, Mike, Denzel, Benhard, Gabriel, Raymond, Conrall, and Simon.*
 >
-> *Furthermore, for your annual compliance reporting under the Namibian Affirmative Action (Employment) Act 29 of 1998, every employee is classified into their designated groups—Designated Namibian Group, Women in Transport, or Persons with Disabilities. Your Affirmative Action compliance report can be generated in seconds with zero manual spreadsheets."*
+> *Now, look at the automated compliance engine: Hendrik Shilongo is green and `Fully Compliant`. Matheus Shikongo displays an amber warning badge `Expiring Within 30 Days` because his Hazchem expires on November 1st.*
+>
+> *And look at Franzua Tsuseb. Franzua has a valid Code C licence and a valid PDP until 2028. But his Dangerous Goods Hazchem permit lapsed on May 25, 2026. In a manual spreadsheet system, a dispatcher might only check the driver's standard license and send him onto the B1 highway with a load of aviation fuel or low-sulphur diesel. If pulled over by traffic authorities or audited by Chevron, that's an immediate catastrophic audit failure and impoundment.*
+>
+> *In Odoo, Franzua is automatically flagged with a bold red `Grounded / Expired` badge. He cannot be assigned to any dispatch ticket until his renewal training is completed.*
+>
+> *Furthermore, for your annual compliance reporting under the Namibian Affirmative Action (Employment) Act 29 of 1998, every employee is classified into their designated groups—Designated Namibian Group, Women in Transport, or Persons with Disabilities—allowing your Employment Equity report to be produced with zero manual manipulation."*
 
 ---
 
@@ -406,6 +466,10 @@ with registry.cursor() as cr:
 | **TC-09** | September 2026 Fuel Consumption & Otj COC Benchmark | Validate KM/L targets, excess fuel burn calculation, and Star Saver negative excess values. | 1. Navigate to Fleet > Vehicles.<br>2. Inspect `N 7802 OT`, `N 11751 OT`, and `N 12916 OT`. | `N 7802 OT` computes +617.60 L excess (+NAD 16,045.25). `N 11751 OT` computes +589.86 L excess (+NAD 15,324.56). `N 12916 OT` computes -745.90 L saved (-NAD 19,378.48). | `fleet.vehicle` fields `x_sept_excess_fuel_l`, `x_sept_excess_nad_value` | **PASS** |
 | **TC-10** | Refuel Logsheet Odometer Validation & Audit Queue | Ensure unconfirmed driver slips (`X`) are queued and formula errors are prevented. | 1. Navigate to Fuel Logistics > Refuel & Odometer Logsheets.<br>2. Filter by `Unconfirmed Logsheets (X)`.<br>3. Inspect log `FCL/2026/0010`. | Unconfirmed filter isolates pending logs. Missing end odometer anomaly is flagged as `odo_error` without corrupting vehicle totals. | `nfd.fuel.consumption.log` filters `filter_unconfirmed_logsheet`, `filter_odo_anomalies` | **PASS** |
 | **TC-11** | Workshop & Driver Timesheet Cost Rollups | Aggregate workshop technician hours and long-haul trip driver timesheets by project. | 1. Navigate to Fuel Logistics > Workshop & Driver Timesheets.<br>2. Group by `Project`. | Workshop project displays Lukas Van Wyk's hours (PM + emergency leakage); Petrosol project aggregates retail forecourt subsidy hours; Haulage project tracks corridor trip timesheets. | `account.analytic.line` group by `project_id` | **PASS** |
+| **TC-12** | 24/7 Emergency Breakdown Network | Verify national directory of 33 vetted breakdown, tyre, and towing partners. | 1. Navigate to Fleet & Assets > 24/7 Emergency Breakdown Network.<br>2. Filter by Town (e.g. Gobabis, Karibib, Katima Mulilo). | Directory lists 33 partners with coverage areas, emergency phone numbers, and service types (mechanical, tyre, towing). | `res.partner` where `x_is_breakdown_partner IS TRUE` | **PASS** |
+| **TC-13** | Workshop Job Cards & Parts Tracking | Manage active workshop tickets with mechanic assignment and parts ordering. | 1. Navigate to Fleet & Assets > Maintenance Work Orders.<br>2. Inspect `JC-1009`, `JC-1045`, `JC-1110`, `JC-994`, `JC-1088`. | Job cards display assigned mechanic (Green, Japie, Clive, Manie, Jonie), location (Main Workshop, CWWA Degas, NaTIS), and parts ordered/received status. | `maintenance.request` field `x_job_card_number` | **PASS** |
+| **TC-14** | Vehicle Statutory Fitness & SLP Expiry | Track annual NaTIS fitness, Safe Loading Passes (SLP), and hydrostatic pressure tests. | 1. Navigate to Fleet > Vehicles.<br>2. Inspect Workshop Service & Statutory Compliance tab on `N 12043 OT`, `N 5999 OT`, etc. | Records display NaTIS fitness expiry, SLP pass expiry, tanker pressure test date, laser wheel alignment km, and dynamic service status (`ok`/`due_soon`/`overdue`). | `fleet.vehicle` fields `x_fitness_certificate_expiry`, `x_safe_loading_pass_expiry` | **PASS** |
+| **TC-15** | Driver HESMS Expiry & Automated Grounding | Prevent uncertified drivers from operating hazardous petroleum cargo tankers. | 1. Navigate to HESMS & Driver Safety > Hazchem Drivers.<br>2. Inspect Franzua Tsuseb. | Franzua's Hazchem permit expired on `2026-05-25`. System computes `x_hse_status_badge = 'expired'` (Grounded / Red badge), blocking hazardous tanker dispatch. | `hr.employee` field `x_hse_status_badge` on Franzua Tsuseb | **PASS** |
 
 ---
 
