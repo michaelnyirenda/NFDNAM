@@ -36,7 +36,6 @@
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
         <field name="required">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -48,7 +47,6 @@
         <field name="relation">hr.employee</field>
         <field name="state">manual</field>
         <field name="required">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -60,7 +58,6 @@
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
         <field name="required">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -72,7 +69,6 @@
         <field name="relation">product.product</field>
         <field name="state">manual</field>
         <field name="required">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -83,7 +79,6 @@
         <field name="ttype">many2one</field>
         <field name="relation">stock.location</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -94,7 +89,6 @@
         <field name="ttype">many2one</field>
         <field name="relation">stock.location</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -248,7 +242,6 @@
         <field name="relation">maintenance.request</field>
         <field name="state">manual</field>
         <field name="readonly">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -260,7 +253,6 @@
         <field name="relation">stock.scrap</field>
         <field name="state">manual</field>
         <field name="readonly">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -596,7 +588,6 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -607,7 +598,6 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -641,7 +631,6 @@ for record in self:
         <field name="related">equipment_id.x_linked_vehicle_id</field>
         <field name="readonly">True</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -652,7 +641,6 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -664,7 +652,6 @@ for record in self:
         <field name="relation">x_nfd_fuel_dispatch_log</field>
         <field name="state">manual</field>
         <field name="readonly">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -795,7 +782,6 @@ for record in self:
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
         <field name="required">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -807,7 +793,6 @@ for record in self:
         <field name="relation">hr.employee</field>
         <field name="state">manual</field>
         <field name="required">True</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -1075,7 +1060,6 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -1086,7 +1070,6 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
@@ -1483,7 +1466,6 @@ for record in self:
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
-        <field name="ondelete">restrict</field>
         <field name="on_delete">restrict</field>
     </record>
 
