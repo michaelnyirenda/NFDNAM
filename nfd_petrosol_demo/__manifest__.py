@@ -43,7 +43,7 @@ Key Capabilities:
     ],
     'data': [
         'data/ir_model_fields.xml',
-        'security/ir.model.access.csv',
+        'security/ir_model_access.xml',
         'data/ir_actions_server.xml',
         'data/sequences.xml',
         'data/demo_data.xml',
