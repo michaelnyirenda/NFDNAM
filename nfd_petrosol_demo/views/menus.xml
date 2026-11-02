@@ -15,7 +15,7 @@
     <menuitem id="menu_nfd_fuel_dispatch_log"
               name="Fuel Dispatch &amp; Variance Logs"
               parent="menu_nfd_dispatch_category"
-              action="action_nfd_fuel_dispatch_log"
+              action="action_x_nfd_fuel_dispatch_log"
               sequence="10"/>
 
     <!-- 2. Fleet & Equipment Category -->
@@ -76,6 +76,6 @@
     <menuitem id="menu_fleet_nfd_dispatch_log"
               name="Bulk Fuel Dispatches"
               parent="fleet.fleet_vehicles"
-              action="action_nfd_fuel_dispatch_log"
+              action="action_x_nfd_fuel_dispatch_log"
               sequence="5"/>
 </odoo>

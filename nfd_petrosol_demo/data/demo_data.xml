@@ -53,7 +53,6 @@
     <!-- ============================================================== -->
     <!-- 2. PRODUCTS (FUELS, LUBRICANTS & WORKSHOP SPARES)             -->
     <!-- ============================================================== -->
-    <!-- Diesel 50ppm Bulk -->
     <record id="product_diesel_50ppm" model="product.product">
         <field name="name">Diesel 50ppm Bulk</field>
         <field name="default_code">DSL-50PPM</field>
@@ -63,7 +62,6 @@
         <field name="list_price">23.85</field>
     </record>
 
-    <!-- ULP 95 Petrol Bulk -->
     <record id="product_ulp_95" model="product.product">
         <field name="name">ULP 95 Petrol Bulk</field>
         <field name="default_code">ULP-95</field>
@@ -73,7 +71,6 @@
         <field name="list_price">24.50</field>
     </record>
 
-    <!-- Heavy-Duty Engine Oil 15W-40 (210L Drum) -->
     <record id="product_oil_15w40" model="product.product">
         <field name="name">Heavy-Duty Engine Oil 15W-40 (210L Drum)</field>
         <field name="default_code">LUB-15W40-210L</field>
@@ -83,7 +80,6 @@
         <field name="list_price">12500.00</field>
     </record>
 
-    <!-- Chassis Grease EP2 (20kg) -->
     <record id="product_grease_ep2" model="product.product">
         <field name="name">Chassis Grease EP2 (20kg)</field>
         <field name="default_code">LUB-EP2-20KG</field>
@@ -93,7 +89,6 @@
         <field name="list_price">1950.00</field>
     </record>
 
-    <!-- Scania Fuel Filter Kit -->
     <record id="product_scania_filter_kit" model="product.product">
         <field name="name">Scania Fuel Filter Kit</field>
         <field name="default_code">SP-SCN-FFK</field>
@@ -103,7 +98,6 @@
         <field name="list_price">1200.00</field>
     </record>
 
-    <!-- Tanker Bottom-Loading Seal Kit -->
     <record id="product_tanker_seal_kit" model="product.product">
         <field name="name">Tanker Bottom-Loading Seal Kit</field>
         <field name="default_code">SP-TNK-BLSK</field>
@@ -111,6 +105,43 @@
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="standard_price">1650.00</field>
         <field name="list_price">2400.00</field>
+    </record>
+
+    <!-- Initial Stock Inventory Balances (Replaces post_init_hook) -->
+    <record id="quant_diesel_tank1" model="stock.quant">
+        <field name="product_id" ref="product_diesel_50ppm"/>
+        <field name="location_id" ref="location_tank_1_diesel"/>
+        <field name="quantity">485000.0</field>
+    </record>
+
+    <record id="quant_ulp95_tank2" model="stock.quant">
+        <field name="product_id" ref="product_ulp_95"/>
+        <field name="location_id" ref="location_tank_2_ulp95"/>
+        <field name="quantity">165000.0</field>
+    </record>
+
+    <record id="quant_oil_store" model="stock.quant">
+        <field name="product_id" ref="product_oil_15w40"/>
+        <field name="location_id" ref="location_workshop_store"/>
+        <field name="quantity">45.0</field>
+    </record>
+
+    <record id="quant_grease_store" model="stock.quant">
+        <field name="product_id" ref="product_grease_ep2"/>
+        <field name="location_id" ref="location_workshop_store"/>
+        <field name="quantity">60.0</field>
+    </record>
+
+    <record id="quant_filter_store" model="stock.quant">
+        <field name="product_id" ref="product_scania_filter_kit"/>
+        <field name="location_id" ref="location_workshop_store"/>
+        <field name="quantity">25.0</field>
+    </record>
+
+    <record id="quant_seal_store" model="stock.quant">
+        <field name="product_id" ref="product_tanker_seal_kit"/>
+        <field name="location_id" ref="location_workshop_store"/>
+        <field name="quantity">30.0</field>
     </record>
 
     <!-- ============================================================== -->
@@ -442,55 +473,60 @@ ACTION REQUIRED BY OTJIWARONGO WORKSHOP:
     </record>
 
     <!-- ============================================================== -->
-    <!-- 8. CARGO FUEL DISPATCH & LEAKAGE LOGS                         -->
+    <!-- 8. CARGO FUEL DISPATCH & LEAKAGE LOGS (x_nfd_fuel_dispatch_log)-->
     <!-- ============================================================== -->
     <!-- Dispatch 1 (Normal): Scania R500 (42,000L) to B2Gold Otjikoto Mine -->
-    <record id="dispatch_log_001" model="nfd.fuel.dispatch.log">
-        <field name="name">DISP/2026/0101</field>
-        <field name="date" eval="datetime.now().strftime('%Y-%m-%d 06:30:00')"/>
-        <field name="vehicle_id" ref="vehicle_scania_r500"/>
-        <field name="driver_id" ref="employee_hendrik_shilongo"/>
-        <field name="customer_id" ref="partner_b2gold_mine"/>
-        <field name="fuel_product_id" ref="product_diesel_50ppm"/>
-        <field name="source_location_id" ref="location_tank_1_diesel"/>
-        <field name="destination_location_id" ref="location_transit_tankers"/>
-        <field name="depot_loaded_liters">42000.0</field>
-        <field name="truck_meter_delivered_liters">41895.0</field>
-        <field name="customer_dip_received_liters">41890.0</field>
-        <field name="temp_allowance_liters">105.0</field>
-        <field name="net_variance_liters">0.0</field>
-        <field name="leakage_status">normal</field>
-        <field name="pre_trip_hse_passed">True</field>
-        <field name="compartment_seal_numbers">NFD-SEAL-8891 to 8897</field>
-        <field name="state">delivered</field>
-        <field name="notes">Standard delivery of bulk 50ppm diesel to B2Gold Otjikoto Mine bulk tanks. Volumetric thermal variation within standard 0.25% Namibian tolerance.</field>
+    <record id="dispatch_log_001" model="x_nfd_fuel_dispatch_log">
+        <field name="x_name">DISP/2026/0101</field>
+        <field name="x_date" eval="datetime.now().strftime('%Y-%m-%d 06:30:00')"/>
+        <field name="x_vehicle_id" ref="vehicle_scania_r500"/>
+        <field name="x_driver_id" ref="employee_hendrik_shilongo"/>
+        <field name="x_customer_id" ref="partner_b2gold_mine"/>
+        <field name="x_fuel_product_id" ref="product_diesel_50ppm"/>
+        <field name="x_source_location_id" ref="location_tank_1_diesel"/>
+        <field name="x_destination_location_id" ref="location_transit_tankers"/>
+        <field name="x_depot_loaded_liters">42000.0</field>
+        <field name="x_truck_meter_delivered_liters">41895.0</field>
+        <field name="x_customer_dip_received_liters">41890.0</field>
+        <field name="x_temp_allowance_liters">105.0</field>
+        <field name="x_net_variance_liters">0.0</field>
+        <field name="x_leakage_status">normal</field>
+        <field name="x_pre_trip_hse_passed">True</field>
+        <field name="x_compartment_seal_numbers">NFD-SEAL-8891 to 8897</field>
+        <field name="x_state">delivered</field>
+        <field name="x_notes">Standard delivery of bulk 50ppm diesel to B2Gold Otjikoto Mine bulk tanks. Volumetric thermal variation within standard 0.25% Namibian tolerance.</field>
     </record>
 
     <!-- Dispatch 2 (LEAKAGE ALERT!): Axor 17,500L to Grinaker-LTA -> 210L discrepancy! -->
-    <record id="dispatch_log_002" model="nfd.fuel.dispatch.log">
-        <field name="name">DISP/2026/0102</field>
-        <field name="date" eval="datetime.now().strftime('%Y-%m-%d 09:15:00')"/>
-        <field name="vehicle_id" ref="vehicle_axor_rigid"/>
-        <field name="driver_id" ref="employee_hendrik_shilongo"/>
-        <field name="customer_id" ref="partner_grinaker_lta"/>
-        <field name="fuel_product_id" ref="product_diesel_50ppm"/>
-        <field name="source_location_id" ref="location_tank_1_diesel"/>
-        <field name="destination_location_id" ref="location_transit_tankers"/>
-        <field name="depot_loaded_liters">17500.0</field>
-        <field name="truck_meter_delivered_liters">17246.25</field>
-        <field name="customer_dip_received_liters">17240.0</field>
-        <field name="temp_allowance_liters">43.75</field>
-        <field name="net_variance_liters">210.0</field>
-        <field name="leakage_status">leakage_alert</field>
-        <field name="pre_trip_hse_passed">True</field>
-        <field name="compartment_seal_numbers">NFD-SEAL-9012 to 9015</field>
-        <field name="state">investigation</field>
-        <field name="maintenance_request_id" ref="req_axor_leakage"/>
-        <field name="notes">LEAKAGE ALERT: 210.00 Liters unaccounted loss detected at Grinaker-LTA road construction depot. Weeping manifold foot-valve suspected. Corrective maintenance work order automatically dispatched to Otjiwarongo Workshop.</field>
+    <record id="dispatch_log_002" model="x_nfd_fuel_dispatch_log">
+        <field name="x_name">DISP/2026/0102</field>
+        <field name="x_date" eval="datetime.now().strftime('%Y-%m-%d 09:15:00')"/>
+        <field name="x_vehicle_id" ref="vehicle_axor_rigid"/>
+        <field name="x_driver_id" ref="employee_hendrik_shilongo"/>
+        <field name="x_customer_id" ref="partner_grinaker_lta"/>
+        <field name="x_fuel_product_id" ref="product_diesel_50ppm"/>
+        <field name="x_source_location_id" ref="location_tank_1_diesel"/>
+        <field name="x_destination_location_id" ref="location_transit_tankers"/>
+        <field name="x_depot_loaded_liters">17500.0</field>
+        <field name="x_truck_meter_delivered_liters">17246.25</field>
+        <field name="x_customer_dip_received_liters">17240.0</field>
+        <field name="x_temp_allowance_liters">43.75</field>
+        <field name="x_net_variance_liters">210.0</field>
+        <field name="x_leakage_status">leakage_alert</field>
+        <field name="x_pre_trip_hse_passed">True</field>
+        <field name="x_compartment_seal_numbers">NFD-SEAL-9012 to 9015</field>
+        <field name="x_state">investigation</field>
+        <field name="x_maintenance_request_id" ref="req_axor_leakage"/>
+        <field name="x_notes">LEAKAGE ALERT: 210.00 Liters unaccounted loss detected at Grinaker-LTA road construction depot. Weeping manifold foot-valve suspected. Corrective maintenance work order automatically dispatched to Otjiwarongo Workshop.</field>
     </record>
 
     <!-- Link dispatch log back to maintenance request -->
     <record id="req_axor_leakage" model="maintenance.request">
         <field name="x_dispatch_log_id" ref="dispatch_log_002"/>
     </record>
+
+    <!-- Execute Server Action to ensure stock quants are initialized -->
+    <function model="ir.actions.server" name="run">
+        <value eval="[ref('action_init_otjiwarongo_stock')]"/>
+    </function>
 </odoo>

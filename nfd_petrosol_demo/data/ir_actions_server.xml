@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ============================================================== -->
+    <!-- 1. SERVER ACTION: Dispatch Tanker                              -->
+    <!-- ============================================================== -->
+    <record id="action_dispatch_tanker" model="ir.actions.server">
+        <field name="name">Dispatch Tanker</field>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="binding_model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="state">code</field>
+        <field name="code">for record in records:
+    if not record.x_pre_trip_hse_passed:
+        raise UserError("Cannot dispatch tanker: HESMS Pre-Trip Safety &amp; Valve Check must be passed!")
+    record['x_state'] = 'in_transit'</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 2. SERVER ACTION: Reconcile Delivery                           -->
+    <!-- ============================================================== -->
+    <record id="action_reconcile_delivery" model="ir.actions.server">
+        <field name="name">Reconcile Delivery</field>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="binding_model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="state">code</field>
+        <field name="code">for record in records:
+    if not record.x_truck_meter_delivered_liters:
+        raise UserError("Please enter the Truck Diesel Meter Reading before reconciling.")
+    if record.x_leakage_status == 'leakage_alert':
+        record['x_state'] = 'investigation'
+    else:
+        record['x_state'] = 'delivered'</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 3. SERVER ACTION: Create Leakage Maintenance Ticket & Scrap   -->
+    <!-- ============================================================== -->
+    <record id="action_create_leakage_ticket" model="ir.actions.server">
+        <field name="name">Log Corrective Workshop Ticket &amp; Shrinkage Scrap</field>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="binding_model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">for record in records:
+    if record.x_leakage_status != 'leakage_alert':
+        raise UserError("Maintenance tickets can only be generated for Leakage Alert records.")
+
+    # 1. Identify or link equipment for vehicle
+    equipment = env['maintenance.equipment'].search([
+        ('x_linked_vehicle_id', '=', record.x_vehicle_id.id)
+    ], limit=1)
+
+    if not equipment:
+        cat_ref = env.ref('nfd_petrosol_demo.maintenance_cat_fleet_truck', raise_if_not_found=False)
+        team_ref = env.ref('nfd_petrosol_demo.maintenance_team_otjiwarongo', raise_if_not_found=False)
+        equipment = env['maintenance.equipment'].create({
+            'name': "%s - Tanker Manifold &amp; Meter Rig" % (record.x_vehicle_id.name or 'NFD Tanker'),
+            'x_asset_category': 'fleet_truck',
+            'x_linked_vehicle_id': record.x_vehicle_id.id,
+            'category_id': cat_ref.id if cat_ref else False,
+            'maintenance_team_id': team_ref.id if team_ref else False,
+        })
+
+    # 2. Create Corrective Maintenance Request for Otjiwarongo Workshop
+    plate = record.x_vehicle_id.license_plate or 'N/A'
+    veh_name = record.x_vehicle_id.name or 'Tanker'
+    ticket_name = "URGENT: Inspect Tanker Manifold/Delivery Meter for Fuel Leakage - %s (%s)" % (veh_name, record.x_name)
+    desc = (
+        "AUTOMATED LEAKAGE ALERT TRIGGERED:\n"
+        "- Dispatch Log: %s\n"
+        "- Tanker: %s (License: %s)\n"
+        "- Driver: %s\n"
+        "- Receiving Client: %s\n"
+        "- Depot Loaded: %.2f L\n"
+        "- Delivered Reading: %.2f L\n"
+        "- Thermal Variance Allowed: %.2f L\n"
+        "- NET DISCREPANCY: %.2f L (Exceeds 50L Safety Limit)\n"
+        "- Seals Affixed: %s\n\n"
+        "ACTION REQUIRED BY OTJIWARONGO WORKSHOP:\n"
+        "1. Pressure test bottom-loading manifold and foot valves.\n"
+        "2. Calibrate onboard digital flow meter.\n"
+        "3. Inspect discharge hoses and vapor recovery connections for weeping."
+    ) % (
+        record.x_name,
+        veh_name,
+        plate,
+        record.x_driver_id.name if record.x_driver_id else 'N/A',
+        record.x_customer_id.name if record.x_customer_id else 'N/A',
+        record.x_depot_loaded_liters or 0.0,
+        record.x_truck_meter_delivered_liters or 0.0,
+        record.x_temp_allowance_liters or 0.0,
+        record.x_net_variance_liters or 0.0,
+        record.x_compartment_seal_numbers or 'N/A'
+    )
+
+    team_ref = env.ref('nfd_petrosol_demo.maintenance_team_otjiwarongo', raise_if_not_found=False)
+    ticket = env['maintenance.request'].create({
+        'name': ticket_name,
+        'equipment_id': equipment.id,
+        'maintenance_team_id': team_ref.id if team_ref else False,
+        'maintenance_type': 'corrective',
+        'priority': '3',
+        'description': desc,
+        'x_asset_category': 'fleet_truck',
+        'x_site_partner_id': record.x_customer_id.id if record.x_customer_id else False,
+        'x_dispatch_log_id': record.id,
+        'x_service_agreement_type': 'internal_fleet',
+    })
+    record['x_maintenance_request_id'] = ticket.id
+
+    # 3. Create Stock Scrap / Shrinkage Entry
+    loss_loc = env.ref('nfd_petrosol_demo.location_fuel_shrinkage', raise_if_not_found=False)
+    if not loss_loc:
+        loss_loc = env['stock.location'].search([('name', 'ilike', 'Shrinkage')], limit=1)
+
+    src_loc = record.x_source_location_id or env.ref('nfd_petrosol_demo.location_tank_1_diesel', raise_if_not_found=False)
+
+    try:
+        scrap = env['stock.scrap'].create({
+            'product_id': record.x_fuel_product_id.id,
+            'scrap_qty': max(1.0, record.x_net_variance_liters or 1.0),
+            'product_uom_id': record.x_fuel_product_id.uom_id.id if record.x_fuel_product_id.uom_id else False,
+            'location_id': src_loc.id if src_loc else False,
+            'scrap_location_id': loss_loc.id if loss_loc else False,
+            'origin': "Leakage Discrepancy %s" % record.x_name,
+        })
+        try:
+            scrap.action_validate()
+        except Exception:
+            pass
+        record['x_scrap_id'] = scrap.id
+    except Exception:
+        pass
+
+    record['x_state'] = 'investigation'</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 4. SERVER ACTION: Initialize Otjiwarongo Stock Balances        -->
+    <!-- ============================================================== -->
+    <record id="action_init_otjiwarongo_stock" model="ir.actions.server">
+        <field name="name">Initialize Otjiwarongo Stock</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">tank1 = env.ref('nfd_petrosol_demo.location_tank_1_diesel', raise_if_not_found=False)
+tank2 = env.ref('nfd_petrosol_demo.location_tank_2_ulp95', raise_if_not_found=False)
+workshop = env.ref('nfd_petrosol_demo.location_workshop_store', raise_if_not_found=False)
+
+p_diesel = env.ref('nfd_petrosol_demo.product_diesel_50ppm', raise_if_not_found=False)
+p_ulp = env.ref('nfd_petrosol_demo.product_ulp_95', raise_if_not_found=False)
+p_oil = env.ref('nfd_petrosol_demo.product_oil_15w40', raise_if_not_found=False)
+p_grease = env.ref('nfd_petrosol_demo.product_grease_ep2', raise_if_not_found=False)
+p_filter = env.ref('nfd_petrosol_demo.product_scania_filter_kit', raise_if_not_found=False)
+p_seal = env.ref('nfd_petrosol_demo.product_tanker_seal_kit', raise_if_not_found=False)
+
+items = [
+    (p_diesel, tank1, 485000.0),
+    (p_ulp, tank2, 165000.0),
+    (p_oil, workshop, 45.0),
+    (p_grease, workshop, 60.0),
+    (p_filter, workshop, 25.0),
+    (p_seal, workshop, 30.0),
+]
+for p, loc, q in items:
+    if p and loc:
+        quant = env['stock.quant'].search([('product_id', '=', p.id), ('location_id', '=', loc.id)], limit=1)
+        if not quant:
+            env['stock.quant'].create({
+                'product_id': p.id,
+                'location_id': loc.id,
+                'quantity': q,
+            })
+        else:
+            quant['quantity'] = q</field>
+    </record>
+</odoo>
