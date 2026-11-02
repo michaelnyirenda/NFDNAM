@@ -6,6 +6,24 @@
               web_icon="nfd_petrosol_demo,static/description/icon.png"
               sequence="10"/>
 
+    <!-- 0. Executive Dashboards & KPIs Category -->
+    <menuitem id="menu_nfd_dashboard_category"
+              name="Executive Dashboards &amp; KPIs"
+              parent="menu_nfd_root"
+              sequence="5"/>
+
+    <menuitem id="menu_nfd_excess_fuel_dashboard"
+              name="Sept 2026 Excess Fuel &amp; Otj COC Dashboard"
+              parent="menu_nfd_dashboard_category"
+              action="action_nfd_excess_fuel_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_nfd_fuel_consumption_log"
+              name="Vehicle Odometer &amp; Refuel Logsheets (KM/L)"
+              parent="menu_nfd_dashboard_category"
+              action="action_nfd_fuel_consumption_log"
+              sequence="2"/>
+
     <!-- 1. Dispatch & Reconciliation Category -->
     <menuitem id="menu_nfd_dispatch_category"
               name="Cargo Dispatch &amp; Dip Logs"
@@ -54,7 +72,25 @@
               action="hr.open_view_employee_list_my"
               sequence="10"/>
 
-    <!-- 4. Bulk Stock & Shrinkage Category -->
+    <!-- 4. Workshop & Driver Timesheets Category -->
+    <menuitem id="menu_nfd_timesheet_category"
+              name="Workshop &amp; Driver Timesheets"
+              parent="menu_nfd_root"
+              sequence="35"/>
+
+    <menuitem id="menu_nfd_timesheets"
+              name="Workshop &amp; Forecourt Timesheets"
+              parent="menu_nfd_timesheet_category"
+              action="hr_timesheet.act_hr_timesheet_line"
+              sequence="10"/>
+
+    <menuitem id="menu_nfd_projects"
+              name="NFD Projects &amp; Forecourt Subsidies"
+              parent="menu_nfd_timesheet_category"
+              action="project.open_view_project_all"
+              sequence="20"/>
+
+    <!-- 5. Bulk Stock & Shrinkage Category -->
     <menuitem id="menu_nfd_stock_category"
               name="Depot Stock &amp; Losses"
               parent="menu_nfd_root"
@@ -72,10 +108,16 @@
               action="stock.action_stock_scrap"
               sequence="20"/>
 
-    <!-- Integration: Also inject Fuel Dispatch Logs under standard Fleet App -->
+    <!-- Integration: Also inject under standard Fleet App -->
     <menuitem id="menu_fleet_nfd_dispatch_log"
               name="Bulk Fuel Dispatches"
               parent="fleet.fleet_vehicles"
               action="action_x_nfd_fuel_dispatch_log"
               sequence="5"/>
+
+    <menuitem id="menu_fleet_nfd_consumption_log"
+              name="Vehicle Refuel Logsheets (KM/L)"
+              parent="fleet.fleet_vehicles"
+              action="action_nfd_fuel_consumption_log"
+              sequence="6"/>
 </odoo>

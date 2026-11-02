@@ -36,6 +36,9 @@ Key Capabilities:
         'sale_management',
         'account',
         'project',
+        'hr_timesheet',
+        'sale_timesheet',
+        'spreadsheet_dashboard',
     ],
     'data': [
         'data/ir_model_fields.xml',
@@ -44,6 +47,7 @@ Key Capabilities:
         'data/sequences.xml',
         'data/demo_data.xml',
         'views/fuel_dispatch_log_views.xml',
+        'views/fuel_consumption_views.xml',
         'views/fleet_vehicle_views.xml',
         'views/hr_employee_views.xml',
         'views/maintenance_views.xml',

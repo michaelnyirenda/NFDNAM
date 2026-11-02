@@ -693,4 +693,375 @@ for record in self:
         <field name="name">Customer Bulk Installation Contract (Mine/Road Project)</field>
         <field name="sequence">3</field>
     </record>
+    <!-- ============================================================== -->
+    <!-- 6. ADDITIONAL SEPT 2026 METRICS ON fleet.vehicle               -->
+    <!-- ============================================================== -->
+    <record id="field_fleet_vehicle_x_expected_km_per_liter" model="ir.model.fields">
+        <field name="name">x_expected_km_per_liter</field>
+        <field name="field_description">Expected (KM/L)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_actual_km_per_liter" model="ir.model.fields">
+        <field name="name">x_actual_km_per_liter</field>
+        <field name="field_description">Actual (KM/L) - Sept 2026</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_sept_distance_km" model="ir.model.fields">
+        <field name="name">x_sept_distance_km</field>
+        <field name="field_description">Distance Covered (KM) - Sept 2026</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_sept_expected_fuel_l" model="ir.model.fields">
+        <field name="name">x_sept_expected_fuel_l</field>
+        <field name="field_description">Expected Total Fuel Used (L)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_sept_actual_fuel_l" model="ir.model.fields">
+        <field name="name">x_sept_actual_fuel_l</field>
+        <field name="field_description">Actual Total Fuel Used (L) - Sept 2026</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_sept_excess_fuel_l" model="ir.model.fields">
+        <field name="name">x_sept_excess_fuel_l</field>
+        <field name="field_description">Excess Use (L)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_otj_coc_fuel_price" model="ir.model.fields">
+        <field name="name">x_otj_coc_fuel_price</field>
+        <field name="field_description">Current Fuel Price Otj COC (NAD/L)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_sept_excess_nad_value" model="ir.model.fields">
+        <field name="name">x_sept_excess_nad_value</field>
+        <field name="field_description">Excess NAD Value (@ 25.98/L)</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 7. DECLARATIVE CUSTOM MODEL: x_nfd_fuel_consumption_log       -->
+    <!-- ============================================================== -->
+    <record id="model_x_nfd_fuel_consumption_log" model="ir.model">
+        <field name="name">NFD Vehicle Refuel &amp; Odometer LogSheet</field>
+        <field name="model">x_nfd_fuel_consumption_log</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_name" model="ir.model.fields">
+        <field name="name">x_name</field>
+        <field name="field_description">Log Reference</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_date" model="ir.model.fields">
+        <field name="name">x_date</field>
+        <field name="field_description">Date</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_vehicle_id" model="ir.model.fields">
+        <field name="name">x_vehicle_id</field>
+        <field name="field_description">Vehicle Registration</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">many2one</field>
+        <field name="relation">fleet.vehicle</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+        <field name="ondelete">restrict</field>
+        <field name="on_delete">restrict</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_driver_id" model="ir.model.fields">
+        <field name="name">x_driver_id</field>
+        <field name="field_description">Driver</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">many2one</field>
+        <field name="relation">hr.employee</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+        <field name="ondelete">restrict</field>
+        <field name="on_delete">restrict</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_place" model="ir.model.fields">
+        <field name="name">x_place</field>
+        <field name="field_description">Refueling Place / Facility</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+    <record id="sel_fcl_place_depot" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Depot</field>
+        <field name="name">Depot (Otjiwarongo)</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_fcl_place_okh" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">OKH</field>
+        <field name="name">OKH (Okahandja)</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_fcl_place_office" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Office</field>
+        <field name="name">Office</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_fcl_place_walvis" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Walvis</field>
+        <field name="name">Walvis Bay</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_fcl_place_ohakane" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Ohakane</field>
+        <field name="name">Ohakane</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="sel_fcl_place_fort_sesfontein" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Fort Sesfontein</field>
+        <field name="name">Fort Sesfontein</field>
+        <field name="sequence">6</field>
+    </record>
+    <record id="sel_fcl_place_mareintal" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Mareintal</field>
+        <field name="name">Mariental</field>
+        <field name="sequence">7</field>
+    </record>
+    <record id="sel_fcl_place_ondangwa" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Ondangwa</field>
+        <field name="name">Ondangwa</field>
+        <field name="sequence">8</field>
+    </record>
+    <record id="sel_fcl_place_omakange" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Omakange</field>
+        <field name="name">Omakange</field>
+        <field name="sequence">9</field>
+    </record>
+    <record id="sel_fcl_place_otavi_shell" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Otavi Shell</field>
+        <field name="name">Otavi Shell</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="sel_fcl_place_b1_puma" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">B1 PUMA</field>
+        <field name="name">B1 PUMA</field>
+        <field name="sequence">11</field>
+    </record>
+    <record id="sel_fcl_place_agra_karibib" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Agra Karibib</field>
+        <field name="name">Agra Karibib</field>
+        <field name="sequence">12</field>
+    </record>
+    <record id="sel_fcl_place_agra_gobabis" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="value">Agra Gobabis</field>
+        <field name="name">Agra Gobabis</field>
+        <field name="sequence">13</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_odometer_start" model="ir.model.fields">
+        <field name="name">x_odometer_start</field>
+        <field name="field_description">Odometer Start</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_odometer_end" model="ir.model.fields">
+        <field name="name">x_odometer_end</field>
+        <field name="field_description">Odometer End</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_distance_traveled_km" model="ir.model.fields">
+        <field name="name">x_distance_traveled_km</field>
+        <field name="field_description">Distance Traveled (KM)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_fuel_liters" model="ir.model.fields">
+        <field name="name">x_fuel_liters</field>
+        <field name="field_description">Fuel (L)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_expected_km_per_liter" model="ir.model.fields">
+        <field name="name">x_expected_km_per_liter</field>
+        <field name="field_description">Expected Fuel Consumption (KM/L)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_actual_km_per_liter" model="ir.model.fields">
+        <field name="name">x_actual_km_per_liter</field>
+        <field name="field_description">Fuel Consumption (KM/L)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_fuel_usage_difference" model="ir.model.fields">
+        <field name="name">x_fuel_usage_difference</field>
+        <field name="field_description">Fuel Usage Difference (KM/L)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_expected_fuel_liters" model="ir.model.fields">
+        <field name="name">x_expected_fuel_liters</field>
+        <field name="field_description">Expected Fuel Used (L)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_excess_use_liters" model="ir.model.fields">
+        <field name="name">x_excess_use_liters</field>
+        <field name="field_description">Excess Use (L)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_otj_coc_fuel_price" model="ir.model.fields">
+        <field name="name">x_otj_coc_fuel_price</field>
+        <field name="field_description">Current Fuel Price Otj COC (NAD/L)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_nad_value" model="ir.model.fields">
+        <field name="name">x_nad_value</field>
+        <field name="field_description">NAD Value (@ 25.98 Otj COC)</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_confirm_logsheet" model="ir.model.fields">
+        <field name="name">x_confirm_logsheet</field>
+        <field name="field_description">Confirm Logsheet</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+    <record id="sel_fcl_logsheet_confirmed" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_logsheet"/>
+        <field name="value">confirmed</field>
+        <field name="name">√ Confirmed</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_fcl_logsheet_unconfirmed" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_logsheet"/>
+        <field name="value">unconfirmed</field>
+        <field name="name">X Unconfirmed Logsheet</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_confirm_stock" model="ir.model.fields">
+        <field name="name">x_confirm_stock</field>
+        <field name="field_description">Confirm Stock</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+        <field name="required">True</field>
+    </record>
+    <record id="sel_fcl_stock_confirmed" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_stock"/>
+        <field name="value">confirmed</field>
+        <field name="name">√ Confirmed</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_fcl_stock_unconfirmed" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_stock"/>
+        <field name="value">unconfirmed</field>
+        <field name="name">X Unconfirmed Stock</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_notes" model="ir.model.fields">
+        <field name="name">x_notes</field>
+        <field name="field_description">Notes / Audit Remarks</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_x_nfd_fuel_consumption_log_x_anomaly_flag" model="ir.model.fields">
+        <field name="name">x_anomaly_flag</field>
+        <field name="field_description">Audit Status</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_fcl_anomaly_normal" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag"/>
+        <field name="value">normal</field>
+        <field name="name">Within Target</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_fcl_anomaly_excess_burn" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag"/>
+        <field name="value">excess_burn</field>
+        <field name="name">Excess Burn</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_fcl_anomaly_odo_error" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag"/>
+        <field name="value">odo_error</field>
+        <field name="name">Odometer / Logsheet Anomaly</field>
+        <field name="sequence">3</field>
+    </record>
 </odoo>

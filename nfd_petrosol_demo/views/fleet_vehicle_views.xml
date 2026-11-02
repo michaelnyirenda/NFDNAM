@@ -34,6 +34,22 @@
                         </group>
                     </group>
                 </page>
+                <page string="Sept 2026 Fuel Consumption (Otj COC)" name="sept_fuel_consumption">
+                    <group>
+                        <group string="Efficiency Benchmark (KM/L)">
+                            <field name="x_expected_km_per_liter"/>
+                            <field name="x_actual_km_per_liter"/>
+                            <field name="x_sept_distance_km"/>
+                        </group>
+                        <group string="Variance Reconciliation &amp; Otj COC (@ NAD 25.98/L)">
+                            <field name="x_sept_expected_fuel_l"/>
+                            <field name="x_sept_actual_fuel_l"/>
+                            <field name="x_sept_excess_fuel_l" class="fw-bold"/>
+                            <field name="x_otj_coc_fuel_price"/>
+                            <field name="x_sept_excess_nad_value" class="oe_subtotal_footer_separator fw-bold"/>
+                        </group>
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>
@@ -55,6 +71,11 @@
                        decoration-success="x_replacement_policy_status == 'compliant'"
                        decoration-warning="x_replacement_policy_status == 'warning'"
                        decoration-danger="x_replacement_policy_status == 'replace_due'"/>
+                <field name="x_expected_km_per_liter" optional="show"/>
+                <field name="x_actual_km_per_liter" optional="show"/>
+                <field name="x_sept_distance_km" optional="show"/>
+                <field name="x_sept_excess_fuel_l" optional="show"/>
+                <field name="x_sept_excess_nad_value" optional="show" sum="Total Excess Value (NAD)"/>
             </xpath>
         </field>
     </record>
