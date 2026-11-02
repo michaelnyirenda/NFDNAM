@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. List / Tree View -->
+    <record id="view_nfd_fuel_consumption_log_tree" model="ir.ui.view">
+        <field name="name">nfd.fuel.consumption.log.list</field>
+        <field name="model">nfd.fuel.consumption.log</field>
+        <field name="arch" type="xml">
+            <list string="Vehicle Refuel &amp; Odometer Logsheets (KM/L)"
+                  decoration-danger="anomaly_flag in ('excess_burn', 'odo_error')"
+                  decoration-warning="confirm_logsheet == 'unconfirmed'"
+                  decoration-success="excess_use_liters &lt; 0">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="place"/>
+                <field name="odometer_start" optional="hide"/>
+                <field name="odometer_end" optional="hide"/>
+                <field name="distance_traveled_km" sum="Total Distance (KM)"/>
+                <field name="fuel_liters" sum="Total Fuel (L)"/>
+                <field name="expected_km_per_liter"/>
+                <field name="actual_km_per_liter"/>
+                <field name="fuel_usage_difference"/>
+                <field name="expected_fuel_liters" optional="show" sum="Expected Total Fuel (L)"/>
+                <field name="excess_use_liters" sum="Total Excess (L)"/>
+                <field name="nad_value" sum="Total Excess Value (NAD)"/>
+                <field name="confirm_logsheet" widget="badge"
+                       decoration-success="confirm_logsheet == 'confirmed'"
+                       decoration-warning="confirm_logsheet == 'unconfirmed'"/>
+                <field name="confirm_stock" widget="badge"
+                       decoration-success="confirm_stock == 'confirmed'"
+                       decoration-danger="confirm_stock == 'unconfirmed'"/>
+                <field name="anomaly_flag" widget="badge"
+                       decoration-success="anomaly_flag == 'normal'"
+                       decoration-warning="anomaly_flag == 'excess_burn'"
+                       decoration-danger="anomaly_flag == 'odo_error'"/>
+                <field name="notes" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- 2. Form View -->
+    <record id="view_nfd_fuel_consumption_log_form" model="ir.ui.view">
+        <field name="name">nfd.fuel.consumption.log.form</field>
+        <field name="model">nfd.fuel.consumption.log</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Refuel &amp; Odometer Logsheet">
+                <header>
+                    <field name="anomaly_flag" widget="statusbar"
+                           statusbar_visible="normal,excess_burn,odo_error"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="ODOMETER / LOGSHEET ANOMALY" bg_color="text-bg-danger"
+                            invisible="anomaly_flag != 'odo_error'"/>
+                    <widget name="web_ribbon" title="EXCESS FUEL BURN" bg_color="text-bg-warning"
+                            invisible="anomaly_flag != 'excess_burn'"/>
+                    <widget name="web_ribbon" title="STAR FUEL SAVER" bg_color="text-bg-success"
+                            invisible="excess_use_liters &gt;= 0"/>
+                    <div class="oe_title">
+                        <label for="name" string="Log Reference"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Vehicle &amp; Trip Information">
+                            <field name="vehicle_id"/>
+                            <field name="driver_id"/>
+                            <field name="place"/>
+                            <field name="date"/>
+                        </group>
+                        <group string="Audit Verification &amp; Control">
+                            <field name="confirm_logsheet" widget="radio"/>
+                            <field name="confirm_stock" widget="radio"/>
+                            <field name="otj_coc_fuel_price"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Refuel &amp; Odometer Metrics" name="fuel_metrics">
+                            <group>
+                                <group string="Odometer &amp; Distance">
+                                    <field name="odometer_start"/>
+                                    <field name="odometer_end"/>
+                                    <field name="distance_traveled_km"/>
+                                </group>
+                                <group string="Efficiency Reconciliation (KM/L)">
+                                    <field name="fuel_liters"/>
+                                    <field name="expected_km_per_liter"/>
+                                    <field name="actual_km_per_liter"/>
+                                    <field name="fuel_usage_difference"/>
+                                </group>
+                            </group>
+                            <group string="Financial Discrepancy (Otj COC Benchmark @ NAD 25.98/L)">
+                                <group>
+                                    <field name="expected_fuel_liters"/>
+                                    <field name="excess_use_liters"/>
+                                </group>
+                                <group>
+                                    <field name="nad_value" class="oe_subtotal_footer_separator"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Audit Remarks &amp; Investigation" name="audit_notes">
+                            <field name="notes" placeholder="e.g. Odometer typo from driver logsheet, manifold weeping, high speed burn..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- 3. Graph View -->
+    <record id="view_nfd_fuel_consumption_log_graph" model="ir.ui.view">
+        <field name="name">nfd.fuel.consumption.log.graph</field>
+        <field name="model">nfd.fuel.consumption.log</field>
+        <field name="arch" type="xml">
+            <graph string="Excess Fuel Financial Impact (NAD Value @ Otj COC)" type="bar" sample="1">
+                <field name="vehicle_id"/>
+                <field name="nad_value" type="measure"/>
+                <field name="excess_use_liters" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- 4. Pivot View -->
+    <record id="view_nfd_fuel_consumption_log_pivot" model="ir.ui.view">
+        <field name="name">nfd.fuel.consumption.log.pivot</field>
+        <field name="model">nfd.fuel.consumption.log</field>
+        <field name="arch" type="xml">
+            <pivot string="Fuel Consumption &amp; Variance Analysis" sample="1">
+                <field name="vehicle_id" type="row"/>
+                <field name="driver_id" type="row"/>
+                <field name="place" type="col"/>
+                <field name="distance_traveled_km" type="measure"/>
+                <field name="fuel_liters" type="measure"/>
+                <field name="expected_fuel_liters" type="measure"/>
+                <field name="excess_use_liters" type="measure"/>
+                <field name="nad_value" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- 5. Kanban View -->
+    <record id="view_nfd_fuel_consumption_log_kanban" model="ir.ui.view">
+        <field name="name">nfd.fuel.consumption.log.kanban</field>
+        <field name="model">nfd.fuel.consumption.log</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="anomaly_flag" class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="place"/>
+                <field name="distance_traveled_km"/>
+                <field name="fuel_liters"/>
+                <field name="actual_km_per_liter"/>
+                <field name="excess_use_liters"/>
+                <field name="nad_value"/>
+                <field name="anomaly_flag"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top mb-2">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title"><field name="name"/> - <field name="vehicle_id"/></strong>
+                                </div>
+                                <span class="badge rounded-pill text-bg-warning" t-if="record.anomaly_flag.raw_value == 'excess_burn'">Excess Burn</span>
+                                <span class="badge rounded-pill text-bg-danger" t-if="record.anomaly_flag.raw_value == 'odo_error'">Odo Anomaly</span>
+                                <span class="badge rounded-pill text-bg-success" t-if="record.anomaly_flag.raw_value == 'normal'">Normal</span>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div><strong>Driver:</strong> <field name="driver_id"/></div>
+                                <div><strong>Place:</strong> <field name="place"/></div>
+                                <div><strong>Distance:</strong> <field name="distance_traveled_km"/> km | <strong>Fuel:</strong> <field name="fuel_liters"/> L</div>
+                                <div><strong>Efficiency:</strong> <field name="actual_km_per_liter"/> KM/L</div>
+                            </div>
+                            <div class="o_kanban_record_bottom mt-2">
+                                <div class="oe_kanban_bottom_left">
+                                    <span t-attf-class="fw-bold #{record.excess_use_liters.raw_value &gt; 0 ? 'text-danger' : 'text-success'}">
+                                        Variance: <field name="excess_use_liters"/> L (NAD <field name="nad_value"/>)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- 6. Search View -->
+    <record id="view_nfd_fuel_consumption_log_search" model="ir.ui.view">
+        <field name="name">nfd.fuel.consumption.log.search</field>
+        <field name="model">nfd.fuel.consumption.log</field>
+        <field name="arch" type="xml">
+            <search string="Search Refuel &amp; Odometer Logs">
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="place"/>
+                <field name="notes"/>
+                <separator/>
+                <filter string="Unconfirmed Logsheets (X)" name="filter_unconfirmed_logsheet"
+                        domain="[('confirm_logsheet', '=', 'unconfirmed')]"/>
+                <filter string="Odometer / Audit Anomalies" name="filter_odo_anomalies"
+                        domain="[('anomaly_flag', '=', 'odo_error')]"/>
+                <filter string="Excess Fuel Burners (&gt;25L)" name="filter_excess_burners"
+                        domain="[('excess_use_liters', '&gt;', 25.0)]"/>
+                <filter string="Star Fuel Savers" name="filter_fuel_savers"
+                        domain="[('excess_use_liters', '&lt;', 0.0)]"/>
+                <group>
+                    <filter string="Vehicle" name="group_vehicle" domain="[]" context="{'group_by': 'vehicle_id'}"/>
+                    <filter string="Driver" name="group_driver" domain="[]" context="{'group_by': 'driver_id'}"/>
+                    <filter string="Refueling Place" name="group_place" domain="[]" context="{'group_by': 'place'}"/>
+                    <filter string="Audit Status" name="group_anomaly" domain="[]" context="{'group_by': 'anomaly_flag'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- 7. Action: All Refuel Logsheets -->
+    <record id="action_nfd_fuel_consumption_log" model="ir.actions.act_window">
+        <field name="name">Vehicle Odometer &amp; Refuel Logsheets (KM/L)</field>
+        <field name="res_model">nfd.fuel.consumption.log</field>
+        <field name="view_mode">list,kanban,graph,pivot,form</field>
+        <field name="search_view_id" ref="view_nfd_fuel_consumption_log_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Record your first vehicle refueling &amp; odometer logsheet
+            </p>
+            <p>
+                Track KM/L efficiency against expected targets, audit unconfirmed driver logsheets, and calculate excess fuel at Otj COC benchmark prices.
+            </p>
+        </field>
+    </record>
+
+    <!-- 8. Action: Executive Dashboard Action (Default Graph & Pivot) -->
+    <record id="action_nfd_excess_fuel_dashboard" model="ir.actions.act_window">
+        <field name="name">Sept 2026 Excess Fuel &amp; Otj COC Dashboard</field>
+        <field name="res_model">nfd.fuel.consumption.log</field>
+        <field name="view_mode">graph,pivot,list,form</field>
+        <field name="view_id" ref="view_nfd_fuel_consumption_log_graph"/>
+        <field name="search_view_id" ref="view_nfd_fuel_consumption_log_search"/>
+        <field name="context">{'search_default_group_vehicle': 1}</field>
+    </record>
+</odoo>

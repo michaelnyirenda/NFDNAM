@@ -66,6 +66,71 @@ class FleetVehicle(models.Model):
         help='Calculated average engine diesel consumption from Geotab telematics.'
     )
 
+    # NFD September 2026 Fuel Consumption Workbook Metrics (Otj COC)
+    x_expected_km_per_liter = fields.Float(
+        string='Expected (KM/L)',
+        digits=(8, 2),
+        help='NFD benchmark fuel efficiency in kilometers per liter.'
+    )
+    x_actual_km_per_liter = fields.Float(
+        string='Actual (KM/L) - Sept 2026',
+        digits=(8, 2),
+        help='Actual achieved fuel efficiency for September 2026.'
+    )
+    x_sept_distance_km = fields.Float(
+        string='Distance Covered (KM) - Sept 2026',
+        digits=(12, 1),
+        help='Total odometer kilometers traversed in September 2026.'
+    )
+    x_sept_expected_fuel_l = fields.Float(
+        string='Expected Total Fuel Used (L)',
+        compute='_compute_sept_fuel_metrics',
+        store=True,
+        digits=(12, 2),
+        help='Calculated target fuel consumption based on Expected KM/L.'
+    )
+    x_sept_actual_fuel_l = fields.Float(
+        string='Actual Total Fuel Used (L) - Sept 2026',
+        digits=(12, 2),
+        help='Total fuel drawn from Otjiwarongo depot tanks and external sites.'
+    )
+    x_sept_excess_fuel_l = fields.Float(
+        string='Excess Use (L)',
+        compute='_compute_sept_fuel_metrics',
+        store=True,
+        digits=(12, 2),
+        help='Discrepancy in liters: Actual Fuel Used minus Expected Fuel Used.'
+    )
+    x_otj_coc_fuel_price = fields.Float(
+        string='Current Fuel Price Otj COC (NAD/L)',
+        default=25.98,
+        digits=(8, 2),
+        help='Otjiwarongo Commercial Operations Cost benchmark price per liter.'
+    )
+    x_sept_excess_nad_value = fields.Float(
+        string='Excess NAD Value (@ 25.98/L)',
+        compute='_compute_sept_fuel_metrics',
+        store=True,
+        digits=(12, 2),
+        help='Monetary financial impact in NAD valued at Otj COC benchmark price.'
+    )
+
+    @api.depends('x_sept_distance_km', 'x_expected_km_per_liter', 'x_sept_actual_fuel_l', 'x_otj_coc_fuel_price')
+    def _compute_sept_fuel_metrics(self):
+        for vehicle in self:
+            price = vehicle.x_otj_coc_fuel_price or 25.98
+            if vehicle.x_expected_km_per_liter and vehicle.x_expected_km_per_liter > 0:
+                vehicle.x_sept_expected_fuel_l = round((vehicle.x_sept_distance_km or 0.0) / vehicle.x_expected_km_per_liter, 2)
+            else:
+                vehicle.x_sept_expected_fuel_l = 0.0
+
+            if vehicle.x_sept_actual_fuel_l is not None and vehicle.x_sept_expected_fuel_l is not None:
+                vehicle.x_sept_excess_fuel_l = round((vehicle.x_sept_actual_fuel_l or 0.0) - vehicle.x_sept_expected_fuel_l, 2)
+            else:
+                vehicle.x_sept_excess_fuel_l = 0.0
+
+            vehicle.x_sept_excess_nad_value = round(vehicle.x_sept_excess_fuel_l * price, 2)
+
     @api.depends('x_manufacture_year')
     def _compute_vehicle_age(self):
         current_year = date.today().year
@@ -97,3 +162,4 @@ class FleetVehicle(models.Model):
                     vehicle.x_replacement_policy_status = 'warning'
                 else:
                     vehicle.x_replacement_policy_status = 'compliant'
+

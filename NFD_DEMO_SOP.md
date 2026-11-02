@@ -188,17 +188,18 @@ with registry.cursor() as cr:
 
 ---
 
-## 4. 25-Minute Guided Live Demonstration Script
+## 4. 30-Minute Guided Live Demonstration Script
 
 ### Timeline & Persona Agenda
 | Elapsed Time | Target Stakeholder | Demonstration Focus Area | Key Impact Metric |
 | :--- | :--- | :--- | :--- |
 | **00:00 - 03:00** | Johan & Pierre | Executive Welcome & Operational Architecture | 700kL Otjiwarongo Depot & 4M+ L/mo scale |
-| **03:00 - 08:30** | Johan Botes | Fleet Governance, Replacement Limits & Geotab | Aging Prime Movers (17y) & Rigid Tankers (14y) |
-| **08:30 - 15:30** | Johan & Pierre | Bulk Cargo Dispatch, Thermal Variances & Leakage | The 210L Grinaker-LTA Loss & 1-Click Action |
-| **15:30 - 20:30** | Pierre Fourie | Financial Reconciliations, Scrap Valuation & Forecourts | Shrinkage Write-off & Free Forecourt Care |
-| **20:30 - 23:30** | Johan Botes | HESMS Driver Safety & Affirmative Action (AA) | Chevron >90% Audit Score & Hazchem Expiry |
-| **23:30 - 25:00** | Johan & Pierre | Summary, Roadmap & Commercial Alignment | Next Steps for Pilot Go-Live |
+| **03:00 - 07:30** | Johan Botes | Fleet Governance, Replacement Limits & Geotab | Aging Prime Movers (17y) & Rigid Tankers (14y) |
+| **07:30 - 13:00** | Johan & Pierre | Bulk Cargo Dispatch, Thermal Variances & Leakage | The 210L Grinaker-LTA Loss & 1-Click Action |
+| **13:00 - 19:30** | Johan & Pierre | Real Sept 2026 Fleet Consumption, Audit & Timesheets | Exact NFD Numbers, Star Savers, Tremor Bug, Workshop Hours |
+| **19:30 - 24:00** | Pierre Fourie | Financial Reconciliations, Scrap Valuation & Forecourts | Shrinkage Write-off & Free Forecourt Care |
+| **24:00 - 27:30** | Johan Botes | HESMS Driver Safety & Affirmative Action (AA) | Chevron >90% Audit Score & Hazchem Expiry |
+| **27:30 - 30:00** | Johan & Pierre | Summary, Roadmap & Commercial Alignment | Next Steps for Pilot Go-Live |
 
 ---
 
@@ -278,7 +279,57 @@ with registry.cursor() as cr:
 
 ---
 
-### Act 4: Pierre Fourie Flow — Financial Reconciliation, Inventory Shrinkage & Forecourt Assets (15:30 – 20:30)
+### Act 4: Real September 2026 Fleet Fuel Consumption, Spreadsheet Audit Findings & Timesheet Cost Rollups (13:00 – 19:30)
+
+**Presenter Click Path:**
+1. Navigate to: **NFD Fuel Logistics > Fleet Fuel Consumption (KM/L) > September 2026 Fleet Summary (Otj COC)** (or **Fleet > Fleet Vehicles**).
+2. Point out the live Namibian benchmark price: **`Current Fuel Price Otj COC: NAD 25.98 / Liter`**.
+3. Group/Sort by **Excess NAD Value** descending:
+   - **`N 7802 OT` (Mercedes Actros 2646):** Top Excess Burner! 10,221 km traveled, actual consumption 2.17 KM/L vs. expected target 2.50 KM/L. Burned 4,706.00 L vs. 4,088.40 L expected -> **+617.60 L excess fuel penalty = +NAD 16,045.25**!
+   - **`N 11751 OT` (Mercedes Rigid Tanker):** 7,763 km traveled, 2.57 KM/L vs. 3.20 KM/L target -> **+589.86 L excess fuel penalty = +NAD 15,324.63**!
+   - **`N 11963 OT` (Mercedes Actros 2646):** 13,177 km traveled, 2.27 KM/L vs. 2.50 KM/L target -> **+529.20 L excess fuel penalty = +NAD 13,748.62**!
+   - **`N 10544 OT` (Volvo FH440):** 19,760 km traveled, 2.83 KM/L vs. 3.00 KM/L target -> **+392.13 L excess fuel = +NAD 10,187.62**!
+   - **`N 2745 OT` (Mercedes Actros 3352):** Highlight the shunting anomaly! Only 143 km traveled, but burned 450.00 L of diesel (0.32 KM/L) -> **+381.90 L excess = +NAD 9,921.89**! Note in spreadsheet: `"??????"` (Yard shunting / excessive stationary engine PTO idling).
+4. Now reverse the sort to show **NFD's Top Star Savers (Fuel Efficiencies)**:
+   - **`N 12916 OT` (Volvo FH440 with PUP Trailer):** 14,540 km traveled at an exceptional 2.87 KM/L against 2.50 KM/L standard -> **-745.90 Liters SAVED = -NAD 19,378.48 straight to NFD profit margin!**
+   - **`N 10684 OT` (Mercedes Actros 2652):** 20,012 km traveled at 2.85 KM/L vs. 2.70 KM/L target -> **-399.25 Liters SAVED = -NAD 10,372.56 saved!**
+   - **`N 12917 OT` (Volvo FH440 with PUP Trailer):** 15,284 km traveled at 2.61 KM/L vs. 2.50 KM/L target -> **-263.10 Liters SAVED = -NAD 6,835.34 saved!**
+5. Navigate to: **NFD Fuel Logistics > Fleet Fuel Consumption (KM/L) > Vehicle Refuel & Odometer Logsheets**.
+   - **Audit Queue: Filter by `Unconfirmed Logsheets (X)`**:
+     Show Johan and Pierre the **29 unconfirmed driver logsheets** from September (e.g., `FCL/2026/0007` on `N 12916 OT`). Explain how Odoo holds these in an audit inbox so accounts can confirm pump meter slips before sign-off.
+   - **The Ford Tremor Excel Formula Bug (`N 13938 OT` - `FCL/2026/0010`)**:
+     Open `FCL/2026/0010`. Explain how in NFD's manual Excel spreadsheet, a missing `ODOMETER END` on September 11 caused Excel to subtract `0 - 30266`, calculating **-28,814 KM**, **-65.06 KM/L**, and generating a fictitious penalty of **+3,324.28 Liters excess = NAD 86,364.79**! Show how Odoo's automated validation flags missing end odometers and prevents negative distance anomalies. Open the corrected record `FCL/2026/0011` showing the true September performance: 5,050 km, 10.13 KM/L, saving 6.60 Liters (-NAD 171.47).
+   - **The Missing Vehicle Discovery (`N 12611 OT` - Isuzu 1.9 D-MAX)**:
+     Highlight `FCL/2026/0012`. In NFD's Excel workbook, `N 12611 OT` (2,111 km, 230.19 L) was completely omitted from the Summary tab. In Odoo ERP, every vehicle is an asset entity—no vehicle can ever slip through the cracks or disappear from monthly financial rollups.
+   - **Driver Odometer Discrepancy Note (`N 11751 OT` - `FCL/2026/0004`)**:
+     Open `FCL/2026/0004` (Driver Benhardt). Show the actual handwritten driver note captured directly in the system: *"Kilos nie reg nie ingeskryf nie sesfontein tot Otjiwarongo is 500km"*.
+6. Navigate to: **NFD Fuel Logistics > Workshop & Driver Timesheets > Timesheets by Project & Task**.
+   - Group by: **Project**.
+   - Expand **`Otjiwarongo Mechanical Workshop & Fleet Maintenance`**:
+     Show senior mechanic Lukas Van Wyk's 6.5 hours on `50,000km Preventive Chassis & Manifold Service - Scania R500` and 4.0 hours on the `Axor Fuel Leakage Investigation (DISP/2026/0102)`.
+   - Expand **`Petrosol Retail Forecourts & ILAMO Convenience Stores (Free Maintenance Subsidy)`**:
+     Show Lukas Van Wyk's 5.0 hours recalibrating pumps at Petrosol Outjo and 3.5 hours servicing the cold room and standby generator at Khorixas—automatically aggregating free forecourt subsidy costs per retail site.
+   - Expand **`National Bulk Fuel Haulage Corridors (Driver Trip Timesheets)`**:
+     Show haulage trip hours for Simon (12.5h on Walvis Bay corridor with PUP trailer), Laythonne (13.0h Walvis Bay import), Hendrik Shilongo (8.0h B2Gold mining run), and Gabriel (11.0h Northern commercial distribution to Ondangwa & Fort Sesfontein).
+
+**Presenter Talking Points (Speaking to Johan Botes & Pierre Fourie):**
+> *"Johan, Pierre—take a close look at this screen. These are not dummy demo figures. These are Northern Fuel Distributors' actual, audited figures from your September 2026 fuel operations: 41 vehicle sheets, 359 refuel logs, and exactly 100,269.50 liters of fuel consumed, representing a NAD 2,605,001.61 monthly fuel bill at your Otjiwarongo COC benchmark of NAD 25.98 per liter.*
+>
+> *First, look at the excess burners. In your spreadsheet, `N 7802 OT` burned 4,706 liters covering 10,221 km at 2.17 KM/L. Against your 2.50 KM/L benchmark, that's +617.60 liters of excess burn—costing NFD NAD 16,045.25 in excess fuel on just one truck in one month. Right behind it is rigid tanker `N 11751 OT` at +589.86 liters (NAD 15,324.63), and `N 11963 OT` at +529.20 liters (NAD 13,748.62).*
+>
+> *And look at `N 2745 OT`—the Actros 3352. It only drove 143 km, yet drew 450 liters of diesel! Your team wrote '??????' in the remarks. In Odoo, with telematics integration, you immediately see this was stationary PTO engine idling and yard shunting—not road haulage.*
+>
+> *Now look at the other side of the ledger—your Star Savers. Driver Simon on Volvo `N 12916 OT` pulling a PUP trailer achieved 2.87 KM/L over 14,540 km against a 2.50 KM/L target. That single vehicle and driver saved NFD 745.90 liters of diesel in September—putting NAD 19,378.48 straight back into your company's pocket! Next is `N 10684 OT` saving 399.25 liters (NAD 10,372.56).*
+>
+> *Now, Pierre, look at why managing this in Excel is dangerous for finance: In your manual spreadsheet for Ford Tremor `N 13938 OT`, an end odometer was accidentally left blank on September 11. Excel's formula subtracted zero, calculated negative 28,814 km, and slapped Johan with a fake penalty of +3,324.28 liters of excess fuel—falsely showing that the Ford Tremor lost NAD 86,364.79! In reality, as Odoo automatically validated, that bakkie drove 5,050 km at 10.13 KM/L and actually saved 6.6 liters.*
+>
+> *Furthermore, vehicle `N 12611 OT`—the Isuzu D-MAX—was completely missing from your Excel summary sheet. In Odoo, human omissions like this are physically impossible. And with 29 unconfirmed logsheets in your audit queue, your accounting team can verify pump slips with 1-click before month-end sign-off.*
+>
+> *Finally, through Timesheets, Lukas Van Wyk's workshop labor on trucks and your free retail maintenance at Outjo and Khorixas are tracked to the exact hour and dollar—giving you complete profitability visibility across every corridor and forecourt."*
+
+---
+
+### Act 5: Pierre Fourie Flow — Financial Reconciliation, Inventory Shrinkage & Forecourt Assets (19:30 – 24:00)
 
 **Presenter Click Path:**
 1. Navigate to: **NFD Fuel Logistics > Depot Stock & Losses > Fuel Shrinkage & Scraps** (Stock Scrap).
@@ -303,7 +354,7 @@ with registry.cursor() as cr:
 
 ---
 
-### Act 5: HESMS Safety Compliance & Namibian Affirmative Action (AA) (20:30 – 23:30)
+### Act 6: HESMS Safety Compliance & Namibian Affirmative Action (AA) (24:00 – 27:30)
 
 **Presenter Click Path:**
 1. Navigate to: **NFD Fuel Logistics > HESMS & Driver Safety > Hazchem Drivers & AA Compliance** (or **HR Employees**).
@@ -324,14 +375,15 @@ with registry.cursor() as cr:
 
 ---
 
-### Act 6: Q&A, Next Steps & Pilot Implementation (23:30 – 25:00)
+### Act 7: Q&A, Next Steps & Pilot Implementation (27:30 – 30:00)
 
 **Presenter Talking Points:**
 > *"Johan, Pierre—to summarize what we have experienced together today:
 > 1. Complete transparency over your 700,000L bulk depot inventory and lubricant stocks.
 > 2. Automated enforcement of your 18-year Prime Mover and 15-year Tanker replacement rules with Geotab telematics linkage.
 > 3. Zero-loss cargo reconciliation with automatic 0.25% thermal adjustments and 1-click corrective maintenance ticketing for unexplainable losses.
-> 4. Automated HESMS and Affirmative Action compliance protecting your Chevron accreditation.
+> 4. Real September 2026 fuel consumption analysis proving NAD 64,000+ in excess burn penalties against Star Savers (-NAD 19,378 saved), fixing human spreadsheet formula bugs, and tracking workshop and driver timesheets.
+> 5. Automated HESMS and Affirmative Action compliance protecting your Chevron accreditation.
 >
 > OreSolve's proposed next step is a 3-week pilot at the Otjiwarongo Depot, loading live dispatches from Tank 1 and Tank 2, integrating with your Geotab API feed, and running your upcoming month-end fuel shrinkage reconciliation in parallel.
 >
@@ -351,6 +403,9 @@ with registry.cursor() as cr:
 | **TC-06** | HESMS Driver Safety Permit Tracking | Detect permit expirations within 30-day safety warning window. | 1. Navigate to HR Employees.<br>2. Inspect Hendrik Shilongo.<br>3. Inspect Matheus Shikongo. | Hendrik has valid permits -> `Fully Compliant`. Matheus has Hazchem permit expiring in 5 days -> `Expiring Within 30 Days` amber badge. | `hr.employee` field `x_hse_status_badge` | **PASS** |
 | **TC-07** | Affirmative Action (AA) Classification | Ensure compliance with Namibian Affirmative Action Act categories. | 1. Group employees by `Affirmative Action Category`. | Staff categorized into `Designated Namibian Group`, `Women in Transport`, or `General`. | `hr.employee` field `x_aa_category` | **PASS** |
 | **TC-08** | Petrosol Forecourt & Bulk Tank Assets | Track maintenance on customer tanks and free forecourt pumps. | 1. Navigate to Maintenance > Equipment.<br>2. Check Wayne Helix pump at Outjo.<br>3. Check 60kL tank at Husab Mine. | Pump linked to Petrosol Outjo (CODO) under `Free Forecourt Agreement`. Husab tank linked to client under `Customer Bulk Installation Contract`. | `maintenance.equipment` fields `x_asset_category`, `x_site_partner_id` | **PASS** |
+| **TC-09** | September 2026 Fuel Consumption & Otj COC Benchmark | Validate KM/L targets, excess fuel burn calculation, and Star Saver negative excess values. | 1. Navigate to Fleet > Vehicles.<br>2. Inspect `N 7802 OT`, `N 11751 OT`, and `N 12916 OT`. | `N 7802 OT` computes +617.60 L excess (+NAD 16,045.25). `N 11751 OT` computes +589.86 L excess (+NAD 15,324.56). `N 12916 OT` computes -745.90 L saved (-NAD 19,378.48). | `fleet.vehicle` fields `x_sept_excess_fuel_l`, `x_sept_excess_nad_value` | **PASS** |
+| **TC-10** | Refuel Logsheet Odometer Validation & Audit Queue | Ensure unconfirmed driver slips (`X`) are queued and formula errors are prevented. | 1. Navigate to Fuel Logistics > Refuel & Odometer Logsheets.<br>2. Filter by `Unconfirmed Logsheets (X)`.<br>3. Inspect log `FCL/2026/0010`. | Unconfirmed filter isolates pending logs. Missing end odometer anomaly is flagged as `odo_error` without corrupting vehicle totals. | `nfd.fuel.consumption.log` filters `filter_unconfirmed_logsheet`, `filter_odo_anomalies` | **PASS** |
+| **TC-11** | Workshop & Driver Timesheet Cost Rollups | Aggregate workshop technician hours and long-haul trip driver timesheets by project. | 1. Navigate to Fuel Logistics > Workshop & Driver Timesheets.<br>2. Group by `Project`. | Workshop project displays Lukas Van Wyk's hours (PM + emergency leakage); Petrosol project aggregates retail forecourt subsidy hours; Haulage project tracks corridor trip timesheets. | `account.analytic.line` group by `project_id` | **PASS** |
 
 ---
 

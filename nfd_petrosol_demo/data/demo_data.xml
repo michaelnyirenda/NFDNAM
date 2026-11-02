@@ -218,6 +218,330 @@
         <field name="x_avg_fuel_consumption">33.8</field>
     </record>
 
+    <!-- New Brands -->
+    <record id="brand_volvo" model="fleet.vehicle.model.brand">
+        <field name="name">Volvo</field>
+    </record>
+
+    <record id="brand_isuzu" model="fleet.vehicle.model.brand">
+        <field name="name">Isuzu</field>
+    </record>
+
+    <record id="brand_suzuki" model="fleet.vehicle.model.brand">
+        <field name="name">Suzuki</field>
+    </record>
+
+    <record id="brand_ford" model="fleet.vehicle.model.brand">
+        <field name="name">Ford</field>
+    </record>
+
+    <!-- New Models -->
+    <record id="model_volvo_fh440" model="fleet.vehicle.model">
+        <field name="name">FH440 6x4 Heavy Hauler</field>
+        <field name="brand_id" ref="brand_volvo"/>
+    </record>
+
+    <record id="model_volvo_fh520" model="fleet.vehicle.model">
+        <field name="name">FH520 6x4 Heavy Hauler</field>
+        <field name="brand_id" ref="brand_volvo"/>
+    </record>
+
+    <record id="model_isuzu_dmax" model="fleet.vehicle.model">
+        <field name="name">1.9 D-MAX Single Cab</field>
+        <field name="brand_id" ref="brand_isuzu"/>
+    </record>
+
+    <record id="model_suzuki_carry" model="fleet.vehicle.model">
+        <field name="name">Carry 1.2 Flatbed</field>
+        <field name="brand_id" ref="brand_suzuki"/>
+    </record>
+
+    <record id="model_ford_tremor" model="fleet.vehicle.model">
+        <field name="name">Ranger Tremor 2.0 Bi-Turbo</field>
+        <field name="brand_id" ref="brand_ford"/>
+    </record>
+
+    <record id="model_actros_2646" model="fleet.vehicle.model">
+        <field name="name">Actros 2646 6x4</field>
+        <field name="brand_id" ref="brand_mercedes"/>
+    </record>
+
+    <record id="model_actros_2652" model="fleet.vehicle.model">
+        <field name="name">Actros 2652 6x4</field>
+        <field name="brand_id" ref="brand_mercedes"/>
+    </record>
+
+    <record id="model_actros_3352" model="fleet.vehicle.model">
+        <field name="name">Actros 3352 6x4 Heavy Duty</field>
+        <field name="brand_id" ref="brand_mercedes"/>
+    </record>
+
+
+    <!-- ============================================================== -->
+    <!-- REAL NFD FLEET VEHICLES & SEPTEMBER 2026 REFUEL AUDIT METRICS  -->
+    <!-- ============================================================== -->
+    <!-- Vehicle 6: N 7802 OT - Mercedes Actros 2646 (Top Excess Burner: +617.60 L) -->
+    <record id="vehicle_n7802ot" model="fleet.vehicle">
+        <field name="license_plate">N 7802 OT</field>
+        <field name="model_id" ref="model_actros_2646"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2020</field>
+        <field name="x_avg_fuel_consumption">46.0</field>
+        <field name="x_max_volume_liters">42000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_expected_km_per_liter">2.5</field>
+        <field name="x_actual_km_per_liter">2.17</field>
+        <field name="x_sept_distance_km">10221.0</field>
+        <field name="x_sept_expected_fuel_l">4088.4</field>
+        <field name="x_sept_actual_fuel_l">4706.0</field>
+        <field name="x_sept_excess_fuel_l">617.60</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">16045.25</field>
+    </record>
+
+    <!-- Vehicle 7: N 11751 OT - Mercedes Rigid Tanker (Excess Burner: +589.86 L) -->
+    <record id="vehicle_n11751ot" model="fleet.vehicle">
+        <field name="license_plate">N 11751 OT</field>
+        <field name="model_id" ref="model_axor_rigid"/>
+        <field name="x_unit_classification">rigid_tanker</field>
+        <field name="x_has_diesel_meter">True</field>
+        <field name="x_manufacture_year">2018</field>
+        <field name="x_avg_fuel_consumption">38.8</field>
+        <field name="x_max_volume_liters">18000.0</field>
+        <field name="x_compartment_count">4</field>
+        <field name="x_expected_km_per_liter">3.2</field>
+        <field name="x_actual_km_per_liter">2.57</field>
+        <field name="x_sept_distance_km">7763.0</field>
+        <field name="x_sept_expected_fuel_l">2425.94</field>
+        <field name="x_sept_actual_fuel_l">3015.8</field>
+        <field name="x_sept_excess_fuel_l">589.86</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">15324.63</field>
+    </record>
+
+    <!-- Vehicle 8: N 11963 OT - Mercedes Actros 2646 (Excess Burner: +529.20 L) -->
+    <record id="vehicle_n11963ot" model="fleet.vehicle">
+        <field name="license_plate">N 11963 OT</field>
+        <field name="model_id" ref="model_actros_2646"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2021</field>
+        <field name="x_avg_fuel_consumption">44.0</field>
+        <field name="x_max_volume_liters">42000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_expected_km_per_liter">2.5</field>
+        <field name="x_actual_km_per_liter">2.27</field>
+        <field name="x_sept_distance_km">13177.0</field>
+        <field name="x_sept_expected_fuel_l">5270.8</field>
+        <field name="x_sept_actual_fuel_l">5800.0</field>
+        <field name="x_sept_excess_fuel_l">529.20</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">13748.62</field>
+    </record>
+
+    <!-- Vehicle 9: N 10544 OT - Volvo FH440 (Excess Burner: +392.13 L) -->
+    <record id="vehicle_n10544ot" model="fleet.vehicle">
+        <field name="license_plate">N 10544 OT</field>
+        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2021</field>
+        <field name="x_avg_fuel_consumption">35.3</field>
+        <field name="x_max_volume_liters">44000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_expected_km_per_liter">3.0</field>
+        <field name="x_actual_km_per_liter">2.83</field>
+        <field name="x_sept_distance_km">19760.0</field>
+        <field name="x_sept_expected_fuel_l">6586.67</field>
+        <field name="x_sept_actual_fuel_l">6978.8</field>
+        <field name="x_sept_excess_fuel_l">392.13</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">10187.62</field>
+    </record>
+
+    <!-- Vehicle 10: N 2745 OT - Mercedes Actros 3352 (Stationary Shunter: +381.90 L) -->
+    <record id="vehicle_n2745ot" model="fleet.vehicle">
+        <field name="license_plate">N 2745 OT</field>
+        <field name="model_id" ref="model_actros_3352"/>
+        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_manufacture_year">2017</field>
+        <field name="x_avg_fuel_consumption">47.6</field>
+        <field name="x_max_volume_liters">36000.0</field>
+        <field name="x_compartment_count">6</field>
+        <field name="x_expected_km_per_liter">2.1</field>
+        <field name="x_actual_km_per_liter">0.32</field>
+        <field name="x_sept_distance_km">143.0</field>
+        <field name="x_sept_expected_fuel_l">68.10</field>
+        <field name="x_sept_actual_fuel_l">450.0</field>
+        <field name="x_sept_excess_fuel_l">381.90</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">9921.89</field>
+    </record>
+
+    <!-- Vehicle 11: N 12916 OT - Volvo FH440 w/ PUP (Top Star Saver: -745.90 L, -NAD 19,378) -->
+    <record id="vehicle_n12916ot" model="fleet.vehicle">
+        <field name="license_plate">N 12916 OT</field>
+        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2022</field>
+        <field name="x_avg_fuel_consumption">34.8</field>
+        <field name="x_max_volume_liters">45000.0</field>
+        <field name="x_compartment_count">8</field>
+        <field name="x_expected_km_per_liter">2.5</field>
+        <field name="x_actual_km_per_liter">2.87</field>
+        <field name="x_sept_distance_km">14540.0</field>
+        <field name="x_sept_expected_fuel_l">5816.0</field>
+        <field name="x_sept_actual_fuel_l">5070.1</field>
+        <field name="x_sept_excess_fuel_l">-745.90</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">-19378.48</field>
+    </record>
+
+    <!-- Vehicle 12: N 10684 OT - Mercedes Actros 2652 (Star Saver: -399.25 L, -NAD 10,372) -->
+    <record id="vehicle_n10684ot" model="fleet.vehicle">
+        <field name="license_plate">N 10684 OT</field>
+        <field name="model_id" ref="model_actros_2652"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2022</field>
+        <field name="x_avg_fuel_consumption">35.0</field>
+        <field name="x_max_volume_liters">42000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_expected_km_per_liter">2.7</field>
+        <field name="x_actual_km_per_liter">2.85</field>
+        <field name="x_sept_distance_km">20012.0</field>
+        <field name="x_sept_expected_fuel_l">7411.85</field>
+        <field name="x_sept_actual_fuel_l">7012.6</field>
+        <field name="x_sept_excess_fuel_l">-399.25</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">-10372.56</field>
+    </record>
+
+    <!-- Vehicle 13: N 12917 OT - Volvo FH440 w/ PUP (Star Saver: -263.10 L, -NAD 6,835) -->
+    <record id="vehicle_n12917ot" model="fleet.vehicle">
+        <field name="license_plate">N 12917 OT</field>
+        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2022</field>
+        <field name="x_avg_fuel_consumption">38.3</field>
+        <field name="x_max_volume_liters">45000.0</field>
+        <field name="x_compartment_count">8</field>
+        <field name="x_expected_km_per_liter">2.5</field>
+        <field name="x_actual_km_per_liter">2.61</field>
+        <field name="x_sept_distance_km">15284.0</field>
+        <field name="x_sept_expected_fuel_l">6113.6</field>
+        <field name="x_sept_actual_fuel_l">5850.5</field>
+        <field name="x_sept_excess_fuel_l">-263.10</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">-6835.34</field>
+    </record>
+
+    <!-- Vehicle 14: N 13938 OT - Ford Tremor (Corrected Sept: 5,050 km, Saved 6.6L) -->
+    <record id="vehicle_n13938ot" model="fleet.vehicle">
+        <field name="license_plate">N 13938 OT</field>
+        <field name="model_id" ref="model_ford_tremor"/>
+        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_manufacture_year">2023</field>
+        <field name="x_avg_fuel_consumption">9.8</field>
+        <field name="x_expected_km_per_liter">10.0</field>
+        <field name="x_actual_km_per_liter">10.13</field>
+        <field name="x_sept_distance_km">5050.0</field>
+        <field name="x_sept_expected_fuel_l">505.0</field>
+        <field name="x_sept_actual_fuel_l">498.4</field>
+        <field name="x_sept_excess_fuel_l">-6.60</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">-171.47</field>
+    </record>
+
+    <!-- Vehicle 15: N 12611 OT - Isuzu 1.9 D-MAX (Omitted from Excel Summary Sheet) -->
+    <record id="vehicle_n12611ot" model="fleet.vehicle">
+        <field name="license_plate">N 12611 OT</field>
+        <field name="model_id" ref="model_isuzu_dmax"/>
+        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_manufacture_year">2023</field>
+        <field name="x_avg_fuel_consumption">10.9</field>
+        <field name="x_expected_km_per_liter">9.5</field>
+        <field name="x_actual_km_per_liter">9.17</field>
+        <field name="x_sept_distance_km">2111.0</field>
+        <field name="x_sept_expected_fuel_l">222.21</field>
+        <field name="x_sept_actual_fuel_l">230.19</field>
+        <field name="x_sept_excess_fuel_l">7.98</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">207.32</field>
+    </record>
+
+    <!-- Vehicle 16: N 13831 OT - Suzuki Carry (Otjiwarongo Depot Errand Vehicle) -->
+    <record id="vehicle_n13831ot" model="fleet.vehicle">
+        <field name="license_plate">N 13831 OT</field>
+        <field name="model_id" ref="model_suzuki_carry"/>
+        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_manufacture_year">2024</field>
+        <field name="x_avg_fuel_consumption">7.5</field>
+        <field name="x_expected_km_per_liter">14.0</field>
+        <field name="x_actual_km_per_liter">13.36</field>
+        <field name="x_sept_distance_km">721.0</field>
+        <field name="x_sept_expected_fuel_l">51.50</field>
+        <field name="x_sept_actual_fuel_l">53.98</field>
+        <field name="x_sept_excess_fuel_l">2.48</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">64.43</field>
+    </record>
+
+    <!-- Vehicle 17: N 11255 OT - Volvo FH520 (Long-Haul Tanker: +384.46 L) -->
+    <record id="vehicle_n11255ot" model="fleet.vehicle">
+        <field name="license_plate">N 11255 OT</field>
+        <field name="model_id" ref="model_volvo_fh520"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2022</field>
+        <field name="x_avg_fuel_consumption">38.9</field>
+        <field name="x_max_volume_liters">44000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_expected_km_per_liter">2.7</field>
+        <field name="x_actual_km_per_liter">2.57</field>
+        <field name="x_sept_distance_km">20360.0</field>
+        <field name="x_sept_expected_fuel_l">7540.74</field>
+        <field name="x_sept_actual_fuel_l">7925.2</field>
+        <field name="x_sept_excess_fuel_l">384.46</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">9988.25</field>
+    </record>
+
+    <!-- Vehicle 18: N 12043 OT - Volvo FH520 (Long-Haul Tanker: +241.78 L) -->
+    <record id="vehicle_n12043ot" model="fleet.vehicle">
+        <field name="license_plate">N 12043 OT</field>
+        <field name="model_id" ref="model_volvo_fh520"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2021</field>
+        <field name="x_avg_fuel_consumption">38.5</field>
+        <field name="x_max_volume_liters">44000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_expected_km_per_liter">2.7</field>
+        <field name="x_actual_km_per_liter">2.60</field>
+        <field name="x_sept_distance_km">16773.0</field>
+        <field name="x_sept_expected_fuel_l">6212.22</field>
+        <field name="x_sept_actual_fuel_l">6454.0</field>
+        <field name="x_sept_excess_fuel_l">241.78</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">6281.39</field>
+    </record>
+
+    <!-- Vehicle 19: N 13566 OT - Volvo FH520 (Long-Haul Tanker: +350.52 L) -->
+    <record id="vehicle_n13566ot" model="fleet.vehicle">
+        <field name="license_plate">N 13566 OT</field>
+        <field name="model_id" ref="model_volvo_fh520"/>
+        <field name="x_unit_classification">semi_trailer</field>
+        <field name="x_manufacture_year">2022</field>
+        <field name="x_avg_fuel_consumption">38.8</field>
+        <field name="x_max_volume_liters">44000.0</field>
+        <field name="x_compartment_count">7</field>
+        <field name="x_expected_km_per_liter">2.7</field>
+        <field name="x_actual_km_per_liter">2.58</field>
+        <field name="x_sept_distance_km">20092.0</field>
+        <field name="x_sept_expected_fuel_l">7441.48</field>
+        <field name="x_sept_actual_fuel_l">7792.0</field>
+        <field name="x_sept_excess_fuel_l">350.52</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_sept_excess_nad_value">9106.47</field>
+    </record>
+
+
     <!-- ============================================================== -->
     <!-- 4. CUSTOMERS & RECEIVING SITES (MINING, ROADS, PETROSOL)      -->
     <!-- ============================================================== -->
@@ -310,6 +634,159 @@
         <field name="job_title">Senior Diesel &amp; Petrol Workshop Mechanic</field>
         <field name="work_phone">+264 81 405 3003</field>
         <field name="x_aa_category">designated_namibian</field>
+    </record>
+
+    <!-- ============================================================== -->
+    
+    <!-- NFD Drivers & Haulage Team -->
+    <record id="employee_niklas" model="hr.employee">
+        <field name="name">Niklas</field>
+        <field name="job_title">Senior Long-Haul Corridor Hazchem Driver</field>
+        <field name="work_phone">+264 81 501 0001</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-09-30</field>
+        <field name="x_defensive_driving_expiry">2027-08-15</field>
+        <field name="x_medical_fitness_expiry">2027-06-20</field>
+    </record>
+
+    <record id="employee_mike" model="hr.employee">
+        <field name="name">Mike</field>
+        <field name="job_title">Heavy Haulage Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0002</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-10-15</field>
+        <field name="x_defensive_driving_expiry">2027-09-10</field>
+        <field name="x_medical_fitness_expiry">2027-07-15</field>
+    </record>
+
+    <record id="employee_denzel" model="hr.employee">
+        <field name="name">Denzel</field>
+        <field name="job_title">Heavy Haulage Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0003</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-11-20</field>
+        <field name="x_defensive_driving_expiry">2027-10-05</field>
+        <field name="x_medical_fitness_expiry">2027-08-12</field>
+    </record>
+
+    <record id="employee_benhardt" model="hr.employee">
+        <field name="name">Benhardt</field>
+        <field name="job_title">Bulk Haulage Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0004</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-07-15</field>
+        <field name="x_defensive_driving_expiry">2027-06-30</field>
+        <field name="x_medical_fitness_expiry">2027-05-18</field>
+    </record>
+
+    <record id="employee_gabriel" model="hr.employee">
+        <field name="name">Gabriel</field>
+        <field name="job_title">Long-Haul Corridors Hazchem Driver</field>
+        <field name="work_phone">+264 81 501 0005</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-12-05</field>
+        <field name="x_defensive_driving_expiry">2027-11-15</field>
+        <field name="x_medical_fitness_expiry">2027-09-22</field>
+    </record>
+
+    <record id="employee_raymond" model="hr.employee">
+        <field name="name">Raymond</field>
+        <field name="job_title">Fuel Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0006</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-08-20</field>
+        <field name="x_defensive_driving_expiry">2027-07-10</field>
+        <field name="x_medical_fitness_expiry">2027-05-30</field>
+    </record>
+
+    <record id="employee_andreas_i" model="hr.employee">
+        <field name="name">Andreas I</field>
+        <field name="job_title">Heavy Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0007</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-06-18</field>
+        <field name="x_defensive_driving_expiry">2027-05-25</field>
+        <field name="x_medical_fitness_expiry">2027-04-14</field>
+    </record>
+
+    <record id="employee_maxi" model="hr.employee">
+        <field name="name">Maxi</field>
+        <field name="job_title">Fuel Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0008</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-05-22</field>
+        <field name="x_defensive_driving_expiry">2027-04-15</field>
+        <field name="x_medical_fitness_expiry">2027-03-30</field>
+    </record>
+
+    <record id="employee_conrall" model="hr.employee">
+        <field name="name">Conrall</field>
+        <field name="job_title">Long-Haul Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0009</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-09-12</field>
+        <field name="x_defensive_driving_expiry">2027-08-01</field>
+        <field name="x_medical_fitness_expiry">2027-06-18</field>
+    </record>
+
+    <record id="employee_laythonne" model="hr.employee">
+        <field name="name">Laythonne</field>
+        <field name="job_title">Bulk Fuel Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0010</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-10-30</field>
+        <field name="x_defensive_driving_expiry">2027-09-15</field>
+        <field name="x_medical_fitness_expiry">2027-08-05</field>
+    </record>
+
+    <record id="employee_simon" model="hr.employee">
+        <field name="name">Simon</field>
+        <field name="job_title">Senior Tanker Driver (PUP Trailer Specialist)</field>
+        <field name="work_phone">+264 81 501 0011</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-11-14</field>
+        <field name="x_defensive_driving_expiry">2027-10-20</field>
+        <field name="x_medical_fitness_expiry">2027-09-10</field>
+    </record>
+
+    <record id="employee_oscar" model="hr.employee">
+        <field name="name">Oscar</field>
+        <field name="job_title">Fuel Transport Driver</field>
+        <field name="work_phone">+264 81 501 0012</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-08-08</field>
+        <field name="x_defensive_driving_expiry">2027-07-01</field>
+        <field name="x_medical_fitness_expiry">2027-05-15</field>
+    </record>
+
+    <record id="employee_stefanus" model="hr.employee">
+        <field name="name">Stefanus</field>
+        <field name="job_title">Regional Delivery Driver</field>
+        <field name="work_phone">+264 81 501 0013</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-07-25</field>
+        <field name="x_defensive_driving_expiry">2027-06-20</field>
+        <field name="x_medical_fitness_expiry">2027-04-30</field>
+    </record>
+
+    <record id="employee_kamuteke" model="hr.employee">
+        <field name="name">Kamuteke</field>
+        <field name="job_title">Bulk Haulage Tanker Driver</field>
+        <field name="work_phone">+264 81 501 0014</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry" eval="(DateTime.today() + relativedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="x_defensive_driving_expiry">2027-08-10</field>
+        <field name="x_medical_fitness_expiry">2027-06-15</field>
+    </record>
+
+    <record id="employee_lucas" model="hr.employee">
+        <field name="name">Lucas</field>
+        <field name="job_title">Light Fleet &amp; Yard Shunting Driver</field>
+        <field name="work_phone">+264 81 501 0015</field>
+        <field name="x_aa_category">designated_namibian</field>
+        <field name="x_hazchem_expiry">2027-09-01</field>
+        <field name="x_defensive_driving_expiry">2027-08-10</field>
+        <field name="x_medical_fitness_expiry">2027-06-25</field>
     </record>
 
     <!-- ============================================================== -->
@@ -493,4 +970,497 @@ ACTION REQUIRED BY OTJIWARONGO WORKSHOP:
     <record id="req_axor_leakage" model="maintenance.request">
         <field name="x_dispatch_log_id" ref="dispatch_log_002"/>
     </record>
+
+    <!-- ============================================================== -->
+    <!-- 9. REFUEL & ODOMETER LOGSHEETS (nfd.fuel.consumption.log)     -->
+    <!-- ============================================================== -->
+    <record id="fcl_log_001" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0001</field>
+        <field name="date">2026-09-02</field>
+        <field name="vehicle_id" ref="vehicle_n7802ot"/>
+        <field name="driver_id" ref="employee_mike"/>
+        <field name="place">Depot</field>
+        <field name="odometer_start">1167034.0</field>
+        <field name="odometer_end">1167891.0</field>
+        <field name="distance_traveled_km">857.0</field>
+        <field name="fuel_liters">363.0</field>
+        <field name="expected_km_per_liter">2.5</field>
+        <field name="actual_km_per_liter">2.36</field>
+        <field name="fuel_usage_difference">-0.14</field>
+        <field name="expected_fuel_liters">342.8</field>
+        <field name="excess_use_liters">20.2</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">524.8</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Okahandja (OKH) haulage run - Within normal operating parameters</field>
+    </record>
+
+    <record id="fcl_log_002" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0002</field>
+        <field name="date">2026-09-04</field>
+        <field name="vehicle_id" ref="vehicle_n7802ot"/>
+        <field name="driver_id" ref="employee_mike"/>
+        <field name="place">OKH</field>
+        <field name="odometer_start">1167891.0</field>
+        <field name="odometer_end">1169122.0</field>
+        <field name="distance_traveled_km">1231.0</field>
+        <field name="fuel_liters">589.0</field>
+        <field name="expected_km_per_liter">2.5</field>
+        <field name="actual_km_per_liter">2.09</field>
+        <field name="fuel_usage_difference">-0.41</field>
+        <field name="expected_fuel_liters">492.4</field>
+        <field name="excess_use_liters">96.6</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">2509.67</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">excess_burn</field>
+        <field name="notes">Excess fuel burn on return climb from Okahandja</field>
+    </record>
+
+    <record id="fcl_log_003" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0003</field>
+        <field name="date">2026-09-07</field>
+        <field name="vehicle_id" ref="vehicle_n7802ot"/>
+        <field name="driver_id" ref="employee_denzel"/>
+        <field name="place">Depot</field>
+        <field name="odometer_start">1169122.0</field>
+        <field name="odometer_end">1169890.0</field>
+        <field name="distance_traveled_km">768.0</field>
+        <field name="fuel_liters">367.0</field>
+        <field name="expected_km_per_liter">2.5</field>
+        <field name="actual_km_per_liter">2.09</field>
+        <field name="fuel_usage_difference">-0.41</field>
+        <field name="expected_fuel_liters">307.2</field>
+        <field name="excess_use_liters">59.8</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">1553.6</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">excess_burn</field>
+        <field name="notes">Depot haulage leg - Driver Denzel handover</field>
+    </record>
+
+    <record id="fcl_log_004" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0004</field>
+        <field name="date">2026-09-11</field>
+        <field name="vehicle_id" ref="vehicle_n11751ot"/>
+        <field name="driver_id" ref="employee_benhardt"/>
+        <field name="place">Depot</field>
+        <field name="odometer_start">692866.0</field>
+        <field name="odometer_end">692953.0</field>
+        <field name="distance_traveled_km">87.0</field>
+        <field name="fuel_liters">370.0</field>
+        <field name="expected_km_per_liter">3.2</field>
+        <field name="actual_km_per_liter">0.24</field>
+        <field name="fuel_usage_difference">-2.96</field>
+        <field name="expected_fuel_liters">27.19</field>
+        <field name="excess_use_liters">342.81</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">8906.2</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">odo_error</field>
+        <field name="notes">Kilos nie reg nie ingeskryf nie sesfontein tot Otjiwarongo is 500km</field>
+    </record>
+
+    <record id="fcl_log_005" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0005</field>
+        <field name="date">2026-09-07</field>
+        <field name="vehicle_id" ref="vehicle_n11751ot"/>
+        <field name="driver_id" ref="employee_gabriel"/>
+        <field name="place">Fort Sesfontein</field>
+        <field name="odometer_start">691933.0</field>
+        <field name="odometer_end">692866.0</field>
+        <field name="distance_traveled_km">933.0</field>
+        <field name="fuel_liters">266.0</field>
+        <field name="expected_km_per_liter">3.2</field>
+        <field name="actual_km_per_liter">3.51</field>
+        <field name="fuel_usage_difference">0.31</field>
+        <field name="expected_fuel_liters">291.56</field>
+        <field name="excess_use_liters">-25.56</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">-664.05</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Kunene Region delivery run - Fuel saved vs standard rate</field>
+    </record>
+
+    <record id="fcl_log_006" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0006</field>
+        <field name="date">2026-09-18</field>
+        <field name="vehicle_id" ref="vehicle_n2745ot"/>
+        <field name="driver_id" ref="employee_laythonne"/>
+        <field name="place">Office</field>
+        <field name="odometer_start">275242.0</field>
+        <field name="odometer_end">275385.0</field>
+        <field name="distance_traveled_km">143.0</field>
+        <field name="fuel_liters">450.0</field>
+        <field name="expected_km_per_liter">2.1</field>
+        <field name="actual_km_per_liter">0.32</field>
+        <field name="fuel_usage_difference">-1.78</field>
+        <field name="expected_fuel_liters">68.1</field>
+        <field name="excess_use_liters">381.9</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">9921.76</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">excess_burn</field>
+        <field name="notes">?????? Heavy idling / depot yard shunting without road travel</field>
+    </record>
+
+    <record id="fcl_log_007" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0007</field>
+        <field name="date">2026-09-03</field>
+        <field name="vehicle_id" ref="vehicle_n12916ot"/>
+        <field name="driver_id" ref="employee_simon"/>
+        <field name="place">Depot</field>
+        <field name="odometer_start">388299.0</field>
+        <field name="odometer_end">389719.0</field>
+        <field name="distance_traveled_km">1420.0</field>
+        <field name="fuel_liters">472.0</field>
+        <field name="expected_km_per_liter">2.5</field>
+        <field name="actual_km_per_liter">3.01</field>
+        <field name="fuel_usage_difference">0.51</field>
+        <field name="expected_fuel_liters">568.0</field>
+        <field name="excess_use_liters">-96.0</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">-2494.08</field>
+        <field name="confirm_logsheet">unconfirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">PUP Trailer long-haul run - Star Saver (-96L). Flagged in unconfirmed logsheet audit queue</field>
+    </record>
+
+    <record id="fcl_log_008" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0008</field>
+        <field name="date">2026-09-05</field>
+        <field name="vehicle_id" ref="vehicle_n12916ot"/>
+        <field name="driver_id" ref="employee_simon"/>
+        <field name="place">Depot</field>
+        <field name="odometer_start">389719.0</field>
+        <field name="odometer_end">390833.0</field>
+        <field name="distance_traveled_km">1114.0</field>
+        <field name="fuel_liters">334.0</field>
+        <field name="expected_km_per_liter">2.5</field>
+        <field name="actual_km_per_liter">3.34</field>
+        <field name="fuel_usage_difference">0.84</field>
+        <field name="expected_fuel_liters">445.6</field>
+        <field name="excess_use_liters">-111.6</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">-2899.37</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Walvis Bay Corridor import run - Outstanding 3.34 KM/L efficiency</field>
+    </record>
+
+    <record id="fcl_log_009" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0009</field>
+        <field name="date">2026-09-05</field>
+        <field name="vehicle_id" ref="vehicle_n10684ot"/>
+        <field name="driver_id" ref="employee_oscar"/>
+        <field name="place">Depot</field>
+        <field name="odometer_start">640804.0</field>
+        <field name="odometer_end">642810.0</field>
+        <field name="distance_traveled_km">2006.0</field>
+        <field name="fuel_liters">626.0</field>
+        <field name="expected_km_per_liter">2.7</field>
+        <field name="actual_km_per_liter">3.2</field>
+        <field name="fuel_usage_difference">0.5</field>
+        <field name="expected_fuel_liters">742.96</field>
+        <field name="excess_use_liters">-116.96</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">-3038.62</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Star Saver long haul - 2006 km corridor round-trip (-117L saved)</field>
+    </record>
+
+    <record id="fcl_log_010" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0010</field>
+        <field name="date">2026-09-11</field>
+        <field name="vehicle_id" ref="vehicle_n13938ot"/>
+        <field name="driver_id" ref="employee_lucas"/>
+        <field name="place">Office</field>
+        <field name="odometer_start">30266.0</field>
+        <field name="odometer_end">30266.0</field>
+        <field name="distance_traveled_km">0.0</field>
+        <field name="fuel_liters">67.73</field>
+        <field name="expected_km_per_liter">10.0</field>
+        <field name="actual_km_per_liter">0.0</field>
+        <field name="fuel_usage_difference">-10.0</field>
+        <field name="expected_fuel_liters">0.0</field>
+        <field name="excess_use_liters">67.73</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">1759.63</field>
+        <field name="confirm_logsheet">unconfirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">odo_error</field>
+        <field name="notes">Excel formula error audit point: Missing End Odometer caused -30,266 KM in spreadsheet. Blocked by Odoo validation.</field>
+    </record>
+
+    <record id="fcl_log_011" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0011</field>
+        <field name="date">2026-09-12</field>
+        <field name="vehicle_id" ref="vehicle_n13938ot"/>
+        <field name="driver_id" ref="employee_lucas"/>
+        <field name="place">Office</field>
+        <field name="odometer_start">30266.0</field>
+        <field name="odometer_end">30896.0</field>
+        <field name="distance_traveled_km">630.0</field>
+        <field name="fuel_liters">61.5</field>
+        <field name="expected_km_per_liter">10.0</field>
+        <field name="actual_km_per_liter">10.24</field>
+        <field name="fuel_usage_difference">0.24</field>
+        <field name="expected_fuel_liters">63.0</field>
+        <field name="excess_use_liters">-1.5</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">-38.97</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Ford Tremor verified post-audit: 10.24 KM/L on Otjiwarongo management route</field>
+    </record>
+
+    <record id="fcl_log_012" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0012</field>
+        <field name="date">2026-09-03</field>
+        <field name="vehicle_id" ref="vehicle_n12611ot"/>
+        <field name="driver_id" ref="employee_johan_botes"/>
+        <field name="place">Office</field>
+        <field name="odometer_start">113760.0</field>
+        <field name="odometer_end">114354.0</field>
+        <field name="distance_traveled_km">594.0</field>
+        <field name="fuel_liters">65.06</field>
+        <field name="expected_km_per_liter">9.5</field>
+        <field name="actual_km_per_liter">9.13</field>
+        <field name="fuel_usage_difference">-0.37</field>
+        <field name="expected_fuel_liters">62.53</field>
+        <field name="excess_use_liters">2.53</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">65.73</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Isuzu 1.9 D-MAX - Omitted from Excel Summary tab, fully tracked in Odoo ERP</field>
+    </record>
+
+    <record id="fcl_log_013" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0013</field>
+        <field name="date">2026-09-14</field>
+        <field name="vehicle_id" ref="vehicle_n13831ot"/>
+        <field name="driver_id" ref="employee_lucas"/>
+        <field name="place">Office</field>
+        <field name="odometer_start">5621.0</field>
+        <field name="odometer_end">5977.0</field>
+        <field name="distance_traveled_km">356.0</field>
+        <field name="fuel_liters">26.71</field>
+        <field name="expected_km_per_liter">14.0</field>
+        <field name="actual_km_per_liter">13.33</field>
+        <field name="fuel_usage_difference">-0.67</field>
+        <field name="expected_fuel_liters">25.43</field>
+        <field name="excess_use_liters">1.28</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">33.25</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Suzuki Carry depot local errands</field>
+    </record>
+
+    <record id="fcl_log_014" model="nfd.fuel.consumption.log">
+        <field name="name">FCL/2026/0014</field>
+        <field name="date">2026-09-06</field>
+        <field name="vehicle_id" ref="vehicle_n11255ot"/>
+        <field name="driver_id" ref="employee_laythonne"/>
+        <field name="place">Walvis</field>
+        <field name="odometer_start">412500.0</field>
+        <field name="odometer_end">413950.0</field>
+        <field name="distance_traveled_km">1450.0</field>
+        <field name="fuel_liters">564.0</field>
+        <field name="expected_km_per_liter">2.7</field>
+        <field name="actual_km_per_liter">2.57</field>
+        <field name="fuel_usage_difference">-0.13</field>
+        <field name="expected_fuel_liters">537.04</field>
+        <field name="excess_use_liters">26.96</field>
+        <field name="otj_coc_fuel_price">25.98</field>
+        <field name="nad_value">700.42</field>
+        <field name="confirm_logsheet">confirmed</field>
+        <field name="confirm_stock">confirmed</field>
+        <field name="anomaly_flag">normal</field>
+        <field name="notes">Walvis Bay fuel import haulage run - Volvo FH520</field>
+    </record>
+
+
+    <!-- ============================================================== -->
+    <!-- 10. WORKSHOP, PETROSOL & DRIVER HAULAGE PROJECTS & TIMESHEETS  -->
+    <!-- ============================================================== -->
+    <record id="project_workshop" model="project.project">
+        <field name="name">Otjiwarongo Mechanical Workshop &amp; Fleet Maintenance</field>
+        <field name="allow_timesheets">True</field>
+        <field name="billing_type">not_billable</field>
+    </record>
+
+    <record id="project_petrosol" model="project.project">
+        <field name="name">Petrosol Retail Forecourts &amp; ILAMO Convenience Stores (Free Maintenance Subsidy)</field>
+        <field name="partner_id" ref="partner_petrosol_outjo"/>
+        <field name="allow_timesheets">True</field>
+        <field name="billing_type">not_billable</field>
+    </record>
+
+    <record id="project_haulage" model="project.project">
+        <field name="name">National Bulk Fuel Haulage Corridors (Driver Trip Timesheets)</field>
+        <field name="allow_timesheets">True</field>
+        <field name="billing_type">not_billable</field>
+    </record>
+
+    <!-- Tasks -->
+    <record id="task_workshop_scania_pm" model="project.task">
+        <field name="name">50,000km Preventive Chassis &amp; Manifold Service - Scania R500 (N 4201 OT)</field>
+        <field name="project_id" ref="project_workshop"/>
+        <field name="allocated_hours">8.0</field>
+    </record>
+
+    <record id="task_workshop_axor_leakage" model="project.task">
+        <field name="name">Inspect Tanker Manifold/Delivery Meter for Fuel Leakage - Axor (DISP/2026/0102)</field>
+        <field name="project_id" ref="project_workshop"/>
+        <field name="allocated_hours">6.0</field>
+    </record>
+
+    <record id="task_petrosol_outjo_nozzle" model="project.task">
+        <field name="name">Monthly Dispenser Nozzle &amp; Meter Recalibration - Petrosol Outjo</field>
+        <field name="project_id" ref="project_petrosol"/>
+        <field name="partner_id" ref="partner_petrosol_outjo"/>
+        <field name="allocated_hours">6.0</field>
+    </record>
+
+    <record id="task_petrosol_khorixas_coldroom" model="project.task">
+        <field name="name">ILAMO Convenience Store Cold Room &amp; Standby Generator Service - Khorixas</field>
+        <field name="project_id" ref="project_petrosol"/>
+        <field name="partner_id" ref="partner_petrosol_khorixas"/>
+        <field name="allocated_hours">5.0</field>
+    </record>
+
+    <record id="task_haulage_walvis_import" model="project.task">
+        <field name="name">Walvis Bay Corridor Bulk Diesel Import Haulage</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="allocated_hours">30.0</field>
+    </record>
+
+    <record id="task_haulage_b2gold" model="project.task">
+        <field name="name">B2Gold Otjikoto Mine Mining Run</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="partner_id" ref="partner_b2gold_mine"/>
+        <field name="allocated_hours">12.0</field>
+    </record>
+
+    <record id="task_haulage_husab" model="project.task">
+        <field name="name">Husab Mine Swakopmund Delivery Run</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="partner_id" ref="partner_husab_mine"/>
+        <field name="allocated_hours">14.0</field>
+    </record>
+
+    <record id="task_haulage_northern" model="project.task">
+        <field name="name">Northern Commercial Distribution Run (Ondangwa / Fort Sesfontein)</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="allocated_hours">16.0</field>
+    </record>
+
+    <!-- Timesheets (account.analytic.line) -->
+    <record id="ts_workshop_1" model="account.analytic.line">
+        <field name="name">Chassis grease, oil filter change, bottom-loading manifold valve seals pressure test</field>
+        <field name="project_id" ref="project_workshop"/>
+        <field name="task_id" ref="task_workshop_scania_pm"/>
+        <field name="employee_id" ref="employee_lukas_van_wyk"/>
+        <field name="date">2026-09-04</field>
+        <field name="unit_amount">6.5</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_workshop_2" model="account.analytic.line">
+        <field name="name">Emergency inspection of Axor foot valves and digital delivery meter calibration (DISP/2026/0102 210L alert)</field>
+        <field name="project_id" ref="project_workshop"/>
+        <field name="task_id" ref="task_workshop_axor_leakage"/>
+        <field name="employee_id" ref="employee_lukas_van_wyk"/>
+        <field name="date">2026-09-12</field>
+        <field name="unit_amount">4.0</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_petrosol_1" model="account.analytic.line">
+        <field name="name">Wayne Helix 4-nozzle 20L prover can measure and calibration test (Free Forecourt Service Subsidy)</field>
+        <field name="project_id" ref="project_petrosol"/>
+        <field name="task_id" ref="task_petrosol_outjo_nozzle"/>
+        <field name="employee_id" ref="employee_lukas_van_wyk"/>
+        <field name="date">2026-09-08</field>
+        <field name="unit_amount">5.0</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_petrosol_2" model="account.analytic.line">
+        <field name="name">Quarterly servicing of ILAMO cold room compressor and 50kVA standby diesel generator</field>
+        <field name="project_id" ref="project_petrosol"/>
+        <field name="task_id" ref="task_petrosol_khorixas_coldroom"/>
+        <field name="employee_id" ref="employee_lukas_van_wyk"/>
+        <field name="date">2026-09-18</field>
+        <field name="unit_amount">3.5</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_haulage_1" model="account.analytic.line">
+        <field name="name">Bulk 50ppm Diesel haulage Walvis Bay Port to Otjiwarongo Tank Farm (Semi N 12916 OT + PUP)</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="task_id" ref="task_haulage_walvis_import"/>
+        <field name="employee_id" ref="employee_simon"/>
+        <field name="date">2026-09-05</field>
+        <field name="unit_amount">12.5</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_haulage_2" model="account.analytic.line">
+        <field name="name">Walvis Bay to Otjiwarongo Bulk Diesel Tanker Import haulage (Volvo FH520 N 11255 OT)</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="task_id" ref="task_haulage_walvis_import"/>
+        <field name="employee_id" ref="employee_laythonne"/>
+        <field name="date">2026-09-09</field>
+        <field name="unit_amount">13.0</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_haulage_3" model="account.analytic.line">
+        <field name="name">Mining bulk diesel supply Otjiwarongo to B2Gold Otjikoto Mine (Scania R500 N 4201 OT)</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="task_id" ref="task_haulage_b2gold"/>
+        <field name="employee_id" ref="employee_hendrik_shilongo"/>
+        <field name="date">2026-09-10</field>
+        <field name="unit_amount">8.0</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_haulage_4" model="account.analytic.line">
+        <field name="name">Bulk fuel transport to Husab Mine Swakopmund depot (Mercedes Actros N 7802 OT)</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="task_id" ref="task_haulage_husab"/>
+        <field name="employee_id" ref="employee_mike"/>
+        <field name="date">2026-09-04</field>
+        <field name="unit_amount">9.5</field>
+        <field name="amount">0.0</field>
+    </record>
+
+    <record id="ts_haulage_5" model="account.analytic.line">
+        <field name="name">Northern retail and commercial replenishment: Otjiwarongo to Ondangwa &amp; Fort Sesfontein</field>
+        <field name="project_id" ref="project_haulage"/>
+        <field name="task_id" ref="task_haulage_northern"/>
+        <field name="employee_id" ref="employee_gabriel"/>
+        <field name="date">2026-09-07</field>
+        <field name="unit_amount">11.0</field>
+        <field name="amount">0.0</field>
+    </record>
+
 </odoo>
