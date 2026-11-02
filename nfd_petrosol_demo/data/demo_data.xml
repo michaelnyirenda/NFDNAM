@@ -300,7 +300,7 @@
         <field name="job_title">Hazchem Tanker Driver</field>
         <field name="work_phone">+264 81 334 2002</field>
         <field name="x_aa_category">designated_namibian</field>
-        <field name="x_hazchem_expiry">2026-11-01</field>
+        <field name="x_hazchem_expiry" eval="(DateTime.today() + relativedelta(days=5)).strftime('%Y-%m-%d')"/>
         <field name="x_defensive_driving_expiry">2027-05-20</field>
         <field name="x_medical_fitness_expiry">2027-03-15</field>
     </record>
@@ -447,7 +447,7 @@ ACTION REQUIRED BY OTJIWARONGO WORKSHOP:
     <!-- Dispatch 1 (Normal): Scania R500 (42,000L) to B2Gold Otjikoto Mine -->
     <record id="dispatch_log_001" model="nfd.fuel.dispatch.log">
         <field name="name">DISP/2026/0101</field>
-        <field name="date" eval="datetime.now().strftime('%Y-%m-%d 06:30:00')"/>
+        <field name="date" eval="DateTime.now().strftime('%Y-%m-%d 06:30:00')"/>
         <field name="vehicle_id" ref="vehicle_scania_r500"/>
         <field name="driver_id" ref="employee_hendrik_shilongo"/>
         <field name="customer_id" ref="partner_b2gold_mine"/>
@@ -469,7 +469,7 @@ ACTION REQUIRED BY OTJIWARONGO WORKSHOP:
     <!-- Dispatch 2 (LEAKAGE ALERT!): Axor 17,500L to Grinaker-LTA -> 210L discrepancy! -->
     <record id="dispatch_log_002" model="nfd.fuel.dispatch.log">
         <field name="name">DISP/2026/0102</field>
-        <field name="date" eval="datetime.now().strftime('%Y-%m-%d 09:15:00')"/>
+        <field name="date" eval="DateTime.now().strftime('%Y-%m-%d 09:15:00')"/>
         <field name="vehicle_id" ref="vehicle_axor_rigid"/>
         <field name="driver_id" ref="employee_hendrik_shilongo"/>
         <field name="customer_id" ref="partner_grinaker_lta"/>
