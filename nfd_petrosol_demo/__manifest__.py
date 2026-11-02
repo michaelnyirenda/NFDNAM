@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'NFD & Petrosol Fuel Logistics & Fleet Management Demo',
-    'version': '19.0.1.0.0',
+    'version': '1.0.0',
     'category': 'Operations/Fuel & Fleet Logistics',
     'summary': 'Bulk Fuel Distribution, Fleet Compliance, Shrinkage Reconciliation & Maintenance for Northern Fuel Distributors CC',
     'description': """
