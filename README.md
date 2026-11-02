@@ -33,5 +33,24 @@ docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_pas
 # URL: http://localhost:8069 (Database: nfd_demo)
 ```
 
+## Quickstart (Odoo Online / edu-*.odoo.com SaaS)
+
+If you are presenting on a free 90-day **Odoo Online Education (`edu-*.odoo.com`)** cloud instance:
+
+```bash
+# 1. Package the pure XML/CSV module from the saas-edu-import worktree
+./scripts/sync_and_pack_saas.sh
+
+# 2. Upload dist/nfd_petrosol_edu_import.zip in Odoo Online:
+#    Settings > Activate Developer Mode > Apps > Import Module
+```
+
+## Dual-Branch Architecture
+
+This repository uses Git Worktrees to maintain both environments side-by-side:
+- **`main`**: Full Python/ORM Odoo 19 module (`nfd_petrosol_demo`) for local Docker and Odoo.sh development.
+- **`saas-edu-import`**: 100% pure declarative XML/CSV module (`nfd_petrosol_demo`) with zero Python code, custom models/fields defined in `ir.model`/`ir.model.fields`, and inline sandboxed logic for Odoo Online SaaS.
+  - Worktree path: `.worktrees/saas-edu-import` (or symlink `../nfd_petrosol_saas_edu`).
+
 Refer to [NFD_DEMO_SOP.md](NFD_DEMO_SOP.md) for full step-by-step guidance.
 

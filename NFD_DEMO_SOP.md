@@ -82,6 +82,37 @@ Once initialized, the Odoo server is accessible at:
   - **Email / Username:** `admin`
   - **Password:** `admin` (or configured password)
 
+### 2.6 Odoo Online Education (`edu-*.odoo.com`) Cloud Demo Setup & Worktree Sync
+If you are running the live demonstration on an official **Odoo Online Education (`edu-*.odoo.com`)** free 90-day cloud database, use the simultaneous `saas-edu-import` branch.
+
+#### Architecture: Local Python Module vs. Cloud Pure XML/CSV Module
+| Branch / Environment | Module Type | Key Characteristics | Usage |
+| :--- | :--- | :--- | :--- |
+| **`main`**<br>(Local Docker / Odoo.sh) | Full Python ORM (`nfd_petrosol_demo`) | Custom models (`nfd.fuel.dispatch.log`), Python methods, and `hooks.py`. | Local testing, CI/CD, deep ORM custom development. |
+| **`saas-edu-import`**<br>(Odoo Online `edu-*.odoo.com`) | Pure XML/CSV (`nfd_petrosol_demo`) | **Zero Python files**. Declarative `x_nfd_fuel_dispatch_log` model and `x_` fields in `data/ir_model_fields.xml`, inline sandboxed computed fields, and `ir.actions.server`. | Live cloud demo on `edu-*.odoo.com` via **Apps > Import Module**. |
+
+#### Step-by-Step Odoo Online Setup & Packaging:
+1. **Simultaneous Worktree**:
+   Both branches are checked out concurrently:
+   - `main`: Root directory (`/home/.../NFDNAM`)
+   - `saas-edu-import`: `.worktrees/saas-edu-import` (or symlink `../nfd_petrosol_saas_edu`)
+
+2. **Sync and Package for SaaS**:
+   From the repository root, run the packaging automation script:
+   ```bash
+   ./scripts/sync_and_pack_saas.sh
+   ```
+   This validates the Zero-Python compliance and outputs `dist/nfd_petrosol_edu_import.zip`.
+
+3. **Import into your Odoo Online Database (`edu-*.odoo.com`)**:
+   - Log into `https://edu-<subdomain>.odoo.com` as an Administrator.
+   - Go to **Settings > General Settings** -> scroll to **Developer Tools** and click **Activate the developer mode**.
+   - Ensure base applications are installed: **Fleet**, **Maintenance**, **Inventory (Stock)**, **Employees (HR)**.
+   - Go to **Apps**. In the top navigation bar, click **Import Module**.
+   - Choose the file: `dist/nfd_petrosol_edu_import.zip`.
+   - Click **Import Module**.
+   - All models, 700kL depot tanks, Scania/Mercedes tankers, customers, 50+ staff records, and dispatch leakage logs are automatically loaded into your cloud database!
+
 ---
 
 ## 3. Pre-Demo Environment Verification Checklist
