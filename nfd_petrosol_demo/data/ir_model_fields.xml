@@ -245,6 +245,8 @@
         <field name="on_delete">restrict</field>
     </record>
 
+    <!-- Commented out: stock.scrap relation causes import ParseError on SaaS when stock app is not yet registered -->
+    <!--
     <record id="field_x_nfd_fuel_dispatch_log_x_scrap_id" model="ir.model.fields">
         <field name="name">x_scrap_id</field>
         <field name="field_description">Stock Shrinkage Entry</field>
@@ -255,6 +257,7 @@
         <field name="readonly">True</field>
         <field name="on_delete">restrict</field>
     </record>
+    -->
 
     <record id="field_x_nfd_fuel_dispatch_log_x_notes" model="ir.model.fields">
         <field name="name">x_notes</field>

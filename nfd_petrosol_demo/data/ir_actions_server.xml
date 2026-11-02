@@ -127,7 +127,8 @@
             scrap.action_validate()
         except Exception:
             pass
-        record['x_scrap_id'] = scrap.id
+        if 'x_scrap_id' in record._fields:
+            record['x_scrap_id'] = scrap.id
     except Exception:
         pass
 
