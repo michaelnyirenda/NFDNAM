@@ -3615,7 +3615,6 @@
         <field name="name">JC-1009: Trek Links &amp; Turntable Pin Re-Torque</field>
         <field name="equipment_id" ref="equipment_vehicle_n12548ot"/>
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
-        <field name="user_id" ref="base.user_admin"/>
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1009</field>
         <field name="x_workshop_location">workshop_otj</field>
@@ -3632,7 +3631,6 @@
         <field name="name">JC-1045: Multi-Compartment Degas &amp; Internal Baffle Weld</field>
         <field name="equipment_id" ref="equipment_vehicle_n12043ot"/>
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
-        <field name="user_id" ref="base.user_admin"/>
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1045</field>
         <field name="x_workshop_location">cwwa</field>
@@ -3648,7 +3646,6 @@
         <field name="name">JC-1110: Hydraulic PTO Offloading Valve Leak Repair</field>
         <field name="equipment_id" ref="equipment_vehicle_n8966ot"/>
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
-        <field name="user_id" ref="base.user_admin"/>
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1110</field>
         <field name="x_workshop_location">workshop_otj</field>
@@ -3665,7 +3662,6 @@
         <field name="name">JC-994: NaTIS Statutory Roadworthy Fitness Retest</field>
         <field name="equipment_id" ref="equipment_vehicle_n317ot"/>
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
-        <field name="user_id" ref="base.user_admin"/>
         <field name="maintenance_type">preventive</field>
         <field name="x_job_card_number">JC-994</field>
         <field name="x_workshop_location">natis_otj</field>
@@ -3682,7 +3678,6 @@
         <field name="name">JC-1088: Safe Loading Pass (SLP) Recertification</field>
         <field name="equipment_id" ref="equipment_vehicle_n7802ot"/>
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
-        <field name="user_id" ref="base.user_admin"/>
         <field name="maintenance_type">preventive</field>
         <field name="x_job_card_number">JC-1088</field>
         <field name="x_workshop_location">vivo_depo</field>

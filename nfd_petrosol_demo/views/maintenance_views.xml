@@ -57,7 +57,7 @@
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='user_id']" position="after">
+            <xpath expr="//field[@name='stage_id']" position="before">
                 <field name="x_job_card_number" optional="show"/>
                 <field name="x_job_type" optional="show"/>
                 <field name="x_workshop_location" optional="show"/>
