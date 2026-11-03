@@ -59,81 +59,79 @@
                     <div class="oe_title">
                         <label for="x_name" string="Log Reference"/>
                         <h1>
-                            <field name="x_name" readonly="1"/>
+                            <field name="x_name" placeholder="FCL/2026/0001"/>
                         </h1>
                     </div>
                     <group>
-                        <group string="Vehicle &amp; Trip Information">
+                        <group string="Logsheet &amp; Odometer Details">
+                            <field name="x_date"/>
                             <field name="x_vehicle_id"/>
                             <field name="x_driver_id"/>
                             <field name="x_place"/>
-                            <field name="x_date"/>
+                            <field name="x_odometer_start"/>
+                            <field name="x_odometer_end"/>
+                            <field name="x_distance_traveled_km"/>
                         </group>
-                        <group string="Audit Verification &amp; Control">
-                            <field name="x_confirm_logsheet" widget="radio"/>
-                            <field name="x_confirm_stock" widget="radio"/>
+                        <group string="Fuel Consumption &amp; Otj COC Audit">
+                            <field name="x_fuel_liters"/>
+                            <field name="x_expected_km_per_liter"/>
+                            <field name="x_actual_km_per_liter"/>
+                            <field name="x_fuel_usage_difference"/>
+                            <field name="x_expected_fuel_liters"/>
+                            <field name="x_excess_use_liters"/>
                             <field name="x_otj_coc_fuel_price"/>
+                            <field name="x_nad_value"/>
                         </group>
                     </group>
-                    <notebook>
-                        <page string="Refuel &amp; Odometer Metrics" name="fuel_metrics">
-                            <group>
-                                <group string="Odometer &amp; Distance">
-                                    <field name="x_odometer_start"/>
-                                    <field name="x_odometer_end"/>
-                                    <field name="x_distance_traveled_km"/>
-                                </group>
-                                <group string="Efficiency Reconciliation (KM/L)">
-                                    <field name="x_fuel_liters"/>
-                                    <field name="x_expected_km_per_liter"/>
-                                    <field name="x_actual_km_per_liter"/>
-                                    <field name="x_fuel_usage_difference"/>
-                                </group>
-                            </group>
-                            <group string="Financial Discrepancy (Otj COC Benchmark @ NAD 25.98/L)">
-                                <group>
-                                    <field name="x_expected_fuel_liters"/>
-                                    <field name="x_excess_use_liters"/>
-                                </group>
-                                <group>
-                                    <field name="x_nad_value" class="oe_subtotal_footer_separator"/>
-                                </group>
-                            </group>
-                        </page>
-                        <page string="Audit Remarks &amp; Investigation" name="audit_notes">
-                            <field name="x_notes" placeholder="e.g. Odometer typo from driver logsheet, manifold weeping, high speed burn..."/>
-                        </page>
-                    </notebook>
+                    <group string="Internal Control &amp; Cross-Checks">
+                        <group>
+                            <field name="x_confirm_logsheet"/>
+                            <field name="x_confirm_stock"/>
+                        </group>
+                        <group>
+                            <field name="x_notes" placeholder="e.g. Walvis Bay haulage, manifold leak test, local errands..."/>
+                        </group>
+                    </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- 3. Graph View -->
+    <!-- 3. Graph View: Excess Fuel Variance by Vehicle -->
     <record id="view_x_nfd_fuel_consumption_log_graph" model="ir.ui.view">
         <field name="name">x.nfd.fuel.consumption.log.graph</field>
         <field name="model">x_nfd_fuel_consumption_log</field>
         <field name="arch" type="xml">
-            <graph string="Excess Fuel Financial Impact (NAD Value @ Otj COC)" type="bar" sample="1">
+            <graph string="Excess Fuel Liters &amp; Financial Impact (Otj COC)" type="bar" sample="1">
                 <field name="x_vehicle_id"/>
-                <field name="x_nad_value" type="measure"/>
                 <field name="x_excess_use_liters" type="measure"/>
+                <field name="x_nad_value" type="measure"/>
             </graph>
         </field>
     </record>
 
-    <!-- 4. Pivot View -->
+    <!-- 3b. Graph View: Site & Corridor Refueling Analytics -->
+    <record id="view_x_nfd_fuel_consumption_log_site_graph" model="ir.ui.view">
+        <field name="name">x.nfd.fuel.consumption.log.site.graph</field>
+        <field name="model">x_nfd_fuel_consumption_log</field>
+        <field name="arch" type="xml">
+            <graph string="Refueling Volume by Site &amp; Corridor (Liters)" type="bar" sample="1">
+                <field name="x_place"/>
+                <field name="x_fuel_liters" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- 4. Pivot Analysis -->
     <record id="view_x_nfd_fuel_consumption_log_pivot" model="ir.ui.view">
         <field name="name">x.nfd.fuel.consumption.log.pivot</field>
         <field name="model">x_nfd_fuel_consumption_log</field>
         <field name="arch" type="xml">
-            <pivot string="Fuel Consumption &amp; Variance Analysis" sample="1">
+            <pivot string="Fuel Consumption &amp; Financial Loss Matrix" sample="1">
                 <field name="x_vehicle_id" type="row"/>
-                <field name="x_driver_id" type="row"/>
                 <field name="x_place" type="col"/>
                 <field name="x_distance_traveled_km" type="measure"/>
                 <field name="x_fuel_liters" type="measure"/>
-                <field name="x_expected_fuel_liters" type="measure"/>
                 <field name="x_excess_use_liters" type="measure"/>
                 <field name="x_nad_value" type="measure"/>
             </pivot>
@@ -145,7 +143,7 @@
         <field name="name">x.nfd.fuel.consumption.log.kanban</field>
         <field name="model">x_nfd_fuel_consumption_log</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="x_anomaly_flag" class="o_kanban_mobile">
+            <kanban class="o_kanban_dashboard" sample="1">
                 <field name="x_name"/>
                 <field name="x_vehicle_id"/>
                 <field name="x_driver_id"/>
@@ -233,9 +231,49 @@
         </field>
     </record>
 
-    <!-- 8. Action: Executive Dashboard Action (Default Graph & Pivot) -->
+    <!-- ============================================================== -->
+    <!-- 8. DASHBOARD 1: NFD EXECUTIVE COMMAND CENTER                   -->
+    <!-- ============================================================== -->
+    <record id="action_nfd_dash_command_center" model="ir.actions.act_window">
+        <field name="name">NFD Executive Command Center</field>
+        <field name="res_model">x_nfd_fuel_consumption_log</field>
+        <field name="view_mode">kanban,pivot,list,graph,form</field>
+        <field name="view_id" ref="view_x_nfd_fuel_consumption_log_kanban"/>
+        <field name="search_view_id" ref="view_x_nfd_fuel_consumption_log_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Executive Command Center: Refuel logs, driver audits, and variance tracking.
+            </p>
+        </field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 9. DASHBOARD 2: FUEL CONSUMPTION & OTJ COC VARIANCE DASHBOARD  -->
+    <!-- ============================================================== -->
+    <record id="action_nfd_dash_fuel_variance" model="ir.actions.act_window">
+        <field name="name">Fuel &amp; Otj COC Variance Dashboard</field>
+        <field name="res_model">x_nfd_fuel_consumption_log</field>
+        <field name="view_mode">graph,pivot,list,form</field>
+        <field name="view_id" ref="view_x_nfd_fuel_consumption_log_graph"/>
+        <field name="search_view_id" ref="view_x_nfd_fuel_consumption_log_search"/>
+        <field name="context">{'search_default_group_vehicle': 1}</field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- 10. DASHBOARD 3: DRIVER & REFUELING SITE ANALYTICS             -->
+    <!-- ============================================================== -->
+    <record id="action_nfd_dash_driver_site" model="ir.actions.act_window">
+        <field name="name">Driver &amp; Refueling Site Analytics</field>
+        <field name="res_model">x_nfd_fuel_consumption_log</field>
+        <field name="view_mode">graph,pivot,list,form</field>
+        <field name="view_id" ref="view_x_nfd_fuel_consumption_log_site_graph"/>
+        <field name="search_view_id" ref="view_x_nfd_fuel_consumption_log_search"/>
+        <field name="context">{'search_default_group_place': 1}</field>
+    </record>
+
+    <!-- Backward-compatibility alias -->
     <record id="action_nfd_excess_fuel_dashboard" model="ir.actions.act_window">
-        <field name="name">Sept 2026 Excess Fuel &amp; Otj COC Dashboard</field>
+        <field name="name">Fuel &amp; Otj COC Variance Dashboard</field>
         <field name="res_model">x_nfd_fuel_consumption_log</field>
         <field name="view_mode">graph,pivot,list,form</field>
         <field name="view_id" ref="view_x_nfd_fuel_consumption_log_graph"/>

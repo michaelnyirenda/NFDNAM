@@ -1808,4 +1808,27 @@ for record in self:
         <field name="name">Full Breakdown &amp; Field Service</field>
         <field name="sequence">5</field>
     </record>
+
+    <!-- ============================================================== -->
+    <!-- 12. ACCESS RIGHTS: BASE GROUP USER FOR CUSTOM SAAS MODELS      -->
+    <!-- ============================================================== -->
+    <record id="access_x_nfd_fuel_consumption_log_user" model="ir.model.access">
+        <field name="name">access.x.nfd.fuel.consumption.log.user</field>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="access_x_nfd_fuel_dispatch_log_user" model="ir.model.access">
+        <field name="name">access.x.nfd.fuel.dispatch.log.user</field>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
 </odoo>

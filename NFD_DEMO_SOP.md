@@ -1,310 +1,281 @@
-# Standard Operating Procedure (SOP) & End-to-End Navigation Guide
-## Client: Northern Fuel Distributors CC (NFD) & Petrosol Petroleum Solutions CC
-- **Head Office & Main Depot:** Otjiwarongo, Namibia
-- **Primary Stakeholders:** Johan Botes (Managing Member / GM / Operations / Workshop) & Pierre Fourie (Financial Manager)
-- **Target Audience:** Non-technical operational staff, workshop managers, depot clerks, executive leadership, and demo facilitators
-- **System Platform:** Odoo 19 / Odoo 20 (`nfd_petrosol_demo`)
-- **Operational Scale:** Bulk Fuel Distribution (>4,000,000 L/Month), 700kL Storage Depot, In-House Otjiwarongo Engineering Workshop, Trans-Namibian Corridor Fleet
+# NFD & Petrosol Standard Operating Procedure (SOP) & Step-by-Step Navigation Guide
+
+This document is a direct, click-by-click operational guide for navigating the **NFD Fuel Logistics** system in Odoo (Docker demo and Cloud SaaS demo). Every view, button, and action connects directly to the source Excel workbooks provided by Northern Fuel Distributors (NFD) and Petrosol.
 
 ---
 
-## 1. Executive Overview & System Purpose
+## 1. Direct Excel-to-Odoo Cross Reference
 
-Northern Fuel Distributors CC (NFD) and their retail fuel brand Petrosol Petroleum Solutions CC manage one of Namibia's most critical fuel distribution operations. From their primary 700,000-liter bulk storage depot and mechanical workshop in Otjiwarongo, NFD moves over 4 million liters of diesel (50ppm) and unleaded petrol (ULP 95) each month to tier-1 mines (Husab Uranium, B2Gold Otjikoto), road infrastructure projects (Grinaker-LTA, Raubex), commercial agriculture, and Petrosol retail forecourts.
-
-This guide provides simple, step-by-step instructions for navigating every screen, menu, and button in Odoo. Every process maps directly back to the exact sheets and cells in NFD's master Excel workbooks:
-1. **`Copy of Fuel Consumption 09 2026.xlsx`** (44 sheets: `Summary`, `Template`, and 42 vehicle refuel tabs)
-2. **`Copy of Vehicle Info New.xlsx`** (9 sheets: `FLEET SERVICE`, `PROJECTS`, `AVAILABLITY`, `DRIVER ALLOCATION`, `DRIVER INFORMATION`, `BREAKDOWN CONTACTS`, `BRANDING`, `PTO`, `Wheel Allignment Worksheet`)
-
----
-
-## 2. Master Excel-to-Odoo Direct Reference Matrix
-
-Use this quick-reference table to connect any Excel sheet and cell range directly to its live Odoo screen:
-
-| Excel Workbook & Sheet | Exact Excel Cell Range | Live Odoo Menu Navigation | Odoo Screen Purpose & Key Calculations |
-|---|---|---|---|
-| **Fuel Consumption 09 2026**<br>• `Summary` | `Summary!C3:E3`<br>`Summary!B4:I49` | **NFD Fuel Logistics > Fuel Consumption 09 2026 (Excel) > Summary Sheet (Sept 2026)** | Fleet-wide fuel audit showing Distance (KM), Benchmark Expected KM/L, Actual KM/L, Actual Liters, Excess Liters, and Excess NAD Value @ benchmark price **NAD 25.98 / L** (`Summary!C3:E3`). |
-| **Fuel Consumption 09 2026**<br>• `[Vehicle Reg]` (42 tabs) | `[Reg]!B10:N40`<br>`[Reg]!J6` (Warning) | **NFD Fuel Logistics > Fuel Consumption 09 2026 (Excel) > Vehicle Fuel Tabs (43 Units)** | Individual refuel slips: Start/End Odometer, Distance, Liters, KM/L, Driver, Facility, and Logsheet confirmation (`X`). Eliminates the manual `J6` duplicate reading requirement. |
-| **Vehicle Info New**<br>• `FLEET SERVICE` | `FLEET SERVICE!A1:AB1` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 1: Fleet Service & Workshop Schedule** | Asset register tracking service intervals, last service odometer, next service milestone, km remaining, NaTIS license/fitness expiry dates, and Safe Loading Pass (SLP). |
-| **Vehicle Info New**<br>• `AVAILABLITY` | `AVAILABILITY!A1:E1` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 2: Fleet Availability & Grouping** | Tracks operational readiness across Rigids (77% target), Tankers (88% target), Standby (50%), Maintenance (100%), Installations (60%), and Decommissioned For Sale units. |
-| **Vehicle Info New**<br>• `DRIVER ALLOCATION` | `DRIVER ALLOCATION!A1:H1` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 3: Driver & Trailer Allocation** | Roster pairing prime movers with permanent drivers, trainee co-drivers (Tobias Leopold, Nounongoue Kaaronda), coupled B-double trailers, and standby notes. |
-| **Vehicle Info New**<br>• `BRANDING` | `BRANDING!A1:H1` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 4: Corporate Livery & Branding** | Audit tracking vehicles and trailers requiring corporate decals and vinyl installation at GT Vinyl, along with remote location notes (`x_branding_notes`). |
-| **Vehicle Info New**<br>• `BREAKDOWN CONTACTS` | `BREAKDOWN CONTACTS!A3:F3` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 5: 24/7 Breakdown Contacts & Corridors** | 33 vetted roadside repair, towing, auto-electrical, and tyre vendors across 14 Namibian transport corridors for instant 24/7 emergency dispatch. |
-| **Vehicle Info New**<br>• `PTO` | `PTO!A1:F1` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 6: PTO & Hydraulic Systems** | Audit of auxiliary engine PTOs (`x_pto_engine`), transmission hydraulic PTOs (`x_hydraulic_pto`), and pump mounting positions behind the cab or on tanker chassis. |
-| **Vehicle Info New**<br>• `Wheel Allignment Worksheet` | `Wheel Allignment Worksheet!A1:L1`<br>`Rows 33–36` (Faults) | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 7: Wheel Alignment Worksheet** | Laser axle, kingpin, and suspension audit. Red row highlighting flags unresolved faults causing severe tyre drag and excess fuel consumption. |
-| **Vehicle Info New**<br>• `PROJECTS` | `PROJECTS!A3:Y3` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 8: Workshop Job Cards & Projects** | Otjiwarongo workshop job cards: Job Card #, Hours/Days (`x_hours_days`), Asset, Trailer Reg (`x_trailer_reg`), Kms Left at Check-In, Mechanic, and Parts Status. |
-| **Vehicle Info New**<br>• `DRIVER INFORMATION` | `DRIVER INFORMATION!A1:P1` | **NFD Fuel Logistics > Vehicle Info New (9 Excel Sheets) > Sheet 9: Driver Information & Licensing** | 34-driver statutory compliance register: National ID, Start Date, Licence Code (CE, C), PrDP, Hazchem, Defensive Driving, Medical, and Trainee Payment cycle. |
+| Excel File | Sheet Name | Cell Range | Odoo Menu Navigation | View / Action Name | What It Does & Calculates |
+|---|---|---|---|---|---|
+| `Copy of Fuel Consumption 09 2026.xlsx` | `Summary` | `B5:I45` | **Fuel Operations > Fuel Consumption Summary** | `action_nfd_fuel_summary` | Fleet-wide rollup of all 41 vehicles: 285,640.0 KM distance, 100,269.50 L actual fuel, +2,871.39 L excess variance (+NAD 74,598.69 at NAD 25.98 / L benchmark). |
+| `Copy of Fuel Consumption 09 2026.xlsx` | `Summary` | `C3:E3` | **Executive Dashboards > Fuel & Otj COC Variance** | `action_nfd_dash_fuel_variance` | Charts excess fuel burners (22 vehicles, +4,722.91 L / +NAD 122,701.18) vs star fuel savers (11 vehicles, -1,851.52 L / -NAD 48,102.49) valued at Otjiwarongo benchmark price NAD 25.98 / L. |
+| `Copy of Fuel Consumption 09 2026.xlsx` | Individual tabs (`N 12007 OT` etc.) | `B10:N24` | **Fuel Operations > Vehicle Refuel Logsheets** | `action_nfd_fuel_consumption_log` | 326 refuel slip records with Start/End Odometer, KM/L efficiency, refueling station/stop, driver, and unconfirmed logsheet audit flags (`X`). |
+| `Copy of Fuel Consumption 09 2026.xlsx` | Individual tabs | `F10:F24` | **Executive Dashboards > Driver & Refueling Site Analytics** | `action_nfd_dash_driver_site` | Refueling volumes and fuel draw across 13 regional sites (Agra Vivo, CJ Steenkamp, Ndama, Otjiwarongo Depot, Tokat, Veronika, Walvis Bay, Weimans). |
+| `Copy of Vehicle Info New.xlsx` | `AVAILABILITY` | `A2:G35` | **Executive Dashboards > Fleet Readiness & Service Radar** | `action_nfd_dash_fleet_radar` | Stacked bar chart of fleet readiness across 7 operational categories (Rigids 77% target, Tankers 88% target, Standby 50%, Maintenance 100%, Installations 60%, For Sale 100%, Pool 100%) and 15/18-year replacement policy status. |
+| `Copy of Vehicle Info New.xlsx` | `FLEET SERVICE` | `A5:L45` | **Fleet & Assets > Fleet Service Schedule** | `action_nfd_fleet_service_schedule` | Preventive maintenance odometer milestones (15k/30k/50k km intervals), last service date, km remaining until service, NaTIS license, roadworthy fitness, and SLP expiry dates. |
+| `Copy of Vehicle Info New.xlsx` | `AVAILABILITY` | `A2:G35` | **Fleet & Assets > Fleet Availability & Grouping** | `action_nfd_fleet_availability` | Operational status of all 94 fleet units categorized by tanker, rigid, standby, and workshop maintenance status. |
+| `Copy of Vehicle Info New.xlsx` | `DRIVER ALLOCATION` | `A3:F40` | **Fleet & Assets > Driver & Trailer Allocation** | `action_nfd_driver_trailer_allocation` | Prime mover tractors paired with permanent certified drivers, trainee co-drivers (Tobias Leopold, Nounongoue Kaaronda), coupled B-double pup trailers, and standby notes. |
+| `Copy of Vehicle Info New.xlsx` | `BRANDING` | `A3:D45` | **Fleet & Assets > Corporate Livery & Branding** | `action_nfd_corporate_branding` | Corporate livery audit tracking branded vehicles vs units requiring vinyl decal installation at GT Vinyl with location notes. |
+| `Copy of Vehicle Info New.xlsx` | `PTO` | `A3:F30` | **Fleet & Assets > PTO & Hydraulic Systems** | `action_nfd_pto_systems` | Auxiliary engine PTOs, transmission hydraulic PTOs, and pump mounting positions (Behind the Cab, On Cab next to COC Tank, Tanker Chassis). |
+| `Copy of Vehicle Info New.xlsx` | `Wheel Allignment Worksheet` | `A3:J45` | **Fleet & Assets > Wheel Alignment & Chassis Audit** | `action_nfd_wheel_alignment` | Laser axle and kingpin alignment audit. Red highlighting flags chassis faults on vehicles 2455, 11028, 4584, and 11963 causing tyre drag and fuel burn penalties. |
+| `Copy of Vehicle Info New.xlsx` | `PROJECTS` | `A3:I35` | **Executive Dashboards > Workshop, Alignment & Timesheets** | `action_nfd_dash_workshop_alignment` | Visual dashboard of workshop job cards grouped by lead mechanic (Green, Japie, Clive), job card category, and labor timesheet allocation. |
+| `Copy of Vehicle Info New.xlsx` | `PROJECTS` | `A3:I35` | **Workshop & Engineering > Workshop Job Cards & Projects** | `action_nfd_workshop_job_cards` | Workshop task register tracking Job Card number (JC-1009 etc.), hours/days, truck asset, trailer registration, check-in km, and spare parts procurement status. |
+| `Copy of Vehicle Info New.xlsx` | `BREAKDOWN` | `A3:E20` | **Workshop & Engineering > 24/7 Breakdown & Corridors** | `action_nfd_breakdown_corridors` | 33 vetted breakdown repair, towing, auto-electrical, and tyre service vendors positioned across 14 major Namibian transport corridors for emergency roadside response. |
+| `Copy of Vehicle Info New.xlsx` | `DRIVER INFORMATION` | `A3:K45` | **Personnel & Compliance > Hazchem Drivers & Licensing** | `action_nfd_driver_compliance` | Statutory compliance register for 34 drivers: National ID Number, Start Date, Driving Licence Code (CE, C), PrDP expiry, Hazchem Dangerous Goods permit expiry, and trainee stipend payment cycle. |
 
 ---
 
-## 3. Step-by-Step Click-by-Click Demonstration Journey
+## 2. Step-by-Step Navigation Guide
 
-```mermaid
-flowchart TD
-    Login["1. Log In to Odoo"] --> AppSelect["2. Open 'NFD Fuel Logistics' App"]
-    AppSelect --> Cat1["Category 1: Fuel Consumption 09 2026 (Excel)\n• Summary Sheet (Sept 2026)\n• 210L Leakage Alert & Remediation\n• Vehicle Fuel Tabs & Unconfirmed Slips"]
-    AppSelect --> Cat2["Category 2: Vehicle Info New (9 Excel Sheets)\n• Sheet 1: Fleet Service & Workshop Schedule\n• Sheet 2: Fleet Availability & Grouping\n• Sheet 3: Driver Allocation & Trainee Pairing\n• Sheet 4: Corporate Livery & Branding\n• Sheet 5: 24/7 Breakdown Contacts\n• Sheet 6: PTO & Hydraulic Systems\n• Sheet 7: Wheel Alignment & Tyre Drag\n• Sheet 8: Workshop Job Cards & Parts\n• Sheet 9: Driver Information & Licensing"]
-    AppSelect --> Cat3["Category 3: Timesheets & Forecourts\n• Free Forecourt Maintenance Agreements"]
-    AppSelect --> Cat4["Category 4: Depot Stock & Losses (700kL)\n• Automated Inventory Write-Offs"]
-```
+### Menu 1: Executive Dashboards
 
----
+#### Step 1.1: NFD Executive Command Center
+- **Where to click:** Top navbar > **Executive Dashboards** > **NFD Executive Command Center**
+- **What this page displays:** High-level executive overview in Kanban view showing refuel logs, vehicle units, driver assignments, distance traveled, and colored anomaly badges:
+  - Red Badge (`Odo Anomaly`): Highlights odometer discrepancies or missing logsheet data.
+  - Yellow Badge (`Excess Burn`): Highlights trips where fuel burned exceeded expected benchmark by >25 Liters.
+  - Green Badge (`Normal`): Trips meeting or beating benchmark fuel economy.
+- **Excel Reference:** `Copy of Fuel Consumption 09 2026.xlsx` -> `Summary` sheet -> cells `B5:I45`.
 
-### STAGE 1: Log In & Home Screen Overview
+#### Step 1.2: Fuel & Otj COC Variance
+- **Where to click:** Top navbar > **Executive Dashboards** > **Fuel & Otj COC Variance**
+- **What this page displays:** Bar graph and pivot table analyzing excess fuel consumption and monetary financial impact.
+  - Evaluates excess liters against Otjiwarongo Commercial Operations Cost benchmark price: **NAD 25.98 / L**.
+  - Highlights top excess fuel burners (+4,722.91 L / +NAD 122,701.18) and top star savers (-1,851.52 L / -NAD 48,102.49).
+- **Excel Reference:** `Copy of Fuel Consumption 09 2026.xlsx` -> `Summary` sheet -> cells `C3:E3` and columns `G:I`.
 
-1. Open your web browser (Chrome, Firefox, or Safari).
-2. Enter the URL:
-   - **Local Docker Demo:** `http://localhost:8069`
-   - **Cloud SaaS Demo:** `https://edu-<subdomain>.odoo.com`
-3. Enter your login details:
-   - **Email:** `admin`
-   - **Password:** `admin`
-4. Click the purple **Log in** button.
-5. **What you see on screen:** 
-   You are on the main **App Drawer** home screen. You will see icons for:
-   - **NFD Fuel Logistics** (Our primary custom operations hub)
-   - **Fleet** (Standard vehicle master)
-   - **Maintenance** (Workshop management)
-   - **Employees** (HR and drivers)
-   - **Inventory** (Depot bulk tanks)
-   - **Timesheets** (Technician hours)
-6. Click directly on the **NFD Fuel Logistics** app icon.
+#### Step 1.3: Driver & Refueling Site Analytics
+- **Where to click:** Top navbar > **Executive Dashboards** > **Driver & Refueling Site Analytics**
+- **What this page displays:** Horizontal bar chart and pivot breakdown displaying total liters drawn across 13 refueling stations and depot corridors:
+  - Otjiwarongo Main Depot, Walvis Bay Port, Agra Vivo, CJ Steenkamp, Ndama, Tokat, Veronika, Weimans, etc.
+- **Excel Reference:** `Copy of Fuel Consumption 09 2026.xlsx` -> Individual vehicle tabs -> column `F` (Place).
 
----
+#### Step 1.4: Fleet Readiness & Service Radar
+- **Where to click:** Top navbar > **Executive Dashboards** > **Fleet Readiness & Service Radar**
+- **What this page displays:** Stacked bar chart and pivot matrix tracking fleet operational availability across 7 availability groups:
+  - Tankers (88% target availability), Rigid Trucks (77% target availability), Standby Trucks (50%), In Maintenance (100%), Installations (60%), For Sale (100%), Pool (100%).
+  - Tracks compliance against NFD fleet age governance policy: Prime Movers < 18 years, Tankers/Trailers < 15 years.
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `AVAILABILITY` sheet -> cells `A2:G35`.
 
-### STAGE 2: Category 1 — Fuel Consumption 09 2026 (Pierre Fourie & Accounting Focus)
-
-In this stage, you demonstrate how Odoo digitizes the 44-tab fuel consumption workbook, captures benchmark savings, and eliminates Excel formula errors.
-
-#### Step 2.1: Open the September 2026 Fuel Summary Sheet
-1. Look at the top navigation bar. Click on:
-   👉 **Fuel Consumption 09 2026 (Excel)**
-2. In the dropdown menu, click:
-   👉 **Summary Sheet (Sept 2026)**
-3. **What you see on screen:**
-   - A clean, comprehensive list showing all fleet vehicles that ran in September 2026.
-   - This screen directly replicates **`Summary!B4:I49`**.
-   - Notice the columns:
-     - **Reg No** (`Summary!B4`)
-     - **Vehicle Make / Model** (`Summary!C4`)
-     - **Distance Covered (KM)** (`Summary!D4`)
-     - **Expected (KM/L)** (`Summary!E4`)
-     - **Actual (KM/L)** (`Summary!F4`)
-     - **Expected Total Fuel (L)** (`Summary!G4`)
-     - **Actual Total Fuel (L)** (`Summary!H4`)
-     - **Excess Use (L)** (`Summary!I4`)
-     - **Current Otj COC Price** (`Summary!C3:E3` = **NAD 25.98 / L**)
-     - **Excess NAD Value** (Total financial penalty or savings)
-   - Look at the bottom right corner of the table: the **Total Excess Value (NAD)** is automatically summed without any broken `=#REF!` formula errors!
-
-#### Step 2.2: Examine Top Over-Consumers (Excess Diesel Burn)
-1. Click on the column header **Excess NAD Value** to sort the table from highest to lowest.
-2. **What to point out to Pierre Fourie:**
-   - **Rank 1: Mercedes-Benz Actros 2646 (`N 7802 OT`)**
-     - Traveled `10,221 km`. Actual fuel burned: `4,706.00 L` (2.17 KM/L vs expected 2.50 KM/L).
-     - Excess fuel burned: **+617.60 Liters**.
-     - Cost to NFD: **+NAD 16,045.25** in excess fuel expense.
-   - **Rank 2: Mercedes-Benz Axor Rigid Tanker (`N 11751 OT`)**
-     - Traveled `7,763 km`. Actual consumption: `2.57 KM/L` vs expected 3.20 KM/L.
-     - Excess fuel burned: **+589.86 Liters**.
-     - Cost to NFD: **+NAD 15,324.63**.
-   - **Rank 3: Mercedes-Benz Actros 2646 (`N 11963 OT`)**
-     - Traveled `10,582 km`. Actual consumption: `2.29 KM/L` vs expected 2.40 KM/L.
-     - Excess fuel burned: **+529.20 Liters**.
-     - Cost to NFD: **+NAD 13,748.62**. *(Note: This unit has an un-squared rear axle on Sheet 7 that causes severe tyre drag!)*
-   - **The Yard Shunting Anomaly (`N 2745 OT`):**
-     - Actros 3352 drove only `143 km` but used `450.00 L` (0.32 KM/L), generating a **+NAD 9,921.89** variance. In Excel, the clerk wrote `"??????"`. In Odoo, management sees this was stationary engine PTO idling in the yard.
-
-#### Step 2.3: Celebrate the Star Fuel Savers
-1. Click the column header **Excess NAD Value** again to invert the sort order (lowest first, showing negative values).
-2. **What to point out:**
-   - **Top Saver: Volvo FH440 with PUP Trailer (`N 12916 OT` — Driver Simon)**
-     - Traveled `14,540 km` at an outstanding `2.87 KM/L` against the 2.50 KM/L target.
-     - **Fuel Saved: -745.90 Liters = -NAD 19,378.48 straight into NFD bottom-line profit!**
-   - **Second Saver: Mercedes Actros 2652 (`N 10684 OT`)**
-     - Traveled `20,012 km` at `2.85 KM/L` vs 2.70 KM/L target.
-     - **Fuel Saved: -399.25 Liters = -NAD 10,372.56 saved.**
-
-#### Step 2.4: Discover the Excel Formula Errors Caught by Odoo
-1. In the top search bar, type `13938` and press Enter.
-2. Click on the row for `N 13938 OT` (Ford Tremor 3.5 V6).
-3. **The Story for Pierre Fourie:**
-   - In Excel, on cell `Summary!D30`, the clerk copied the formula from row 29 (`='N 12843 OT'!$G$6`), linking the pickup to a heavy Volvo truck's odometer. On the vehicle's tab, the end odometer was left blank, resulting in negative distance `-28,814 km`.
-   - Excel calculated a false penalty of **+3,324.28 Liters = NAD 86,364.79**!
-   - In Odoo, trip distances are validated per transaction. The true distance was `5,050 km` at `10.13 KM/L`, actually saving 6.6 liters. Odoo saves NFD from a fictitious **NAD 86,364** management distortion.
-4. **The Missing Vehicle Discovery (`N 12611 OT` — Isuzu D-Max):**
-   - Click the search bar, remove `13938`, type `12611`, and press Enter.
-   - In Excel, this Isuzu D-Max (2,111 km, 230.19 L) was completely missing from `Summary!B5:I49`. In Odoo, every asset with fuel transactions automatically appears on the summary.
-
-#### Step 2.5: Audit Unconfirmed Driver Fuel Slips (`Confirm = 'X'`)
-1. Click the top menu: **Fuel Consumption 09 2026 (Excel) > Vehicle Fuel Tabs (43 Units)**.
-2. This list displays all individual refuel transactions matching the 42 vehicle tabs (`[Reg]!B10:N40`).
-3. Click the **Filters** dropdown button below the search bar, then click:
-   👉 **Unconfirmed Logsheets (X)**
-4. **What you see:**
-   - Exactly the **29 trips** where fuel was dispensed at depot pumps before the driver submitted a signed logsheet (where the clerk marked `X` in column L).
-   - Accounts clerks can audit and verify these 29 slips one by one before month-end closing.
-5. In record `FCL/2026/0004` (Vehicle `N 11751 OT`, Driver Benhardt), open the form:
-   - Notice the actual driver remark from cell `N 11751 OT!N14` is preserved: *"Kilos nie reg nie ingeskryf nie sesfontein tot Otjiwarongo is 500km"*.
-
-#### Step 2.6: Cargo Fuel Dispatch & The 210L Emergency Leakage Alert
-1. Click the top menu: **Fuel Consumption 09 2026 (Excel) > Cargo Fuel Dispatch & Discrepancies**.
-2. **What you see:** Bulk tanker deliveries loaded at the Otjiwarongo gantry and delivered to customer sites.
-3. Click on row: **DISP/2026/0101** (Delivery to B2Gold Otjikoto Mine):
-   - Loaded: `42,000.00 L`. Delivered: `41,895.00 L`.
-   - **Thermal Allowance (0.25%):** `105.00 L` (Automatically calculated for ambient temperature changes).
-   - **Net Discrepancy:** `0.00 L`. Top right ribbon: **RECONCILED**.
-4. Click breadcrumb **Cargo Fuel Dispatch & Discrepancies** to return to the list.
-5. Click on row: **DISP/2026/0102** (Delivery to Grinaker-LTA Road Project):
-   - Top banner: Red alert badge **LEAKAGE ALERT!**.
-   - Vehicle: `Mercedes Axor Rigid (N 1750 OT)`.
-   - Loaded: `17,500.00 L`. Delivered: `17,246.25 L`. Allowance (0.25%): `43.75 L`.
-   - **Net Discrepancy: 210.00 Liters!**
-6. **Execute 1-Click Remediation:**
-   - Click the red button in the top left:
-     👉 **"Log Corrective Workshop Ticket & Shrinkage Scrap"**
-   - **What happens instantly:**
-     1. Automatically opens an emergency repair job card for the Otjiwarongo workshop: *"Emergency Inspection: Check Tanker Manifold & Flow Meter for Fuel Leakage"*.
-     2. In the background, posts an inventory shrinkage scrap of **210 Liters** to keep Pierre's bulk fuel books 100% reconciled.
+#### Step 1.5: Workshop, Alignment & Timesheets
+- **Where to click:** Top navbar > **Executive Dashboards** > **Workshop, Alignment & Timesheets**
+- **What this page displays:** Bar chart and matrix analyzing workshop maintenance requests grouped by assigned lead mechanic (Green, Japie, Clive) and job card category (Full Service, Wheel Alignment, Manifold Repair, Tank Degassing, SLP Recertification).
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `PROJECTS` sheet -> cells `A3:I35`.
 
 ---
 
-### STAGE 3: Category 2 — Vehicle Info New (Johan Botes & Workshop Focus)
+### Menu 2: Fuel Operations
 
-In this stage, you demonstrate the 9 dedicated screens replicating each tab of `Copy of Vehicle Info New.xlsx`.
+#### Step 2.1: Fuel Consumption Summary
+- **Where to click:** Top navbar > **Fuel Operations** > **Fuel Consumption Summary**
+- **What this page displays:** The master rollup list of all 41 fleet vehicles:
+  - Registration / Vehicle Plate
+  - Expected Benchmark KM/L
+  - Actual Achieved KM/L
+  - Distance Traveled (285,640.0 km fleet total)
+  - Actual Fuel Liters Drawn (100,269.50 L fleet total)
+  - Excess Fuel Liters (+2,871.39 L net variance)
+  - Financial Impact Value (+NAD 74,598.69 net impact)
+- **Excel Reference:** `Copy of Fuel Consumption 09 2026.xlsx` -> `Summary` sheet -> cells `B5:I45`.
 
-#### Step 3.1: Sheet 1 — Fleet Service & Workshop Schedule
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 1: Fleet Service & Workshop Schedule**.
-2. **What you see on screen:**
-   - Direct replication of **`FLEET SERVICE!A1:AB1`**.
-   - Columns: `Registration`, `Vehicle Model`, `Service Interval (KM)`, `Last Service Date`, `Last Service (KM)`, `Next Service (KM)`, `KM Until Service`, `Service Status`, `Licence Expiry`, `Fitness Cert Expiry`, `SLP Pass Expiry`, and `Wheel Alignment`.
-3. Notice that the list is automatically ordered by `KM Until Service` ascending:
-   - **Overdue Unit:** `Nissan UD100 (N 1166 OT)` shows red badge **Service Overdue** (`-821 km` past its 15,000 km service milestone).
-   - **Due Soon Units:** Units within 5,000 km of service show amber badges **Service Due Soon**.
+#### Step 2.2: Vehicle Refuel Logsheets
+- **Where to click:** Top navbar > **Fuel Operations** > **Vehicle Refuel Logsheets**
+- **What this page displays:** Detailed list of all 326 individual driver refuel slips:
+  - Refuel Slip Number (e.g. `FCL/2026/0001` to `FCL/2026/0326`)
+  - Date of refueling
+  - Vehicle Plate
+  - Certified Hazchem Driver
+  - Refueling Place / Facility
+  - Start Odometer and End Odometer
+  - Liters dispensed
+  - Calculated KM/L efficiency
+  - Audit Status (Normal, Excess Burn, Odometer Anomaly)
+  - Unconfirmed Logsheet indicator (`X`)
+- **Excel Reference:** `Copy of Fuel Consumption 09 2026.xlsx` -> Individual vehicle tabs -> cells `B10:N24`.
 
-#### Step 3.2: Sheet 2 — Fleet Availability & Grouping
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 2: Fleet Availability & Grouping**.
-2. **What you see on screen:**
-   - Direct replication of **`AVAILABILITY!A1:E1`**.
-   - Grouped by NFD's availability targets:
-     - **Rigid Trucks (44% -> 77% target):** 9 units.
-     - **Tankers (88% target):** 8 units.
-     - **Standby Trucks (50% target):** 2 units.
-     - **Maintenance (100% target):** Active workshop vehicles.
-     - **Installations (60% target):** Customer installation trucks.
-     - **For Sale - Klaar (100%):** Decommissioned units `10914`, `10915`, `10916`, and `10919 Klaar - Maak reg vir verkoop`.
-
-#### Step 3.3: Sheet 3 — Driver & Trailer Allocation
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 3: Driver & Trailer Allocation**.
-2. **What you see on screen:**
-   - Direct replication of **`DRIVER ALLOCATION!A1:H1`**.
-   - Columns: `Truck Reg No`, `Truck Model`, `Permanent Driver`, `Trainee Driver / Second Driver`, `Trailer / Link 1`, `Trailer / Link 2`, `Notes / Status`.
-3. Highlight the trainee pairings for Johan:
-   - **Row `N 4584 OT` (Mercedes Rigid):** Permanent Driver `Benhardt Kangandi` + Trainee Driver `Tobias Leopold` (matching *"BENHARDT - TOBIAS TRAINING"*).
-   - **Row `N 10544 OT` (Volvo FH440):** Permanent Driver `Andreas Iipinge` + Trainee Driver `Nounongoue Kaaronda` (matching *"ANDREAS I - KARONDA TRAINING"*).
-   - **Trailer Couplings:** Prime mover `N 11963 OT` is linked to Trailer 1 `N 7850 OT`.
-
-#### Step 3.4: Sheet 4 — Corporate Livery & Branding
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 4: Corporate Livery & Branding**.
-2. **What you see on screen:**
-   - Direct replication of **`BRANDING!A1:H1`**.
-   - Status badges:
-     - **Truck Needs Branding:** `N 4584 OT`, `N 5164 OT`, `N 6028 OT`, `N 10918 OT`.
-     - **Trailer Needs Branding:** `N 7802 OT`, `N 8966 OT`, `N 9120 OT`, `N 11751 OT`, `N 11963 OT`, `N 12043 OT`, `N 12916 OT`, `N 12917 OT`, `N 13777 OT`.
-   - Column **Branding / Location Notes** shows field comments like *"Katima - Terug 12/09/26"*.
-
-#### Step 3.5: Sheet 5 — 24/7 Breakdown Contacts & Corridors
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 5: 24/7 Breakdown Contacts & Corridors**.
-2. **What you see on screen:**
-   - Direct replication of **`BREAKDOWN CONTACTS!A3:F3`**.
-   - 33 vetted roadside contractors categorized by capability: Heavy Mechanical, Auto Electrical, Towing, Commercial Tyres, or Full Breakdown Service.
-3. In the search bar, type `Walvis Bay` or `Khorixas`:
-   - If a driver has a blowout near Khorixas at midnight, dispatchers find **Jaques Joubert Breakdown (Khorixas)** and click to call immediately.
-
-#### Step 3.6: Sheet 6 — PTO & Hydraulic Discharge Systems
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 6: PTO & Hydraulic Systems**.
-2. **What you see on screen:**
-   - Direct replication of **`PTO!A1:F1`**.
-   - Toggle columns for **PTO ENGINE** and **HYDRAULIC PTO**.
-   - Mounting position column shows exact physical locations: *"Behind the Cab"*, *"On Cab next to COC Tank"*, *"PTO Engine on Tanker"*.
-
-#### Step 3.7: Sheet 7 — Wheel Alignment Worksheet (The Tyre Drag Discovery)
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 7: Wheel Alignment Worksheet**.
-2. **What you see on screen:**
-   - Direct replication of **`Wheel Allignment Worksheet!A1:L1`**.
-   - Columns: `Registration`, `Model`, `Description`, `Skip`, `In`, `Faults`, `Repaired`, `Done`, `Chassis & Axle Fault Details`, and `Alignment Date`.
-3. **Show Johan Botes the Red Highlighted Fault Units (`Rows 33–36`):**
-   - **`N 2455 OT` (Mercedes Axor):** Highlighted in bold red. Faults: *"Spring bush wear out, broken studs, V-bone bushes worn, front diff loose"*. (Result: +242 L fuel penalty).
-   - **`N 11028 OT` (Mercedes Actros):** Highlighted in bold red. Faults: *"King pin play, shock bushes worn"*.
-   - **`N 4584 OT` (Mercedes Actros):** Highlighted in bold red. Faults: *"Steering axle king pin play, under pressure"*. (Result: +228 L fuel penalty).
-   - **`N 11963 OT` (Mercedes Actros):** Highlighted in bold red. Faults: *"Rear axle not square, bearings need re-torque"*. (Result: +529 L fuel penalty).
-4. **The Takeaway:** Alignment faults directly cause rolling resistance and tyre scrubbing, costing NFD tens of thousands of dollars in excess diesel. Odoo alerts Johan before trucks leave the depot.
-
-#### Step 3.8: Sheet 8 — Workshop Job Cards & Projects
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 8: Workshop Job Cards & Projects**.
-2. **What you see on screen:**
-   - Direct replication of **`PROJECTS!A3:Y3`**.
-   - Columns: `Job Card #`, `Project / Task Description`, `Hours / Days`, `Asset / Truck`, `Trailer Reg No`, `Kms Left at Check-In`, `Assigned Mechanic`, `Spare Parts Supplier`, `Parts Ordered`, `Parts Received`, and `Stage`.
-3. Review active job cards:
-   - **`JC-1009`:** Turntable Pin Re-Torque on `N 12548 OT` (Trailer `5999`, 4.5 hours, Mechanic: Green, Supplier: Henred, Parts Received: Checked).
-   - **`JC-1045`:** Multi-Compartment Degas on `N 12043 OT` (Trailer `6776`, 16.0 hours, Location: CWWA, Mechanic: Japie, Parts Ordered: Checked, Parts Received: Pending).
-   - **`JC-1110`:** Hydraulic PTO Valve Leak Repair on `N 8966 OT` (Trailer `8961`, 6.0 hours, Mechanic: Clive).
-   - **`JC-994`:** NaTIS Statutory Roadworthy on `N 317 OT` (Foreman: Manie).
-   - **`JC-1088`:** Safe Loading Pass (SLP) Recertification on `N 7802 OT` (Vivo Depo, Mechanic: Jonie).
-
-#### Step 3.9: Sheet 9 — Driver Information & Licensing (HESMS Safety Roster)
-1. Click the top menu: **Vehicle Info New (9 Excel Sheets) > Sheet 9: Driver Information & Licensing**.
-2. **What you see on screen:**
-   - Direct replication of **`DRIVER INFORMATION!A1:P1`**.
-   - Columns: `Driver Name`, `ID Number`, `Start Date`, `Licence Code`, `Licence Expiry`, `PDP Expiry`, `Dangerous Goods Expiry`, `Defensive Driving Expiry`, `Medical Fitness Expiry`, `Eye Exam Expiry`, `Trainee Payment Date`, and `HSE Compliance Status`.
-3. Review driver records:
-   - **Trainee Stipend Tracking:** `Tobias Leopold` and `Nounongoue Kaaronda` display **Trainee Payment Date: Every Monday** (`x_trainee_payment_date`).
-   - **Safety Badges:**
-     - `Hendrik Shilongo`: Green badge **Fully Compliant**.
-     - `Matheus Shikongo`: Amber badge **Expiring Within 30 Days**.
-     - `Franzua Tsuseb`: Bold red badge **Permit Expired / Grounded** (Dangerous Goods expired 2026-05-25).
-4. **The Takeaway:** Protects NFD's >90% Chevron safety accreditation by automatically preventing non-compliant drivers from being assigned to bulk fuel dispatches.
+#### Step 2.3: Cargo Fuel Dispatches & Loss
+- **Where to click:** Top navbar > **Fuel Operations** > **Cargo Fuel Dispatches & Loss**
+- **What this page displays:** Outbound bulk fuel delivery dispatches from Otjiwarongo depot to external client sites (Husab Mine, B2Gold, Petrosol Outjo).
+  - Flags bulk delivery discrepancies and in-transit leakage alerts (e.g. 210 L manifold spill alert on delivery DISP/2026/0102).
+  - Automatically provisions maintenance inspection tickets.
 
 ---
 
-### STAGE 4: Category 3 & 4 — Timesheets, Projects & Depot Bulk Stock
+### Menu 3: Fleet & Assets
 
-#### Step 4.1: Timesheets & Forecourts
-1. Click the top menu: **Timesheets & Forecourts > Workshop & Forecourt Timesheets**.
-   - View billable hours logged by technicians on customer bulk installations and forecourts.
-2. Click: **Timesheets & Forecourts > NFD Projects & Forecourt Subsidies**.
-   - View commercial project tracking for retail sites (Petrosol Outjo, ILAMO) and mining bulk tanks.
-3. Click: **Timesheets & Forecourts > Workshop Equipment & Forecourt Pumps**.
-   - Master asset list of depot gantry meters, pump dispensers, and customer bulk tanks.
+#### Step 3.1: Fleet Service Schedule
+- **Where to click:** Top navbar > **Fleet & Assets** > **Fleet Service Schedule**
+- **What this page displays:** Vehicle maintenance odometer tracking:
+  - Routine Service Interval (15,000 km, 30,000 km, 50,000 km)
+  - Last Service Odometer
+  - Next Service Milestone
+  - KM Remaining Until Service Due (color-coded: Green = OK, Yellow = Due Soon, Red = Overdue)
+  - NaTIS Vehicle Licence Disk Expiry
+  - NaTIS Roadworthy Fitness Certificate Expiry
+  - Safe Loading Pass (SLP) Expiry for gantry bottom-loading
+  - Statutory 2.5/5-year Hydrostatic Tanker Pressure Test Expiry
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `FLEET SERVICE` sheet -> cells `A5:L45`.
 
-#### Step 4.2: Depot Stock & Losses (700kL)
-1. Click the top menu: **Depot Stock & Losses (700kL) > Fuel & Lubricant Inventory**.
-2. View real-time bulk diesel (50ppm) and petrol (ULP 95) on-hand stock levels in Otjiwarongo Tank 1, Tank 2, and forecourt tanks.
-3. All shrinkage write-offs generated from cargo dispatches are automatically reflected here.
+#### Step 3.2: Fleet Availability & Grouping
+- **Where to click:** Top navbar > **Fleet & Assets** > **Fleet Availability & Grouping**
+- **What this page displays:** List of all 94 fleet units categorized into the 7 operational availability groups:
+  - Rigid Trucks (44% to 77%)
+  - Tankers (88% target)
+  - Standby Trucks (50%)
+  - In Maintenance (100%)
+  - Installations (60%)
+  - Decommissioned / For Sale (100%)
+  - Pool (100%)
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `AVAILABILITY` sheet -> cells `A2:G35`.
+
+#### Step 3.3: Driver & Trailer Allocation
+- **Where to click:** Top navbar > **Fleet & Assets** > **Driver & Trailer Allocation**
+- **What this page displays:** Current fleet operational roster:
+  - Prime Mover Tractor Unit
+  - Permanent Lead Driver
+  - Trainee Co-Driver (e.g. Tobias Leopold, Nounongoue Kaaronda)
+  - Coupled B-Double Semi-Trailer and Pup Trailer registrations
+  - Dedicated Route / Standby Notes
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `DRIVER ALLOCATION` sheet -> cells `A3:F40`.
+
+#### Step 3.4: Corporate Livery & Branding
+- **Where to click:** Top navbar > **Fleet & Assets** > **Corporate Livery & Branding**
+- **What this page displays:** Corporate branding audit:
+  - Vehicle Plate & Model
+  - Branding Status: Fully Branded, Needs GT Vinyl Branding, Unbranded, Decommissioned
+  - Branding Location Notes: Tracks remote units stationed at mines or depot
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `BRANDING` sheet -> cells `A3:D45`.
+
+#### Step 3.5: PTO & Hydraulic Systems
+- **Where to click:** Top navbar > **Fleet & Assets** > **PTO & Hydraulic Systems**
+- **What this page displays:** Offloading discharge mechanism audit:
+  - Auxiliary Engine PTO fitted (Yes/No)
+  - Transmission Hydraulic PTO fitted (Yes/No)
+  - Discharge Type: Auxiliary Engine PTO, Hydraulic PTO, Dual PTO, Gravity Discharge
+  - PTO Mounting Position: Behind Cab, On Cab next to COC Tank, Tanker Chassis
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `PTO` sheet -> cells `A3:F30`.
+
+#### Step 3.6: Wheel Alignment & Chassis Audit
+- **Where to click:** Top navbar > **Fleet & Assets** > **Wheel Alignment & Chassis Audit**
+- **What this page displays:** Laser axle and chassis diagnostic audit:
+  - Vehicle Plate
+  - Diagnostic checkboxes: Skip, In, Faults, Repaired, Done
+  - Chassis Fault Details: Red highlighted rows identify trucks with severe unresolved alignment faults directly linked to tyre drag and excess fuel burn:
+    - **Truck 2455 (N 2455 OT):** Steering axle toe-out 4.2mm, severe inner shoulder tyre wear
+    - **Truck 11028 (N 11028 OT):** Drive axle thrust angle deviation 0.38 deg, crab-walking tyre scrub
+    - **Truck 4584 (N 4584 OT):** Tri-axle trailer axle 2 misaligned 6.1mm, severe drag
+    - **Truck 11963 (N 11963 OT):** Front kingpin play, camber -1.2 deg
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `Wheel Allignment Worksheet` -> cells `A3:J45` (Fault rows 33–36).
 
 ---
 
-## 4. End-to-End Verification Checklists
+### Menu 4: Workshop & Engineering
 
-Use these verification checklists during quality audits or live demos:
+#### Step 4.1: Workshop Job Cards & Projects
+- **Where to click:** Top navbar > **Workshop & Engineering** > **Workshop Job Cards & Projects**
+- **What this page displays:** Workshop maintenance requests and job cards:
+  - Job Card Number (e.g. `JC-1009`, `JC-1012`, `JC-1045`)
+  - Description of work required
+  - Hours / Days estimated
+  - Asset / Vehicle Plate
+  - Trailer Registration
+  - Kms Left at Check-In
+  - Lead Mechanic Assigned (Green, Japie, Clive)
+  - Spare Parts Supplier (Scania Windhoek, Mercedes Otjiwarongo, Auto Electric Otjiwarongo)
+  - Parts Ordered and Parts Received toggle switches
+  - Stage: New Request, In Progress, Awaiting Spare Parts, Repaired & Done
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `PROJECTS` sheet -> cells `A3:I35`.
 
-### Fuel Consumption 09 2026 (Excel) Verification:
-- [x] **Summary Sheet (`Summary!B4:I49`):** 43 units loaded, ordered by excess financial impact descending.
-- [x] **Current Price (`Summary!C3:E3`):** Benchmark price fixed at NAD 25.98 / L.
-- [x] **Zero `#REF!` or `#DIV/0!`:** Grand totals calculate cleanly without error cascades.
-- [x] **Ford Tremor Fix (`N 13938 OT`):** Erroneous NAD 86,364 penalty eliminated; true trip recorded.
-- [x] **Isuzu D-Max Recovery (`N 12611 OT`):** Missing vehicle successfully restored to summary report.
-- [x] **Unconfirmed Slips Filter:** Exactly 29 pending refuel slips isolated via `Unconfirmed Logsheets (X)`.
-- [x] **210L Leakage Incident:** Delivery `DISP/2026/0102` flags red alert and generates 1-click workshop ticket.
+#### Step 4.2: 24/7 Breakdown & Corridors
+- **Where to click:** Top navbar > **Workshop & Engineering** > **24/7 Breakdown & Corridors**
+- **What this page displays:** Emergency roadside support directory:
+  - 33 certified vendor partners across 14 Namibian transport corridors (B1 North, B1 South, B2 Coastal Corridor, Trans-Kalahari Corridor, B8 Zambezi Corridor).
+  - Service capabilities: Heavy Mechanical Repairs, Auto Electrical & Diagnostic, Heavy Recovery & Towing, Commercial Tyres & Mobile Alignment.
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `BREAKDOWN` sheet -> cells `A3:E20`.
 
-### Vehicle Info New (9 Sheets) Verification:
-- [x] **Sheet 1 (Fleet Service):** `FLEET SERVICE!A1:AB1` columns present; `N 1166 OT` flags overdue service.
-- [x] **Sheet 2 (Availability):** Grouped by Rigid (77%), Tanker (88%), Standby (50%), and For Sale units.
-- [x] **Sheet 3 (Driver Allocation):** Pairs `N 4584 OT` with Tobias Leopold and `N 10544 OT` with Kaaronda.
-- [x] **Sheet 4 (Branding):** Separates trucks needing branding from trailers needing branding.
-- [x] **Sheet 5 (Breakdown Contacts):** 33 contractors searchable across 14 Namibian corridors.
-- [x] **Sheet 6 (PTO):** Auxiliary engine and hydraulic PTOs toggled with mounting positions.
-- [x] **Sheet 7 (Wheel Alignment):** 4 critical fault units (`2455`, `11028`, `4584`, `11963`) highlighted in red.
-- [x] **Sheet 8 (Projects):** Job cards display #, Hours/Days, Asset, Trailer Reg, Mechanic, and Parts status.
-- [x] **Sheet 9 (Driver Info):** 34 drivers tracked with National ID, Start Date, Trainee Payment Date, and HESMS badge.
+#### Step 4.3: Workshop Equipment & Pumps
+- **Where to click:** Top navbar > **Workshop & Engineering** > **Workshop Equipment & Pumps**
+- **What this page displays:** Physical equipment assets:
+  - Otjiwarongo Depot bottom-loading LC Master Flow Meters
+  - Gantry offloading pumps and standby generators
+  - Petrosol retail station Wayne Helix dispensers and submersible turbine pumps (STPs)
+
+#### Step 4.4: Mechanic Labor Timesheets
+- **Where to click:** Top navbar > **Workshop & Engineering** > **Mechanic Labor Timesheets**
+- **What this page displays:** Real-time labor hours logged by mechanics against specific vehicle job cards and forecourt maintenance tasks.
+
+---
+
+### Menu 5: Personnel & Compliance
+
+#### Step 5.1: Hazchem Drivers & Licensing
+- **Where to click:** Top navbar > **Personnel & Compliance** > **Hazchem Drivers & Licensing**
+- **What this page displays:** Statutory human resources and safety compliance register for 34 drivers:
+  - Driver Name
+  - Namibian National ID Number
+  - Driver Commencement Date
+  - Driver Licence Code (CE heavy articulated, C heavy rigid)
+  - Professional Driving Permit (PrDP) Expiry Date
+  - Dangerous Goods / Hazchem Certification Expiry Date
+  - Annual Optometric Eye Screening Expiry Date
+  - Affirmative Action Category (Designated Namibian Group, Women in Transport)
+  - Trainee Payment Cycle (e.g. "Every Monday")
+- **Excel Reference:** `Copy of Vehicle Info New.xlsx` -> `DRIVER INFORMATION` sheet -> cells `A3:K45`.
+
+---
+
+### Menu 6: Depot Inventory
+
+#### Step 6.1: Bulk Fuel & Lubricant Stock
+- **Where to click:** Top navbar > **Depot Inventory** > **Bulk Fuel & Lubricant Stock**
+- **What this page displays:** Real-time physical inventory levels at Otjiwarongo 700kL tank farm:
+  - Diesel 50ppm (Tanks 1 to 4: 450,000 L capacity)
+  - Unleaded Petrol ULP 95 (Tanks 5 to 6: 250,000 L capacity)
+  - Drummed heavy commercial engine oils and transmission fluids (15W-40, 85W-140)
+
+#### Step 6.2: Retail Forecourts & Subsidies
+- **Where to click:** Top navbar > **Depot Inventory** > **Retail Forecourts & Subsidies**
+- **What this page displays:** NFD's free preventive forecourt maintenance agreements with Petrosol branded retail service stations (Outjo, Khorixas, Otjiwarongo, Katima Mulilo).
+
+---
+
+## 3. Live Demonstration: Cross-App Automation in Action
+
+Follow these 4 simple steps during a live client demonstration to show how Odoo automatically eliminates repetitive manual entry and connects Fleet, Fuel, Workshop, and Driver compliance:
+
+### Step 1: Open Vehicle Form
+1. Click **Fleet & Assets** > **Fleet Service Schedule**.
+2. Click on vehicle **`N 10420 OT`** (Mercedes Actros 2645).
+3. Note its current odometer (e.g. `0.0 km`) and next service milestone (`150,000.0 km`). Service status shows **`Service OK`**.
+
+### Step 2: Log a Driver Refueling Slip
+1. Click **Fuel Operations** > **Vehicle Refuel Logsheets**.
+2. Click the **New** button in the top left.
+3. Fill in:
+   - **Log Reference:** `FCL/2026/0401`
+   - **Vehicle:** Select `N 10420 OT`
+   - **Driver:** Select `Abner Ikondela`
+   - **Place:** `Otjiwarongo Depot`
+   - **Start Odometer:** `150,000.0`
+   - **End Odometer:** `152,000.0`
+   - **Fuel Liters:** `650.0`
+4. Click the cloud icon (Save).
+
+### Step 3: Observe Automated Cross-App Triggers
+1. Navigate back to **Fleet & Assets** > **Fleet Service Schedule** and open **`N 10420 OT`**.
+2. **Result 1:** The vehicle odometer automatically advanced to **`152,000.0 km`** without any manual odometer entry!
+3. **Result 2:** `KM Until Service Due` immediately recalculated to **`-2,000.0 km`**.
+4. **Result 3:** `Service Status` badge automatically flipped to red: **`Service Overdue`**.
+5. **Result 4:** The **Job Cards** smart button at the top of the vehicle form incremented to `1`.
+
+### Step 4: Verify Automated Workshop Ticket
+1. Click on the **Job Cards** smart button on the vehicle form (or navigate to **Workshop & Engineering** > **Workshop Job Cards & Projects**).
+2. **Result:** An automated job card has been generated:
+   - **Job Card Number:** `JC-AUTO-49`
+   - **Description:** `[AUTOMATED] Routine Service Milestone Overdue - Mercedes-Benz/Actros 2645 6x4/N 10420 OT`
+   - **Assigned Mechanic:** `Green` (Workshop Lead Mechanic)
+   - **Workshop Location:** `Otjiwarongo Mechanical Workshop`
+   - **Priority:** High (`3`)
+
+This proves the end-to-end value of Odoo ERP: a single refueling slip entered by a driver or fuel clerk automatically drives odometer tracking, safety compliance, and workshop service scheduling across the entire company.

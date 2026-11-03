@@ -108,15 +108,15 @@
         </field>
     </record>
 
-    <!-- Sheet 8: Workshop Job Cards & Projects (PROJECTS Sheet) -->
+    <!-- Workshop Job Cards & Projects -->
     <record id="view_maintenance_request_sheet_projects_list" model="ir.ui.view">
-        <field name="name">maintenance.request.sheet.projects.list</field>
+        <field name="name">maintenance.request.job.cards.list</field>
         <field name="model">maintenance.request</field>
         <field name="arch" type="xml">
-            <list string="Sheet 8: Workshop Job Cards &amp; Projects">
+            <list string="Workshop Job Cards &amp; Projects">
                 <field name="x_job_card_number" string="Job Card #"/>
                 <field name="name" string="Project / Task Description"/>
-                <field name="x_hours_days" string="Hours / Days"/>
+                <field name="x_hours_days" string="Hours / Days" sum="Total Labor Hours"/>
                 <field name="equipment_id" string="Asset / Truck"/>
                 <field name="x_trailer_reg" string="Trailer Reg No"/>
                 <field name="x_kms_left_checkin" string="Kms Left at Check-In"/>
@@ -129,17 +129,69 @@
         </field>
     </record>
 
-    <record id="action_nfd_sheet_projects" model="ir.actions.act_window">
-        <field name="name">Sheet 8: Workshop Job Cards &amp; Projects</field>
+    <record id="action_nfd_workshop_job_cards" model="ir.actions.act_window">
+        <field name="name">Workshop Job Cards &amp; Projects</field>
         <field name="res_model">maintenance.request</field>
         <field name="view_mode">list,form,kanban</field>
         <field name="view_id" ref="view_maintenance_request_sheet_projects_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Vehicle Info New - Sheet 8: PROJECTS (Job Cards)
+                Workshop Job Cards &amp; Projects
             </p>
             <p>
                 Workshop task register tracking job cards, lead mechanic assignments, spare parts procurement, and stage progress.
+            </p>
+        </field>
+    </record>
+
+    <!-- Backward compatibility alias -->
+    <record id="action_nfd_sheet_projects" model="ir.actions.act_window">
+        <field name="name">Workshop Job Cards &amp; Projects</field>
+        <field name="res_model">maintenance.request</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="view_id" ref="view_maintenance_request_sheet_projects_list"/>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- DASHBOARD 5: WORKSHOP JOB CARDS, ALIGNMENT & TIMESHEETS        -->
+    <!-- ============================================================== -->
+
+    <record id="view_maintenance_request_workshop_graph" model="ir.ui.view">
+        <field name="name">maintenance.request.workshop.graph</field>
+        <field name="model">maintenance.request</field>
+        <field name="arch" type="xml">
+            <graph string="Workshop Labor &amp; Job Card Distribution" type="bar" sample="1">
+                <field name="x_job_type"/>
+                <field name="x_assigned_mechanic"/>
+                <field name="x_hours_days" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_maintenance_request_workshop_pivot" model="ir.ui.view">
+        <field name="name">maintenance.request.workshop.pivot</field>
+        <field name="model">maintenance.request</field>
+        <field name="arch" type="xml">
+            <pivot string="Workshop Job Cards &amp; Timesheet Allocation" sample="1">
+                <field name="x_assigned_mechanic" type="row"/>
+                <field name="x_job_type" type="col"/>
+                <field name="x_hours_days" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_nfd_dash_workshop_alignment" model="ir.actions.act_window">
+        <field name="name">Workshop, Alignment &amp; Timesheets Dashboard</field>
+        <field name="res_model">maintenance.request</field>
+        <field name="view_mode">graph,kanban,pivot,list,form</field>
+        <field name="view_id" ref="view_maintenance_request_workshop_graph"/>
+        <field name="context">{'search_default_group_job_type': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Workshop, Alignment &amp; Timesheets Dashboard
+            </p>
+            <p>
+                Visualizes workshop throughput, mechanic hours, corrective repairs, scheduled maintenance, and chassis alignment fault rectification.
             </p>
         </field>
     </record>
