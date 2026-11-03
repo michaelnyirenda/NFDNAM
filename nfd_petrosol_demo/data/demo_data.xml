@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data noupdate="0">
 
-    <!-- ============================================================== -->
-    <!-- 1. WAREHOUSE & STOCK LOCATIONS (OTJIWARONGO DEPOT)            -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="stock.warehouse0" model="stock.warehouse">
         <field name="name">Otjiwarongo Bulk Fuel Depot</field>
         <field name="code">OTJ</field>
@@ -13,19 +13,19 @@
     <record id="location_otjiwarongo_depot" model="stock.location">
         <field name="name">Otjiwarongo Tank Farm</field>
         <field name="usage">internal</field>
-        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="location_id" ref="stock.stock_location_stock" />
     </record>
 
     <record id="location_depot_diesel_tank1" model="stock.location">
         <field name="name">Depot Tank 1 - Diesel 50ppm (500kL)</field>
         <field name="usage">internal</field>
-        <field name="location_id" ref="location_otjiwarongo_depot"/>
+        <field name="location_id" ref="location_otjiwarongo_depot" />
     </record>
 
     <record id="location_depot_ulp_tank1" model="stock.location">
         <field name="name">Depot Tank 2 - ULP 95 (200kL)</field>
         <field name="usage">internal</field>
-        <field name="location_id" ref="location_otjiwarongo_depot"/>
+        <field name="location_id" ref="location_otjiwarongo_depot" />
     </record>
 
     <record id="location_husab_mine" model="stock.location">
@@ -43,46 +43,46 @@
         <field name="usage">customer</field>
     </record>
 
-    <!-- Legacy Demo Stock Locations (b84fb91 compatibility) -->
+    
     <record id="location_depot_bulk" model="stock.location">
         <field name="name">Bulk Fuel Tank Farm</field>
-        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="location_id" ref="stock.stock_location_stock" />
         <field name="usage">internal</field>
     </record>
 
     <record id="location_tank_1_diesel" model="stock.location">
         <field name="name">Tank 1 - Diesel 50ppm (500,000L)</field>
-        <field name="location_id" ref="location_depot_bulk"/>
+        <field name="location_id" ref="location_depot_bulk" />
         <field name="usage">internal</field>
     </record>
 
     <record id="location_tank_2_ulp95" model="stock.location">
         <field name="name">Tank 2 - ULP 95 (200,000L)</field>
-        <field name="location_id" ref="location_depot_bulk"/>
+        <field name="location_id" ref="location_depot_bulk" />
         <field name="usage">internal</field>
     </record>
 
     <record id="location_workshop_store" model="stock.location">
         <field name="name">Workshop Spare Parts &amp; Consumables</field>
-        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="location_id" ref="stock.stock_location_stock" />
         <field name="usage">internal</field>
     </record>
 
     <record id="location_transit_tankers" model="stock.location">
         <field name="name">Fuel In-Transit (Fleet Road Tankers)</field>
-        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="location_id" ref="stock.stock_location_stock" />
         <field name="usage">transit</field>
     </record>
 
     <record id="location_fuel_shrinkage" model="stock.location">
         <field name="name">Fuel Handling Loss &amp; Shrinkage</field>
-        <field name="location_id" ref="stock.stock_location_company"/>
+        <field name="location_id" ref="stock.stock_location_company" />
         <field name="usage">inventory</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 2. PRODUCTS (FUELS, LUBRICANTS & WORKSHOP SPARES)             -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="product_diesel_50ppm" model="product.product">
         <field name="name">Diesel 50ppm (Low Sulphur Bulk)</field>
         <field name="type">consu</field>
@@ -131,7 +131,7 @@
         <field name="standard_price">74000.00</field>
     </record>
 
-    <!-- Legacy Spares & Consumables (b84fb91 compatibility) -->
+    
     <record id="product_oil_15w40" model="product.product">
         <field name="name">Heavy Duty Engine Oil 15W-40 (210L Drum)</field>
         <field name="type">consu</field>
@@ -164,9 +164,9 @@
         <field name="standard_price">2100.00</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 3. FLEET BRANDS & VEHICLE MODELS                               -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="brand_scania" model="fleet.vehicle.model.brand">
         <field name="name">Scania</field>
     </record>
@@ -209,89 +209,89 @@
 
     <record id="model_scania_r500" model="fleet.vehicle.model">
         <field name="name">R500 6x4 Heavy Hauler</field>
-        <field name="brand_id" ref="brand_scania"/>
+        <field name="brand_id" ref="brand_scania" />
     </record>
     <record id="model_actros_2645" model="fleet.vehicle.model">
         <field name="name">Actros 2645 6x4</field>
-        <field name="brand_id" ref="brand_mercedes"/>
+        <field name="brand_id" ref="brand_mercedes" />
     </record>
     <record id="model_argosy" model="fleet.vehicle.model">
         <field name="name">Argosy Prime Mover</field>
-        <field name="brand_id" ref="brand_freightliner"/>
+        <field name="brand_id" ref="brand_freightliner" />
     </record>
     <record id="model_axor_rigid" model="fleet.vehicle.model">
         <field name="name">Axor 17,500L Rigid Tanker</field>
-        <field name="brand_id" ref="brand_mercedes"/>
+        <field name="brand_id" ref="brand_mercedes" />
     </record>
     <record id="model_scania_p360" model="fleet.vehicle.model">
         <field name="name">P360 16,000L Rigid Tanker</field>
-        <field name="brand_id" ref="brand_scania"/>
+        <field name="brand_id" ref="brand_scania" />
     </record>
     <record id="model_volvo_fh440" model="fleet.vehicle.model">
         <field name="name">Volvo FH440 6x4</field>
-        <field name="brand_id" ref="brand_volvo"/>
+        <field name="brand_id" ref="brand_volvo" />
     </record>
     <record id="model_volvo_fh520" model="fleet.vehicle.model">
         <field name="name">Volvo FH520 6x4 Long-Haul</field>
-        <field name="brand_id" ref="brand_volvo"/>
+        <field name="brand_id" ref="brand_volvo" />
     </record>
     <record id="model_isuzu_dmax" model="fleet.vehicle.model">
         <field name="name">Isuzu 1.9 D-MAX</field>
-        <field name="brand_id" ref="brand_isuzu"/>
+        <field name="brand_id" ref="brand_isuzu" />
     </record>
     <record id="model_suzuki_carry" model="fleet.vehicle.model">
         <field name="name">Suzuki Carry 1.2</field>
-        <field name="brand_id" ref="brand_suzuki"/>
+        <field name="brand_id" ref="brand_suzuki" />
     </record>
     <record id="model_ford_tremor" model="fleet.vehicle.model">
         <field name="name">Ford Tremor 4x4</field>
-        <field name="brand_id" ref="brand_ford"/>
+        <field name="brand_id" ref="brand_ford" />
     </record>
     <record id="model_actros_2646" model="fleet.vehicle.model">
         <field name="name">Actros 2646 6x4</field>
-        <field name="brand_id" ref="brand_mercedes"/>
+        <field name="brand_id" ref="brand_mercedes" />
     </record>
     <record id="model_actros_2652" model="fleet.vehicle.model">
         <field name="name">Actros 2652 6x4</field>
-        <field name="brand_id" ref="brand_mercedes"/>
+        <field name="brand_id" ref="brand_mercedes" />
     </record>
     <record id="model_actros_3352" model="fleet.vehicle.model">
         <field name="name">Actros 3352 6x4 Severe-Duty</field>
-        <field name="brand_id" ref="brand_mercedes"/>
+        <field name="brand_id" ref="brand_mercedes" />
     </record>
     <record id="model_actros_3344" model="fleet.vehicle.model">
         <field name="name">Actros 3344 6x4</field>
-        <field name="brand_id" ref="brand_mercedes"/>
+        <field name="brand_id" ref="brand_mercedes" />
     </record>
     <record id="model_nissan_ud100" model="fleet.vehicle.model">
         <field name="name">Nissan UD100 10,200L Rigid Tanker</field>
-        <field name="brand_id" ref="brand_nissan"/>
+        <field name="brand_id" ref="brand_nissan" />
     </record>
     <record id="model_toyota_hilux" model="fleet.vehicle.model">
         <field name="name">Toyota Hilux 4x4 Support Bakkie</field>
-        <field name="brand_id" ref="brand_toyota"/>
+        <field name="brand_id" ref="brand_toyota" />
     </record>
     <record id="model_grw_tanker" model="fleet.vehicle.model">
         <field name="name">GRW Tri-Axle Bulk Fuel Tanker</field>
-        <field name="brand_id" ref="brand_grw"/>
+        <field name="brand_id" ref="brand_grw" />
     </record>
     <record id="model_tankclinic_tanker" model="fleet.vehicle.model">
         <field name="name">Tank Clinic 36,000L Semi-Trailer</field>
-        <field name="brand_id" ref="brand_tankclinic"/>
+        <field name="brand_id" ref="brand_tankclinic" />
     </record>
     <record id="model_henred_link" model="fleet.vehicle.model">
         <field name="name">Henred Fruehauf B-Double Link</field>
-        <field name="brand_id" ref="brand_henred"/>
+        <field name="brand_id" ref="brand_henred" />
     </record>
     <record id="model_mobile_crane" model="fleet.vehicle.model">
         <field name="name">Tadano Heavy Mobile Recovery Crane</field>
-        <field name="brand_id" ref="brand_tadano"/>
+        <field name="brand_id" ref="brand_tadano" />
     </record>
 
 
-    <!-- ============================================================== -->
-    <!-- 4. PARTNERS: CUSTOMERS, SUPPLIERS & 24/7 BREAKDOWN NETWORK     -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="partner_husab_mine" model="res.partner">
         <field name="name">Husab Mine (Swakop Uranium)</field>
         <field name="is_company">True</field>
@@ -332,7 +332,7 @@
         <field name="city">Walvis Bay</field>
     </record>
 
-    <!-- Spare Parts Suppliers (from Workshop Projects) -->
+    
     <record id="partner_mb_truck" model="res.partner">
         <field name="name">Mercedes-Benz Commercial Vehicles Namibia</field>
         <field name="is_company">True</field>
@@ -687,7 +687,7 @@
         <field name="x_breakdown_service_type">mechanical</field>
     </record>
 
-    <!-- Legacy Customers & Sites (b84fb91 compatibility) -->
+    
     <record id="partner_b2gold_mine" model="res.partner">
         <field name="name">B2Gold Otjikoto Gold Mine</field>
         <field name="is_company">True</field>
@@ -724,9 +724,9 @@
         <field name="phone">+264 67 331 020</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 5. EMPLOYEES: OPERATIONS, HSE, MECHANICS & 34 DRIVERS          -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="employee_johan_botes" model="hr.employee">
         <field name="name">Johan Botes</field>
         <field name="job_title">Chief Operating Officer / Logistics Director</field>
@@ -777,7 +777,7 @@
         <field name="x_licence_code">B</field>
     </record>
 
-    <!-- Workshop Mechanics (from PROJECTS sheet) -->
+    
     <record id="employee_green" model="hr.employee">
         <field name="name">Green Mechanic</field>
         <field name="job_title">Workshop Master Mechanic</field>
@@ -1300,19 +1300,19 @@
         <field name="x_licence_code">CE</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 6. TANKER TRAILERS, LINKS & COMPARTMENTS (FLEET SERVICE)       -->
-    <!-- ============================================================== -->
+    
+    
+    
 
     <record id="vehicle_n959ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_henred_link"/>
+        <field name="model_id" ref="model_henred_link" />
         <field name="license_plate">N 959 OT</field>
         <field name="x_unit_classification">pup_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1322,14 +1322,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n989ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_henred_link"/>
+        <field name="model_id" ref="model_henred_link" />
         <field name="license_plate">N 989 OT</field>
         <field name="x_unit_classification">pup_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1339,14 +1339,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n1206ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 1206 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">12000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">12000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1357,14 +1357,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n3024ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 3024 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">20000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">20000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1372,14 +1372,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n3589ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 3589 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">37300.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">37300.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1390,14 +1390,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n4207ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 4207 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">36000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">36000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1408,14 +1408,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n4382ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 4382 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">36000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">36000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1426,14 +1426,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n4824ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 4824 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">37300.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">37300.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1444,14 +1444,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n5670ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 5670 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">12000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">12000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1462,14 +1462,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n5761ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 5761 OT</field>
         <field name="x_unit_classification">drawbar_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1477,14 +1477,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n5999ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 5999 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">37500.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">37500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1496,14 +1496,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n6423ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 6423 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">37300.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">37300.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1514,14 +1514,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n6776ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 6776 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">38500.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">38500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1532,14 +1532,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n6897ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 6897 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">38500.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">38500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1550,14 +1550,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n7850ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 7850 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">39000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">39000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1568,14 +1568,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n8216ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 8216 OT</field>
         <field name="x_unit_classification">drawbar_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1583,14 +1583,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n8590ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 8590 OT</field>
         <field name="x_unit_classification">drawbar_trailer</field>
         <field name="x_max_volume_liters">12000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">12000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1599,14 +1599,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n8961ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 8961 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">38700.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">38700.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1617,14 +1617,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n8964ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_tankclinic_tanker"/>
+        <field name="model_id" ref="model_tankclinic_tanker" />
         <field name="license_plate">N 8964 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">39000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">39000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1635,14 +1635,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n9830ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 9830 OT</field>
         <field name="x_unit_classification">drawbar_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1651,14 +1651,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11205ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 11205 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1668,14 +1668,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11404ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 11404 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1685,14 +1685,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n12999ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 12999 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1703,14 +1703,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n13001ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_grw_tanker"/>
+        <field name="model_id" ref="model_grw_tanker" />
         <field name="license_plate">N 13001 OT</field>
         <field name="x_unit_classification">semi_trailer</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_manufacture_year">2021</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_operational_availability">active</field>
@@ -1721,19 +1721,19 @@
         <field name="x_pto_type">none</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 7. POWER UNITS, RIGIDS & SUPPORT FLEET (FLEET SERVICE)        -->
-    <!-- ============================================================== -->
+    
+    
+    
 
     <record id="vehicle_n317ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 317 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">32000.0</field>
         <field name="x_diesel_capacity">16000.0</field>
         <field name="x_ulp_capacity">16000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-317</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">660000.0</field>
@@ -1749,17 +1749,17 @@
         <field name="x_safe_loading_pass_expiry">2026-07-21</field>
         <field name="x_last_wheel_alignment_date">2026-10-15</field>
         <field name="x_pto_type">none</field>
-        <field name="driver_employee_id" ref="employee_kamuteke"/>
+        <field name="driver_employee_id" ref="employee_kamuteke" />
     </record>
     <record id="vehicle_n945ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 945 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">12000.0</field>
         <field name="x_diesel_capacity">6000.0</field>
         <field name="x_ulp_capacity">6000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-945</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">285282.0</field>
@@ -1776,14 +1776,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n1072ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 1072 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">19000.0</field>
         <field name="x_diesel_capacity">9500.0</field>
         <field name="x_ulp_capacity">9500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-1072</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1725000.0</field>
@@ -1800,14 +1800,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n1166ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_nissan_ud100"/>
+        <field name="model_id" ref="model_nissan_ud100" />
         <field name="license_plate">N 1166 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">20400.0</field>
         <field name="x_diesel_capacity">10200.0</field>
         <field name="x_ulp_capacity">10200.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-1166</field>
         <field name="x_manufacture_year">2016</field>
         <field name="odometer">945000.0</field>
@@ -1825,14 +1825,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n2455ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_axor_rigid"/>
+        <field name="model_id" ref="model_axor_rigid" />
         <field name="license_plate">N 2455 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">37000.0</field>
         <field name="x_diesel_capacity">18500.0</field>
         <field name="x_ulp_capacity">18500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-2455</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1305000.0</field>
@@ -1850,14 +1850,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n2745ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_3352"/>
+        <field name="model_id" ref="model_actros_3352" />
         <field name="license_plate">N 2745 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-2745</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1260000.0</field>
@@ -1882,14 +1882,14 @@
         <field name="x_sept_excess_nad_value">565.32</field>
     </record>
     <record id="vehicle_n3069ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_nissan_ud100"/>
+        <field name="model_id" ref="model_nissan_ud100" />
         <field name="license_plate">N 3069 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-3069</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">276000.0</field>
@@ -1904,14 +1904,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n4467ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 4467 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">32000.0</field>
         <field name="x_diesel_capacity">16000.0</field>
         <field name="x_ulp_capacity">16000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-4467</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1890000.0</field>
@@ -1927,17 +1927,17 @@
         <field name="x_safe_loading_pass_expiry">2027-02-03</field>
         <field name="x_last_wheel_alignment_date">2026-10-16</field>
         <field name="x_pto_type">none</field>
-        <field name="driver_employee_id" ref="employee_stefanus"/>
+        <field name="driver_employee_id" ref="employee_stefanus" />
     </record>
     <record id="vehicle_n4584ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 4584 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">32000.0</field>
         <field name="x_diesel_capacity">16000.0</field>
         <field name="x_ulp_capacity">16000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-4584</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1380000.0</field>
@@ -1954,14 +1954,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n5045ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 5045 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">7000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">7000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-5045</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">580000.0</field>
@@ -1978,14 +1978,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n5164ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_axor_rigid"/>
+        <field name="model_id" ref="model_axor_rigid" />
         <field name="license_plate">N 5164 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">34000.0</field>
         <field name="x_diesel_capacity">16000.0</field>
         <field name="x_ulp_capacity">18000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-5164</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1440000.0</field>
@@ -2000,17 +2000,17 @@
         <field name="x_fitness_certificate_expiry">2026-10-05</field>
         <field name="x_last_wheel_alignment_date">2026-04-12</field>
         <field name="x_pto_type">none</field>
-        <field name="driver_employee_id" ref="employee_elrico"/>
+        <field name="driver_employee_id" ref="employee_elrico" />
     </record>
     <record id="vehicle_n5915ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 5915 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-5915</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">150000.0</field>
@@ -2025,14 +2025,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n6028ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 6028 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">16000.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">16000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-6028</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1777500.0</field>
@@ -2049,14 +2049,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n6170ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 6170 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-6170</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -2070,14 +2070,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n7013ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_mobile_crane"/>
+        <field name="model_id" ref="model_mobile_crane" />
         <field name="license_plate">N 7013 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-7013</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">765000.0</field>
@@ -2094,14 +2094,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n7014ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 7014 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-7014</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">540000.0</field>
@@ -2118,14 +2118,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n7262ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2652"/>
+        <field name="model_id" ref="model_actros_2652" />
         <field name="license_plate">N 7262 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">80300.0</field>
         <field name="x_diesel_capacity">39300.0</field>
         <field name="x_ulp_capacity">41000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-7262</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">400000.0</field>
@@ -2141,17 +2141,17 @@
         <field name="x_safe_loading_pass_expiry">2027-02-10</field>
         <field name="x_pto_type">hydraulic_pto</field>
         <field name="x_pto_location">On Cab next to COC Tank</field>
-        <field name="x_trailer_comp1_id" ref="vehicle_n8961ot"/>
+        <field name="x_trailer_comp1_id" ref="vehicle_n8961ot" />
     </record>
     <record id="vehicle_n7802ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2646"/>
+        <field name="model_id" ref="model_actros_2646" />
         <field name="license_plate">N 7802 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">82500.0</field>
         <field name="x_diesel_capacity">39500.0</field>
         <field name="x_ulp_capacity">43000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-7802</field>
         <field name="x_manufacture_year">2016</field>
         <field name="odometer">1170000.0</field>
@@ -2169,8 +2169,8 @@
         <field name="x_last_wheel_alignment_date">2026-04-16</field>
         <field name="x_pto_type">hydraulic_pto</field>
         <field name="x_pto_location">Behind the Cab</field>
-        <field name="driver_employee_id" ref="employee_mike"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n6776ot"/>
+        <field name="driver_employee_id" ref="employee_mike" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n6776ot" />
         <field name="x_expected_km_per_liter">2.3</field>
         <field name="x_actual_km_per_liter">2.05</field>
         <field name="x_sept_distance_km">13024.0</field>
@@ -2181,14 +2181,14 @@
         <field name="x_sept_excess_nad_value">16045.25</field>
     </record>
     <record id="vehicle_n7900ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 7900 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-7900</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -2203,14 +2203,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n8966ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 8966 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">80300.0</field>
         <field name="x_diesel_capacity">38300.0</field>
         <field name="x_ulp_capacity">42000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-8966</field>
         <field name="x_manufacture_year">2016</field>
         <field name="odometer">1080000.0</field>
@@ -2227,18 +2227,18 @@
         <field name="x_last_wheel_alignment_date">2026-10-08</field>
         <field name="x_pto_type">engine_pto</field>
         <field name="x_pto_location">PTO Engine on Tanker</field>
-        <field name="driver_employee_id" ref="employee_denzel"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n5999ot"/>
+        <field name="driver_employee_id" ref="employee_denzel" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n5999ot" />
     </record>
     <record id="vehicle_n9120ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2646"/>
+        <field name="model_id" ref="model_actros_2646" />
         <field name="license_plate">N 9120 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">82500.0</field>
         <field name="x_diesel_capacity">39500.0</field>
         <field name="x_ulp_capacity">43000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-9120</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1260000.0</field>
@@ -2255,18 +2255,18 @@
         <field name="x_last_wheel_alignment_date">2026-10-03</field>
         <field name="x_pto_type">hydraulic_pto</field>
         <field name="x_pto_location">Behind the Cab</field>
-        <field name="driver_employee_id" ref="employee_martin_kapinga"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n6897ot"/>
+        <field name="driver_employee_id" ref="employee_martin_kapinga" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n6897ot" />
     </record>
     <record id="vehicle_n9173ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 9173 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-9173</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">250000.0</field>
@@ -2280,14 +2280,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n9470ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 9470 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-9470</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -2300,14 +2300,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n9574ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 9574 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-9574</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">200000.0</field>
@@ -2322,14 +2322,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10420ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 10420 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10420</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">135000.0</field>
@@ -2344,14 +2344,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10424ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 10424 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10424</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">330000.0</field>
@@ -2366,14 +2366,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10425ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 10425 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10425</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">350000.0</field>
@@ -2388,14 +2388,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10544ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N 10544 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">86000.0</field>
         <field name="x_diesel_capacity">40200.0</field>
         <field name="x_ulp_capacity">45800.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-10544</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">520000.0</field>
@@ -2412,7 +2412,7 @@
         <field name="x_pressure_test_expiry">2027-05-27</field>
         <field name="x_last_wheel_alignment_date">2026-04-11</field>
         <field name="x_pto_type">none</field>
-        <field name="x_trailer_comp1_id" ref="vehicle_n13001ot"/>
+        <field name="x_trailer_comp1_id" ref="vehicle_n13001ot" />
         <field name="x_expected_km_per_liter">2.5</field>
         <field name="x_actual_km_per_liter">2.36</field>
         <field name="x_sept_distance_km">6825.0</field>
@@ -2423,14 +2423,14 @@
         <field name="x_sept_excess_nad_value">4206.16</field>
     </record>
     <record id="vehicle_n10684ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2652"/>
+        <field name="model_id" ref="model_actros_2652" />
         <field name="license_plate">N 10684 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">40000.0</field>
         <field name="x_diesel_capacity">40000.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-10684</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">650000.0</field>
@@ -2444,7 +2444,7 @@
         <field name="x_licence_expiry_date">2027-03-31</field>
         <field name="x_pto_type">hydraulic_pto</field>
         <field name="x_pto_location">On Cab next to COC Tank</field>
-        <field name="x_trailer_comp1_id" ref="vehicle_n11404ot"/>
+        <field name="x_trailer_comp1_id" ref="vehicle_n11404ot" />
         <field name="x_expected_km_per_liter">2.7</field>
         <field name="x_actual_km_per_liter">2.78</field>
         <field name="x_sept_distance_km">13812.0</field>
@@ -2455,14 +2455,14 @@
         <field name="x_sept_excess_nad_value">-3825.3</field>
     </record>
     <record id="vehicle_n10904ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 10904 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10904</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -2477,14 +2477,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10914ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_3344"/>
+        <field name="model_id" ref="model_actros_3344" />
         <field name="license_plate">N 10914 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10914</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1215000.0</field>
@@ -2502,14 +2502,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10915ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_3344"/>
+        <field name="model_id" ref="model_actros_3344" />
         <field name="license_plate">N 10915 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10915</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1440000.0</field>
@@ -2527,14 +2527,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10916ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_3344"/>
+        <field name="model_id" ref="model_actros_3344" />
         <field name="license_plate">N 10916 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10916</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1350000.0</field>
@@ -2552,14 +2552,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10918ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 10918 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10918</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1350000.0</field>
@@ -2575,17 +2575,17 @@
         <field name="x_safe_loading_pass_expiry">2026-07-21</field>
         <field name="x_last_wheel_alignment_date">2026-04-18</field>
         <field name="x_pto_type">none</field>
-        <field name="x_trailer_comp1_id" ref="vehicle_n5999ot"/>
+        <field name="x_trailer_comp1_id" ref="vehicle_n5999ot" />
     </record>
     <record id="vehicle_n10919ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_3344"/>
+        <field name="model_id" ref="model_actros_3344" />
         <field name="license_plate">N 10919 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10919</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1259500.0</field>
@@ -2603,14 +2603,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11028ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 11028 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-11028</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">270000.0</field>
@@ -2627,14 +2627,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11096ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_mobile_crane"/>
+        <field name="model_id" ref="model_mobile_crane" />
         <field name="license_plate">N 11096 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-11096</field>
         <field name="x_manufacture_year">2016</field>
         <field name="odometer">877500.0</field>
@@ -2651,14 +2651,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11255ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N 11255 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">99000.0</field>
         <field name="x_diesel_capacity">49500.0</field>
         <field name="x_ulp_capacity">49500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-11255</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">520000.0</field>
@@ -2675,9 +2675,9 @@
         <field name="x_pressure_test_expiry">2027-02-27</field>
         <field name="x_last_wheel_alignment_date">2026-10-14</field>
         <field name="x_pto_type">none</field>
-        <field name="driver_employee_id" ref="employee_maxi"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n4207ot"/>
-        <field name="x_trailer_comp2_id" ref="vehicle_n1206ot"/>
+        <field name="driver_employee_id" ref="employee_maxi" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n4207ot" />
+        <field name="x_trailer_comp2_id" ref="vehicle_n1206ot" />
         <field name="x_expected_km_per_liter">2.5</field>
         <field name="x_actual_km_per_liter">2.48</field>
         <field name="x_sept_distance_km">11200.0</field>
@@ -2688,14 +2688,14 @@
         <field name="x_sept_excess_nad_value">938.66</field>
     </record>
     <record id="vehicle_n11429ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 11429 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-11429</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">180000.0</field>
@@ -2711,14 +2711,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11671ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 11671 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-11671</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">250000.0</field>
@@ -2733,14 +2733,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11751ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 11751 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">36000.0</field>
         <field name="x_diesel_capacity">18000.0</field>
         <field name="x_ulp_capacity">18000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-11751</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">690000.0</field>
@@ -2756,7 +2756,7 @@
         <field name="x_safe_loading_pass_expiry">2026-10-02</field>
         <field name="x_last_wheel_alignment_date">2026-10-16</field>
         <field name="x_pto_type">none</field>
-        <field name="driver_employee_id" ref="employee_gabriel"/>
+        <field name="driver_employee_id" ref="employee_gabriel" />
         <field name="x_expected_km_per_liter">2.2</field>
         <field name="x_actual_km_per_liter">2.04</field>
         <field name="x_sept_distance_km">6415.0</field>
@@ -2767,14 +2767,14 @@
         <field name="x_sept_excess_nad_value">5941.37</field>
     </record>
     <record id="vehicle_n11963ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2646"/>
+        <field name="model_id" ref="model_actros_2646" />
         <field name="license_plate">N 11963 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">81500.0</field>
         <field name="x_diesel_capacity">39500.0</field>
         <field name="x_ulp_capacity">42000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-11963</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1290000.0</field>
@@ -2791,8 +2791,8 @@
         <field name="x_last_wheel_alignment_date">2026-04-18</field>
         <field name="x_pto_type">both</field>
         <field name="x_pto_location">Behind the Cab</field>
-        <field name="driver_employee_id" ref="employee_jackson_kuhanga"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n7850ot"/>
+        <field name="driver_employee_id" ref="employee_jackson_kuhanga" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n7850ot" />
         <field name="x_expected_km_per_liter">2.4</field>
         <field name="x_actual_km_per_liter">2.29</field>
         <field name="x_sept_distance_km">10582.0</field>
@@ -2803,14 +2803,14 @@
         <field name="x_sept_excess_nad_value">5503.34</field>
     </record>
     <record id="vehicle_n11964ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 11964 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-11964</field>
         <field name="x_manufacture_year">2012</field>
         <field name="odometer">1320000.0</field>
@@ -2826,17 +2826,17 @@
         <field name="x_safe_loading_pass_expiry">2026-11-13</field>
         <field name="x_last_wheel_alignment_date">2026-04-10</field>
         <field name="x_pto_type">hydraulic_pto</field>
-        <field name="driver_employee_id" ref="employee_conrall"/>
+        <field name="driver_employee_id" ref="employee_conrall" />
     </record>
     <record id="vehicle_n12007ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2652"/>
+        <field name="model_id" ref="model_actros_2652" />
         <field name="license_plate">N 12007 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">39500.0</field>
         <field name="x_diesel_capacity">39500.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-12007</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">50000.0</field>
@@ -2851,18 +2851,18 @@
         <field name="x_last_wheel_alignment_date">2026-10-06</field>
         <field name="x_pto_type">hydraulic_pto</field>
         <field name="x_pto_location">On Cab next to COC Tank</field>
-        <field name="driver_employee_id" ref="employee_niklas"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n11205ot"/>
+        <field name="driver_employee_id" ref="employee_niklas" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n11205ot" />
     </record>
     <record id="vehicle_n12043ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N 12043 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">80000.0</field>
         <field name="x_diesel_capacity">38000.0</field>
         <field name="x_ulp_capacity">42000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-12043</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">480000.0</field>
@@ -2879,7 +2879,7 @@
         <field name="x_last_wheel_alignment_date">2026-04-11</field>
         <field name="x_pto_type">engine_pto</field>
         <field name="x_pto_location">Roadside on tanker</field>
-        <field name="x_trailer_comp1_id" ref="vehicle_n3589ot"/>
+        <field name="x_trailer_comp1_id" ref="vehicle_n3589ot" />
         <field name="x_expected_km_per_liter">2.4</field>
         <field name="x_actual_km_per_liter">2.38</field>
         <field name="x_sept_distance_km">8950.0</field>
@@ -2890,14 +2890,14 @@
         <field name="x_sept_excess_nad_value">813.95</field>
     </record>
     <record id="vehicle_n12548ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 12548 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">18000.0</field>
         <field name="x_diesel_capacity">18000.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-12548</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">630000.0</field>
@@ -2914,14 +2914,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n12582ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 12582 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-12582</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">150000.0</field>
@@ -2936,14 +2936,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n12611ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 12611 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-12611</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">120000.0</field>
@@ -2966,14 +2966,14 @@
         <field name="x_sept_excess_nad_value">65.73</field>
     </record>
     <record id="vehicle_n12705ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 12705 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-12705</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">110000.0</field>
@@ -2990,14 +2990,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n12843ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N 12843 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">86000.0</field>
         <field name="x_diesel_capacity">40200.0</field>
         <field name="x_ulp_capacity">45800.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-12843</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">480000.0</field>
@@ -3013,18 +3013,18 @@
         <field name="x_safe_loading_pass_expiry">2026-07-21</field>
         <field name="x_last_wheel_alignment_date">2026-10-12</field>
         <field name="x_pto_type">none</field>
-        <field name="driver_employee_id" ref="employee_victor_thomas"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n12999ot"/>
+        <field name="driver_employee_id" ref="employee_victor_thomas" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n12999ot" />
     </record>
     <record id="vehicle_n12916ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N 12916 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">81500.0</field>
         <field name="x_diesel_capacity">39500.0</field>
         <field name="x_ulp_capacity">42000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-12916</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">400000.0</field>
@@ -3040,8 +3040,8 @@
         <field name="x_safe_loading_pass_expiry">2026-07-21</field>
         <field name="x_last_wheel_alignment_date">2026-03-24</field>
         <field name="x_pto_type">hydraulic_pto</field>
-        <field name="driver_employee_id" ref="employee_simon"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n8964ot"/>
+        <field name="driver_employee_id" ref="employee_simon" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n8964ot" />
         <field name="x_expected_km_per_liter">2.5</field>
         <field name="x_actual_km_per_liter">2.65</field>
         <field name="x_sept_distance_km">10118.0</field>
@@ -3052,14 +3052,14 @@
         <field name="x_sept_excess_nad_value">-5954.62</field>
     </record>
     <record id="vehicle_n12917ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N 12917 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">79000.0</field>
         <field name="x_diesel_capacity">38000.0</field>
         <field name="x_ulp_capacity">41000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-12917</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">360000.0</field>
@@ -3076,7 +3076,7 @@
         <field name="x_last_wheel_alignment_date">2026-10-06</field>
         <field name="x_pto_type">engine_pto</field>
         <field name="x_pto_location">PTO Engine on Tanker</field>
-        <field name="x_trailer_comp1_id" ref="vehicle_n4824ot"/>
+        <field name="x_trailer_comp1_id" ref="vehicle_n4824ot" />
         <field name="x_expected_km_per_liter">2.4</field>
         <field name="x_actual_km_per_liter">2.47</field>
         <field name="x_sept_distance_km">9840.0</field>
@@ -3087,14 +3087,14 @@
         <field name="x_sept_excess_nad_value">-3018.88</field>
     </record>
     <record id="vehicle_n13566ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N 13566 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">94500.0</field>
         <field name="x_diesel_capacity">45000.0</field>
         <field name="x_ulp_capacity">49500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-13566</field>
         <field name="x_manufacture_year">2019</field>
         <field name="odometer">520000.0</field>
@@ -3110,8 +3110,8 @@
         <field name="x_safe_loading_pass_expiry">2027-02-10</field>
         <field name="x_last_wheel_alignment_date">2026-04-14</field>
         <field name="x_pto_type">none</field>
-        <field name="x_trailer_comp1_id" ref="vehicle_n4382ot"/>
-        <field name="x_trailer_comp2_id" ref="vehicle_n5670ot"/>
+        <field name="x_trailer_comp1_id" ref="vehicle_n4382ot" />
+        <field name="x_trailer_comp2_id" ref="vehicle_n5670ot" />
         <field name="x_expected_km_per_liter">2.4</field>
         <field name="x_actual_km_per_liter">2.41</field>
         <field name="x_sept_distance_km">10450.0</field>
@@ -3122,14 +3122,14 @@
         <field name="x_sept_excess_nad_value">-469.46</field>
     </record>
     <record id="vehicle_n13777ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2652"/>
+        <field name="model_id" ref="model_actros_2652" />
         <field name="license_plate">N 13777 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">78900.0</field>
         <field name="x_diesel_capacity">37900.0</field>
         <field name="x_ulp_capacity">41000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-13777</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">400000.0</field>
@@ -3147,18 +3147,18 @@
         <field name="x_last_wheel_alignment_date">2026-10-15</field>
         <field name="x_pto_type">engine_pto</field>
         <field name="x_pto_location">PTO Engine on Tanker</field>
-        <field name="driver_employee_id" ref="employee_elvis_kanganga"/>
-        <field name="x_trailer_comp1_id" ref="vehicle_n6423ot"/>
+        <field name="driver_employee_id" ref="employee_elvis_kanganga" />
+        <field name="x_trailer_comp1_id" ref="vehicle_n6423ot" />
     </record>
     <record id="vehicle_n13831ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 13831 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-13831</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -3179,14 +3179,14 @@
         <field name="x_sept_excess_nad_value">23.38</field>
     </record>
     <record id="vehicle_n13938ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 13938 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-13938</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">30000.0</field>
@@ -3209,14 +3209,14 @@
         <field name="x_sept_excess_nad_value">-38.97</field>
     </record>
     <record id="vehicle_ncheers_naot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N CHEERS NA OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-CHEERS NA</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -3230,14 +3230,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_nedgate1naot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N EDGATE1NA OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-EDGATE1NA</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -3251,14 +3251,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_nedgate2naot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N EDGATE2NA OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-EDGATE2NA</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -3272,14 +3272,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_nforkliftot" model="fleet.vehicle">
-        <field name="model_id" ref="model_toyota_hilux"/>
+        <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N FORKLIFT OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-FORKLIFT</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">6195.0</field>
@@ -3293,14 +3293,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_ngenset_depoot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N GENSET DEPO OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-GENSET DEPO</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">40.0</field>
@@ -3313,14 +3313,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_ngenset_hqot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440"/>
+        <field name="model_id" ref="model_volvo_fh440" />
         <field name="license_plate">N GENSET HQ OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-GENSET HQ</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -3333,14 +3333,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_ntlbot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N TLB OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-TLB</field>
         <field name="x_manufacture_year">2022</field>
         <field name="odometer">8485.0</field>
@@ -3354,14 +3354,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_nnkdfh07087220ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N NKDFH07087220 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-NKDFH07087220</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -3375,14 +3375,14 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_nnkdfh07087252ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N NKDFH07087252 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-NKDFH07087252</field>
         <field name="x_manufacture_year">2021</field>
         <field name="odometer">0.0</field>
@@ -3396,71 +3396,71 @@
         <field name="x_pto_type">none</field>
     </record>
 
-    <!-- Legacy Demo Fleet Power Units (b84fb91 compatibility) -->
+    
     <record id="vehicle_scania_r500" model="fleet.vehicle">
-        <field name="model_id" ref="model_scania_r500"/>
+        <field name="model_id" ref="model_scania_r500" />
         <field name="license_plate">N 4201 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">42000.0</field>
         <field name="x_compartment_count">6</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GT-NFD-01</field>
         <field name="x_manufacture_year">2021</field>
     </record>
 
     <record id="vehicle_actros_2645" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645"/>
+        <field name="model_id" ref="model_actros_2645" />
         <field name="license_plate">N 4202 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">42000.0</field>
         <field name="x_compartment_count">7</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GT-NFD-02</field>
         <field name="x_manufacture_year">2019</field>
     </record>
 
     <record id="vehicle_argosy" model="fleet.vehicle">
-        <field name="model_id" ref="model_argosy"/>
+        <field name="model_id" ref="model_argosy" />
         <field name="license_plate">N 1809 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">36000.0</field>
         <field name="x_compartment_count">6</field>
-        <field name="x_has_diesel_meter" eval="False"/>
+        <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GT-NFD-03</field>
         <field name="x_manufacture_year">2008</field>
     </record>
 
     <record id="vehicle_axor_rigid" model="fleet.vehicle">
-        <field name="model_id" ref="model_axor_rigid"/>
+        <field name="model_id" ref="model_axor_rigid" />
         <field name="license_plate">N 1750 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">17500.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GT-NFD-14</field>
         <field name="x_manufacture_year">2017</field>
     </record>
 
     <record id="vehicle_scania_rigid" model="fleet.vehicle">
-        <field name="model_id" ref="model_scania_p360"/>
+        <field name="model_id" ref="model_scania_p360" />
         <field name="license_plate">N 1601 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">16000.0</field>
         <field name="x_compartment_count">4</field>
-        <field name="x_has_diesel_meter" eval="True"/>
+        <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GT-NFD-15</field>
         <field name="x_manufacture_year">2014</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 8. MAINTENANCE TEAMS, CATEGORIES & EQUIPMENT                  -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="maintenance_team_otjiwarongo" model="maintenance.team">
         <field name="name">Otjiwarongo Mechanical Workshop</field>
     </record>
 
     
-    <!-- Legacy Equipment Categories & Assets (b84fb91 compatibility) -->
+    
     <record id="maintenance_cat_fleet_truck" model="maintenance.equipment.category">
         <field name="name">Bulk Fuel Fleet (Prime Movers &amp; Tankers)</field>
     </record>
@@ -3473,41 +3473,41 @@
 
     <record id="equipment_scania_r500" model="maintenance.equipment">
         <field name="name">Scania R500 (N 4201 OT) - Powertrain &amp; Meter</field>
-        <field name="category_id" ref="maintenance_cat_fleet_truck"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="maintenance_cat_fleet_truck" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">fleet_truck</field>
-        <field name="x_linked_vehicle_id" ref="vehicle_scania_r500"/>
+        <field name="x_linked_vehicle_id" ref="vehicle_scania_r500" />
     </record>
 
     <record id="equipment_axor_rigid" model="maintenance.equipment">
         <field name="name">Mercedes Axor 17,500L (N 1750 OT) - Manifold &amp; Meter</field>
-        <field name="category_id" ref="maintenance_cat_fleet_truck"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="maintenance_cat_fleet_truck" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">fleet_truck</field>
-        <field name="x_linked_vehicle_id" ref="vehicle_axor_rigid"/>
+        <field name="x_linked_vehicle_id" ref="vehicle_axor_rigid" />
     </record>
 
     <record id="equipment_petrosol_outjo_pump" model="maintenance.equipment">
         <field name="name">Petrosol Outjo - Wayne Helix 4-Nozzle Dispenser MPD-1</field>
-        <field name="category_id" ref="maintenance_cat_forecourt"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="maintenance_cat_forecourt" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">petrosol_forecourt_pump</field>
-        <field name="x_site_partner_id" ref="partner_petrosol_outjo"/>
+        <field name="x_site_partner_id" ref="partner_petrosol_outjo" />
     </record>
 
     <record id="equipment_husab_tank" model="maintenance.equipment">
         <field name="name">Husab Mine Bulk Storage Tank T-01 (100,000L)</field>
-        <field name="category_id" ref="maintenance_cat_bulk_tank"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="maintenance_cat_bulk_tank" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">customer_bulk_tank</field>
-        <field name="x_site_partner_id" ref="partner_husab_mine"/>
+        <field name="x_site_partner_id" ref="partner_husab_mine" />
         <field name="x_tank_capacity_liters">100000.0</field>
     </record>
 
     <record id="equipment_depot_gantry" model="maintenance.equipment">
         <field name="name">Otjiwarongo Depot Loading Bay 1 - Bottom Loading Gantry</field>
-        <field name="category_id" ref="maintenance_cat_bulk_tank"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="maintenance_cat_bulk_tank" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">depot_gantry</field>
         <field name="x_tank_capacity_liters">500000.0</field>
     </record>
@@ -3526,101 +3526,101 @@
 
     <record id="equipment_depot_gantry_bay1" model="maintenance.equipment">
         <field name="name">Otjiwarongo Depot Loading Bay 1 - Bottom Loading Gantry</field>
-        <field name="category_id" ref="cat_depot_installations"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_depot_installations" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">depot_gantry</field>
         <field name="x_tank_capacity_liters">500000.0</field>
     </record>
 
     <record id="equipment_depot_gantry_bay2" model="maintenance.equipment">
         <field name="name">Otjiwarongo Depot Loading Bay 2 - Top/Bottom Dual Arm</field>
-        <field name="category_id" ref="cat_depot_installations"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_depot_installations" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">depot_gantry</field>
         <field name="x_tank_capacity_liters">200000.0</field>
     </record>
 
     <record id="equipment_husab_tank1" model="maintenance.equipment">
         <field name="name">Husab Mine Bulk Storage Tank 1 (Diesel 50ppm)</field>
-        <field name="category_id" ref="cat_depot_installations"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_depot_installations" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">customer_bulk_tank</field>
-        <field name="x_site_partner_id" ref="partner_husab_mine"/>
+        <field name="x_site_partner_id" ref="partner_husab_mine" />
         <field name="x_tank_capacity_liters">100000.0</field>
     </record>
 
     <record id="equipment_b2gold_tank1" model="maintenance.equipment">
         <field name="name">B2Gold Otjikoto Mine Tank 1 (Heavy Haul Diesel)</field>
-        <field name="category_id" ref="cat_depot_installations"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_depot_installations" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">customer_bulk_tank</field>
-        <field name="x_site_partner_id" ref="partner_b2gold"/>
+        <field name="x_site_partner_id" ref="partner_b2gold" />
         <field name="x_tank_capacity_liters">65000.0</field>
     </record>
 
     <record id="equipment_petrosol_pump1" model="maintenance.equipment">
         <field name="name">Petrosol Outjo Wayne Helix MPD Pump #1 (Diesel/ULP)</field>
-        <field name="category_id" ref="cat_retail_forecourt"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_retail_forecourt" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">petrosol_forecourt_pump</field>
-        <field name="x_site_partner_id" ref="partner_petrosol_retail"/>
+        <field name="x_site_partner_id" ref="partner_petrosol_retail" />
     </record>
 
-    <!-- Equipment linked to key demo vehicles -->
+    
     <record id="equipment_vehicle_n7802ot" model="maintenance.equipment">
         <field name="name">Mercedes Actros 2646 (N 7802 OT) - Chassis &amp; Tank</field>
-        <field name="category_id" ref="cat_fleet_trucks"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_fleet_trucks" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">fleet_truck</field>
-        <field name="x_linked_vehicle_id" ref="vehicle_n7802ot"/>
+        <field name="x_linked_vehicle_id" ref="vehicle_n7802ot" />
     </record>
 
     <record id="equipment_vehicle_n317ot" model="maintenance.equipment">
         <field name="name">Mercedes V-Series 407T 16,000L Rigid (N 317 OT)</field>
-        <field name="category_id" ref="cat_fleet_trucks"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_fleet_trucks" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">fleet_truck</field>
-        <field name="x_linked_vehicle_id" ref="vehicle_n317ot"/>
+        <field name="x_linked_vehicle_id" ref="vehicle_n317ot" />
     </record>
 
     <record id="equipment_vehicle_n12043ot" model="maintenance.equipment">
         <field name="name">Volvo FH520 Long-Haul Tanker (N 12043 OT)</field>
-        <field name="category_id" ref="cat_fleet_trucks"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_fleet_trucks" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">fleet_truck</field>
-        <field name="x_linked_vehicle_id" ref="vehicle_n12043ot"/>
+        <field name="x_linked_vehicle_id" ref="vehicle_n12043ot" />
     </record>
 
     <record id="equipment_vehicle_n8966ot" model="maintenance.equipment">
         <field name="name">Mercedes Actros 2652 Bulk Tanker (N 8966 OT)</field>
-        <field name="category_id" ref="cat_fleet_trucks"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_fleet_trucks" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">fleet_truck</field>
-        <field name="x_linked_vehicle_id" ref="vehicle_n8966ot"/>
+        <field name="x_linked_vehicle_id" ref="vehicle_n8966ot" />
     </record>
 
     <record id="equipment_vehicle_n12548ot" model="maintenance.equipment">
         <field name="name">Mercedes Axor Rigid Tanker (N 12548 OT)</field>
-        <field name="category_id" ref="cat_fleet_trucks"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="category_id" ref="cat_fleet_trucks" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="x_asset_category">fleet_truck</field>
-        <field name="x_linked_vehicle_id" ref="vehicle_n12548ot"/>
+        <field name="x_linked_vehicle_id" ref="vehicle_n12548ot" />
     </record>
 
 
-    <!-- ============================================================== -->
-    <!-- 9. MAINTENANCE REQUESTS (WORKSHOP JOB CARDS)                  -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="req_jc_1009" model="maintenance.request">
         <field name="name">JC-1009: Trek Links &amp; Turntable Pin Re-Torque</field>
-        <field name="equipment_id" ref="equipment_vehicle_n12548ot"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_vehicle_n12548ot" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1009</field>
         <field name="x_workshop_location">workshop_otj</field>
         <field name="x_assigned_mechanic">green</field>
         <field name="x_job_type">repair</field>
-        <field name="x_parts_supplier_id" ref="partner_henred"/>
+        <field name="x_parts_supplier_id" ref="partner_henred" />
         <field name="x_parts_ordered">True</field>
         <field name="x_parts_received">True</field>
         <field name="x_service_agreement_type">internal_fleet</field>
@@ -3629,14 +3629,14 @@
 
     <record id="req_jc_1045" model="maintenance.request">
         <field name="name">JC-1045: Multi-Compartment Degas &amp; Internal Baffle Weld</field>
-        <field name="equipment_id" ref="equipment_vehicle_n12043ot"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_vehicle_n12043ot" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1045</field>
         <field name="x_workshop_location">cwwa</field>
         <field name="x_assigned_mechanic">japie</field>
         <field name="x_job_type">degas</field>
-        <field name="x_parts_supplier_id" ref="partner_smart_fuels"/>
+        <field name="x_parts_supplier_id" ref="partner_smart_fuels" />
         <field name="x_parts_ordered">True</field>
         <field name="x_service_agreement_type">internal_fleet</field>
         <field name="description">Workshop Job Card 1045: Degas compartments 5, 6 &amp; 7 share, certify gas-free entry, and repair cracked internal baffle weld.</field>
@@ -3644,14 +3644,14 @@
 
     <record id="req_jc_1110" model="maintenance.request">
         <field name="name">JC-1110: Hydraulic PTO Offloading Valve Leak Repair</field>
-        <field name="equipment_id" ref="equipment_vehicle_n8966ot"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_vehicle_n8966ot" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1110</field>
         <field name="x_workshop_location">workshop_otj</field>
         <field name="x_assigned_mechanic">clive</field>
         <field name="x_job_type">repair</field>
-        <field name="x_parts_supplier_id" ref="partner_mb_truck"/>
+        <field name="x_parts_supplier_id" ref="partner_mb_truck" />
         <field name="x_parts_ordered">True</field>
         <field name="x_parts_received">True</field>
         <field name="x_service_agreement_type">internal_fleet</field>
@@ -3660,14 +3660,14 @@
 
     <record id="req_jc_994" model="maintenance.request">
         <field name="name">JC-994: NaTIS Statutory Roadworthy Fitness Retest</field>
-        <field name="equipment_id" ref="equipment_vehicle_n317ot"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_vehicle_n317ot" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">preventive</field>
         <field name="x_job_card_number">JC-994</field>
         <field name="x_workshop_location">natis_otj</field>
         <field name="x_assigned_mechanic">manie</field>
         <field name="x_job_type">roadworthy</field>
-        <field name="x_parts_supplier_id" ref="partner_indongo_toyota"/>
+        <field name="x_parts_supplier_id" ref="partner_indongo_toyota" />
         <field name="x_parts_ordered">True</field>
         <field name="x_parts_received">True</field>
         <field name="x_service_agreement_type">internal_fleet</field>
@@ -3676,33 +3676,33 @@
 
     <record id="req_jc_1088" model="maintenance.request">
         <field name="name">JC-1088: Safe Loading Pass (SLP) Recertification</field>
-        <field name="equipment_id" ref="equipment_vehicle_n7802ot"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_vehicle_n7802ot" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">preventive</field>
         <field name="x_job_card_number">JC-1088</field>
         <field name="x_workshop_location">vivo_depo</field>
         <field name="x_assigned_mechanic">jonie</field>
         <field name="x_job_type">service</field>
-        <field name="x_parts_supplier_id" ref="partner_nors"/>
+        <field name="x_parts_supplier_id" ref="partner_nors" />
         <field name="x_service_agreement_type">internal_fleet</field>
         <field name="description">Job Card 1088: Gantry bottom-loading optical overfill sensor probe test and earth pin validation at Vivo Depo. SLP disk issued.</field>
     </record>
 
     <record id="req_petrosol_pump_calibration" model="maintenance.request">
         <field name="name">Petrosol Outjo Forecourt Pump Meter Recalibration</field>
-        <field name="equipment_id" ref="equipment_petrosol_pump1"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_petrosol_pump1" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">preventive</field>
         <field name="x_service_agreement_type">free_retail_forecourt</field>
-        <field name="x_site_partner_id" ref="partner_petrosol_retail"/>
+        <field name="x_site_partner_id" ref="partner_petrosol_retail" />
         <field name="description">Subsidized dealer support: Annual flow meter accuracy verification using 20L proving can.</field>
     </record>
 
-    <!-- Legacy Maintenance Requests (b84fb91 compatibility) -->
+    
     <record id="req_scania_pm" model="maintenance.request">
         <field name="name">50,000km Preventive Chassis &amp; Manifold Service - Scania R500 (N 4201 OT)</field>
-        <field name="equipment_id" ref="equipment_scania_r500"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_scania_r500" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">preventive</field>
         <field name="priority">2</field>
         <field name="x_service_agreement_type">internal_fleet</field>
@@ -3711,48 +3711,48 @@
 
     <record id="req_petrosol_outjo" model="maintenance.request">
         <field name="name">Monthly Dispenser Nozzle &amp; Meter Recalibration - Petrosol Outjo</field>
-        <field name="equipment_id" ref="equipment_petrosol_outjo_pump"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_petrosol_outjo_pump" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">preventive</field>
         <field name="priority">1</field>
         <field name="x_service_agreement_type">free_retail_forecourt</field>
-        <field name="x_site_partner_id" ref="partner_petrosol_outjo"/>
+        <field name="x_site_partner_id" ref="partner_petrosol_outjo" />
         <field name="description">Subsidized dealer support: Annual flow meter accuracy verification using 20L proving can.</field>
     </record>
 
     <record id="req_husab_tank" model="maintenance.request">
         <field name="name">Semi-Annual Inspection &amp; Water Drain Check - Husab Mine Tank T-01</field>
-        <field name="equipment_id" ref="equipment_husab_tank"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_husab_tank" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">preventive</field>
         <field name="priority">2</field>
         <field name="x_service_agreement_type">customer_contract</field>
-        <field name="x_site_partner_id" ref="partner_husab_mine"/>
+        <field name="x_site_partner_id" ref="partner_husab_mine" />
         <field name="description">Mining contract compliance check: Sump water drain, ATG sensor calibration, overfill protection.</field>
     </record>
 
     <record id="req_axor_leakage" model="maintenance.request">
         <field name="name">URGENT: Inspect Tanker Manifold/Delivery Meter for Fuel Leakage - Mercedes-Benz Axor (DISP/2026/0102)</field>
-        <field name="equipment_id" ref="equipment_axor_rigid"/>
-        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
+        <field name="equipment_id" ref="equipment_axor_rigid" />
+        <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo" />
         <field name="maintenance_type">corrective</field>
         <field name="priority">3</field>
         <field name="x_service_agreement_type">internal_fleet</field>
         <field name="description">AUTOMATED LEAKAGE ALERT TRIGGERED: Net Discrepancy: 163.75 L (Exceeds 50L Safety Limit)</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 10. CARGO FUEL DISPATCH & LEAKAGE LOGS                        -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="dispatch_log_001" model="x_nfd_fuel_dispatch_log">
         <field name="x_name">DISP/2026/0101</field>
         <field name="x_date">2026-09-02 06:30:00</field>
-        <field name="x_vehicle_id" ref="vehicle_n7802ot"/>
-        <field name="x_driver_id" ref="employee_mike"/>
-        <field name="x_customer_id" ref="partner_b2gold"/>
-        <field name="x_fuel_product_id" ref="product_diesel_50ppm"/>
-        <field name="x_source_location_id" ref="location_depot_diesel_tank1"/>
-        <field name="x_destination_location_id" ref="location_b2gold_mine"/>
+        <field name="x_vehicle_id" ref="vehicle_n7802ot" />
+        <field name="x_driver_id" ref="employee_mike" />
+        <field name="x_customer_id" ref="partner_b2gold" />
+        <field name="x_fuel_product_id" ref="product_diesel_50ppm" />
+        <field name="x_source_location_id" ref="location_depot_diesel_tank1" />
+        <field name="x_destination_location_id" ref="location_b2gold_mine" />
         <field name="x_depot_loaded_liters">42000.0</field>
         <field name="x_truck_meter_delivered_liters">41895.0</field>
         <field name="x_customer_dip_received_liters">41890.0</field>
@@ -3768,12 +3768,12 @@
     <record id="dispatch_log_002" model="x_nfd_fuel_dispatch_log">
         <field name="x_name">DISP/2026/0102</field>
         <field name="x_date">2026-09-04 07:15:00</field>
-        <field name="x_vehicle_id" ref="vehicle_n12916ot"/>
-        <field name="x_driver_id" ref="employee_simon"/>
-        <field name="x_customer_id" ref="partner_husab_mine"/>
-        <field name="x_fuel_product_id" ref="product_diesel_50ppm"/>
-        <field name="x_source_location_id" ref="location_depot_diesel_tank1"/>
-        <field name="x_destination_location_id" ref="location_husab_mine"/>
+        <field name="x_vehicle_id" ref="vehicle_n12916ot" />
+        <field name="x_driver_id" ref="employee_simon" />
+        <field name="x_customer_id" ref="partner_husab_mine" />
+        <field name="x_fuel_product_id" ref="product_diesel_50ppm" />
+        <field name="x_source_location_id" ref="location_depot_diesel_tank1" />
+        <field name="x_destination_location_id" ref="location_husab_mine" />
         <field name="x_depot_loaded_liters">38500.0</field>
         <field name="x_truck_meter_delivered_liters">38240.0</field>
         <field name="x_customer_dip_received_liters">38235.0</field>
@@ -3786,14 +3786,14 @@
         <field name="x_notes">AUDIT TALKING POINT: Discrepancy of 163.75L exceeds 0.25% threshold (96.25L allowance). Automatically triggers Maintenance ticket for valve manifold inspection.</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 11. REFUEL & ODOMETER LOGSHEETS (nfd.fuel.consumption.log)    -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="fcl_log_001" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0001</field>
         <field name="x_date">2026-09-01</field>
-        <field name="x_vehicle_id" ref="vehicle_n7802ot"/>
-        <field name="x_driver_id" ref="employee_mike"/>
+        <field name="x_vehicle_id" ref="vehicle_n7802ot" />
+        <field name="x_driver_id" ref="employee_mike" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">494635.0</field>
         <field name="x_odometer_end">495514.0</field>
@@ -3815,8 +3815,8 @@
     <record id="fcl_log_002" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0002</field>
         <field name="x_date">2026-09-02</field>
-        <field name="x_vehicle_id" ref="vehicle_n7802ot"/>
-        <field name="x_driver_id" ref="employee_mike"/>
+        <field name="x_vehicle_id" ref="vehicle_n7802ot" />
+        <field name="x_driver_id" ref="employee_mike" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">495514.0</field>
         <field name="x_odometer_end">496464.0</field>
@@ -3838,8 +3838,8 @@
     <record id="fcl_log_003" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0003</field>
         <field name="x_date">2026-09-02</field>
-        <field name="x_vehicle_id" ref="vehicle_n11751ot"/>
-        <field name="x_driver_id" ref="employee_andreas_i"/>
+        <field name="x_vehicle_id" ref="vehicle_n11751ot" />
+        <field name="x_driver_id" ref="employee_andreas_i" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">291886.0</field>
         <field name="x_odometer_end">292526.0</field>
@@ -3861,8 +3861,8 @@
     <record id="fcl_log_004" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0004</field>
         <field name="x_date">2026-09-03</field>
-        <field name="x_vehicle_id" ref="vehicle_n11963ot"/>
-        <field name="x_driver_id" ref="employee_conrall"/>
+        <field name="x_vehicle_id" ref="vehicle_n11963ot" />
+        <field name="x_driver_id" ref="employee_conrall" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">512040.0</field>
         <field name="x_odometer_end">513100.0</field>
@@ -3884,8 +3884,8 @@
     <record id="fcl_log_005" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0005</field>
         <field name="x_date">2026-09-01</field>
-        <field name="x_vehicle_id" ref="vehicle_n10544ot"/>
-        <field name="x_driver_id" ref="employee_matheus_shikongo"/>
+        <field name="x_vehicle_id" ref="vehicle_n10544ot" />
+        <field name="x_driver_id" ref="employee_matheus_shikongo" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">430110.0</field>
         <field name="x_odometer_end">431050.0</field>
@@ -3907,8 +3907,8 @@
     <record id="fcl_log_006" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0006</field>
         <field name="x_date">2026-09-02</field>
-        <field name="x_vehicle_id" ref="vehicle_n2745ot"/>
-        <field name="x_driver_id" ref="employee_laythonne"/>
+        <field name="x_vehicle_id" ref="vehicle_n2745ot" />
+        <field name="x_driver_id" ref="employee_laythonne" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">182400.0</field>
         <field name="x_odometer_end">182543.0</field>
@@ -3930,8 +3930,8 @@
     <record id="fcl_log_007" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0007</field>
         <field name="x_date">2026-09-03</field>
-        <field name="x_vehicle_id" ref="vehicle_n12916ot"/>
-        <field name="x_driver_id" ref="employee_simon"/>
+        <field name="x_vehicle_id" ref="vehicle_n12916ot" />
+        <field name="x_driver_id" ref="employee_simon" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">388299.0</field>
         <field name="x_odometer_end">389719.0</field>
@@ -3953,8 +3953,8 @@
     <record id="fcl_log_008" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0008</field>
         <field name="x_date">2026-09-05</field>
-        <field name="x_vehicle_id" ref="vehicle_n12916ot"/>
-        <field name="x_driver_id" ref="employee_simon"/>
+        <field name="x_vehicle_id" ref="vehicle_n12916ot" />
+        <field name="x_driver_id" ref="employee_simon" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">389719.0</field>
         <field name="x_odometer_end">390833.0</field>
@@ -3976,8 +3976,8 @@
     <record id="fcl_log_009" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0009</field>
         <field name="x_date">2026-09-05</field>
-        <field name="x_vehicle_id" ref="vehicle_n10684ot"/>
-        <field name="x_driver_id" ref="employee_oscar"/>
+        <field name="x_vehicle_id" ref="vehicle_n10684ot" />
+        <field name="x_driver_id" ref="employee_oscar" />
         <field name="x_place">Depot</field>
         <field name="x_odometer_start">640804.0</field>
         <field name="x_odometer_end">642810.0</field>
@@ -3999,8 +3999,8 @@
     <record id="fcl_log_010" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0010</field>
         <field name="x_date">2026-09-11</field>
-        <field name="x_vehicle_id" ref="vehicle_n13938ot"/>
-        <field name="x_driver_id" ref="employee_lucas"/>
+        <field name="x_vehicle_id" ref="vehicle_n13938ot" />
+        <field name="x_driver_id" ref="employee_lucas" />
         <field name="x_place">Office</field>
         <field name="x_odometer_start">30266.0</field>
         <field name="x_odometer_end">30266.0</field>
@@ -4022,8 +4022,8 @@
     <record id="fcl_log_011" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0011</field>
         <field name="x_date">2026-09-12</field>
-        <field name="x_vehicle_id" ref="vehicle_n13938ot"/>
-        <field name="x_driver_id" ref="employee_lucas"/>
+        <field name="x_vehicle_id" ref="vehicle_n13938ot" />
+        <field name="x_driver_id" ref="employee_lucas" />
         <field name="x_place">Office</field>
         <field name="x_odometer_start">30266.0</field>
         <field name="x_odometer_end">30896.0</field>
@@ -4045,8 +4045,8 @@
     <record id="fcl_log_012" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0012</field>
         <field name="x_date">2026-09-03</field>
-        <field name="x_vehicle_id" ref="vehicle_n12611ot"/>
-        <field name="x_driver_id" ref="employee_johan_botes"/>
+        <field name="x_vehicle_id" ref="vehicle_n12611ot" />
+        <field name="x_driver_id" ref="employee_johan_botes" />
         <field name="x_place">Office</field>
         <field name="x_odometer_start">113760.0</field>
         <field name="x_odometer_end">114354.0</field>
@@ -4065,9 +4065,9 @@
         <field name="x_notes">Isuzu 1.9 D-MAX - Omitted from Excel Summary tab, fully tracked in Odoo ERP</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 12. PROJECTS & TIMESHEETS                                      -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="project_workshop" model="project.project">
         <field name="name">Otjiwarongo Mechanical Workshop &amp; Fleet Maintenance</field>
         <field name="privacy_visibility">employees</field>
@@ -4078,7 +4078,7 @@
     <record id="project_petrosol" model="project.project">
         <field name="name">Petrosol Retail Forecourt Maintenance &amp; Subsidies</field>
         <field name="privacy_visibility">employees</field>
-        <field name="partner_id" ref="partner_petrosol_retail"/>
+        <field name="partner_id" ref="partner_petrosol_retail" />
         <field name="allow_timesheets">True</field>
         <field name="billing_type">not_billable</field>
     </record>
@@ -4090,47 +4090,47 @@
         <field name="billing_type">not_billable</field>
     </record>
 
-    <!-- Tasks -->
+    
     <record id="task_workshop_7802_service" model="project.task">
         <field name="name">Service &amp; Calibration: Mercedes Actros N 7802 OT</field>
-        <field name="project_id" ref="project_workshop"/>
+        <field name="project_id" ref="project_workshop" />
     </record>
 
     <record id="task_workshop_meter_calibration" model="project.task">
         <field name="name">Monthly Recalibration of Depot Gantry Bulk Meters</field>
-        <field name="project_id" ref="project_workshop"/>
+        <field name="project_id" ref="project_workshop" />
     </record>
 
     <record id="task_petrosol_outjo_pump" model="project.task">
         <field name="name">Forecourt Pump Calibration &amp; Nozzle Check (Outjo)</field>
-        <field name="project_id" ref="project_petrosol"/>
-        <field name="partner_id" ref="partner_petrosol_retail"/>
+        <field name="project_id" ref="project_petrosol" />
+        <field name="partner_id" ref="partner_petrosol_retail" />
     </record>
 
     <record id="task_haulage_walvis_import" model="project.task">
         <field name="name">Walvis Bay Harbor Port to Otjiwarongo Tank Farm Inbound Haulage</field>
-        <field name="project_id" ref="project_haulage"/>
+        <field name="project_id" ref="project_haulage" />
     </record>
 
     <record id="task_haulage_b2gold" model="project.task">
         <field name="name">B2Gold Otjikoto Mine Daily Bulk Diesel Haulage</field>
-        <field name="project_id" ref="project_haulage"/>
-        <field name="partner_id" ref="partner_b2gold"/>
+        <field name="project_id" ref="project_haulage" />
+        <field name="partner_id" ref="partner_b2gold" />
     </record>
 
     <record id="task_haulage_husab" model="project.task">
         <field name="name">Husab Mine Bulk Diesel Haulage Corridor</field>
-        <field name="project_id" ref="project_haulage"/>
-        <field name="partner_id" ref="partner_husab_mine"/>
+        <field name="project_id" ref="project_haulage" />
+        <field name="partner_id" ref="partner_husab_mine" />
     </record>
 
-    <!-- Timesheets -->
+    
     
     <record id="fcl_log_013" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0013</field>
         <field name="x_date">2026-09-14</field>
-        <field name="x_vehicle_id" ref="vehicle_n13831ot"/>
-        <field name="x_driver_id" ref="employee_lucas"/>
+        <field name="x_vehicle_id" ref="vehicle_n13831ot" />
+        <field name="x_driver_id" ref="employee_lucas" />
         <field name="x_place">Office</field>
         <field name="x_odometer_start">5621.0</field>
         <field name="x_odometer_end">5977.0</field>
@@ -4152,8 +4152,8 @@
     <record id="fcl_log_014" model="x_nfd_fuel_consumption_log">
         <field name="x_name">FCL/2026/0014</field>
         <field name="x_date">2026-09-06</field>
-        <field name="x_vehicle_id" ref="vehicle_n11255ot"/>
-        <field name="x_driver_id" ref="employee_laythonne"/>
+        <field name="x_vehicle_id" ref="vehicle_n11255ot" />
+        <field name="x_driver_id" ref="employee_laythonne" />
         <field name="x_place">Walvis</field>
         <field name="x_odometer_start">412500.0</field>
         <field name="x_odometer_end">413950.0</field>
@@ -4174,9 +4174,9 @@
 
     <record id="ts_workshop_1" model="account.analytic.line">
         <field name="name">Full A-Service and fuel injector cleaning on Mercedes Actros 2646 (N 7802 OT)</field>
-        <field name="project_id" ref="project_workshop"/>
-        <field name="task_id" ref="task_workshop_7802_service"/>
-        <field name="employee_id" ref="employee_green"/>
+        <field name="project_id" ref="project_workshop" />
+        <field name="task_id" ref="task_workshop_7802_service" />
+        <field name="employee_id" ref="employee_green" />
         <field name="date">2026-09-04</field>
         <field name="unit_amount">6.5</field>
         <field name="amount">0.0</field>
@@ -4184,9 +4184,9 @@
 
     <record id="ts_workshop_2" model="account.analytic.line">
         <field name="name">Calibrated bottom-loading LC Master Flow Meter 15 at Otjiwarongo Depot</field>
-        <field name="project_id" ref="project_workshop"/>
-        <field name="task_id" ref="task_workshop_meter_calibration"/>
-        <field name="employee_id" ref="employee_jonie"/>
+        <field name="project_id" ref="project_workshop" />
+        <field name="task_id" ref="task_workshop_meter_calibration" />
+        <field name="employee_id" ref="employee_jonie" />
         <field name="date">2026-09-06</field>
         <field name="unit_amount">4.0</field>
         <field name="amount">0.0</field>
@@ -4194,9 +4194,9 @@
 
     <record id="ts_haulage_1" model="account.analytic.line">
         <field name="name">Bulk 50ppm Diesel haulage Walvis Bay Port to Otjiwarongo Tank Farm (Semi N 12916 OT + PUP)</field>
-        <field name="project_id" ref="project_haulage"/>
-        <field name="task_id" ref="task_haulage_walvis_import"/>
-        <field name="employee_id" ref="employee_simon"/>
+        <field name="project_id" ref="project_haulage" />
+        <field name="task_id" ref="task_haulage_walvis_import" />
+        <field name="employee_id" ref="employee_simon" />
         <field name="date">2026-09-05</field>
         <field name="unit_amount">12.5</field>
         <field name="amount">0.0</field>
@@ -4204,53 +4204,53 @@
 
     <record id="ts_haulage_4" model="account.analytic.line">
         <field name="name">Bulk fuel transport to Husab Mine Swakopmund depot (Mercedes Actros N 7802 OT)</field>
-        <field name="project_id" ref="project_haulage"/>
-        <field name="task_id" ref="task_haulage_husab"/>
-        <field name="employee_id" ref="employee_mike"/>
+        <field name="project_id" ref="project_haulage" />
+        <field name="task_id" ref="task_haulage_husab" />
+        <field name="employee_id" ref="employee_mike" />
         <field name="date">2026-09-04</field>
         <field name="unit_amount">9.5</field>
         <field name="amount">0.0</field>
     </record>
 
 
-    <!-- Legacy Project Tasks & Timesheets (b84fb91 compatibility) -->
+    
     <record id="task_workshop_scania_pm" model="project.task">
         <field name="name">50,000km Preventive Chassis &amp; Manifold Service - Scania R500 (N 4201 OT)</field>
-        <field name="project_id" ref="project_workshop"/>
+        <field name="project_id" ref="project_workshop" />
         <field name="allocated_hours">8.0</field>
     </record>
 
     <record id="task_workshop_axor_leakage" model="project.task">
         <field name="name">Inspect Tanker Manifold/Delivery Meter for Fuel Leakage - Axor (DISP/2026/0102)</field>
-        <field name="project_id" ref="project_workshop"/>
+        <field name="project_id" ref="project_workshop" />
         <field name="allocated_hours">6.0</field>
     </record>
 
     <record id="task_petrosol_outjo_nozzle" model="project.task">
         <field name="name">Monthly Dispenser Nozzle &amp; Meter Recalibration - Petrosol Outjo</field>
-        <field name="project_id" ref="project_petrosol"/>
-        <field name="partner_id" ref="partner_petrosol_outjo"/>
+        <field name="project_id" ref="project_petrosol" />
+        <field name="partner_id" ref="partner_petrosol_outjo" />
         <field name="allocated_hours">6.0</field>
     </record>
 
     <record id="task_petrosol_khorixas_coldroom" model="project.task">
         <field name="name">ILAMO Convenience Store Cold Room &amp; Standby Generator Service - Khorixas</field>
-        <field name="project_id" ref="project_petrosol"/>
-        <field name="partner_id" ref="partner_petrosol_khorixas"/>
+        <field name="project_id" ref="project_petrosol" />
+        <field name="partner_id" ref="partner_petrosol_khorixas" />
         <field name="allocated_hours">5.0</field>
     </record>
 
     <record id="task_haulage_northern" model="project.task">
         <field name="name">Northern Commercial Distribution Run (Ondangwa / Fort Sesfontein)</field>
-        <field name="project_id" ref="project_haulage"/>
+        <field name="project_id" ref="project_haulage" />
         <field name="allocated_hours">16.0</field>
     </record>
 
     <record id="ts_petrosol_1" model="account.analytic.line">
         <field name="name">Wayne Helix 4-nozzle 20L prover can measure and calibration test (Free Forecourt Service Subsidy)</field>
-        <field name="project_id" ref="project_petrosol"/>
-        <field name="task_id" ref="task_petrosol_outjo_nozzle"/>
-        <field name="employee_id" ref="employee_lukas_van_wyk"/>
+        <field name="project_id" ref="project_petrosol" />
+        <field name="task_id" ref="task_petrosol_outjo_nozzle" />
+        <field name="employee_id" ref="employee_lukas_van_wyk" />
         <field name="date">2026-09-08</field>
         <field name="unit_amount">5.0</field>
         <field name="amount">0.0</field>
@@ -4258,9 +4258,9 @@
 
     <record id="ts_petrosol_2" model="account.analytic.line">
         <field name="name">Quarterly servicing of ILAMO cold room compressor and 50kVA standby diesel generator</field>
-        <field name="project_id" ref="project_petrosol"/>
-        <field name="task_id" ref="task_petrosol_khorixas_coldroom"/>
-        <field name="employee_id" ref="employee_lukas_van_wyk"/>
+        <field name="project_id" ref="project_petrosol" />
+        <field name="task_id" ref="task_petrosol_khorixas_coldroom" />
+        <field name="employee_id" ref="employee_lukas_van_wyk" />
         <field name="date">2026-09-18</field>
         <field name="unit_amount">3.5</field>
         <field name="amount">0.0</field>
@@ -4268,9 +4268,9 @@
 
     <record id="ts_haulage_2" model="account.analytic.line">
         <field name="name">Walvis Bay to Otjiwarongo Bulk Diesel Tanker Import haulage (Volvo FH520 N 11255 OT)</field>
-        <field name="project_id" ref="project_haulage"/>
-        <field name="task_id" ref="task_haulage_walvis_import"/>
-        <field name="employee_id" ref="employee_laythonne"/>
+        <field name="project_id" ref="project_haulage" />
+        <field name="task_id" ref="task_haulage_walvis_import" />
+        <field name="employee_id" ref="employee_laythonne" />
         <field name="date">2026-09-09</field>
         <field name="unit_amount">13.0</field>
         <field name="amount">0.0</field>
@@ -4278,9 +4278,9 @@
 
     <record id="ts_haulage_3" model="account.analytic.line">
         <field name="name">Mining bulk diesel supply Otjiwarongo to B2Gold Otjikoto Mine (Scania R500 N 4201 OT)</field>
-        <field name="project_id" ref="project_haulage"/>
-        <field name="task_id" ref="task_haulage_b2gold"/>
-        <field name="employee_id" ref="employee_hendrik_shilongo"/>
+        <field name="project_id" ref="project_haulage" />
+        <field name="task_id" ref="task_haulage_b2gold" />
+        <field name="employee_id" ref="employee_hendrik_shilongo" />
         <field name="date">2026-09-10</field>
         <field name="unit_amount">8.0</field>
         <field name="amount">0.0</field>
@@ -4288,9 +4288,9 @@
 
     <record id="ts_haulage_5" model="account.analytic.line">
         <field name="name">Northern retail and commercial replenishment: Otjiwarongo to Ondangwa &amp; Fort Sesfontein</field>
-        <field name="project_id" ref="project_haulage"/>
-        <field name="task_id" ref="task_haulage_northern"/>
-        <field name="employee_id" ref="employee_gabriel"/>
+        <field name="project_id" ref="project_haulage" />
+        <field name="task_id" ref="task_haulage_northern" />
+        <field name="employee_id" ref="employee_gabriel" />
         <field name="date">2026-09-07</field>
         <field name="unit_amount">11.0</field>
         <field name="amount">0.0</field>
