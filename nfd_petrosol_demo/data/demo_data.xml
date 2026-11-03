@@ -3744,325 +3744,325 @@
     <!-- ============================================================== -->
     <!-- 10. CARGO FUEL DISPATCH & LEAKAGE LOGS                        -->
     <!-- ============================================================== -->
-    <record id="dispatch_log_001" model="nfd.fuel.dispatch.log">
-        <field name="name">DISP/2026/0101</field>
-        <field name="date">2026-09-02 06:30:00</field>
-        <field name="vehicle_id" ref="vehicle_n7802ot"/>
-        <field name="driver_id" ref="employee_mike"/>
-        <field name="customer_id" ref="partner_b2gold"/>
-        <field name="fuel_product_id" ref="product_diesel_50ppm"/>
-        <field name="source_location_id" ref="location_depot_diesel_tank1"/>
-        <field name="destination_location_id" ref="location_b2gold_mine"/>
-        <field name="depot_loaded_liters">42000.0</field>
-        <field name="truck_meter_delivered_liters">41895.0</field>
-        <field name="customer_dip_received_liters">41890.0</field>
-        <field name="temp_allowance_liters">105.0</field>
-        <field name="net_variance_liters">0.0</field>
-        <field name="leakage_status">normal</field>
-        <field name="compartment_seal_numbers">NFD-SEAL-8891 to 8897</field>
-        <field name="pre_trip_hse_passed">True</field>
-        <field name="state">delivered</field>
-        <field name="notes">Standard supply haulage to B2Gold Otjikoto Mine bulk tanks. Discrepancy within 0.25% thermal allowance.</field>
+    <record id="dispatch_log_001" model="x_nfd_fuel_dispatch_log">
+        <field name="x_name">DISP/2026/0101</field>
+        <field name="x_date">2026-09-02 06:30:00</field>
+        <field name="x_vehicle_id" ref="vehicle_n7802ot"/>
+        <field name="x_driver_id" ref="employee_mike"/>
+        <field name="x_customer_id" ref="partner_b2gold"/>
+        <field name="x_fuel_product_id" ref="product_diesel_50ppm"/>
+        <field name="x_source_location_id" ref="location_depot_diesel_tank1"/>
+        <field name="x_destination_location_id" ref="location_b2gold_mine"/>
+        <field name="x_depot_loaded_liters">42000.0</field>
+        <field name="x_truck_meter_delivered_liters">41895.0</field>
+        <field name="x_customer_dip_received_liters">41890.0</field>
+        <field name="x_temp_allowance_liters">105.0</field>
+        <field name="x_net_variance_liters">0.0</field>
+        <field name="x_leakage_status">normal</field>
+        <field name="x_compartment_seal_numbers">NFD-SEAL-8891 to 8897</field>
+        <field name="x_pre_trip_hse_passed">True</field>
+        <field name="x_state">delivered</field>
+        <field name="x_notes">Standard supply haulage to B2Gold Otjikoto Mine bulk tanks. Discrepancy within 0.25% thermal allowance.</field>
     </record>
 
-    <record id="dispatch_log_002" model="nfd.fuel.dispatch.log">
-        <field name="name">DISP/2026/0102</field>
-        <field name="date">2026-09-04 07:15:00</field>
-        <field name="vehicle_id" ref="vehicle_n12916ot"/>
-        <field name="driver_id" ref="employee_simon"/>
-        <field name="customer_id" ref="partner_husab_mine"/>
-        <field name="fuel_product_id" ref="product_diesel_50ppm"/>
-        <field name="source_location_id" ref="location_depot_diesel_tank1"/>
-        <field name="destination_location_id" ref="location_husab_mine"/>
-        <field name="depot_loaded_liters">38500.0</field>
-        <field name="truck_meter_delivered_liters">38240.0</field>
-        <field name="customer_dip_received_liters">38235.0</field>
-        <field name="temp_allowance_liters">96.25</field>
-        <field name="net_variance_liters">163.75</field>
-        <field name="leakage_status">leakage_alert</field>
-        <field name="compartment_seal_numbers">NFD-SEAL-9012 to 9015</field>
-        <field name="pre_trip_hse_passed">True</field>
-        <field name="state">investigation</field>
-        <field name="notes">AUDIT TALKING POINT: Discrepancy of 163.75L exceeds 0.25% threshold (96.25L allowance). Automatically triggers Maintenance ticket for valve manifold inspection.</field>
+    <record id="dispatch_log_002" model="x_nfd_fuel_dispatch_log">
+        <field name="x_name">DISP/2026/0102</field>
+        <field name="x_date">2026-09-04 07:15:00</field>
+        <field name="x_vehicle_id" ref="vehicle_n12916ot"/>
+        <field name="x_driver_id" ref="employee_simon"/>
+        <field name="x_customer_id" ref="partner_husab_mine"/>
+        <field name="x_fuel_product_id" ref="product_diesel_50ppm"/>
+        <field name="x_source_location_id" ref="location_depot_diesel_tank1"/>
+        <field name="x_destination_location_id" ref="location_husab_mine"/>
+        <field name="x_depot_loaded_liters">38500.0</field>
+        <field name="x_truck_meter_delivered_liters">38240.0</field>
+        <field name="x_customer_dip_received_liters">38235.0</field>
+        <field name="x_temp_allowance_liters">96.25</field>
+        <field name="x_net_variance_liters">163.75</field>
+        <field name="x_leakage_status">leakage_alert</field>
+        <field name="x_compartment_seal_numbers">NFD-SEAL-9012 to 9015</field>
+        <field name="x_pre_trip_hse_passed">True</field>
+        <field name="x_state">investigation</field>
+        <field name="x_notes">AUDIT TALKING POINT: Discrepancy of 163.75L exceeds 0.25% threshold (96.25L allowance). Automatically triggers Maintenance ticket for valve manifold inspection.</field>
     </record>
 
     <!-- ============================================================== -->
     <!-- 11. REFUEL & ODOMETER LOGSHEETS (nfd.fuel.consumption.log)    -->
     <!-- ============================================================== -->
-    <record id="fcl_log_001" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0001</field>
-        <field name="date">2026-09-01</field>
-        <field name="vehicle_id" ref="vehicle_n7802ot"/>
-        <field name="driver_id" ref="employee_mike"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">494635.0</field>
-        <field name="odometer_end">495514.0</field>
-        <field name="distance_traveled_km">879.0</field>
-        <field name="fuel_liters">437.0</field>
-        <field name="expected_km_per_liter">2.3</field>
-        <field name="actual_km_per_liter">2.01</field>
-        <field name="fuel_usage_difference">-0.29</field>
-        <field name="expected_fuel_liters">382.17</field>
-        <field name="excess_use_liters">54.83</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">1424.48</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">excess_burn</field>
-        <field name="notes">Heavy B-double load to coastal mining corridor. High ambient headwind.</field>
+    <record id="fcl_log_001" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0001</field>
+        <field name="x_date">2026-09-01</field>
+        <field name="x_vehicle_id" ref="vehicle_n7802ot"/>
+        <field name="x_driver_id" ref="employee_mike"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">494635.0</field>
+        <field name="x_odometer_end">495514.0</field>
+        <field name="x_distance_traveled_km">879.0</field>
+        <field name="x_fuel_liters">437.0</field>
+        <field name="x_expected_km_per_liter">2.3</field>
+        <field name="x_actual_km_per_liter">2.01</field>
+        <field name="x_fuel_usage_difference">-0.29</field>
+        <field name="x_expected_fuel_liters">382.17</field>
+        <field name="x_excess_use_liters">54.83</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">1424.48</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">excess_burn</field>
+        <field name="x_notes">Heavy B-double load to coastal mining corridor. High ambient headwind.</field>
     </record>
 
-    <record id="fcl_log_002" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0002</field>
-        <field name="date">2026-09-02</field>
-        <field name="vehicle_id" ref="vehicle_n7802ot"/>
-        <field name="driver_id" ref="employee_mike"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">495514.0</field>
-        <field name="odometer_end">496464.0</field>
-        <field name="distance_traveled_km">950.0</field>
-        <field name="fuel_liters">480.0</field>
-        <field name="expected_km_per_liter">2.3</field>
-        <field name="actual_km_per_liter">1.98</field>
-        <field name="fuel_usage_difference">-0.32</field>
-        <field name="expected_fuel_liters">413.04</field>
-        <field name="excess_use_liters">66.96</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">1739.62</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">excess_burn</field>
-        <field name="notes">Excess fuel burn logged. Fuel drawn at Otjiwarongo Depot gantry.</field>
+    <record id="fcl_log_002" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0002</field>
+        <field name="x_date">2026-09-02</field>
+        <field name="x_vehicle_id" ref="vehicle_n7802ot"/>
+        <field name="x_driver_id" ref="employee_mike"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">495514.0</field>
+        <field name="x_odometer_end">496464.0</field>
+        <field name="x_distance_traveled_km">950.0</field>
+        <field name="x_fuel_liters">480.0</field>
+        <field name="x_expected_km_per_liter">2.3</field>
+        <field name="x_actual_km_per_liter">1.98</field>
+        <field name="x_fuel_usage_difference">-0.32</field>
+        <field name="x_expected_fuel_liters">413.04</field>
+        <field name="x_excess_use_liters">66.96</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">1739.62</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">excess_burn</field>
+        <field name="x_notes">Excess fuel burn logged. Fuel drawn at Otjiwarongo Depot gantry.</field>
     </record>
 
-    <record id="fcl_log_003" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0003</field>
-        <field name="date">2026-09-02</field>
-        <field name="vehicle_id" ref="vehicle_n11751ot"/>
-        <field name="driver_id" ref="employee_andreas_i"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">291886.0</field>
-        <field name="odometer_end">292526.0</field>
-        <field name="distance_traveled_km">640.0</field>
-        <field name="fuel_liters">315.0</field>
-        <field name="expected_km_per_liter">2.2</field>
-        <field name="actual_km_per_liter">2.03</field>
-        <field name="fuel_usage_difference">-0.17</field>
-        <field name="expected_fuel_liters">290.91</field>
-        <field name="excess_use_liters">24.09</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">625.86</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">excess_burn</field>
-        <field name="notes">Rigid tanker regional multi-drop replenishment.</field>
+    <record id="fcl_log_003" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0003</field>
+        <field name="x_date">2026-09-02</field>
+        <field name="x_vehicle_id" ref="vehicle_n11751ot"/>
+        <field name="x_driver_id" ref="employee_andreas_i"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">291886.0</field>
+        <field name="x_odometer_end">292526.0</field>
+        <field name="x_distance_traveled_km">640.0</field>
+        <field name="x_fuel_liters">315.0</field>
+        <field name="x_expected_km_per_liter">2.2</field>
+        <field name="x_actual_km_per_liter">2.03</field>
+        <field name="x_fuel_usage_difference">-0.17</field>
+        <field name="x_expected_fuel_liters">290.91</field>
+        <field name="x_excess_use_liters">24.09</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">625.86</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">excess_burn</field>
+        <field name="x_notes">Rigid tanker regional multi-drop replenishment.</field>
     </record>
 
-    <record id="fcl_log_004" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0004</field>
-        <field name="date">2026-09-03</field>
-        <field name="vehicle_id" ref="vehicle_n11963ot"/>
-        <field name="driver_id" ref="employee_conrall"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">512040.0</field>
-        <field name="odometer_end">513100.0</field>
-        <field name="distance_traveled_km">1060.0</field>
-        <field name="fuel_liters">465.0</field>
-        <field name="expected_km_per_liter">2.4</field>
-        <field name="actual_km_per_liter">2.28</field>
-        <field name="fuel_usage_difference">-0.12</field>
-        <field name="expected_fuel_liters">441.67</field>
-        <field name="excess_use_liters">23.33</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">606.11</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">excess_burn</field>
-        <field name="notes">B2Gold Otjikoto Mine round-trip.</field>
+    <record id="fcl_log_004" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0004</field>
+        <field name="x_date">2026-09-03</field>
+        <field name="x_vehicle_id" ref="vehicle_n11963ot"/>
+        <field name="x_driver_id" ref="employee_conrall"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">512040.0</field>
+        <field name="x_odometer_end">513100.0</field>
+        <field name="x_distance_traveled_km">1060.0</field>
+        <field name="x_fuel_liters">465.0</field>
+        <field name="x_expected_km_per_liter">2.4</field>
+        <field name="x_actual_km_per_liter">2.28</field>
+        <field name="x_fuel_usage_difference">-0.12</field>
+        <field name="x_expected_fuel_liters">441.67</field>
+        <field name="x_excess_use_liters">23.33</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">606.11</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">excess_burn</field>
+        <field name="x_notes">B2Gold Otjikoto Mine round-trip.</field>
     </record>
 
-    <record id="fcl_log_005" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0005</field>
-        <field name="date">2026-09-01</field>
-        <field name="vehicle_id" ref="vehicle_n10544ot"/>
-        <field name="driver_id" ref="employee_matheus_shikongo"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">430110.0</field>
-        <field name="odometer_end">431050.0</field>
-        <field name="distance_traveled_km">940.0</field>
-        <field name="fuel_liters">395.0</field>
-        <field name="expected_km_per_liter">2.5</field>
-        <field name="actual_km_per_liter">2.38</field>
-        <field name="fuel_usage_difference">-0.12</field>
-        <field name="expected_fuel_liters">376.0</field>
-        <field name="excess_use_liters">19.0</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">493.62</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">excess_burn</field>
-        <field name="notes">Volvo FH440 long-haul corridor haulage.</field>
+    <record id="fcl_log_005" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0005</field>
+        <field name="x_date">2026-09-01</field>
+        <field name="x_vehicle_id" ref="vehicle_n10544ot"/>
+        <field name="x_driver_id" ref="employee_matheus_shikongo"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">430110.0</field>
+        <field name="x_odometer_end">431050.0</field>
+        <field name="x_distance_traveled_km">940.0</field>
+        <field name="x_fuel_liters">395.0</field>
+        <field name="x_expected_km_per_liter">2.5</field>
+        <field name="x_actual_km_per_liter">2.38</field>
+        <field name="x_fuel_usage_difference">-0.12</field>
+        <field name="x_expected_fuel_liters">376.0</field>
+        <field name="x_excess_use_liters">19.0</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">493.62</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">excess_burn</field>
+        <field name="x_notes">Volvo FH440 long-haul corridor haulage.</field>
     </record>
 
-    <record id="fcl_log_006" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0006</field>
-        <field name="date">2026-09-02</field>
-        <field name="vehicle_id" ref="vehicle_n2745ot"/>
-        <field name="driver_id" ref="employee_laythonne"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">182400.0</field>
-        <field name="odometer_end">182543.0</field>
-        <field name="distance_traveled_km">143.0</field>
-        <field name="fuel_liters">450.0</field>
-        <field name="expected_km_per_liter">2.1</field>
-        <field name="actual_km_per_liter">0.32</field>
-        <field name="fuel_usage_difference">-1.78</field>
-        <field name="expected_fuel_liters">68.1</field>
-        <field name="excess_use_liters">381.9</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">9921.76</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">excess_burn</field>
-        <field name="notes">Heavy idling / depot yard shunting without road travel.</field>
+    <record id="fcl_log_006" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0006</field>
+        <field name="x_date">2026-09-02</field>
+        <field name="x_vehicle_id" ref="vehicle_n2745ot"/>
+        <field name="x_driver_id" ref="employee_laythonne"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">182400.0</field>
+        <field name="x_odometer_end">182543.0</field>
+        <field name="x_distance_traveled_km">143.0</field>
+        <field name="x_fuel_liters">450.0</field>
+        <field name="x_expected_km_per_liter">2.1</field>
+        <field name="x_actual_km_per_liter">0.32</field>
+        <field name="x_fuel_usage_difference">-1.78</field>
+        <field name="x_expected_fuel_liters">68.1</field>
+        <field name="x_excess_use_liters">381.9</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">9921.76</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">excess_burn</field>
+        <field name="x_notes">Heavy idling / depot yard shunting without road travel.</field>
     </record>
 
-    <record id="fcl_log_007" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0007</field>
-        <field name="date">2026-09-03</field>
-        <field name="vehicle_id" ref="vehicle_n12916ot"/>
-        <field name="driver_id" ref="employee_simon"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">388299.0</field>
-        <field name="odometer_end">389719.0</field>
-        <field name="distance_traveled_km">1420.0</field>
-        <field name="fuel_liters">472.0</field>
-        <field name="expected_km_per_liter">2.5</field>
-        <field name="actual_km_per_liter">3.01</field>
-        <field name="fuel_usage_difference">0.51</field>
-        <field name="expected_fuel_liters">568.0</field>
-        <field name="excess_use_liters">-96.0</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">-2494.08</field>
-        <field name="confirm_logsheet">unconfirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">normal</field>
-        <field name="notes">PUP Trailer long-haul run - Star Saver (-96L). Flagged in unconfirmed logsheet audit queue</field>
+    <record id="fcl_log_007" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0007</field>
+        <field name="x_date">2026-09-03</field>
+        <field name="x_vehicle_id" ref="vehicle_n12916ot"/>
+        <field name="x_driver_id" ref="employee_simon"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">388299.0</field>
+        <field name="x_odometer_end">389719.0</field>
+        <field name="x_distance_traveled_km">1420.0</field>
+        <field name="x_fuel_liters">472.0</field>
+        <field name="x_expected_km_per_liter">2.5</field>
+        <field name="x_actual_km_per_liter">3.01</field>
+        <field name="x_fuel_usage_difference">0.51</field>
+        <field name="x_expected_fuel_liters">568.0</field>
+        <field name="x_excess_use_liters">-96.0</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">-2494.08</field>
+        <field name="x_confirm_logsheet">unconfirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">normal</field>
+        <field name="x_notes">PUP Trailer long-haul run - Star Saver (-96L). Flagged in unconfirmed logsheet audit queue</field>
     </record>
 
-    <record id="fcl_log_008" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0008</field>
-        <field name="date">2026-09-05</field>
-        <field name="vehicle_id" ref="vehicle_n12916ot"/>
-        <field name="driver_id" ref="employee_simon"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">389719.0</field>
-        <field name="odometer_end">390833.0</field>
-        <field name="distance_traveled_km">1114.0</field>
-        <field name="fuel_liters">334.0</field>
-        <field name="expected_km_per_liter">2.5</field>
-        <field name="actual_km_per_liter">3.34</field>
-        <field name="fuel_usage_difference">0.84</field>
-        <field name="expected_fuel_liters">445.6</field>
-        <field name="excess_use_liters">-111.6</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">-2899.37</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">normal</field>
-        <field name="notes">Walvis Bay Corridor import run - Outstanding 3.34 KM/L efficiency</field>
+    <record id="fcl_log_008" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0008</field>
+        <field name="x_date">2026-09-05</field>
+        <field name="x_vehicle_id" ref="vehicle_n12916ot"/>
+        <field name="x_driver_id" ref="employee_simon"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">389719.0</field>
+        <field name="x_odometer_end">390833.0</field>
+        <field name="x_distance_traveled_km">1114.0</field>
+        <field name="x_fuel_liters">334.0</field>
+        <field name="x_expected_km_per_liter">2.5</field>
+        <field name="x_actual_km_per_liter">3.34</field>
+        <field name="x_fuel_usage_difference">0.84</field>
+        <field name="x_expected_fuel_liters">445.6</field>
+        <field name="x_excess_use_liters">-111.6</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">-2899.37</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">normal</field>
+        <field name="x_notes">Walvis Bay Corridor import run - Outstanding 3.34 KM/L efficiency</field>
     </record>
 
-    <record id="fcl_log_009" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0009</field>
-        <field name="date">2026-09-05</field>
-        <field name="vehicle_id" ref="vehicle_n10684ot"/>
-        <field name="driver_id" ref="employee_oscar"/>
-        <field name="place">Depot</field>
-        <field name="odometer_start">640804.0</field>
-        <field name="odometer_end">642810.0</field>
-        <field name="distance_traveled_km">2006.0</field>
-        <field name="fuel_liters">626.0</field>
-        <field name="expected_km_per_liter">2.7</field>
-        <field name="actual_km_per_liter">3.2</field>
-        <field name="fuel_usage_difference">0.5</field>
-        <field name="expected_fuel_liters">742.96</field>
-        <field name="excess_use_liters">-116.96</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">-3038.62</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">normal</field>
-        <field name="notes">Star Saver long haul - 2006 km corridor round-trip (-117L saved)</field>
+    <record id="fcl_log_009" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0009</field>
+        <field name="x_date">2026-09-05</field>
+        <field name="x_vehicle_id" ref="vehicle_n10684ot"/>
+        <field name="x_driver_id" ref="employee_oscar"/>
+        <field name="x_place">Depot</field>
+        <field name="x_odometer_start">640804.0</field>
+        <field name="x_odometer_end">642810.0</field>
+        <field name="x_distance_traveled_km">2006.0</field>
+        <field name="x_fuel_liters">626.0</field>
+        <field name="x_expected_km_per_liter">2.7</field>
+        <field name="x_actual_km_per_liter">3.2</field>
+        <field name="x_fuel_usage_difference">0.5</field>
+        <field name="x_expected_fuel_liters">742.96</field>
+        <field name="x_excess_use_liters">-116.96</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">-3038.62</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">normal</field>
+        <field name="x_notes">Star Saver long haul - 2006 km corridor round-trip (-117L saved)</field>
     </record>
 
-    <record id="fcl_log_010" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0010</field>
-        <field name="date">2026-09-11</field>
-        <field name="vehicle_id" ref="vehicle_n13938ot"/>
-        <field name="driver_id" ref="employee_lucas"/>
-        <field name="place">Office</field>
-        <field name="odometer_start">30266.0</field>
-        <field name="odometer_end">30266.0</field>
-        <field name="distance_traveled_km">0.0</field>
-        <field name="fuel_liters">67.73</field>
-        <field name="expected_km_per_liter">10.0</field>
-        <field name="actual_km_per_liter">0.0</field>
-        <field name="fuel_usage_difference">-10.0</field>
-        <field name="expected_fuel_liters">0.0</field>
-        <field name="excess_use_liters">67.73</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">1759.63</field>
-        <field name="confirm_logsheet">unconfirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">odo_error</field>
-        <field name="notes">Excel formula error audit point: Missing End Odometer caused -30,266 KM in spreadsheet. Blocked by Odoo validation.</field>
+    <record id="fcl_log_010" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0010</field>
+        <field name="x_date">2026-09-11</field>
+        <field name="x_vehicle_id" ref="vehicle_n13938ot"/>
+        <field name="x_driver_id" ref="employee_lucas"/>
+        <field name="x_place">Office</field>
+        <field name="x_odometer_start">30266.0</field>
+        <field name="x_odometer_end">30266.0</field>
+        <field name="x_distance_traveled_km">0.0</field>
+        <field name="x_fuel_liters">67.73</field>
+        <field name="x_expected_km_per_liter">10.0</field>
+        <field name="x_actual_km_per_liter">0.0</field>
+        <field name="x_fuel_usage_difference">-10.0</field>
+        <field name="x_expected_fuel_liters">0.0</field>
+        <field name="x_excess_use_liters">67.73</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">1759.63</field>
+        <field name="x_confirm_logsheet">unconfirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">odo_error</field>
+        <field name="x_notes">Excel formula error audit point: Missing End Odometer caused -30,266 KM in spreadsheet. Blocked by Odoo validation.</field>
     </record>
 
-    <record id="fcl_log_011" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0011</field>
-        <field name="date">2026-09-12</field>
-        <field name="vehicle_id" ref="vehicle_n13938ot"/>
-        <field name="driver_id" ref="employee_lucas"/>
-        <field name="place">Office</field>
-        <field name="odometer_start">30266.0</field>
-        <field name="odometer_end">30896.0</field>
-        <field name="distance_traveled_km">630.0</field>
-        <field name="fuel_liters">61.5</field>
-        <field name="expected_km_per_liter">10.0</field>
-        <field name="actual_km_per_liter">10.24</field>
-        <field name="fuel_usage_difference">0.24</field>
-        <field name="expected_fuel_liters">63.0</field>
-        <field name="excess_use_liters">-1.5</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">-38.97</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">normal</field>
-        <field name="notes">Ford Tremor verified post-audit: 10.24 KM/L on Otjiwarongo management route</field>
+    <record id="fcl_log_011" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0011</field>
+        <field name="x_date">2026-09-12</field>
+        <field name="x_vehicle_id" ref="vehicle_n13938ot"/>
+        <field name="x_driver_id" ref="employee_lucas"/>
+        <field name="x_place">Office</field>
+        <field name="x_odometer_start">30266.0</field>
+        <field name="x_odometer_end">30896.0</field>
+        <field name="x_distance_traveled_km">630.0</field>
+        <field name="x_fuel_liters">61.5</field>
+        <field name="x_expected_km_per_liter">10.0</field>
+        <field name="x_actual_km_per_liter">10.24</field>
+        <field name="x_fuel_usage_difference">0.24</field>
+        <field name="x_expected_fuel_liters">63.0</field>
+        <field name="x_excess_use_liters">-1.5</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">-38.97</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">normal</field>
+        <field name="x_notes">Ford Tremor verified post-audit: 10.24 KM/L on Otjiwarongo management route</field>
     </record>
 
-    <record id="fcl_log_012" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0012</field>
-        <field name="date">2026-09-03</field>
-        <field name="vehicle_id" ref="vehicle_n12611ot"/>
-        <field name="driver_id" ref="employee_johan_botes"/>
-        <field name="place">Office</field>
-        <field name="odometer_start">113760.0</field>
-        <field name="odometer_end">114354.0</field>
-        <field name="distance_traveled_km">594.0</field>
-        <field name="fuel_liters">65.06</field>
-        <field name="expected_km_per_liter">9.5</field>
-        <field name="actual_km_per_liter">9.13</field>
-        <field name="fuel_usage_difference">-0.37</field>
-        <field name="expected_fuel_liters">62.53</field>
-        <field name="excess_use_liters">2.53</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">65.73</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">normal</field>
-        <field name="notes">Isuzu 1.9 D-MAX - Omitted from Excel Summary tab, fully tracked in Odoo ERP</field>
+    <record id="fcl_log_012" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0012</field>
+        <field name="x_date">2026-09-03</field>
+        <field name="x_vehicle_id" ref="vehicle_n12611ot"/>
+        <field name="x_driver_id" ref="employee_johan_botes"/>
+        <field name="x_place">Office</field>
+        <field name="x_odometer_start">113760.0</field>
+        <field name="x_odometer_end">114354.0</field>
+        <field name="x_distance_traveled_km">594.0</field>
+        <field name="x_fuel_liters">65.06</field>
+        <field name="x_expected_km_per_liter">9.5</field>
+        <field name="x_actual_km_per_liter">9.13</field>
+        <field name="x_fuel_usage_difference">-0.37</field>
+        <field name="x_expected_fuel_liters">62.53</field>
+        <field name="x_excess_use_liters">2.53</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">65.73</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">normal</field>
+        <field name="x_notes">Isuzu 1.9 D-MAX - Omitted from Excel Summary tab, fully tracked in Odoo ERP</field>
     </record>
 
     <!-- ============================================================== -->
@@ -4126,50 +4126,50 @@
 
     <!-- Timesheets -->
     
-    <record id="fcl_log_013" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0013</field>
-        <field name="date">2026-09-14</field>
-        <field name="vehicle_id" ref="vehicle_n13831ot"/>
-        <field name="driver_id" ref="employee_lucas"/>
-        <field name="place">Office</field>
-        <field name="odometer_start">5621.0</field>
-        <field name="odometer_end">5977.0</field>
-        <field name="distance_traveled_km">356.0</field>
-        <field name="fuel_liters">26.71</field>
-        <field name="expected_km_per_liter">14.0</field>
-        <field name="actual_km_per_liter">13.33</field>
-        <field name="fuel_usage_difference">-0.67</field>
-        <field name="expected_fuel_liters">25.43</field>
-        <field name="excess_use_liters">1.28</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">33.25</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">normal</field>
-        <field name="notes">Suzuki Carry depot local errands</field>
+    <record id="fcl_log_013" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0013</field>
+        <field name="x_date">2026-09-14</field>
+        <field name="x_vehicle_id" ref="vehicle_n13831ot"/>
+        <field name="x_driver_id" ref="employee_lucas"/>
+        <field name="x_place">Office</field>
+        <field name="x_odometer_start">5621.0</field>
+        <field name="x_odometer_end">5977.0</field>
+        <field name="x_distance_traveled_km">356.0</field>
+        <field name="x_fuel_liters">26.71</field>
+        <field name="x_expected_km_per_liter">14.0</field>
+        <field name="x_actual_km_per_liter">13.33</field>
+        <field name="x_fuel_usage_difference">-0.67</field>
+        <field name="x_expected_fuel_liters">25.43</field>
+        <field name="x_excess_use_liters">1.28</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">33.25</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">normal</field>
+        <field name="x_notes">Suzuki Carry depot local errands</field>
     </record>
 
-    <record id="fcl_log_014" model="nfd.fuel.consumption.log">
-        <field name="name">FCL/2026/0014</field>
-        <field name="date">2026-09-06</field>
-        <field name="vehicle_id" ref="vehicle_n11255ot"/>
-        <field name="driver_id" ref="employee_laythonne"/>
-        <field name="place">Walvis</field>
-        <field name="odometer_start">412500.0</field>
-        <field name="odometer_end">413950.0</field>
-        <field name="distance_traveled_km">1450.0</field>
-        <field name="fuel_liters">564.0</field>
-        <field name="expected_km_per_liter">2.7</field>
-        <field name="actual_km_per_liter">2.57</field>
-        <field name="fuel_usage_difference">-0.13</field>
-        <field name="expected_fuel_liters">537.04</field>
-        <field name="excess_use_liters">26.96</field>
-        <field name="otj_coc_fuel_price">25.98</field>
-        <field name="nad_value">700.42</field>
-        <field name="confirm_logsheet">confirmed</field>
-        <field name="confirm_stock">confirmed</field>
-        <field name="anomaly_flag">normal</field>
-        <field name="notes">Walvis Bay fuel import haulage run - Volvo FH520</field>
+    <record id="fcl_log_014" model="x_nfd_fuel_consumption_log">
+        <field name="x_name">FCL/2026/0014</field>
+        <field name="x_date">2026-09-06</field>
+        <field name="x_vehicle_id" ref="vehicle_n11255ot"/>
+        <field name="x_driver_id" ref="employee_laythonne"/>
+        <field name="x_place">Walvis</field>
+        <field name="x_odometer_start">412500.0</field>
+        <field name="x_odometer_end">413950.0</field>
+        <field name="x_distance_traveled_km">1450.0</field>
+        <field name="x_fuel_liters">564.0</field>
+        <field name="x_expected_km_per_liter">2.7</field>
+        <field name="x_actual_km_per_liter">2.57</field>
+        <field name="x_fuel_usage_difference">-0.13</field>
+        <field name="x_expected_fuel_liters">537.04</field>
+        <field name="x_excess_use_liters">26.96</field>
+        <field name="x_otj_coc_fuel_price">25.98</field>
+        <field name="x_nad_value">700.42</field>
+        <field name="x_confirm_logsheet">confirmed</field>
+        <field name="x_confirm_stock">confirmed</field>
+        <field name="x_anomaly_flag">normal</field>
+        <field name="x_notes">Walvis Bay fuel import haulage run - Volvo FH520</field>
     </record>
 
     <record id="ts_workshop_1" model="account.analytic.line">
