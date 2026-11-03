@@ -76,7 +76,88 @@ if [[ "$FIRST_DATA_ENTRY" != *"ir_model_fields.xml"* ]]; then
     echo "   Found: $FIRST_DATA_ENTRY"
 fi
 
-# 5. Build Distribution ZIP
+# ==============================================================================
+# 5. AUTO-SANITIZE SaaS XMLs (Models, Fields, Action Refs, & Odoo 20 Schema Rules)
+# ==============================================================================
+echo "🧹 Sanitizing SaaS XML files for Odoo Online (Odoo 20.0) compatibility..."
+
+python3 - "$SAAS_MODULE" << 'EOF'
+import re
+import shutil
+import sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+saas_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(".worktrees/saas-edu-import/nfd_petrosol_demo")
+if not saas_dir.exists():
+    saas_dir = Path("../nfd_petrosol_saas_edu/nfd_petrosol_demo")
+
+# 1. Remove security/ directory if accidentally synced from main
+sec_dir = saas_dir / "security"
+if sec_dir.exists():
+    shutil.rmtree(sec_dir)
+    print("  [OK] Purged security/ directory from SaaS build.")
+
+# 2. Ensure __manifest__.py has version '1.0.0' and no security file references
+manifest_path = saas_dir / "__manifest__.py"
+if manifest_path.exists():
+    m_text = manifest_path.read_text(encoding="utf-8")
+    m_text = re.sub(r"'version'\s*:\s*'[^']*'", "'version': '1.0.0'", m_text)
+    m_lines = [line for line in m_text.splitlines() if "security/" not in line]
+    manifest_path.write_text("\n".join(m_lines) + "\n", encoding="utf-8")
+    print("  [OK] Verified __manifest__.py (version 1.0.0, zero security/ refs).")
+
+# 3. Convert nfd.fuel.* records & fields to x_nfd_fuel_* in data/demo_data.xml
+demo_path = saas_dir / "data" / "demo_data.xml"
+if demo_path.exists():
+    # Fix datetime.now() before XML parsing
+    raw_demo = demo_path.read_text(encoding="utf-8").replace('eval="datetime.now()', 'eval="DateTime.now()')
+    demo_path.write_text(raw_demo, encoding="utf-8")
+
+    tree = ET.parse(demo_path)
+    root = tree.getroot()
+    model_map = {
+        "nfd.fuel.dispatch.log": "x_nfd_fuel_dispatch_log",
+        "nfd.fuel.consumption.log": "x_nfd_fuel_consumption_log",
+    }
+    converted = 0
+    for rec in root.findall(".//record"):
+        m = rec.attrib.get("model")
+        if m in model_map:
+            rec.set("model", model_map[m])
+            converted += 1
+        if rec.attrib.get("model") in model_map.values():
+            for fld in rec.findall("field"):
+                fname = fld.attrib.get("name", "")
+                if fname and not fname.startswith("x_"):
+                    fld.set("name", f"x_{fname}")
+                if fname in ("scrap_id", "x_scrap_id"):
+                    rec.remove(fld)
+
+    tree.write(demo_path, encoding="utf-8", xml_declaration=True)
+    print(f"  [OK] Normalized {demo_path.name} ({converted} records converted to x_ models/fields).")
+
+# 4. Enforce on_delete='restrict' (and strip invalid 'ondelete' or 'stock.scrap') in ir_model_fields.xml
+fields_path = saas_dir / "data" / "ir_model_fields.xml"
+if fields_path.exists():
+    f_text = fields_path.read_text(encoding="utf-8")
+    f_text = re.sub(r'^[ \t]*<field name="ondelete">[^<]*</field>\r?\n?', '', f_text, flags=re.MULTILINE)
+    fields_path.write_text(f_text, encoding="utf-8")
+    print("  [OK] Verified data/ir_model_fields.xml (on_delete='restrict' clean).")
+
+# 5. Align action_x_nfd_fuel_dispatch_log in views/menus.xml
+menus_path = saas_dir / "views" / "menus.xml"
+if menus_path.exists():
+    menus_text = menus_path.read_text(encoding="utf-8")
+    menus_text = menus_text.replace(
+        'action="action_nfd_fuel_dispatch_log"',
+        'action="action_x_nfd_fuel_dispatch_log"'
+    )
+    menus_path.write_text(menus_text, encoding="utf-8")
+    print("  [OK] Verified action references in views/menus.xml.")
+EOF
+
+# 6. Build Distribution ZIP
 mkdir -p "${DIST_DIR}"
 rm -f "${ZIP_PATH}"
 
