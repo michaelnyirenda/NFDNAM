@@ -161,20 +161,25 @@ EOF
 mkdir -p "${DIST_DIR}"
 rm -f "${ZIP_PATH}"
 
-echo "📦 Packaging '${ZIP_NAME}'..."
-(
-    cd "${SAAS_WORKTREE}"
-    zip -r -q "${ZIP_PATH}" "nfd_petrosol_demo" \
-        -x "*.git*" \
-        -x "*.DS_Store*" \
-        -x "*__pycache__*" \
-        -x "*.pyc" \
-        -x "*.swp" \
-        -x "*.swo"
-)
+echo "📦 Packaging '${ZIP_NAME}' via Python zipfile..."
+python3 - "$SAAS_MODULE" "$ZIP_PATH" << 'PACK_ZIP'
+import sys
+import zipfile
+from pathlib import Path
 
-ZIP_SIZE=$(du -h "${ZIP_PATH}" | cut -f1)
-echo "   ✓ Successfully packaged: ${ZIP_PATH} (${ZIP_SIZE})"
+saas_dir = Path(sys.argv[1])
+zip_path = Path(sys.argv[2])
+base_parent = saas_dir.parent
+
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+    for p in sorted(saas_dir.rglob("*")):
+        if p.is_file():
+            if any(x in p.parts for x in [".git", "__pycache__", ".DS_Store", "security"]):
+                continue
+            zf.write(p, p.relative_to(base_parent))
+
+print(f"   ✓ Successfully packaged: {zip_path} ({zip_path.stat().st_size / 1024:.1f} KB)")
+PACK_ZIP
 echo "-------------------------------------------------------------------"
 echo "📋 HOW TO IMPORT TO ODOO ONLINE (edu-*.odoo.com):"
 echo "1. Log into your free 90-day education database: https://edu-<subdomain>.odoo.com"
