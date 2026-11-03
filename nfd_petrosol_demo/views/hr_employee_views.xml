@@ -45,7 +45,7 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='job_id']" position="after">
+            <xpath expr="//field[@name='name']" position="after">
                 <field name="x_licence_code" optional="show"/>
                 <field name="x_pdp_expiry_date" optional="show"/>
                 <field name="x_hazchem_expiry" optional="show"/>
