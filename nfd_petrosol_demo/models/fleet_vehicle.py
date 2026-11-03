@@ -208,36 +208,36 @@ class FleetVehicle(models.Model):
         ('for_sale', 'Decommissioned - For Sale'),
     ], string='Operational Availability', default='active', tracking=True)
 
-    # NFD September 2026 Fuel Consumption Workbook Metrics (Otj COC)
+    # NFD Fuel Consumption Workbook Metrics (Otj COC)
     x_expected_km_per_liter = fields.Float(
         string='Expected (KM/L)',
         digits=(8, 2),
         help='NFD benchmark fuel efficiency in kilometers per liter.'
     )
     x_actual_km_per_liter = fields.Float(
-        string='Actual (KM/L) - Sept 2026',
+        string='Actual Efficiency (KM/L)',
         digits=(8, 2),
-        help='Actual achieved fuel efficiency for September 2026.'
+        help='Actual achieved fuel efficiency across all refuels.'
     )
     x_sept_distance_km = fields.Float(
-        string='Distance Covered (KM) - Sept 2026',
+        string='Distance Covered (KM)',
         digits=(12, 1),
-        help='Total odometer kilometers traversed in September 2026.'
+        help='Total odometer kilometers traversed across refuel periods.'
     )
     x_sept_expected_fuel_l = fields.Float(
-        string='Expected Total Fuel Used (L)',
+        string='Expected Total Fuel (L)',
         compute='_compute_sept_fuel_metrics',
         store=True,
         digits=(12, 2),
         help='Calculated target fuel consumption based on Expected KM/L.'
     )
     x_sept_actual_fuel_l = fields.Float(
-        string='Actual Total Fuel Used (L) - Sept 2026',
+        string='Actual Total Fuel (L)',
         digits=(12, 2),
         help='Total fuel drawn from Otjiwarongo depot tanks and external sites.'
     )
     x_sept_excess_fuel_l = fields.Float(
-        string='Excess Use (L)',
+        string='Excess Fuel Used (L)',
         compute='_compute_sept_fuel_metrics',
         store=True,
         digits=(12, 2),
@@ -250,11 +250,25 @@ class FleetVehicle(models.Model):
         help='Otjiwarongo Commercial Operations Cost benchmark price per liter.'
     )
     x_sept_excess_nad_value = fields.Float(
-        string='Excess NAD Value (@ 25.98/L)',
+        string='Excess Fuel Value (NAD)',
         compute='_compute_sept_fuel_metrics',
         store=True,
         digits=(12, 2),
         help='Monetary financial impact in NAD valued at Otj COC benchmark price.'
+    )
+
+    # Smart Buttons Counts
+    fuel_log_count = fields.Integer(
+        string='Refuel Logs',
+        compute='_compute_fuel_log_count'
+    )
+    job_card_count = fields.Integer(
+        string='Job Cards',
+        compute='_compute_job_card_count'
+    )
+    dispatch_count = fields.Integer(
+        string='Dispatches',
+        compute='_compute_dispatch_count'
     )
 
     @api.depends('x_sept_distance_km', 'x_expected_km_per_liter', 'x_sept_actual_fuel_l', 'x_otj_coc_fuel_price')
@@ -321,5 +335,69 @@ class FleetVehicle(models.Model):
             else:
                 vehicle.x_km_until_service = 0.0
                 vehicle.x_service_status = 'ok'
+
+    def _compute_fuel_log_count(self):
+        log_data = self.env['nfd.fuel.consumption.log'].read_group(
+            [('vehicle_id', 'in', self.ids)],
+            ['vehicle_id'],
+            ['vehicle_id']
+        )
+        mapped = {x['vehicle_id'][0]: x['vehicle_id_count'] for x in log_data}
+        for v in self:
+            v.fuel_log_count = mapped.get(v.id, 0)
+
+    def _compute_job_card_count(self):
+        req_data = self.env['maintenance.request'].read_group(
+            ['|', ('x_linked_vehicle_id', 'in', self.ids), ('equipment_id.x_linked_vehicle_id', 'in', self.ids)],
+            ['x_linked_vehicle_id'],
+            ['x_linked_vehicle_id']
+        )
+        mapped = {x['x_linked_vehicle_id'][0]: x['x_linked_vehicle_id_count'] for x in req_data if x['x_linked_vehicle_id']}
+        for v in self:
+            v.job_card_count = mapped.get(v.id, 0)
+
+    def _compute_dispatch_count(self):
+        disp_data = self.env['nfd.fuel.dispatch.log'].read_group(
+            [('vehicle_id', 'in', self.ids)],
+            ['vehicle_id'],
+            ['vehicle_id']
+        )
+        mapped = {x['vehicle_id'][0]: x['vehicle_id_count'] for x in disp_data}
+        for v in self:
+            v.dispatch_count = mapped.get(v.id, 0)
+
+    def action_view_fuel_logs(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': f'Refuel Logsheets - {self.name}',
+            'res_model': 'nfd.fuel.consumption.log',
+            'view_mode': 'list,kanban,graph,pivot,form',
+            'domain': [('vehicle_id', '=', self.id)],
+            'context': {'default_vehicle_id': self.id},
+        }
+
+    def action_view_job_cards(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': f'Workshop Job Cards - {self.name}',
+            'res_model': 'maintenance.request',
+            'view_mode': 'list,kanban,form',
+            'domain': ['|', ('x_linked_vehicle_id', '=', self.id), ('equipment_id.x_linked_vehicle_id', '=', self.id)],
+            'context': {'default_x_linked_vehicle_id': self.id},
+        }
+
+    def action_view_dispatches(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': f'Cargo Fuel Dispatches - {self.name}',
+            'res_model': 'nfd.fuel.dispatch.log',
+            'view_mode': 'list,kanban,graph,pivot,form',
+            'domain': [('vehicle_id', '=', self.id)],
+            'context': {'default_vehicle_id': self.id},
+        }
+
 
 

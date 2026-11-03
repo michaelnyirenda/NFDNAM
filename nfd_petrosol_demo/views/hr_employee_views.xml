@@ -86,12 +86,12 @@
         </field>
     </record>
 
-    <!-- Sheet 9: Driver Information & Statutory Compliance -->
+    <!-- Hazchem Drivers & Statutory Compliance -->
     <record id="view_hr_employee_sheet_driver_info_list" model="ir.ui.view">
-        <field name="name">hr.employee.sheet.driver.info.list</field>
+        <field name="name">hr.employee.driver.compliance.list</field>
         <field name="model">hr.employee</field>
         <field name="arch" type="xml">
-            <list string="Sheet 9: Driver Information &amp; Statutory Compliance">
+            <list string="Hazchem Drivers &amp; Statutory Compliance">
                 <field name="name" string="Driver Name"/>
                 <field name="x_id_number" string="ID Number"/>
                 <field name="x_start_date" string="Start Date"/>
@@ -111,18 +111,26 @@
         </field>
     </record>
 
-    <record id="action_nfd_sheet_driver_info" model="ir.actions.act_window">
-        <field name="name">Sheet 9: Driver Information &amp; Statutory Compliance</field>
+    <record id="action_nfd_driver_compliance" model="ir.actions.act_window">
+        <field name="name">Hazchem Drivers &amp; Statutory Compliance</field>
         <field name="res_model">hr.employee</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_hr_employee_sheet_driver_info_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Vehicle Info New - Sheet 9: DRIVER INFORMATION
+                Hazchem Drivers &amp; Statutory Compliance
             </p>
             <p>
                 Driver statutory credentials, PDP, Hazchem dangerous goods certifications, medical fitness, and trainee payment dates.
             </p>
         </field>
+    </record>
+
+    <!-- Backward compatibility alias -->
+    <record id="action_nfd_sheet_driver_info" model="ir.actions.act_window">
+        <field name="name">Hazchem Drivers &amp; Statutory Compliance</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_hr_employee_sheet_driver_info_list"/>
     </record>
 </odoo>

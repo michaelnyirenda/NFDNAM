@@ -44,6 +44,12 @@ class NfdFuelConsumptionLog(models.Model):
         ('B1 PUMA', 'B1 PUMA'),
         ('Agra Karibib', 'Agra Karibib'),
         ('Agra Gobabis', 'Agra Gobabis'),
+        ('Agra Vivo', 'Agra Vivo'),
+        ('CJ Steenkamp', 'CJ Steenkamp'),
+        ('Ndama', 'Ndama'),
+        ('Tokat', 'Tokat'),
+        ('Veronika', 'Veronika'),
+        ('Weimans', 'Weimans'),
     ], string='Refueling Place / Facility', required=True, default='Depot')
 
     odometer_start = fields.Float(
@@ -175,3 +181,55 @@ class NfdFuelConsumptionLog(models.Model):
                 log.anomaly_flag = 'excess_burn'
             else:
                 log.anomaly_flag = 'normal'
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        for rec in records:
+            if rec.vehicle_id and rec.odometer_end:
+                if rec.odometer_end > (rec.vehicle_id.odometer or 0.0):
+                    rec.vehicle_id.write({'odometer': rec.odometer_end})
+                is_overdue = (rec.vehicle_id.x_next_service_km and rec.odometer_end > rec.vehicle_id.x_next_service_km) or (rec.vehicle_id.x_service_status == 'overdue')
+                if is_overdue:
+                    self._check_create_service_job_card(rec.vehicle_id)
+        return records
+
+    def write(self, vals):
+        res = super().write(vals)
+        for rec in self:
+            if rec.vehicle_id and rec.odometer_end:
+                if rec.odometer_end > (rec.vehicle_id.odometer or 0.0):
+                    rec.vehicle_id.write({'odometer': rec.odometer_end})
+                is_overdue = (rec.vehicle_id.x_next_service_km and rec.odometer_end > rec.vehicle_id.x_next_service_km) or (rec.vehicle_id.x_service_status == 'overdue')
+                if is_overdue:
+                    self._check_create_service_job_card(rec.vehicle_id)
+        return res
+
+    def _check_create_service_job_card(self, vehicle):
+        # Auto-create scheduled maintenance ticket if vehicle exceeds service interval
+        existing = self.env['maintenance.request'].search([
+            ('x_linked_vehicle_id', '=', vehicle.id),
+            ('x_job_type', '=', 'service'),
+            ('stage_id.done', '=', False),
+        ], limit=1)
+        if not existing:
+            equipment = self.env['maintenance.equipment'].search([
+                ('x_linked_vehicle_id', '=', vehicle.id)
+            ], limit=1)
+            if not equipment:
+                equipment = self.env['maintenance.equipment'].create({
+                    'name': vehicle.name,
+                    'x_linked_vehicle_id': vehicle.id,
+                    'x_asset_category': 'fleet_truck',
+                })
+            self.env['maintenance.request'].create({
+                'name': f'[AUTOMATED] Routine Service Milestone Overdue - {vehicle.name}',
+                'equipment_id': equipment.id,
+                'x_job_type': 'service',
+                'x_job_card_number': f'JC-AUTO-{vehicle.id}',
+                'x_workshop_location': 'workshop_otj',
+                'x_assigned_mechanic': 'green',
+                'priority': '3',
+                'description': f'Automated ERP Trigger: Vehicle {vehicle.name} has exceeded its routine service milestone by {abs(vehicle.x_km_until_service):.1f} KM based on driver refuel slip. Scheduled workshop service inspection required.',
+            })
+

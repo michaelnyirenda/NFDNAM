@@ -217,9 +217,21 @@
         </field>
     </record>
 
+    <!-- 3b. Site Analytics Graph View -->
+    <record id="view_nfd_fuel_consumption_log_site_graph" model="ir.ui.view">
+        <field name="name">nfd.fuel.consumption.log.site.graph</field>
+        <field name="model">nfd.fuel.consumption.log</field>
+        <field name="arch" type="xml">
+            <graph string="Fuel Drawn by Refueling Facility (Liters)" type="pie" sample="1">
+                <field name="place"/>
+                <field name="fuel_liters" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
     <!-- 7. Action: All Refuel Logsheets -->
     <record id="action_nfd_fuel_consumption_log" model="ir.actions.act_window">
-        <field name="name">Vehicle Odometer &amp; Refuel Logsheets (KM/L)</field>
+        <field name="name">Vehicle Refuel Logsheets (KM/L)</field>
         <field name="res_model">nfd.fuel.consumption.log</field>
         <field name="view_mode">list,kanban,graph,pivot,form</field>
         <field name="search_view_id" ref="view_nfd_fuel_consumption_log_search"/>
@@ -233,9 +245,67 @@
         </field>
     </record>
 
-    <!-- 8. Action: Executive Dashboard Action (Default Graph & Pivot) -->
+    <!-- ============================================================== -->
+    <!-- EXECUTIVE DASHBOARDS 1, 2, 3                                   -->
+    <!-- ============================================================== -->
+
+    <!-- Dashboard 1: NFD Executive Command Center -->
+    <record id="action_nfd_dash_command_center" model="ir.actions.act_window">
+        <field name="name">NFD Executive Command Center</field>
+        <field name="res_model">nfd.fuel.consumption.log</field>
+        <field name="view_mode">kanban,graph,pivot,list,form</field>
+        <field name="view_id" ref="view_nfd_fuel_consumption_log_kanban"/>
+        <field name="search_view_id" ref="view_nfd_fuel_consumption_log_search"/>
+        <field name="context">{'search_default_group_anomaly': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                NFD Executive Command Center
+            </p>
+            <p>
+                Real-time operational command center grouping fleet refuels by audit anomaly status, isolating excess fuel burners, star fuel savers, and odometer verification flags.
+            </p>
+        </field>
+    </record>
+
+    <!-- Dashboard 2: Fuel Consumption & Otj COC Variance Dashboard -->
+    <record id="action_nfd_dash_fuel_variance" model="ir.actions.act_window">
+        <field name="name">Fuel &amp; Otj COC Variance Dashboard</field>
+        <field name="res_model">nfd.fuel.consumption.log</field>
+        <field name="view_mode">graph,pivot,list,form</field>
+        <field name="view_id" ref="view_nfd_fuel_consumption_log_graph"/>
+        <field name="search_view_id" ref="view_nfd_fuel_consumption_log_search"/>
+        <field name="context">{'search_default_group_vehicle': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Fuel Consumption &amp; Otj COC Variance Dashboard
+            </p>
+            <p>
+                Visualizes total fuel consumed, excess liters burned, and financial impact in NAD valued at Otjiwarongo Commercial Operations Cost benchmark (NAD 25.98/L).
+            </p>
+        </field>
+    </record>
+
+    <!-- Dashboard 3: Driver & Refueling Site Analytics -->
+    <record id="action_nfd_dash_driver_site" model="ir.actions.act_window">
+        <field name="name">Driver &amp; Refueling Site Analytics</field>
+        <field name="res_model">nfd.fuel.consumption.log</field>
+        <field name="view_mode">graph,pivot,list,form</field>
+        <field name="view_id" ref="view_nfd_fuel_consumption_log_site_graph"/>
+        <field name="search_view_id" ref="view_nfd_fuel_consumption_log_search"/>
+        <field name="context">{'search_default_group_place': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Driver &amp; Refueling Site Analytics
+            </p>
+            <p>
+                Geographic and driver breakdown of fuel drawn across Otjiwarongo Depot, Okahandja (OKH), Walvis Bay, and regional commercial forecourts.
+            </p>
+        </field>
+    </record>
+
+    <!-- Backward compatibility alias -->
     <record id="action_nfd_excess_fuel_dashboard" model="ir.actions.act_window">
-        <field name="name">Sept 2026 Excess Fuel &amp; Otj COC Dashboard</field>
+        <field name="name">Fuel &amp; Otj COC Variance Dashboard</field>
         <field name="res_model">nfd.fuel.consumption.log</field>
         <field name="view_mode">graph,pivot,list,form</field>
         <field name="view_id" ref="view_nfd_fuel_consumption_log_graph"/>
