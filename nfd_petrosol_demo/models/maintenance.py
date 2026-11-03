@@ -112,6 +112,20 @@ class MaintenanceRequest(models.Model):
 
     x_parts_ordered = fields.Boolean(string='Parts Ordered', default=False)
     x_parts_received = fields.Boolean(string='Parts Received', default=False)
+    x_hours_days = fields.Float(
+        string='Hours / Days',
+        digits=(6, 2),
+        help='Technician labor hours or days recorded on job card from PROJECTS sheet.'
+    )
+    x_kms_left_checkin = fields.Float(
+        string='Kms Left at Check-In',
+        digits=(12, 1),
+        help='Odometer km remaining until service due at job card check-in.'
+    )
+    x_trailer_reg = fields.Char(
+        string='Trailer Reg No',
+        help='Coupled trailer registration number e.g. 5999, 6776, 8961.'
+    )
 
 
     def _compute_site_partner_id(self):

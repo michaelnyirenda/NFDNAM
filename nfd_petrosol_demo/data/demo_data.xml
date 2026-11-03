@@ -1153,6 +1153,8 @@
         <field name="job_title">Hazchem Tanker Driver</field>
         <field name="work_phone">081 722 2248-081 8155544</field>
         <field name="x_id_number">94050200457</field>
+        <field name="x_start_date">2026-08-01</field>
+        <field name="x_trainee_payment_date">Every Monday</field>
         <field name="x_licence_code">CE</field>
         <field name="x_licence_expiry_date">2031-10-03</field>
         <field name="x_pdp_expiry_date">2028-10-06</field>
@@ -1251,6 +1253,8 @@
         <field name="job_title">Hazchem Tanker Driver</field>
         <field name="work_phone">081 498 3849</field>
         <field name="x_id_number">87112100399</field>
+        <field name="x_start_date">2026-08-01</field>
+        <field name="x_trainee_payment_date">Every Monday</field>
         <field name="x_licence_code">CE</field>
         <field name="x_licence_expiry_date">2030-08-14</field>
         <field name="x_pdp_expiry_date">2027-08-12</field>
@@ -1847,6 +1851,14 @@
         <field name="x_fitness_certificate_expiry">2026-10-20</field>
         <field name="x_safe_loading_pass_expiry">2026-07-21</field>
         <field name="x_last_wheel_alignment_date">2025-09-18</field>
+        <field name="x_availability_group">rigid</field>
+        <field name="x_alignment_desc">Rigid Tanker</field>
+        <field name="x_alignment_skip" eval="False"/>
+        <field name="x_alignment_in" eval="True"/>
+        <field name="x_alignment_faults" eval="True"/>
+        <field name="x_alignment_repaired" eval="False"/>
+        <field name="x_alignment_done" eval="False"/>
+        <field name="x_alignment_notes">Spring bush wear out, broken studs, V-bone bushes worn, front diff loose</field>
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n2745ot" model="fleet.vehicle">
@@ -1955,6 +1967,14 @@
         <field name="driver_employee_id" ref="employee_benhardt"/>
         <field name="x_driver_trainee_id" ref="employee_tobias_leopold"/>
         <field name="x_branding_status">truck_needs_branding</field>
+        <field name="x_availability_group">rigid</field>
+        <field name="x_alignment_desc">Rigid</field>
+        <field name="x_alignment_skip" eval="False"/>
+        <field name="x_alignment_in" eval="True"/>
+        <field name="x_alignment_faults" eval="True"/>
+        <field name="x_alignment_repaired" eval="False"/>
+        <field name="x_alignment_done" eval="False"/>
+        <field name="x_alignment_notes">Steering axle king pin play, under pressure</field>
     </record>
     <record id="vehicle_n5045ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645"/>
@@ -2636,6 +2656,14 @@
         <field name="x_licence_expiry_date">2026-12-30</field>
         <field name="x_fitness_certificate_expiry">2026-01-19</field>
         <field name="x_last_wheel_alignment_date">2026-10-07</field>
+        <field name="x_availability_group">standby</field>
+        <field name="x_alignment_desc">Truck &amp; Trailer</field>
+        <field name="x_alignment_skip" eval="False"/>
+        <field name="x_alignment_in" eval="True"/>
+        <field name="x_alignment_faults" eval="True"/>
+        <field name="x_alignment_repaired" eval="False"/>
+        <field name="x_alignment_done" eval="False"/>
+        <field name="x_alignment_notes">King pin play, shock bushes worn</field>
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11096ot" model="fleet.vehicle">
@@ -2802,6 +2830,16 @@
         <field name="x_fitness_certificate_expiry">2026-10-23</field>
         <field name="x_safe_loading_pass_expiry">2026-11-13</field>
         <field name="x_last_wheel_alignment_date">2026-04-18</field>
+        <field name="x_availability_group">tanker</field>
+        <field name="x_alignment_desc">Truck &amp; Trailer</field>
+        <field name="x_alignment_skip" eval="False"/>
+        <field name="x_alignment_in" eval="True"/>
+        <field name="x_alignment_faults" eval="True"/>
+        <field name="x_alignment_repaired" eval="False"/>
+        <field name="x_alignment_done" eval="False"/>
+        <field name="x_alignment_notes">Rear axle not square, bearings need re-torque</field>
+        <field name="x_pto_engine" eval="True"/>
+        <field name="x_hydraulic_pto" eval="True"/>
         <field name="x_pto_type">both</field>
         <field name="x_pto_location">Behind the Cab</field>
         <field name="driver_employee_id" ref="employee_jackson_kuhanga"/>
@@ -3635,6 +3673,9 @@
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1009</field>
+        <field name="x_hours_days">4.5</field>
+        <field name="x_trailer_reg">5999</field>
+        <field name="x_kms_left_checkin">12500.0</field>
         <field name="x_workshop_location">workshop_otj</field>
         <field name="x_assigned_mechanic">green</field>
         <field name="x_job_type">repair</field>
@@ -3651,6 +3692,9 @@
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1045</field>
+        <field name="x_hours_days">16.0</field>
+        <field name="x_trailer_reg">6776</field>
+        <field name="x_kms_left_checkin">8200.0</field>
         <field name="x_workshop_location">cwwa</field>
         <field name="x_assigned_mechanic">japie</field>
         <field name="x_job_type">degas</field>
@@ -3666,6 +3710,9 @@
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
         <field name="maintenance_type">corrective</field>
         <field name="x_job_card_number">JC-1110</field>
+        <field name="x_hours_days">6.0</field>
+        <field name="x_trailer_reg">8961</field>
+        <field name="x_kms_left_checkin">14100.0</field>
         <field name="x_workshop_location">workshop_otj</field>
         <field name="x_assigned_mechanic">clive</field>
         <field name="x_job_type">repair</field>
@@ -3682,6 +3729,9 @@
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
         <field name="maintenance_type">preventive</field>
         <field name="x_job_card_number">JC-994</field>
+        <field name="x_hours_days">2.5</field>
+        <field name="x_trailer_reg">317</field>
+        <field name="x_kms_left_checkin">3500.0</field>
         <field name="x_workshop_location">natis_otj</field>
         <field name="x_assigned_mechanic">manie</field>
         <field name="x_job_type">roadworthy</field>
@@ -3698,6 +3748,9 @@
         <field name="maintenance_team_id" ref="maintenance_team_otjiwarongo"/>
         <field name="maintenance_type">preventive</field>
         <field name="x_job_card_number">JC-1088</field>
+        <field name="x_hours_days">3.0</field>
+        <field name="x_trailer_reg">7802</field>
+        <field name="x_kms_left_checkin">6200.0</field>
         <field name="x_workshop_location">vivo_depo</field>
         <field name="x_assigned_mechanic">jonie</field>
         <field name="x_job_type">service</field>

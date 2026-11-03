@@ -96,6 +96,14 @@ class FleetVehicle(models.Model):
         ('both_need_branding', 'Truck & Trailer Need Branding'),
     ], string='Corporate Branding Status', default='branded', tracking=True,
        help='Fleet exterior branding compliance audit from NFD BRANDING register.')
+    x_branding_notes = fields.Char(
+        string='Branding / Location Notes',
+        help='Branding and remote location notes from BRANDING register (e.g. Katima - Terug 12/09/26).'
+    )
+    x_allocation_note = fields.Char(
+        string='Driver Allocation / Availability Note',
+        help='Operational remarks from DRIVER ALLOCATION and AVAILABILITY sheets (e.g. STAAN ONGELUK, ROADWORTHY, TOBIAS TRAINING).'
+    )
 
     # Compartment Fuel Capacities
     x_diesel_capacity = fields.Float(
@@ -157,7 +165,18 @@ class FleetVehicle(models.Model):
         help='Laser axle and kingpin alignment test date.'
     )
 
+    # Wheel Alignment Worksheet (Chassis, Axle & Kingpin Audit)
+    x_alignment_desc = fields.Char(string='Alignment Desc.', help='Description from worksheet (e.g. Oubaas, Afr-Trek, Truck & Trailer, Rigid, Tipper).')
+    x_alignment_skip = fields.Boolean(string='Skip', default=False)
+    x_alignment_in = fields.Boolean(string='In', default=False)
+    x_alignment_faults = fields.Boolean(string='Faults', default=False)
+    x_alignment_repaired = fields.Boolean(string='Repaired', default=False)
+    x_alignment_done = fields.Boolean(string='Done', default=False)
+    x_alignment_notes = fields.Char(string='Wheel Alignment Notes / Faults', help='Specific chassis and axle faults noted by mechanic.')
+
     # PTO Specifications
+    x_pto_engine = fields.Boolean(string='PTO ENGINE', default=False, help='Auxiliary engine PTO fitted.')
+    x_hydraulic_pto = fields.Boolean(string='HYDRAULIC PTO', default=False, help='Transmission hydraulic PTO fitted.')
     x_pto_type = fields.Selection([
         ('hydraulic_pto', 'Hydraulic PTO'),
         ('engine_pto', 'Auxiliary Engine PTO'),
@@ -170,7 +189,16 @@ class FleetVehicle(models.Model):
         help='e.g., Behind the Cab, On Cab next to COC Tank, PTO Engine on Tanker.'
     )
 
-    # Fleet Operational Availability
+    # Fleet Operational Availability (AVAILABILITY sheet)
+    x_availability_group = fields.Selection([
+        ('rigid', 'Rigid Trucks (44% -> 77%)'),
+        ('tanker', 'Tankers (88%)'),
+        ('standby', 'Standby Trucks (50%)'),
+        ('maintenance', 'Maintenance (100%)'),
+        ('installations', 'Installations (60%)'),
+        ('for_sale', 'For Sale - Klaar (100%)'),
+        ('pool', 'Pool (100%)'),
+    ], string='Availability Category', default='tanker', tracking=True)
     x_operational_availability = fields.Selection([
         ('active', 'Active In Service'),
         ('standby', 'Standby Unit'),

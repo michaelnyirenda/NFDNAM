@@ -5,7 +5,7 @@
         <field name="name">res.partner.list.breakdown.nfd</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
-            <list string="24/7 Emergency Breakdown Network">
+            <list string="Sheet 5: 24/7 Breakdown Contacts &amp; Corridors">
                 <field name="name" string="Service Provider / Contact"/>
                 <field name="x_breakdown_coverage_area" string="Town / Coverage Area"/>
                 <field name="x_breakdown_service_type" widget="badge"
@@ -22,7 +22,7 @@
 
     <!-- 24/7 Emergency Breakdown Network Action -->
     <record id="action_nfd_breakdown_network" model="ir.actions.act_window">
-        <field name="name">24/7 Emergency Breakdown Network</field>
+        <field name="name">Sheet 5: 24/7 Breakdown Contacts &amp; Corridors</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">list,form,kanban</field>
         <field name="view_id" ref="view_partner_tree_breakdown_nfd"/>

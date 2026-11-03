@@ -43,6 +43,15 @@ class HrEmployee(models.Model):
         tracking=True,
         help='Annual Optometric screening validation expiry date.'
     )
+    x_start_date = fields.Date(
+        string='Start Date',
+        tracking=True,
+        help='Driver commencement date from DRIVER INFORMATION sheet.'
+    )
+    x_trainee_payment_date = fields.Char(
+        string='Trainee Payment Date',
+        help='Trainee stipend payment cycle from DRIVER INFORMATION sheet (e.g. Every Monday).'
+    )
 
     x_hazchem_expiry = fields.Date(
         string='Dangerous Goods / Hazchem Permit Expiry',
