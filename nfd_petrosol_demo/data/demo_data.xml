@@ -1807,7 +1807,6 @@
         <field name="x_sept_excess_fuel_l">187.35</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">4867.35</field>
-        <field name="odometer">656407.0</field>
     </record>
     <record id="vehicle_n945ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -1820,7 +1819,6 @@
         <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-945</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">285282.0</field>
         <field name="x_last_service_km">285282.0</field>
         <field name="x_service_interval_km">15000.0</field>
         <field name="x_next_service_km">300282.0</field>
@@ -1938,7 +1936,6 @@
         <field name="x_sept_excess_fuel_l">242.33</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">6295.73</field>
-        <field name="odometer">1307950.0</field>
     </record>
     <record id="vehicle_n2745ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_3352" />
@@ -1971,7 +1968,6 @@
         <field name="x_sept_excess_fuel_l">381.9</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">9921.76</field>
-        <field name="odometer">275385.0</field>
     </record>
     <record id="vehicle_n3069ot" model="fleet.vehicle">
         <field name="model_id" ref="model_nissan_np300" />
@@ -2002,7 +1998,6 @@
         <field name="x_sept_excess_fuel_l">-0.04</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-1.04</field>
-        <field name="odometer">276258.0</field>
     </record>
     <record id="vehicle_n4467ot" model="fleet.vehicle">
         <field name="model_id" ref="model_mercedes_rigid" />
@@ -2037,7 +2032,6 @@
         <field name="x_sept_excess_fuel_l">186.56</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">4846.83</field>
-        <field name="odometer">895091.0</field>
     </record>
     <record id="vehicle_n4584ot" model="fleet.vehicle">
         <field name="model_id" ref="model_mercedes_rigid" />
@@ -2081,7 +2075,6 @@
         <field name="x_sept_excess_fuel_l">228.55</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">5937.73</field>
-        <field name="odometer">1381688.0</field>
     </record>
     <record id="vehicle_n5045ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2094,7 +2087,6 @@
         <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-5045</field>
         <field name="x_manufacture_year">2019</field>
-        <field name="odometer">580000.0</field>
         <field name="x_last_service_km">580000.0</field>
         <field name="x_service_interval_km">15000.0</field>
         <field name="x_next_service_km">595000.0</field>
@@ -2140,7 +2132,6 @@
         <field name="x_sept_excess_fuel_l">113.86</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">2958.08</field>
-        <field name="odometer">1439435.0</field>
     </record>
     <record id="vehicle_n5915ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2153,7 +2144,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-5915</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">150000.0</field>
         <field name="x_last_service_km">150000.0</field>
         <field name="x_service_interval_km">10000.0</field>
         <field name="x_next_service_km">160000.0</field>
@@ -2175,7 +2165,6 @@
         <field name="x_has_diesel_meter" eval="True" />
         <field name="x_geotab_device_id">GEO-6028</field>
         <field name="x_manufacture_year">2012</field>
-        <field name="odometer">1777500.0</field>
         <field name="x_last_service_km">1777500.0</field>
         <field name="x_service_interval_km">22500.0</field>
         <field name="x_next_service_km">1800000.0</field>
@@ -2200,7 +2189,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-6170</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -2241,7 +2229,6 @@
         <field name="x_sept_excess_fuel_l">-123.09</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-3197.88</field>
-        <field name="odometer">762074.0</field>
     </record>
     <record id="vehicle_n7014ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2309,7 +2296,6 @@
         <field name="x_sept_excess_fuel_l">21.81</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">566.62</field>
-        <field name="odometer">392698.0</field>
     </record>
     <record id="vehicle_n7802ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2646" />
@@ -2348,7 +2334,6 @@
         <field name="x_sept_excess_fuel_l">617.6</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">16045.25</field>
-        <field name="odometer">1177255.0</field>
     </record>
     <record id="vehicle_n7900ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2361,7 +2346,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-7900</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -2408,7 +2392,6 @@
         <field name="x_sept_excess_fuel_l">-62.8</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-1631.54</field>
-        <field name="odometer">1089580.0</field>
     </record>
     <record id="vehicle_n9120ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2646" />
@@ -2446,7 +2429,6 @@
         <field name="x_sept_excess_fuel_l">164.8</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">4281.5</field>
-        <field name="odometer">1263354.0</field>
     </record>
     <record id="vehicle_n9173ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
@@ -2459,7 +2441,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-9173</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">250000.0</field>
         <field name="x_last_service_km">250000.0</field>
         <field name="x_service_interval_km">10000.0</field>
         <field name="x_next_service_km">260000.0</field>
@@ -2480,7 +2461,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-9470</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -2518,7 +2498,6 @@
         <field name="x_sept_excess_fuel_l">13.84</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">359.56</field>
-        <field name="odometer">199110.0</field>
     </record>
     <record id="vehicle_n10420ot" model="fleet.vehicle">
         <field name="model_id" ref="model_chev_utility" />
@@ -2579,7 +2558,6 @@
         <field name="x_sept_excess_fuel_l">-8.21</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-213.3</field>
-        <field name="odometer">326801.0</field>
     </record>
     <record id="vehicle_n10425ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
@@ -2610,7 +2588,6 @@
         <field name="x_sept_excess_fuel_l">-126.59</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-3288.81</field>
-        <field name="odometer">349920.0</field>
     </record>
     <record id="vehicle_n10544ot" model="fleet.vehicle">
         <field name="model_id" ref="model_volvo_fh440" />
@@ -2648,7 +2625,6 @@
         <field name="x_sept_excess_fuel_l">392.13</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">10187.54</field>
-        <field name="odometer">521345.0</field>
     </record>
     <record id="vehicle_n10684ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2652" />
@@ -2681,7 +2657,6 @@
         <field name="x_sept_excess_fuel_l">-399.25</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-10372.51</field>
-        <field name="odometer">659853.0</field>
     </record>
     <record id="vehicle_n10904ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2694,7 +2669,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10904</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -2716,7 +2690,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10914</field>
         <field name="x_manufacture_year">2012</field>
-        <field name="odometer">1215000.0</field>
         <field name="x_last_service_km">1215000.0</field>
         <field name="x_service_interval_km">22500.0</field>
         <field name="x_next_service_km">1237500.0</field>
@@ -2741,7 +2714,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10915</field>
         <field name="x_manufacture_year">2012</field>
-        <field name="odometer">1440000.0</field>
         <field name="x_last_service_km">1440000.0</field>
         <field name="x_service_interval_km">22500.0</field>
         <field name="x_next_service_km">1462500.0</field>
@@ -2766,7 +2738,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10916</field>
         <field name="x_manufacture_year">2012</field>
-        <field name="odometer">1350000.0</field>
         <field name="x_last_service_km">1350000.0</field>
         <field name="x_service_interval_km">22500.0</field>
         <field name="x_next_service_km">1372500.0</field>
@@ -2826,7 +2797,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-10919</field>
         <field name="x_manufacture_year">2012</field>
-        <field name="odometer">1259500.0</field>
         <field name="x_last_service_km">1259500.0</field>
         <field name="x_service_interval_km">22500.0</field>
         <field name="x_next_service_km">1282000.0</field>
@@ -2911,7 +2881,6 @@
         <field name="x_sept_excess_fuel_l">-42.33</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-1099.73</field>
-        <field name="odometer">879491.0</field>
     </record>
     <record id="vehicle_n11255ot" model="fleet.vehicle">
         <field name="model_id" ref="model_volvo_fh520" />
@@ -2949,7 +2918,6 @@
         <field name="x_sept_excess_fuel_l">384.46</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">9988.27</field>
-        <field name="odometer">521511.0</field>
     </record>
     <record id="vehicle_n11429ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
@@ -2981,7 +2949,6 @@
         <field name="x_sept_excess_fuel_l">-18.09</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-469.98</field>
-        <field name="odometer">178490.0</field>
     </record>
     <record id="vehicle_n11671ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
@@ -3012,7 +2979,6 @@
         <field name="x_sept_excess_fuel_l">11.32</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">294.09</field>
-        <field name="odometer">250587.0</field>
     </record>
     <record id="vehicle_n11751ot" model="fleet.vehicle">
         <field name="model_id" ref="model_mercedes_rigid" />
@@ -3048,7 +3014,6 @@
         <field name="x_sept_excess_fuel_l">589.86</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">15324.56</field>
-        <field name="odometer">697382.0</field>
     </record>
     <record id="vehicle_n11963ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2646" />
@@ -3096,7 +3061,6 @@
         <field name="x_sept_excess_fuel_l">529.2</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">13748.62</field>
-        <field name="odometer">1294474.0</field>
     </record>
     <record id="vehicle_n11964ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2646" />
@@ -3165,7 +3129,6 @@
         <field name="x_sept_excess_fuel_l">32.41</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">842.01</field>
-        <field name="odometer">79579.0</field>
     </record>
     <record id="vehicle_n12043ot" model="fleet.vehicle">
         <field name="model_id" ref="model_volvo_fh520" />
@@ -3202,7 +3165,6 @@
         <field name="x_sept_excess_fuel_l">241.78</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">6281.44</field>
-        <field name="odometer">494623.0</field>
     </record>
     <record id="vehicle_n12548ot" model="fleet.vehicle">
         <field name="model_id" ref="model_mercedes_rigid" />
@@ -3247,7 +3209,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-12582</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">150000.0</field>
         <field name="x_last_service_km">150000.0</field>
         <field name="x_service_interval_km">10000.0</field>
         <field name="x_next_service_km">160000.0</field>
@@ -3287,7 +3248,6 @@
         <field name="x_sept_excess_fuel_l">19.09</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">495.96</field>
-        <field name="odometer">115871.0</field>
     </record>
     <record id="vehicle_n12705ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
@@ -3300,7 +3260,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-12705</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">110000.0</field>
         <field name="x_last_service_km">110000.0</field>
         <field name="x_service_interval_km">10000.0</field>
         <field name="x_next_service_km">120000.0</field>
@@ -3347,7 +3306,6 @@
         <field name="x_sept_excess_fuel_l">5.43</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">141.07</field>
-        <field name="odometer">474101.0</field>
     </record>
     <record id="vehicle_n12916ot" model="fleet.vehicle">
         <field name="model_id" ref="model_volvo_fh440" />
@@ -3384,7 +3342,6 @@
         <field name="x_sept_excess_fuel_l">-745.9</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-19378.48</field>
-        <field name="odometer">402839.0</field>
     </record>
     <record id="vehicle_n12917ot" model="fleet.vehicle">
         <field name="model_id" ref="model_volvo_fh440" />
@@ -3421,7 +3378,6 @@
         <field name="x_sept_excess_fuel_l">-263.1</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-6835.34</field>
-        <field name="odometer">361442.0</field>
     </record>
     <record id="vehicle_n13566ot" model="fleet.vehicle">
         <field name="model_id" ref="model_volvo_fh520" />
@@ -3457,7 +3413,6 @@
         <field name="x_sept_excess_fuel_l">350.52</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">9106.51</field>
-        <field name="odometer">534510.0</field>
     </record>
     <record id="vehicle_n13777ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2652" />
@@ -3496,7 +3451,6 @@
         <field name="x_sept_excess_fuel_l">5.63</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">146.27</field>
-        <field name="odometer">409620.0</field>
     </record>
     <record id="vehicle_n13831ot" model="fleet.vehicle">
         <field name="model_id" ref="model_suzuki_carry" />
@@ -3525,7 +3479,6 @@
         <field name="x_sept_excess_fuel_l">2.48</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">64.43</field>
-        <field name="odometer">6342.0</field>
     </record>
     <record id="vehicle_n13938ot" model="fleet.vehicle">
         <field name="model_id" ref="model_ford_tremor" />
@@ -3556,7 +3509,6 @@
         <field name="x_sept_excess_fuel_l">-62.12</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">-1613.88</field>
-        <field name="odometer">33864.0</field>
     </record>
     <record id="vehicle_ncheers_naot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -3569,7 +3521,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-CHEERS NA</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -3590,7 +3541,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-EDGATE1NA</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -3611,7 +3561,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-EDGATE2NA</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -3632,7 +3581,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-FORKLIFT</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">6195.0</field>
         <field name="x_last_service_km">6195.0</field>
         <field name="x_service_interval_km">250.0</field>
         <field name="x_next_service_km">6445.0</field>
@@ -3653,7 +3601,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-GENSET DEPO</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">40.0</field>
         <field name="x_last_service_km">40.0</field>
         <field name="x_service_interval_km">40.0</field>
         <field name="x_next_service_km">80.0</field>
@@ -3673,7 +3620,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-GENSET HQ</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">60.0</field>
         <field name="x_next_service_km">60.0</field>
@@ -3693,7 +3639,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-TLB</field>
         <field name="x_manufacture_year">2022</field>
-        <field name="odometer">8485.0</field>
         <field name="x_last_service_km">8485.0</field>
         <field name="x_service_interval_km">250.0</field>
         <field name="x_next_service_km">8735.0</field>
@@ -3714,7 +3659,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-NKDFH07087220</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -3735,7 +3679,6 @@
         <field name="x_has_diesel_meter" eval="False" />
         <field name="x_geotab_device_id">GEO-NKDFH07087252</field>
         <field name="x_manufacture_year">2021</field>
-        <field name="odometer">0.0</field>
         <field name="x_last_service_km">0.0</field>
         <field name="x_service_interval_km">30000.0</field>
         <field name="x_next_service_km">0.0</field>
@@ -3805,7 +3748,245 @@
     
     
     
-    <record id="maintenance_team_otjiwarongo" model="maintenance.team">
+    
+    
+    <record id="odo_log_vehicle_n317ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n317ot" />
+        <field name="value">656407.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n945ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n945ot" />
+        <field name="value">285282.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n2455ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n2455ot" />
+        <field name="value">1307950.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n2745ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n2745ot" />
+        <field name="value">275385.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n3069ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n3069ot" />
+        <field name="value">276258.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n4467ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n4467ot" />
+        <field name="value">895091.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n4584ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n4584ot" />
+        <field name="value">1381688.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n5045ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n5045ot" />
+        <field name="value">580000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n5164ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n5164ot" />
+        <field name="value">1439435.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n5915ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n5915ot" />
+        <field name="value">150000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n6028ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n6028ot" />
+        <field name="value">1777500.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n7013ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n7013ot" />
+        <field name="value">762074.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n7262ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n7262ot" />
+        <field name="value">392698.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n7802ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n7802ot" />
+        <field name="value">1177255.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n8966ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n8966ot" />
+        <field name="value">1089580.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n9120ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n9120ot" />
+        <field name="value">1263354.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n9173ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n9173ot" />
+        <field name="value">250000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n9574ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n9574ot" />
+        <field name="value">199110.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10424ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10424ot" />
+        <field name="value">326801.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10425ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10425ot" />
+        <field name="value">349920.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10544ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10544ot" />
+        <field name="value">521345.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10684ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10684ot" />
+        <field name="value">659853.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10914ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10914ot" />
+        <field name="value">1215000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10915ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10915ot" />
+        <field name="value">1440000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10916ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10916ot" />
+        <field name="value">1350000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n10919ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n10919ot" />
+        <field name="value">1259500.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n11096ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n11096ot" />
+        <field name="value">879491.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n11255ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n11255ot" />
+        <field name="value">521511.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n11429ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n11429ot" />
+        <field name="value">178490.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n11671ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n11671ot" />
+        <field name="value">250587.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n11751ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n11751ot" />
+        <field name="value">697382.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n11963ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n11963ot" />
+        <field name="value">1294474.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12007ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12007ot" />
+        <field name="value">79579.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12043ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12043ot" />
+        <field name="value">494623.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12582ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12582ot" />
+        <field name="value">150000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12611ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12611ot" />
+        <field name="value">115871.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12705ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12705ot" />
+        <field name="value">110000.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12843ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12843ot" />
+        <field name="value">474101.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12916ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12916ot" />
+        <field name="value">402839.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n12917ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n12917ot" />
+        <field name="value">361442.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n13566ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n13566ot" />
+        <field name="value">534510.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n13777ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n13777ot" />
+        <field name="value">409620.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n13831ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n13831ot" />
+        <field name="value">6342.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_n13938ot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_n13938ot" />
+        <field name="value">33864.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_nforkliftot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_nforkliftot" />
+        <field name="value">6195.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_ngenset_depoot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_ngenset_depoot" />
+        <field name="value">40.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="odo_log_vehicle_ntlbot" model="fleet.vehicle.odometer">
+        <field name="vehicle_id" ref="vehicle_ntlbot" />
+        <field name="value">8485.0</field>
+        <field name="date">2026-09-30</field>
+    </record>
+
+<record id="maintenance_team_otjiwarongo" model="maintenance.team">
         <field name="name">Otjiwarongo Mechanical Workshop</field>
     </record>
 
