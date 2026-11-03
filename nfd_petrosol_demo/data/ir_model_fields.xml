@@ -1332,6 +1332,144 @@ for record in self:
         <field name="sequence">4</field>
     </record>
 
+    <record id="field_fleet_vehicle_x_branding_notes" model="ir.model.fields">
+        <field name="name">x_branding_notes</field>
+        <field name="field_description">Branding / Location Notes</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_allocation_note" model="ir.model.fields">
+        <field name="name">x_allocation_note</field>
+        <field name="field_description">Driver Allocation / Availability Note</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_pto_engine" model="ir.model.fields">
+        <field name="name">x_pto_engine</field>
+        <field name="field_description">PTO ENGINE</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_hydraulic_pto" model="ir.model.fields">
+        <field name="name">x_hydraulic_pto</field>
+        <field name="field_description">HYDRAULIC PTO</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_alignment_desc" model="ir.model.fields">
+        <field name="name">x_alignment_desc</field>
+        <field name="field_description">Alignment Desc.</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_alignment_skip" model="ir.model.fields">
+        <field name="name">x_alignment_skip</field>
+        <field name="field_description">Skip</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_alignment_in" model="ir.model.fields">
+        <field name="name">x_alignment_in</field>
+        <field name="field_description">In</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_alignment_faults" model="ir.model.fields">
+        <field name="name">x_alignment_faults</field>
+        <field name="field_description">Faults</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_alignment_repaired" model="ir.model.fields">
+        <field name="name">x_alignment_repaired</field>
+        <field name="field_description">Repaired</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_alignment_done" model="ir.model.fields">
+        <field name="name">x_alignment_done</field>
+        <field name="field_description">Done</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_alignment_notes" model="ir.model.fields">
+        <field name="name">x_alignment_notes</field>
+        <field name="field_description">Wheel Alignment Notes / Faults</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_fleet_vehicle_x_availability_group" model="ir.model.fields">
+        <field name="name">x_availability_group</field>
+        <field name="field_description">Availability Category</field>
+        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+    </record>
+    <record id="sel_veh_grp_rigid" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="value">rigid</field>
+        <field name="name">Rigid Trucks (44% -&gt; 77%)</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="sel_veh_grp_tanker" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="value">tanker</field>
+        <field name="name">Tankers (88%)</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="sel_veh_grp_standby" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="value">standby</field>
+        <field name="name">Standby Trucks (50%)</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="sel_veh_grp_maintenance" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="value">maintenance</field>
+        <field name="name">Maintenance (100%)</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="sel_veh_grp_installations" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="value">installations</field>
+        <field name="name">Installations (60%)</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="sel_veh_grp_for_sale" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="value">for_sale</field>
+        <field name="name">For Sale - Klaar (100%)</field>
+        <field name="sequence">6</field>
+    </record>
+    <record id="sel_veh_grp_pool" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="value">pool</field>
+        <field name="name">Pool (100%)</field>
+        <field name="sequence">7</field>
+    </record>
+
     <!-- ============================================================== -->
     <!-- 9. EXTENSION: HR EMPLOYEE DRIVER LICENSING & STATUTORY FIELDS   -->
     <!-- ============================================================== -->
@@ -1402,6 +1540,22 @@ for record in self:
         <field name="field_description">Eye Examination Expiry Date</field>
         <field name="model_id" ref="hr.model_hr_employee"/>
         <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_hr_employee_x_start_date" model="ir.model.fields">
+        <field name="name">x_start_date</field>
+        <field name="field_description">Start Date</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="ttype">date</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_hr_employee_x_trainee_payment_date" model="ir.model.fields">
+        <field name="name">x_trainee_payment_date</field>
+        <field name="field_description">Trainee Payment Date</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
 
@@ -1571,6 +1725,30 @@ for record in self:
         <field name="field_description">Parts Received</field>
         <field name="model_id" ref="maintenance.model_maintenance_request"/>
         <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_maintenance_request_x_hours_days" model="ir.model.fields">
+        <field name="name">x_hours_days</field>
+        <field name="field_description">Hours / Days</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_maintenance_request_x_kms_left_checkin" model="ir.model.fields">
+        <field name="name">x_kms_left_checkin</field>
+        <field name="field_description">Kms Left at Check-In</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">float</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_maintenance_request_x_trailer_reg" model="ir.model.fields">
+        <field name="name">x_trailer_reg</field>
+        <field name="field_description">Trailer Reg No</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
 

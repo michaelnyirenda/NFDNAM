@@ -18,6 +18,9 @@
                             <field name="x_avg_fuel_consumption"/>
                             <field name="x_driver_trainee_id"/>
                             <field name="x_branding_status"/>
+                            <field name="x_branding_notes"/>
+                            <field name="x_allocation_note"/>
+                            <field name="x_availability_group"/>
                         </group>
                         <group string="Fleet Replacement Policy (NFD Governance)">
                             <field name="x_manufacture_year"/>
@@ -71,8 +74,30 @@
                             <field name="x_ulp_capacity"/>
                         </group>
                         <group>
+                            <field name="x_pto_engine" widget="boolean_toggle"/>
+                            <field name="x_hydraulic_pto" widget="boolean_toggle"/>
                             <field name="x_pto_type"/>
                             <field name="x_pto_location"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Wheel Alignment &amp; Axle Audit" name="nfd_wheel_alignment">
+                    <group>
+                        <group string="Axle &amp; Kingpin Inspection Status">
+                            <field name="x_alignment_desc"/>
+                            <field name="x_alignment_skip" widget="boolean_toggle"/>
+                            <field name="x_alignment_in" widget="boolean_toggle"/>
+                            <field name="x_alignment_faults" widget="boolean_toggle"/>
+                            <field name="x_alignment_repaired" widget="boolean_toggle"/>
+                            <field name="x_alignment_done" widget="boolean_toggle"/>
+                            <field name="x_last_wheel_alignment_date"/>
+                        </group>
+                        <group string="Chassis &amp; Suspension Mechanical Faults">
+                            <field name="x_alignment_notes"/>
+                            <div class="text-muted mt-2 small" colspan="2">
+                                <i class="fa fa-exclamation-triangle me-1 text-danger" title="Tyre Drag Warning"/>
+                                <strong>Fuel Impact Note:</strong> Axle misalignment directly causes severe tyre scrubbing, drag, and excess engine fuel burn.
+                            </div>
                         </group>
                     </group>
                 </page>
@@ -169,7 +194,272 @@
                         domain="[]" context="{'group_by': 'x_service_status'}"/>
                 <filter string="Unit Classification" name="group_unit_classification"
                         domain="[]" context="{'group_by': 'x_unit_classification'}"/>
+                <filter string="Availability Category" name="group_availability_category"
+                        domain="[]" context="{'group_by': 'x_availability_group'}"/>
             </xpath>
+        </field>
+    </record>
+
+    <!-- ============================================================== -->
+    <!-- DEDICATED EXCEL-MATCHED VIEWS & ACTIONS                        -->
+    <!-- ============================================================== -->
+
+    <!-- 1. Fuel Consumption Summary (Sept 2026) -->
+    <record id="view_fleet_vehicle_fuel_summary_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.fuel.summary.list</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Fuel Consumption Summary (Sept 2026)" default_order="x_sept_excess_nad_value desc">
+                <field name="license_plate" string="Reg No"/>
+                <field name="model_id" string="Vehicle Make / Model"/>
+                <field name="x_sept_distance_km" string="Distance Covered (KM)"/>
+                <field name="x_expected_km_per_liter" string="Expected (KM/L)"/>
+                <field name="x_actual_km_per_liter" string="Actual (KM/L)"/>
+                <field name="x_sept_expected_fuel_l" string="Expected Total Fuel (L)"/>
+                <field name="x_sept_actual_fuel_l" string="Actual Total Fuel (L)"/>
+                <field name="x_sept_excess_fuel_l" string="Excess Use (L)"
+                       decoration-danger="x_sept_excess_fuel_l > 0"
+                       decoration-success="x_sept_excess_fuel_l &lt;= 0"/>
+                <field name="x_otj_coc_fuel_price" string="Current Otj COC Price"/>
+                <field name="x_sept_excess_nad_value" string="Excess NAD Value"
+                       sum="Total Excess Value (NAD)"
+                       decoration-danger="x_sept_excess_nad_value > 0"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_excel_fuel_summary" model="ir.actions.act_window">
+        <field name="name">Fuel Consumption Summary (Sept 2026)</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fleet_vehicle_fuel_summary_list"/>
+        <field name="domain">[('x_sept_distance_km', '>', 0)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                September 2026 Fuel Consumption Summary Audit
+            </p>
+            <p>
+                Exact reconciliation of distance traveled, benchmark KM/L, actual diesel burn, and monetary excess penalty @ NAD 25.98/L Otj COC.
+            </p>
+        </field>
+    </record>
+
+    <!-- 2. Sheet 1: Fleet Service & Workshop Schedule -->
+    <record id="view_fleet_vehicle_sheet_fleet_service_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.sheet.fleet.service.list</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Sheet 1: Fleet Service &amp; Workshop Schedule" default_order="x_km_until_service asc">
+                <field name="license_plate" string="Registration"/>
+                <field name="model_id" string="Vehicle Model"/>
+                <field name="x_service_interval_km" string="Service Interval (KM)"/>
+                <field name="x_last_service_date" string="Last Service Date"/>
+                <field name="x_last_service_km" string="Last Service (KM)"/>
+                <field name="x_next_service_km" string="Next Service (KM)"/>
+                <field name="x_km_until_service" string="KM Until Service"/>
+                <field name="x_service_status" widget="badge"
+                       decoration-success="x_service_status == 'ok'"
+                       decoration-warning="x_service_status == 'due_soon'"
+                       decoration-danger="x_service_status == 'overdue'"/>
+                <field name="x_licence_expiry_date" string="Licence Expiry" optional="show"/>
+                <field name="x_fitness_certificate_expiry" string="Fitness Cert Expiry" optional="show"/>
+                <field name="x_safe_loading_pass_expiry" string="SLP Pass Expiry" optional="show"/>
+                <field name="x_pressure_test_expiry" string="Pressure Test Expiry" optional="show"/>
+                <field name="x_tanker_calibration_date" string="Tanker Calibration" optional="hide"/>
+                <field name="x_last_wheel_alignment_date" string="Wheel Alignment" optional="show"/>
+                <field name="x_operational_availability" widget="badge"
+                       decoration-success="x_operational_availability == 'active'"
+                       decoration-info="x_operational_availability == 'standby'"
+                       decoration-warning="x_operational_availability in ['maintenance', 'roadworthy']"
+                       decoration-danger="x_operational_availability in ['accident', 'for_sale']"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_sheet_fleet_service" model="ir.actions.act_window">
+        <field name="name">Sheet 1: Fleet Service &amp; Workshop Schedule</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fleet_vehicle_sheet_fleet_service_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Vehicle Info New - Sheet 1: Fleet Service
+            </p>
+            <p>
+                Tracks routine odometer service intervals, NaTIS roadworthy fitness dates, SLP gantry passes, and tanker pressure testing.
+            </p>
+        </field>
+    </record>
+
+    <!-- 3. Sheet 2: Fleet Availability & Grouping -->
+    <record id="view_fleet_vehicle_sheet_availability_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.sheet.availability.list</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Sheet 2: Fleet Availability &amp; Grouping">
+                <field name="license_plate" string="Registration"/>
+                <field name="model_id" string="Make / Model"/>
+                <field name="x_availability_group" string="Availability Category"/>
+                <field name="x_operational_availability" widget="badge"
+                       decoration-success="x_operational_availability == 'active'"
+                       decoration-info="x_operational_availability == 'standby'"
+                       decoration-warning="x_operational_availability in ['maintenance', 'roadworthy']"
+                       decoration-danger="x_operational_availability in ['accident', 'for_sale']"/>
+                <field name="x_allocation_note" string="Availability / Operational Note"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_sheet_availability" model="ir.actions.act_window">
+        <field name="name">Sheet 2: Fleet Availability &amp; Grouping</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fleet_vehicle_sheet_availability_list"/>
+        <field name="context">{'search_default_group_availability_category': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Vehicle Info New - Sheet 2: Availability
+            </p>
+            <p>
+                Monitors operational availability targets across Rigid Trucks (77%), Tankers (88%), Standby Units (50%), Maintenance (100%), and Installations (60%).
+            </p>
+        </field>
+    </record>
+
+    <!-- 4. Sheet 3: Driver & Trailer Allocation -->
+    <record id="view_fleet_vehicle_sheet_driver_allocation_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.sheet.driver.allocation.list</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Sheet 3: Driver &amp; Trailer Allocation">
+                <field name="license_plate" string="Truck Reg No"/>
+                <field name="model_id" string="Truck Model"/>
+                <field name="driver_id" string="Permanent Driver"/>
+                <field name="x_driver_trainee_id" string="Trainee Driver / Second Driver"/>
+                <field name="x_trailer_comp1_id" string="Trailer / Link 1"/>
+                <field name="x_trailer_comp2_id" string="Trailer / Link 2"/>
+                <field name="x_allocation_note" string="Notes / Status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_sheet_driver_allocation" model="ir.actions.act_window">
+        <field name="name">Sheet 3: Driver &amp; Trailer Allocation</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fleet_vehicle_sheet_driver_allocation_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Vehicle Info New - Sheet 3: Driver Allocation
+            </p>
+            <p>
+                Roster of prime mover assignments, designated permanent drivers, trainee drivers, coupled multi-trailer links, and standby notes.
+            </p>
+        </field>
+    </record>
+
+    <!-- 5. Sheet 4: Corporate Livery & Branding -->
+    <record id="view_fleet_vehicle_sheet_branding_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.sheet.branding.list</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Sheet 4: Corporate Livery &amp; Branding">
+                <field name="license_plate" string="Registration"/>
+                <field name="model_id" string="Vehicle Model"/>
+                <field name="x_branding_status" widget="badge"
+                       decoration-success="x_branding_status == 'branded'"
+                       decoration-warning="x_branding_status in ['truck_needs_branding', 'trailer_needs_branding']"
+                       decoration-danger="x_branding_status == 'both_need_branding'"/>
+                <field name="x_branding_notes" string="Branding / Location Notes"/>
+                <field name="x_operational_availability" widget="badge"
+                       decoration-success="x_operational_availability == 'active'"
+                       decoration-info="x_operational_availability == 'standby'"
+                       decoration-warning="x_operational_availability in ['maintenance', 'roadworthy']"
+                       decoration-danger="x_operational_availability in ['accident', 'for_sale']"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_sheet_branding" model="ir.actions.act_window">
+        <field name="name">Sheet 4: Corporate Livery &amp; Branding</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fleet_vehicle_sheet_branding_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Vehicle Info New - Sheet 4: Branding
+            </p>
+            <p>
+                Corporate livery audit tracking branded units vs trucks and trailers requiring vinyl installation at GT Vinyl.
+            </p>
+        </field>
+    </record>
+
+    <!-- 6. Sheet 6: PTO & Hydraulic Discharge Systems -->
+    <record id="view_fleet_vehicle_sheet_pto_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.sheet.pto.list</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Sheet 6: PTO &amp; Hydraulic Discharge Systems">
+                <field name="license_plate" string="Registration"/>
+                <field name="model_id" string="Vehicle Model"/>
+                <field name="x_pto_engine" widget="boolean_toggle" string="PTO ENGINE"/>
+                <field name="x_hydraulic_pto" widget="boolean_toggle" string="HYDRAULIC PTO"/>
+                <field name="x_pto_type" string="Discharge Type"/>
+                <field name="x_pto_location" string="Mounting Position"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_sheet_pto" model="ir.actions.act_window">
+        <field name="name">Sheet 6: PTO &amp; Hydraulic Discharge Systems</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fleet_vehicle_sheet_pto_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Vehicle Info New - Sheet 6: PTO
+            </p>
+            <p>
+                Audit of auxiliary engine PTOs, transmission hydraulic PTOs, and pump mounting locations for fuel discharge.
+            </p>
+        </field>
+    </record>
+
+    <!-- 7. Sheet 7: Wheel Alignment Worksheet -->
+    <record id="view_fleet_vehicle_sheet_wheel_alignment_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.sheet.wheel.alignment.list</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Sheet 7: Wheel Alignment Worksheet"
+                  decoration-danger="x_alignment_faults == True and x_alignment_repaired == False"
+                  decoration-success="x_alignment_done == True">
+                <field name="license_plate" string="Registration"/>
+                <field name="model_id" string="Vehicle Model"/>
+                <field name="x_alignment_desc" string="Description"/>
+                <field name="x_alignment_skip" widget="boolean_toggle" string="Skip"/>
+                <field name="x_alignment_in" widget="boolean_toggle" string="In"/>
+                <field name="x_alignment_faults" widget="boolean_toggle" string="Faults"/>
+                <field name="x_alignment_repaired" widget="boolean_toggle" string="Repaired"/>
+                <field name="x_alignment_done" widget="boolean_toggle" string="Done"/>
+                <field name="x_alignment_notes" string="Chassis &amp; Axle Fault Details"/>
+                <field name="x_last_wheel_alignment_date" string="Alignment Date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_sheet_wheel_alignment" model="ir.actions.act_window">
+        <field name="name">Sheet 7: Wheel Alignment Worksheet</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fleet_vehicle_sheet_wheel_alignment_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Vehicle Info New - Sheet 7: Wheel Alignment Worksheet
+            </p>
+            <p>
+                Laser axle, kingpin, and suspension alignment audit. Red highlighting flags unresolved chassis faults directly linked to tyre drag and fuel consumption penalties.
+            </p>
         </field>
     </record>
 </odoo>

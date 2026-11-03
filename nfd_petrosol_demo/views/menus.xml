@@ -6,110 +6,149 @@
               web_icon="nfd_petrosol_demo,static/description/icon.png"
               sequence="10"/>
 
-    <!-- 0. Executive Dashboards & KPIs Category -->
-    <menuitem id="menu_nfd_dashboard_category"
-              name="Executive Dashboards &amp; KPIs"
+    <!-- ============================================================== -->
+    <!-- 1. FUEL CONSUMPTION 09 2026 (EXCEL)                            -->
+    <!-- ============================================================== -->
+    <menuitem id="menu_nfd_fuel_excel_category"
+              name="Fuel Consumption 09 2026 (Excel)"
               parent="menu_nfd_root"
               sequence="5"/>
 
-    <menuitem id="menu_nfd_excess_fuel_dashboard"
-              name="Sept 2026 Excess Fuel &amp; Otj COC Dashboard"
-              parent="menu_nfd_dashboard_category"
-              action="action_nfd_excess_fuel_dashboard"
+    <menuitem id="menu_nfd_excel_fuel_summary"
+              name="Summary Sheet (Sept 2026)"
+              parent="menu_nfd_fuel_excel_category"
+              action="action_nfd_excel_fuel_summary"
               sequence="1"/>
 
     <menuitem id="menu_nfd_fuel_consumption_log"
-              name="Vehicle Odometer &amp; Refuel Logsheets (KM/L)"
-              parent="menu_nfd_dashboard_category"
+              name="Vehicle Fuel Tabs (43 Units)"
+              parent="menu_nfd_fuel_excel_category"
               action="action_nfd_fuel_consumption_log"
               sequence="2"/>
 
-    <!-- 1. Dispatch & Reconciliation Category -->
-    <menuitem id="menu_nfd_dispatch_category"
-              name="Cargo Dispatch &amp; Dip Logs"
-              parent="menu_nfd_root"
-              sequence="10"/>
-
     <menuitem id="menu_nfd_fuel_dispatch_log"
-              name="Fuel Dispatch &amp; Variance Logs"
-              parent="menu_nfd_dispatch_category"
+              name="Cargo Fuel Dispatch &amp; Discrepancies"
+              parent="menu_nfd_fuel_excel_category"
               action="action_x_nfd_fuel_dispatch_log"
-              sequence="10"/>
+              sequence="3"/>
 
-    <!-- 2. Fleet & Equipment Category -->
-    <menuitem id="menu_nfd_fleet_category"
-              name="Fleet &amp; Assets"
+    <menuitem id="menu_nfd_excess_fuel_dashboard"
+              name="Executive Fuel &amp; Otj COC Dashboard"
+              parent="menu_nfd_fuel_excel_category"
+              action="action_nfd_excess_fuel_dashboard"
+              sequence="4"/>
+
+    <!-- ============================================================== -->
+    <!-- 2. VEHICLE INFO NEW (9 EXCEL SHEETS)                           -->
+    <!-- ============================================================== -->
+    <menuitem id="menu_nfd_vehicle_info_category"
+              name="Vehicle Info New (9 Excel Sheets)"
               parent="menu_nfd_root"
-              sequence="20"/>
-
-    <menuitem id="menu_nfd_fleet_vehicles"
-              name="Tankers &amp; Rigids"
-              parent="menu_nfd_fleet_category"
-              action="fleet.fleet_vehicle_action"
               sequence="10"/>
 
-    <menuitem id="menu_nfd_breakdown_network"
-              name="24/7 Emergency Breakdown Network"
-              parent="menu_nfd_fleet_category"
+    <menuitem id="menu_nfd_sheet1_service"
+              name="Sheet 1: Fleet Service &amp; Workshop Schedule"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_fleet_service"
+              sequence="1"/>
+
+    <menuitem id="menu_nfd_sheet2_availability"
+              name="Sheet 2: Fleet Availability &amp; Grouping"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_availability"
+              sequence="2"/>
+
+    <menuitem id="menu_nfd_sheet3_allocation"
+              name="Sheet 3: Driver &amp; Trailer Allocation"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_driver_allocation"
+              sequence="3"/>
+
+    <menuitem id="menu_nfd_sheet4_branding"
+              name="Sheet 4: Corporate Livery &amp; Branding"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_branding"
+              sequence="4"/>
+
+    <menuitem id="menu_nfd_sheet5_breakdown"
+              name="Sheet 5: 24/7 Breakdown Contacts &amp; Corridors"
+              parent="menu_nfd_vehicle_info_category"
               action="action_nfd_breakdown_network"
-              sequence="15"/>
+              sequence="5"/>
 
-    <menuitem id="menu_nfd_workshop_assets"
-              name="Workshop Equipment &amp; Forecourt Pumps"
-              parent="menu_nfd_fleet_category"
-              action="maintenance.hr_equipment_action"
-              sequence="20"/>
+    <menuitem id="menu_nfd_sheet6_pto"
+              name="Sheet 6: PTO &amp; Hydraulic Systems"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_pto"
+              sequence="6"/>
 
-    <menuitem id="menu_nfd_maintenance_requests"
-              name="Maintenance Work Orders"
-              parent="menu_nfd_fleet_category"
-              action="maintenance.hr_equipment_request_action"
-              sequence="30"/>
+    <menuitem id="menu_nfd_sheet7_alignment"
+              name="Sheet 7: Wheel Alignment Worksheet"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_wheel_alignment"
+              sequence="7"/>
 
+    <menuitem id="menu_nfd_sheet8_projects"
+              name="Sheet 8: Workshop Job Cards &amp; Projects"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_projects"
+              sequence="8"/>
 
-    <!-- 3. HESMS & Personnel Category -->
-    <menuitem id="menu_nfd_hesms_category"
-              name="HESMS &amp; Driver Safety"
-              parent="menu_nfd_root"
-              sequence="30"/>
+    <menuitem id="menu_nfd_sheet9_driver_info"
+              name="Sheet 9: Driver Information &amp; Licensing"
+              parent="menu_nfd_vehicle_info_category"
+              action="action_nfd_sheet_driver_info"
+              sequence="9"/>
 
-    <menuitem id="menu_nfd_driver_compliance"
-              name="Hazchem Drivers &amp; AA Compliance"
-              parent="menu_nfd_hesms_category"
-              action="hr.open_view_employee_list_my"
-              sequence="10"/>
-
-    <!-- 4. Workshop & Driver Timesheets Category -->
+    <!-- ============================================================== -->
+    <!-- 3. TIMESHEETS & FORECOURTS                                     -->
+    <!-- ============================================================== -->
     <menuitem id="menu_nfd_timesheet_category"
-              name="Workshop &amp; Driver Timesheets"
+              name="Timesheets &amp; Forecourts"
               parent="menu_nfd_root"
-              sequence="35"/>
+              sequence="20"/>
 
     <menuitem id="menu_nfd_timesheets"
               name="Workshop &amp; Forecourt Timesheets"
               parent="menu_nfd_timesheet_category"
               action="hr_timesheet.act_hr_timesheet_line"
-              sequence="10"/>
+              sequence="1"/>
 
     <menuitem id="menu_nfd_projects"
               name="NFD Projects &amp; Forecourt Subsidies"
               parent="menu_nfd_timesheet_category"
               action="project.open_view_project_all"
-              sequence="20"/>
+              sequence="2"/>
 
-    <!-- 5. Bulk Stock & Inventory Category -->
+    <menuitem id="menu_nfd_workshop_assets"
+              name="Workshop Equipment &amp; Forecourt Pumps"
+              parent="menu_nfd_timesheet_category"
+              action="maintenance.hr_equipment_action"
+              sequence="3"/>
+
+    <!-- ============================================================== -->
+    <!-- 4. DEPOT STOCK & LOSSES (700kL)                                -->
+    <!-- ============================================================== -->
     <menuitem id="menu_nfd_stock_category"
-              name="Depot Stock &amp; Inventory"
+              name="Depot Stock &amp; Losses (700kL)"
               parent="menu_nfd_root"
-              sequence="40"/>
+              sequence="30"/>
 
     <menuitem id="menu_nfd_depot_inventory"
               name="Fuel &amp; Lubricant Inventory"
               parent="menu_nfd_stock_category"
               action="stock.product_template_action_product"
-              sequence="10"/>
+              sequence="1"/>
 
-    <!-- Integration: Also inject under standard Fleet App -->
+    <!-- ============================================================== -->
+    <!-- INTEGRATION: INJECT UNDER STANDARD FLEET APP                   -->
+    <!-- ============================================================== -->
+    <menuitem id="menu_fleet_nfd_excel_summary"
+              name="Fuel Consumption Summary (Sept 2026)"
+              parent="fleet.fleet_vehicles"
+              action="action_nfd_excel_fuel_summary"
+              sequence="4"/>
+
     <menuitem id="menu_fleet_nfd_dispatch_log"
               name="Bulk Fuel Dispatches"
               parent="fleet.fleet_vehicles"

@@ -11,10 +11,12 @@
                     <group>
                         <group string="Namibian Driver Licensing &amp; Identity">
                             <field name="x_id_number"/>
+                            <field name="x_start_date"/>
                             <field name="x_licence_code"/>
                             <field name="x_licence_expiry_date"/>
                             <field name="x_pdp_expiry_date"/>
                             <field name="x_eye_test_expiry_date"/>
+                            <field name="x_trainee_payment_date"/>
                         </group>
                         <group string="HESMS Safety, Medical &amp; Hazchem Compliance">
                             <field name="x_hazchem_expiry"/>
@@ -81,6 +83,46 @@
                 <filter string="Affirmative Action Category" name="group_aa_category"
                         domain="[]" context="{'group_by': 'x_aa_category'}"/>
             </xpath>
+        </field>
+    </record>
+
+    <!-- Sheet 9: Driver Information & Statutory Compliance -->
+    <record id="view_hr_employee_sheet_driver_info_list" model="ir.ui.view">
+        <field name="name">hr.employee.sheet.driver.info.list</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <list string="Sheet 9: Driver Information &amp; Statutory Compliance">
+                <field name="name" string="Driver Name"/>
+                <field name="x_id_number" string="ID Number"/>
+                <field name="x_start_date" string="Start Date"/>
+                <field name="x_licence_code" string="Licence Code"/>
+                <field name="x_licence_expiry_date" string="Licence Expiry"/>
+                <field name="x_pdp_expiry_date" string="PDP Expiry"/>
+                <field name="x_hazchem_expiry" string="Dangerous Goods Expiry"/>
+                <field name="x_defensive_driving_expiry" string="Defensive Driving Expiry"/>
+                <field name="x_medical_fitness_expiry" string="Medical Fitness Expiry"/>
+                <field name="x_eye_test_expiry_date" string="Eye Exam Expiry"/>
+                <field name="x_trainee_payment_date" string="Trainee Payment Date" optional="show"/>
+                <field name="x_hse_status_badge" widget="badge"
+                       decoration-success="x_hse_status_badge == 'compliant'"
+                       decoration-warning="x_hse_status_badge == 'expiring_soon'"
+                       decoration-danger="x_hse_status_badge == 'expired'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_nfd_sheet_driver_info" model="ir.actions.act_window">
+        <field name="name">Sheet 9: Driver Information &amp; Statutory Compliance</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_hr_employee_sheet_driver_info_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Vehicle Info New - Sheet 9: DRIVER INFORMATION
+            </p>
+            <p>
+                Driver statutory credentials, PDP, Hazchem dangerous goods certifications, medical fitness, and trainee payment dates.
+            </p>
         </field>
     </record>
 </odoo>
