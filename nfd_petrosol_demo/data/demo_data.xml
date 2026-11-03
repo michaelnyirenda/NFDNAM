@@ -2451,7 +2451,7 @@
     <record id="vehicle_n9173ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 9173 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -2492,7 +2492,7 @@
     <record id="vehicle_n9574ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 9574 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -2553,7 +2553,7 @@
     <record id="vehicle_n10424ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 10424 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -2584,7 +2584,7 @@
     <record id="vehicle_n10425ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 10425 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -2954,7 +2954,7 @@
     <record id="vehicle_n11429ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 11429 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -2986,7 +2986,7 @@
     <record id="vehicle_n11671ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 11671 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -3239,7 +3239,7 @@
     <record id="vehicle_n12582ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 12582 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -3259,9 +3259,9 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n12611ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_isuzu_dmax" />
         <field name="license_plate">N 12611 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -3292,7 +3292,7 @@
     <record id="vehicle_n12705ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 12705 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
