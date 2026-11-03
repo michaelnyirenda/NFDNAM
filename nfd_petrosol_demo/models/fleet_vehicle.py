@@ -80,6 +80,23 @@ class FleetVehicle(models.Model):
         help='Secondary coupled pup trailer or rear tank.'
     )
 
+    # Driver & Trainee Allocation
+    x_driver_trainee_id = fields.Many2one(
+        'hr.employee',
+        string='Trainee Driver / Co-Driver',
+        ondelete='restrict',
+        help='Assigned trainee driver or second driver on long-haul corridors (e.g. Tobias Leopold, Nounongoue Kaaronda).'
+    )
+
+    # Corporate Branding Compliance
+    x_branding_status = fields.Selection([
+        ('branded', 'Fully Branded / Compliant'),
+        ('truck_needs_branding', 'Truck Needs Branding'),
+        ('trailer_needs_branding', 'Trailer Needs Branding'),
+        ('both_need_branding', 'Truck & Trailer Need Branding'),
+    ], string='Corporate Branding Status', default='branded', tracking=True,
+       help='Fleet exterior branding compliance audit from NFD BRANDING register.')
+
     # Compartment Fuel Capacities
     x_diesel_capacity = fields.Float(
         string='Diesel Carrying Capacity (L)',

@@ -1,480 +1,344 @@
-# Standard Operating Procedure (SOP) & Guided Client Demonstration Script
+# Standard Operating Procedure (SOP) & End-to-End Navigation Guide
 ## Client: Northern Fuel Distributors CC (NFD) & Petrosol Petroleum Solutions CC
-**Head Office & Depot:** Otjiwarongo, Namibia  
-**Key Client Stakeholders:** Johan Botes (Managing Member / GM) & Pierre Fourie (Financial Manager)  
-**Presented by:** OreSolve Technical Architecture & Functional Consulting Team  
-**System Platform:** Odoo 19 Enterprise (Custom Module: `nfd_petrosol_demo`)  
-**Target Operations:** Bulk Fuel Logistics (>4,000,000 L/Month), Fleet Governance, In-House Workshop, HESMS Compliance & Forecourt Asset Care
+- **Head Office & Depot:** Otjiwarongo, Namibia
+- **Key Client Stakeholders:** Johan Botes (Managing Member / GM / Fleet / Workshop) & Pierre Fourie (Financial Manager)
+- **Target Audience:** Non-technical operational clerks, managers, consultants, and demo facilitators
+- **System Platform:** Odoo 19 / Odoo 20 (`nfd_petrosol_demo`)
+- **Scale:** Bulk Fuel Logistics (>4,000,000 L/Month), 700kL Bulk Depot, In-House Otjiwarongo Workshop, National Corridor Haulage
 
 ---
 
-## 1. Executive Summary & Demo Objectives
+## 1. Executive Summary & Operational Scope
 
-Northern Fuel Distributors CC (NFD) and their retail subsidiary brand Petrosol Petroleum Solutions CC represent one of the most operationally demanding petroleum distribution businesses in Namibia. With a 700,000-liter bulk storage depot and an in-house mechanical workshop in Otjiwarongo, NFD distributes over 4 million liters of fuel per month across Namibia to tier-1 mining operators (Husab Mine, B2Gold Otjikoto), national infrastructure projects (Grinaker-LTA, Raubex), commercial farms, and Petrosol forecourts.
+Northern Fuel Distributors CC (NFD) and their retail forecourt brand Petrosol Petroleum Solutions CC operate Namibia's premier private fuel distribution network. Operating from a 700,000-liter bulk storage depot and mechanical workshop in Otjiwarongo, NFD distributes more than 4 million liters of diesel (50ppm) and petrol (ULP 95) each month to tier-1 mining operators (Husab Mine, B2Gold Otjikoto), national infrastructure construction sites (Grinaker-LTA, Raubex), commercial farms, and Petrosol retail service stations.
 
-### Core Demonstration Goals
-1. **Volumetric Fuel Reconciliation & Shrinkage Control:** Prove how Odoo 19 bridges gantry loading meters, onboard calibrated truck flow meters, customer tank dips, and statutory 0.25% thermal variance allowances, instantly alerting on unexplainable discrepancies (>50 L).
-2. **Autonomous Incident Remediation:** Show how a single click on a Leakage Alert immediately isolates inventory write-offs for finance (Pierre Fourie) and dispatches an emergency corrective work order to the Otjiwarongo mechanical workshop (Johan Botes).
-3. **Fleet Governance & Life-Cycle Enforcement:** Demonstrate automated enforcement of NFD's strict fleet replacement policies (Prime Movers < 18 years, Tankers < 15 years) with Geotab OBC telematics integration.
-4. **HESMS & Affirmative Action (AA) Compliance:** Demonstrate real-time driver tracking for Dangerous Goods Hazchem permits, Defensive Driving, and Annual Medical Fitness certificates to maintain NFD's >90% Chevron audit score.
-5. **Retail & Customer Asset Maintenance:** Highlight free forecourt maintenance management for Petrosol CODO/DODO retail stations and calibration of customer on-site bulk tanks (Husab Mine).
+### Core Objectives of the System
+1. **Spreadsheet-to-Odoo Translation:** Replace error-prone, disconnected Excel workbooks with a single live system while retaining every vehicle, driver, and calculation formula NFD already trusts.
+2. **Volumetric Fuel Reconciliation & Shrinkage Control:** Bridge depot gantry loading meters, onboard digital truck meters, customer storage tank dips, and statutory 0.25% thermal variance allowances to catch any discrepancy over 50 liters.
+3. **1-Click Leakage Remediation:** Instantly generate an emergency workshop repair ticket for Johan Botes and record an inventory write-off for Pierre Fourie when a fuel loss occurs.
+4. **Fleet Governance & Policy Enforcement:** Enforce vehicle replacement rules (Prime Movers < 18 years, Tankers < 15 years), service interval countdowns, and corporate branding compliance.
+5. **Driver Safety (HESMS) & Affirmative Action:** Automatically track Dangerous Goods Hazchem permits, medical fitness certificates, and public driving permits (PrDP) to ensure no uncertified driver ever operates a bulk tanker.
 
 ---
 
-## 2. Complete Local Environment Setup & Replication Guide (For Colleagues)
+## 2. Master Excel-to-Odoo Architecture Mapping
 
-Follow these exact steps to clone, spin up, initialize, and run the NFD & Petrosol demo environment from scratch on any workstation with Docker installed.
+Every sheet and table across NFD's master spreadsheets has a direct, native home in Odoo:
 
-### 2.1 Prerequisites
-Ensure the host machine has:
-- **Git** (`git --version`)
-- **Docker & Docker Compose** (`docker --version`, `docker compose version`)
+| # | Excel Source Workbook & Sheet | Target Odoo Model | Odoo Menu Navigation Path | What This Screen Shows & Does |
+|---|---|---|---|---|
+| 1 | **Fuel Consumption 09 2026.xlsx**<br>• `Summary` | `x_nfd_fuel_consumption_log` | **NFD Fuel Logistics > Executive Dashboards & KPIs > Sept 2026 Excess Fuel & Otj COC Dashboard** *(Pivot & Graph)* | Fleet-wide summary valuing excess diesel burn against NFD's benchmark **Current Fuel Price Otj COC = NAD 25.98 / L**. |
+| 2 | **Fuel Consumption 09 2026.xlsx**<br>• `[Vehicle Reg]` (41 tabs) | `x_nfd_fuel_consumption_log` | **NFD Fuel Logistics > Fleet Fuel Consumption (KM/L) > Vehicle Odometer & Refuel Logsheets (KM/L)** *(List & Form)* | Daily vehicle refuel logs: Date, Start KM, End KM, Distance, Liters, KM/L, Expected KM/L, Driver, Town, and Unconfirmed Slip filter. |
+| 3 | **Vehicle Info New.xlsx**<br>• `FLEET SERVICE` | `fleet.vehicle` | **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids (Fleet Master)** *(List & Form)* | Master register of all 89+ vehicles and trailers: Reg number, coupled trailers (Comp 1 & Comp 2), service intervals, current KM, and statutory dates. |
+| 4 | **Vehicle Info New.xlsx**<br>• `PROJECTS` | `maintenance.request` | **NFD Fuel Logistics > Fleet & Assets > Maintenance Work Orders** *(Kanban & List)* | Workshop job card ledger: Job Card #, Vehicle, Assigned Mechanic (Green, Clive, Japie), Location, Job Type, Parts Ordered, and Parts Received. |
+| 5 | **Vehicle Info New.xlsx**<br>• `AVAILABLITY` | `fleet.vehicle` | **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids** *(Search Filters & Group By)* | Fleet status groups: Active in Service, Standby Units, In Workshop, Awaiting Roadworthy, and Decommissioned For Sale units. |
+| 6 | **Vehicle Info New.xlsx**<br>• `DRIVER ALLOCATION` | `fleet.vehicle` & `hr.employee` | **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids > NFD Fuel Fleet & Policy Specs** | Shows assigned primary drivers and trainee drivers/co-drivers (e.g. Tobias Leopold on `N 4584 OT`, Nounongoue Kaaronda on `N 10544 OT`). |
+| 7 | **Vehicle Info New.xlsx**<br>• `DRIVER INFORMATION` | `hr.employee` | **NFD Fuel Logistics > HESMS & Driver Safety > Hazchem Drivers & AA Compliance** *(List & Form)* | 34-driver compliance roster: Namibian ID number, Licence Code (CE, C), Hazchem expiry, Medical fitness expiry, and PrDP expiry. |
+| 8 | **Vehicle Info New.xlsx**<br>• `BREAKDOWN CONTACTS` | `res.partner` | **NFD Fuel Logistics > Fleet & Assets > 24/7 Emergency Breakdown Network** *(List & Search)* | Directory of 33 vetted roadside contractors across 14 Namibian transport corridors for 24/7 emergency dispatch. |
+| 9 | **Vehicle Info New.xlsx**<br>• `BRANDING` | `fleet.vehicle` | **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids** *(Filter: Needs Branding Audit)* | Corporate branding compliance audit tracking vehicles needing exterior branding (*"Truck needs branding"*, *"Trailer needs branding"*). |
+| 10 | **Vehicle Info New.xlsx**<br>• `PTO` | `fleet.vehicle` | **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids > Workshop Service Tab** | Power Take-Off specs (Hydraulic PTO, Engine PTO) and mounting positions (*"Behind the Cab"*, *"On Cab next to COC Tank"*). |
+| 11 | **Vehicle Info New.xlsx**<br>• `Wheel Allignment Worksheet` | `maintenance.request` & `fleet.vehicle` | **NFD Fuel Logistics > Fleet & Assets > Maintenance Work Orders (Alignment Tasks)** | Tracks steering axle play, kingpin wear, V-bone bush wear, front diff play, and suspension re-torque schedules. |
 
-### 2.2 Clone the Repository
-```bash
-git clone https://github.com/michaelnyirenda/NFDNAM.git
-cd NFDNAM
-```
+---
 
-### 2.3 Spin Up Docker Containers
-The repository contains a pre-configured [`docker-compose.yml`](file:///home/mikedotmp3/dev/projects/NFDNAM/docker-compose.yml) linking PostgreSQL 16 (`nfd-db`) and Odoo 19 (`nfd-odoo19`) with the custom addon mounted into `/mnt/extra-addons`:
+## 3. Environment Setup & Access Guide
 
-```bash
-# Start PostgreSQL 16 and Odoo 19 in background
-docker compose up -d
+### 3.1 Local Docker Environment (On Your Laptop or Server)
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/michaelnyirenda/NFDNAM.git
+   cd NFDNAM
+   ```
+2. **Start the containers:**
+   ```bash
+   docker compose up -d
+   ```
+3. **Initialize the database (run once):**
+   ```bash
+   docker exec nfd-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
+   docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
+   docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i nfd_petrosol_demo --stop-after-init
+   ```
+4. **Log in:**
+   - **URL:** [http://localhost:8069](http://localhost:8069)
+   - **Database:** `nfd_demo`
+   - **User:** `admin` | **Password:** `admin`
 
-# Verify both containers are up and healthy
-docker compose ps
-```
-
-> **Handling Name Conflicts with Existing Odoo/Postgres Containers:**
-> If you already have existing containers using generic names (like `odoo-db` or `odoo19`) or port 8069:
-> - **Option A (Use your existing Odoo 19 setup):** If you already run an Odoo 19 instance, you do not need docker compose. Simply copy the addon into your container:
->   ```bash
->   docker cp ./nfd_petrosol_demo odoo19:/mnt/extra-addons/
->   ```
-> - **Option B (Clean up old stopped containers):** If the conflict is from an old stopped test container, remove it:
->   ```bash
->   docker rm -f odoo-db odoo19
->   docker compose up -d
->   ```
-
-### 2.4 Initialize Database & Install Addon
-Run the following commands to provision the `nfd_demo` database, install standard dependencies, and install the `nfd_petrosol_demo` module with all seed data:
-
-```bash
-# 1. Create the dedicated demo database in Postgres
-docker exec nfd-db psql -U odoo -d postgres -c "CREATE DATABASE nfd_demo OWNER odoo;"
-
-# 2. Install base system and core dependency modules
-docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i base,fleet,maintenance,stock,hr,hr_skills,purchase,sale_management,account,project --stop-after-init
-
-# 3. Install the NFD & Petrosol Demo Module and seed records
-docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -i nfd_petrosol_demo --stop-after-init
-```
-*(Note: Explicitly passing `--db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass` ensures the CLI connects to the database container over TCP port 5432 instead of defaulting to a local UNIX domain socket. If you are using your own existing containers, replace `nfd-db` and `nfd-odoo19` with your container names, e.g. `odoo-db` and `odoo19`.)*
-
-### 2.5 Accessing Odoo & Logins
-Once initialized, the Odoo server is accessible at:
-- **URL:** [http://localhost:8069](http://localhost:8069)
-- **Database:** Select `nfd_demo` (if prompted, or via `http://localhost:8069/web/database/selector`)
-- **Default Master / Admin Credentials:**
-  - **Email / Username:** `admin`
-  - **Password:** `admin` (or configured password)
-
-### 2.6 Odoo Online Education (`edu-*.odoo.com`) Cloud Demo Setup & Worktree Sync
-If you are running the live demonstration on an official **Odoo Online Education (`edu-*.odoo.com`)** free 90-day cloud database, use the simultaneous `saas-edu-import` branch.
-
-#### Architecture: Local Python Module vs. Cloud Pure XML/CSV Module
-| Branch / Environment | Module Type | Key Characteristics | Usage |
-| :--- | :--- | :--- | :--- |
-| **`main`**<br>(Local Docker / Odoo.sh) | Full Python ORM (`nfd_petrosol_demo`) | Custom models (`nfd.fuel.dispatch.log`), Python methods, and `hooks.py`. | Local testing, CI/CD, deep ORM custom development. |
-| **`saas-edu-import`**<br>(Odoo Online `edu-*.odoo.com`) | Pure XML/CSV (`nfd_petrosol_demo`) | **Zero Python files**. Declarative `x_nfd_fuel_dispatch_log` model and `x_` fields in `data/ir_model_fields.xml`, inline sandboxed computed fields, and `ir.actions.server`. | Live cloud demo on `edu-*.odoo.com` via **Apps > Import Module**. |
-
-#### Step-by-Step Odoo Online Setup & Packaging:
-1. **Simultaneous Worktree**:
-   Both branches are checked out concurrently:
-   - `main`: Root directory (`/home/.../NFDNAM`)
-   - `saas-edu-import`: `.worktrees/saas-edu-import` (or symlink `../nfd_petrosol_saas_edu`)
-
-2. **Sync and Package for SaaS**:
-   From the repository root, run the packaging automation script:
+### 3.2 Odoo Online Cloud Environment (`edu-*.odoo.com`)
+1. From the repository root, generate the cloud-ready package:
    ```bash
    ./scripts/sync_and_pack_saas.sh
    ```
-   This validates the Zero-Python compliance and outputs `dist/nfd_petrosol_edu_import.zip`.
-
-3. **Import into your Odoo Online Database (`edu-*.odoo.com`)**:
-   - Log into `https://edu-<subdomain>.odoo.com` as an Administrator.
-   - Go to **Settings > General Settings** -> scroll to **Developer Tools** and click **Activate the developer mode**.
-   - Ensure base applications are installed: **Fleet**, **Maintenance**, **Inventory (Stock)**, **Employees (HR)**.
-   - Go to **Apps**. In the top navigation bar, click **Import Module**.
-   - Choose the file: `dist/nfd_petrosol_edu_import.zip`.
-   - Click **Import Module**.
-   - All models, 700kL depot tanks, Scania/Mercedes tankers, customers, 50+ staff records, and dispatch leakage logs are automatically loaded into your cloud database!
+   *(This creates `dist/nfd_petrosol_edu_import.zip` ~44 KB with zero Python files and zero security directory).*
+2. Log into your free education cloud database: `https://edu-<subdomain>.odoo.com`.
+3. In **Settings > Developer Tools**, click **Activate the developer mode**.
+4. Go to **Apps**, click **Import Module** in the top navigation bar.
+5. Select `dist/nfd_petrosol_edu_import.zip` and click **Import Module**. All records, views, and dashboards load in seconds!
 
 ---
 
-## 3. Pre-Demo Environment Verification Checklist
+## 4. End-to-End Click-by-Click Navigation Guide
 
-Execute these verification steps 30 minutes before joining the demonstration session with Johan Botes and Pierre Fourie.
+This section provides simple, non-technical, step-by-step instructions. Anyone can follow these steps to experience and demonstrate the entire NFD operational workflow.
 
-### 3.1 Container & Database Health Check
-Ensure Docker containers are running and responsive:
-
-```bash
-# 1. Verify container status
-docker ps --filter "name=nfd" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
-
-# 2. Confirm database connectivity
-docker exec nfd-db psql -U odoo -d nfd_demo -c "SELECT count(*) FROM ir_module_module WHERE name = 'nfd_petrosol_demo' AND state = 'installed';"
-# Expected output: 1
+```mermaid
+flowchart TD
+    Login["1. Log In to Odoo"] --> Home["App Drawer Home Screen"]
+    Home --> Fleet["2. Fleet Master & Governance\n(Johan Botes)"]
+    Home --> Dispatch["3. Cargo Dispatch & 210L Leak\n(Operations & Workshop)"]
+    Home --> Consumption["4. Fuel Consumption & COC\n(Pierre Fourie)"]
+    Home --> Workshop["5. Workshop Job Cards & Breakdown\n(Otjiwarongo Engineering)"]
+    Home --> HESMS["6. Driver Safety & Compliance\n(Chevron >90% Audit)"]
 ```
 
-### 3.2 Addon Hot-Reload / Upgrade Verification
-If any adjustments were made to views or Python models, sync and re-initialize the addon:
+---
 
-```bash
-# 1. Sync repository files to Odoo extra-addons mount
-docker cp ./nfd_petrosol_demo nfd-odoo19:/mnt/extra-addons/
-
-# 2. Upgrade the module in the demo database
-docker exec nfd-odoo19 odoo -d nfd_demo --db_host=nfd-db --db_user=odoo --db_password=odoo_secure_db_pass -u nfd_petrosol_demo --stop-after-init
-
-# 3. Restart Odoo server process (or ensure background daemon is active)
-# Accessible at: http://localhost:8069 (Select Database: nfd_demo)
-```
-
-### 3.3 Automated Sanity Smoke Test
-Run the pre-flight verification script inside the Odoo Python shell:
-
-```bash
-docker exec nfd-odoo19 python3 -c "
-import odoo
-from odoo.modules.registry import Registry
-
-registry = Registry('nfd_demo')
-with registry.cursor() as cr:
-    env = odoo.api.Environment(cr, odoo.SUPERUSER_ID, {})
-    
-    # 1. Check Depot Stock
-    d_stock = env['stock.quant']._get_available_quantity(
-        env.ref('nfd_petrosol_demo.product_diesel_50ppm'),
-        env.ref('nfd_petrosol_demo.location_tank_1_diesel')
-    )
-    assert d_stock == 485000.0, f'Expected 485,000L diesel, found {d_stock}'
-    
-    # 2. Check Fleet Policy Warnings
-    argosy = env.ref('nfd_petrosol_demo.vehicle_argosy')
-    assert argosy.x_replacement_policy_status == 'warning', 'Argosy should be in warning state'
-    
-    # 3. Check Leakage Alert Record
-    alert_disp = env.ref('nfd_petrosol_demo.dispatch_log_002')
-    assert alert_disp.leakage_status == 'leakage_alert', 'DISP/2026/0102 must be leakage_alert'
-    assert alert_disp.net_variance_liters == 210.0, 'DISP/2026/0102 variance must be 210L'
-    
-    print('>>> ALL PRE-DEMO SMOKE TESTS PASSED SUCCESSFULLY! <<<')
-"
-```
-
-### 3.4 Presenter Setup & Screen Pre-requisites
-- **Browser Window 1:** Chrome logged into Odoo as `Administrator` (or `Johan Botes` persona).
-- **Default Database:** `nfd_demo`.
-- **Zoom/Meet Window:** Shared at 1080p, display scaled to 110% for crisp projector/remote viewing.
-- **Bookmarks Bar:** Direct links to:
-  - NFD Fuel Logistics Dashboard: `http://localhost:8069/odoo/action-nfd_petrosol_demo.action_nfd_fuel_dispatch_log`
-  - Fleet Vehicles: `http://localhost:8069/odoo/action-fleet.fleet_vehicle_action`
-  - Maintenance Equipment: `http://localhost:8069/odoo/action-maintenance.hr_equipment_action`
+### STAGE 1: Log In & Home Screen Overview
+1. Open your web browser (Chrome recommended) and go to `http://localhost:8069` (or your cloud URL).
+2. Enter **Email:** `admin` and **Password:** `admin`, then click **Log in**.
+3. **What you see:** You are immediately greeted by the modern App Drawer grid with custom application tiles:
+   - **NFD Fuel Logistics** (Our primary custom operations hub)
+   - **Fleet** (Vehicles and assets)
+   - **Maintenance** (Workshop job cards)
+   - **Inventory** (700kL depot tank stock)
+   - **Employees** (Hazchem drivers and mechanics)
+   - **Timesheets** (Technician and corridor trip hours)
+4. Click on the **NFD Fuel Logistics** app tile.
 
 ---
 
-## 4. 30-Minute Guided Live Demonstration Script
+### STAGE 2: Fleet Master, Replacement Rules & Driver Allocations (Johan Botes Focus)
 
-### Timeline & Persona Agenda
-| Elapsed Time | Target Stakeholder | Demonstration Focus Area | Key Impact Metric |
-| :--- | :--- | :--- | :--- |
-| **00:00 - 03:00** | Johan & Pierre | Executive Welcome & Operational Architecture | 700kL Otjiwarongo Depot & 4M+ L/mo scale |
-| **03:00 - 06:30** | Johan Botes | Fleet Governance, Replacement Limits & Geotab | Aging Prime Movers (17y) & Rigid Tankers (14y) |
-| **06:30 - 10:30** | Johan Botes | Workshop Job Cards, Statutory Compliance & Breakdown Network | 5 Active Job Cards, NaTIS/SLP Expiry & 33 Breakdown Partners |
-| **10:30 - 15:30** | Johan & Pierre | Bulk Cargo Dispatch, Thermal Variances & Leakage | The 210L Grinaker-LTA Loss & 1-Click Action |
-| **15:30 - 20:30** | Johan & Pierre | Real Sept 2026 Fleet Consumption, Audit & Timesheets | Exact NFD Numbers, Star Savers, Tremor Bug, Workshop Hours |
-| **20:30 - 24:00** | Pierre Fourie | Financial Reconciliations, Scrap Valuation & Forecourts | Shrinkage Write-off & Free Forecourt Care |
-| **24:00 - 27:30** | Johan Botes | HESMS Driver Safety & Affirmative Action (AA) | 34 Drivers, Franzua Grounded (Expired), Chevron >90% |
-| **27:30 - 30:00** | Johan & Pierre | Summary, Roadmap & Commercial Alignment | Next Steps for Pilot Go-Live |
+#### Step 2.1: Open the Fleet Register
+- In the top menu bar, click: **Fleet & Assets > Tankers & Rigids**.
+- **What you see:** The master asset list showing all 89+ vehicles and trailers, matching NFD's master **FLEET SERVICE** spreadsheet. Notice columns for `Model`, `Unit Classification`, `Max Volume (L)`, `Operational Availability`, `Service Status`, and `Replacement Status`.
 
----
+#### Step 2.2: Inspect a Mercedes Actros Prime Mover (`N 7802 OT`)
+- In the search bar at the top right, type `7802` and press Enter.
+- Click on the vehicle row: **Mercedes-Benz Actros 2646 (N 7802 OT)**.
+- **What you see on the Form View:**
+  1. Look at the tab **NFD Fuel Fleet & Policy Specs**:
+     - **Coupled Trailer 1 (Comp 1):** Shows linked tanker trailer `N 6776 OT`.
+     - **Trainee / Co-Driver:** Available field for allocating assistant drivers.
+     - **Corporate Branding Status:** Displays an amber badge reading `Trailer Needs Branding` (matching the note in NFD's `BRANDING` sheet).
+  2. Click on the tab **Workshop Service & Statutory Compliance**:
+     - **PTO Drive Type:** Displays `Hydraulic PTO`.
+     - **PTO Mounting Position:** Displays `Behind the Cab` (matching the `PTO` sheet).
+     - **Current Odometer:** Shows `1,170,000 km`.
+     - **Next Service Milestone:** `1,200,000 km` (Status: Green `Service OK`).
 
-### Act 1: Executive Welcome & Operational Context (00:00 – 03:00)
-**Presenter Click Path:**
-1. Open browser to Odoo home dashboard.
-2. Highlight the custom application icon: **NFD Fuel Logistics**.
+#### Step 2.3: Check the Fleet Replacement Governance Policy
+- Click **Tankers & Rigids** in the top breadcrumb trail to return to the list.
+- Click on the **Filters** dropdown below the search bar, then click: **Replacement Due / Warning**.
+- **What you see:**
+  - `Freightliner Argosy (N 1809 OT)`: Amber badge **Warning (Near Policy Limit)**.
+  - **Why it matters:** NFD has a strict policy that prime movers must not exceed 18 years. Manufactured in 2009, this Argosy is 17 years old. The system automatically alerts management 12 months before mandatory replacement.
+  - `Scania P360 (N 1601 OT)`: Rigid tanker manufactured in 2012 (14 years old), also flagged with an amber warning against the 15-year tanker policy limit.
 
-**Presenter Talking Points:**
-> *"Goeie dag Johan, goeie dag Pierre. Thank you for welcoming OreSolve today. We understand that Northern Fuel Distributors isn't just another transport company—you are the economic lifeline powering mining giants like Husab and B2Gold Otjikoto, national infrastructure for Grinaker-LTA, and your own flagship Petrosol retail forecourts from Otjiwarongo.*
->
-> *Moving over 4 million liters of bulk fuel every month across thousands of kilometers of Namibian highways leaves zero room for guesswork. A 0.5% unexplained discrepancy on 4 million liters is 20,000 liters—nearly half a million Namibian Dollars lost straight off your bottom line every single month.*
->
-> *Today, we demonstrate how Odoo 19 gives Johan the operational visibility to keep every prime mover, tanker manifold, and hazchem driver compliant, while giving Pierre the uncompromising financial and inventory controls to eliminate unaccounted fuel shrinkage."*
+#### Step 2.4: Check Service Interval Overdue Vehicles
+- In the search bar filters, remove the replacement filter and click: **Service Due Soon / Overdue**.
+- **What you see:** Vehicles that have traveled past their service intervals.
+  - Notice `Nissan UD100 (N 1166 OT)`: Red badge **Service Overdue**. Its odometer has exceeded its service target by **-821 km**.
 
----
+#### Step 2.5: Audit Corporate Branding Status
+- Clear the filters, click **Filters**, and select: **Needs Branding Audit**.
+- Alternatively, click **Group By** and select: **Corporate Branding Status**.
+- **What you see:** Vehicles neatly grouped into:
+  - **Truck Needs Branding:** `N 4584 OT` (Mercedes rigid), `N 5164 OT`, `N 6028 OT`, `N 10918 OT`.
+  - **Trailer Needs Branding:** `N 7802 OT`, `N 8966 OT`, `N 9120 OT`, `N 11751 OT`, `N 11963 OT`, `N 12043 OT`, `N 12916 OT`, `N 12917 OT`, `N 13777 OT`.
+  - **Why it matters:** Johan's team can immediately hand this list to the branding contractor to ensure all fleet assets meet corporate appearance standards.
 
-### Act 2: Johan Botes Flow — Fleet Governance, Replacement Policy & Geotab Telematics (03:00 – 08:30)
-
-**Presenter Click Path:**
-1. Navigate to: **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids** (or **Fleet App**).
-2. The list view displays NFD's fleet vehicles with custom badges.
-3. Group By: **Fleet Replacement Status** or filter by **Replacement Due / Warning**.
-4. Open record: **Freightliner Argosy Prime Mover (N 1809 OT)**.
-5. Navigate to tab: **NFD Fuel Fleet & Policy Specs**.
-6. Return to list and open: **Mercedes-Benz Axor 17,500L Rigid Tanker (N 1750 OT)**.
-
-**Key Visual Elements on Screen:**
-- **Unit Classification:** Selection showing Prime Mover, Semi-Trailer, Rigid Tanker, Pup Trailer.
-- **Replacement Policy Badges:**
-  - `Scania R500 (N 4201 OT)`: Green badge `Compliant` (Age: 5 yrs).
-  - `Mercedes-Benz Actros 2645 (N 4202 OT)`: Green badge `Compliant` (Age: 7 yrs).
-  - `Freightliner Argosy (N 1809 OT)`: Amber badge `Warning (Near Policy Limit)` (Age: 17 yrs / Limit: 18 yrs).
-  - `Scania P360 Rigid (N 1601 OT)`: Amber badge `Warning (Near Policy Limit)` (Age: 14 yrs / Limit: 15 yrs).
-- **Calibrated Diesel Meter Toggle:** Active on the rigid tankers used for construction and farm deliveries.
-- **Geotab Unit ID:** Live hardware serial tracking (`GT-NFD-01` to `GT-NFD-15`).
-
-**Presenter Talking Points (Speaking to Johan Botes):**
-> *"Johan, let's start with your fleet. NFD operates a diverse mix: 42,000L 7-compartment tri-axles for high-volume mine runs, down to 17,500L and 16,000L rigids fitted with certified flow meters for construction sites.*
->
-> *You have a strict company governance rule: Prime Movers must not exceed 18 years, and Tankers must not exceed 15 years. In standard ERPs, fleet managers rely on spreadsheets that are only reviewed once a year when vehicle licenses expire.*
->
-> *Notice what Odoo 19 is doing right here. Look at `Freightliner Argosy (N 1809 OT)`. Manufactured in 2009, its calculated age is 17 years. The system has automatically elevated its status to an amber `Warning` because it is within 12 months of your 18-year cap. Look at the `Scania P360 (N 1601 OT)` 16,000L rigid—manufactured in 2012, age 14 years, also flagged as `Warning` against your 15-year tanker threshold.*
->
-> *This gives your Otjiwarongo management committee automated capital replacement forecasting well before a vehicle becomes an HSE reliability liability or fails a Chevron transport audit."*
+#### Step 2.6: Review Driver & Trainee Allocations
+- Open `N 4584 OT` (Mercedes rigid):
+  - **Primary Driver:** `Benhardt Kangandi`.
+  - **Trainee Driver / Co-Driver:** `Tobias Leopold` (matching the note *"BENHARDT - TOBIAS TRAINING"* in NFD's `DRIVER ALLOCATION` sheet).
+- Return to list and open `N 10544 OT` (Volvo FH440):
+  - **Primary Driver:** `Andreas Iipinge`.
+  - **Trainee Driver / Co-Driver:** `Nounongoue Kaaronda` (matching *"ANDREAS I - KARONDA TRAINING"*).
+  - **Why it matters:** Trainee driver pairing on long-haul routes is formally documented for insurance and safety audits.
 
 ---
 
-### Act 2b: Workshop Maintenance Job Cards, Statutory Compliance & 24/7 Breakdown Network (06:30 – 10:30)
+### STAGE 3: Cargo Fuel Dispatch, Thermal Allowances & The 210L Leakage Incident (Operations & Workshop)
 
-**Presenter Click Path:**
-1. Navigate to: **NFD Fuel Logistics > Fleet & Assets > Maintenance Work Orders**.
-   - Notice the workshop job card backlog reflecting active tickets from NFD's Otjiwarongo engineering whiteboard.
-   - Show columns: `Job Card #`, `Maintenance Request`, `Service Location`, `Assigned Mechanic`, `Job Type`, `Parts Ordered`, and `Parts Received`.
-   - Open record: **`JC-1009: Trek Links & Turntable Pin Re-Torque`**:
-     - Point out: Linked to vehicle `N 12548 OT`, assigned to master mechanic **Green**, location **Otjiwarongo Main Workshop**.
-     - Check: Both **Parts Ordered** and **Parts Received** checkboxes are checked (parts supplied by Henred / MB Truck).
-   - Open record: **`JC-1045: Multi-Compartment Degas & Internal Baffle Weld`**:
-     - Point out: Location **CWWA Truck Wash & Degas**, assigned to **Japie**, job type **Degas**.
-     - Notice: Parts Ordered is checked, but Parts Received is pending—preventing premature job card closure until hot-work gas-free certificate is issued.
-   - Open record: **`JC-1110: Hydraulic PTO Offloading Valve Leak Repair`**:
-     - Point out: Assigned to **Clive** (Air & Brakes), addressing offloading valve seals.
-   - Highlight statutory inspection tickets:
-     - **`JC-994`**: NaTIS Statutory Roadworthy Fitness Retest at **NaTIS Testing Station (Otjiwarongo)** assigned to Foreman **Manie**.
-     - **`JC-1088`**: Safe Loading Pass (SLP) Recertification at **Vivo Energy Depo** assigned to Auto Electrician **Jonie**.
+#### Step 3.1: Open Cargo Fuel Dispatch Logs
+- In the top menu bar, click: **Cargo Dispatch & Dip Logs > Fuel Dispatch & Variance Logs**.
+- **What you see:** The list of bulk deliveries dispatched from the Otjiwarongo depot. Notice the columns: `Dispatch Reference`, `Vehicle`, `Customer`, `Loaded (L)`, `Delivered (L)`, `Thermal Allowance (L)`, `Net Variance (L)`, and `Status`.
 
-2. Navigate to: **NFD Fuel Logistics > Fleet & Assets > Tankers & Rigids** (Fleet Vehicles).
-   - Open any prime mover or tanker (e.g. `N 12043 OT`, `N 12916 OT`, or `N 5999 OT`).
-   - Click on the new tab: **Workshop Service & Statutory Compliance**:
-     - **NaTIS Fitness Certificate Expiry Date**: Tracks annual statutory vehicle fitness.
-     - **Safe Loading Pass (SLP) Expiry Date**: Tracks gantry access certification at major oil terminal depots (Vivo, TotalEnergies, Engen).
-     - **Pressure Test Certificate Expiry Date**: Tracks hydrostatic pressure certification for tanker vessels and manifolds.
-     - **Last Wheel Alignment Date & KMs at Alignment**: Tracks laser alignment intervals to eliminate irregular tyre wear on gravel corridors.
-     - **PTO Specifications**: Tracks PTO type (Electric, Hydraulic, Pneumatic) and exact physical mounting location (e.g. Tanker belly PTO, Truck cab PTO).
-     - **Service Status Badge**: Dynamic indicator (`ok`, `due_soon`, or `overdue`) based on odometer distance vs. next service KM target.
-     - **Trailer Couplings (Comp 1 & Comp 2)**: Full visibility into coupled interlink pup trailers and drawbars.
+#### Step 3.2: Inspect a Normal Mine Delivery (`DISP/2026/0101`)
+- Click on row: **DISP/2026/0101** (Delivery to B2Gold Otjikoto Mine).
+- **What you see:**
+  - Loaded at Otjiwarongo Gantry: `42,000.00 L` of 50ppm Diesel.
+  - Delivered at Mine Meter: `41,895.00 L`.
+  - **Thermal Allowance (0.25%):** `105.00 L` (Automatically calculated for ambient temperature changes).
+  - **Net Discrepancy:** `0.00 L`.
+  - Top right corner: Green ribbon **RECONCILED**, Status badge **Normal Reconciliation**.
+  - **Why it matters:** Fuel naturally shrinks in cold weather and expands in heat. The 0.25% thermal allowance eliminates false disputes with mining clients.
 
-3. Navigate to: **NFD Fuel Logistics > Fleet & Assets > 24/7 Emergency Breakdown Network**.
-   - Notice the national coverage directory featuring **33 vetted breakdown service providers** across Namibia.
-   - Filter/Group by: **Town / Corridor**:
-     - **B1 Central/North (Windhoek, Otjiwarongo, Grootfontein)**: Scania Grootfontein, Danie Breakdown, H.E.Z.F.
-     - **B2 Coastal / Trans-Kalahari Corridor (Karibib, Swakopmund, Walvis Bay)**: R J Services (Karibib), Coastal Truck Breakdown.
-     - **C38 / C39 Northern Mining & Tourism (Outjo, Khorixas, Kamanjab)**: Jaques Joubert (Khorixas), Lars Falkenberg (Kamanjab).
-     - **Eastern Corridor (Gobabis)**: H J Automotive, Gobabis Emergency Service.
-     - **Caprivi Corridor (Katima Mulilo)**: Zambezi Auto City.
-   - Explain how drivers calling the Otjiwarongo control room during a night breakdown can be routed to the nearest authorized roadside assistance provider within seconds.
+#### Step 3.3: Inspect the Incident Delivery (`DISP/2026/0102`)
+- Click the breadcrumb **Fuel Dispatch & Variance Logs** to return to the list.
+- Click on row: **DISP/2026/0102** (Delivery to Grinaker-LTA Road Project).
+- **What you see:**
+  - Top banner: Bold red banner reading **LEAKAGE ALERT!**.
+  - Vehicle: `Mercedes Axor Rigid (N 1750 OT)`.
+  - Loaded: `17,500.00 L`.
+  - Delivered: `17,246.25 L`.
+  - Thermal Allowance (0.25%): `43.75 L`.
+  - **Net Discrepancy: 210.00 Liters!**
+  - **Why it matters:** Because this loss exceeds NFD's 50-liter tolerance threshold, the system automatically elevates the record to an emergency state.
 
-**Presenter Talking Points (Speaking to Johan Botes):**
-> *"Johan, fleet management isn't just about odometers—it's about keeping multi-million dollar rolling assets compliant with statutory law and ensuring rapid recovery when a breakdown hits in the middle of Damaraland or the Caprivi Strip.*
->
-> *First, look at your Workshop Job Cards. Instead of sticky notes or paper job cards that get grease-stained and misplaced, your workshop foreman Manie has a live digital queue: JC-1009 for turntable pins assigned to Green; JC-1045 for tanker degassing at CWWA assigned to Japie with spare parts tracked from MB Truck and Henred; and JC-1110 for hydraulic PTO repairs assigned to Clive. You know exactly what stage every repair is at and whether required spare parts have arrived.*
->
-> *Second, look at Statutory Compliance under the new Workshop Service tab on your vehicles. In petroleum transport, an expired Safe Loading Pass (SLP) means your truck is turned away at the Walvis Bay or Vivo gantry, wasting an entire day's run. An expired pressure test certificate voids your tanker insurance. In Odoo, your team has live countdowns on NaTIS roadworthy fitness, SLP passes, tanker hydrostatic pressure dates, and laser wheel alignments.*
->
-> *Third, look at your 24/7 Emergency Breakdown Network: 33 vetted breakdown, tyre, and towing specialists covering every major Namibian corridor from Gobabis to Katima Mulilo. When a driver calls dispatch at 02:00 AM near Khorixas, your team doesn't scramble through WhatsApp—they filter by town and immediately mobilize Jaques Joubert Breakdown with 1 click."*
+#### Step 3.4: Perform 1-Click Incident Remediation
+- Look at the top left of the screen. Notice the red action button:
+  👉 **"Log Corrective Workshop Ticket & Shrinkage Scrap"**
+- Click that button!
+- **What happens automatically:**
+  1. The screen instantly creates and navigates to a new **Emergency Corrective Maintenance Request** for the Otjiwarongo Main Workshop:
+     - Title: *"Emergency Inspection: Check Tanker Manifold & Flow Meter for Fuel Leakage"*.
+     - Linked to vehicle: `N 1750 OT`.
+     - Priority: **3 Stars (Urgent / Immediate)**.
+  2. In the background, an inventory scrap write-off is logged directly into the virtual account **Fuel Shrinkage / Leakage Write-Off** for 210 liters.
+  - **Why it matters:** Johan gets an immediate workshop job card before the truck leaves the yard again, and Pierre's fuel inventory stays 100% balanced without manual paperwork.
 
 ---
 
-### Act 3: The Climax — Bulk Cargo Fuel Dispatch, Meter vs. Dip & The 210L Leakage Incident (10:30 – 15:30)
+### STAGE 4: September 2026 Fuel Consumption, Spreadsheet Audit & Otj COC Benchmark (Pierre Fourie Focus)
 
-**Presenter Click Path:**
-1. Navigate to: **NFD Fuel Logistics > Cargo Dispatch & Dip Logs > Fuel Dispatch & Variance Logs**.
-2. Notice the list view with columns: `Depot Loaded (L)`, `Truck Meter Delivered (L)`, `Thermal Allowance (L)`, `Net Discrepancy (L)`, and color-coded status badges.
-3. First, click on record: **`DISP/2026/0101`** (Normal Delivery to B2Gold Otjikoto Mine).
-   - Point out: 42,000 L loaded, 41,895 L delivered.
-   - Point out the automatically computed **0.25% Thermal Allowance (105.00 L)**.
-   - Net variance is `0.00 L` -> Green ribbon `RECONCILED`, Status badge `Normal Reconciliation`.
-4. Go back to list and open: **`DISP/2026/0102`** (Incident Delivery to Grinaker-LTA Road Project).
-   - Point out the bold red banner: `LEAKAGE ALERT!`.
-   - Loaded at Otjiwarongo Gantry: 17,500 L.
-   - Truck Digital Flow Meter Reading: 17,246.25 L.
-   - Thermal Allowance (0.25%): 43.75 L.
-   - **Net Discrepancy: 210.00 Liters!** (Exceeds the 50L safety threshold).
-5. Click the red button in the header: **"Log Corrective Workshop Ticket & Shrinkage Scrap"**.
-6. The screen automatically generates and transitions to the new **Corrective Maintenance Ticket** in the Otjiwarongo Workshop and creates an inventory shrinkage entry.
+#### Step 4.1: Open the September 2026 Executive Dashboard
+- In the top menu bar, click: **Executive Dashboards & KPIs > Sept 2026 Excess Fuel & Otj COC Dashboard**.
+- **What you see:** The exact digital twin of NFD's 44-tab **Fuel Consumption 09 2026** spreadsheet, covering 41 vehicles, 359 refuel logs, and 100,269.50 liters consumed.
+- In the upper right corner, switch between **List View**, **Pivot Table View**, and **Graph View** (bar chart).
 
-**Presenter Talking Points (Speaking to Johan & Pierre):**
-> *"Now let's examine NFD's core daily heartbeat: Cargo Fuel Dispatch and Reconciliation. In Namibia, temperatures between Otjiwarongo, Otavi, and the Namib Desert fluctuate drastically. Fuel expands and contracts. If you don't calculate volumetric thermal compensation, your drivers and customers will constantly dispute discrepancies.*
->
-> *Look at `DISP/2026/0101` to B2Gold Otjikoto Mine. The tanker loaded 42,000 liters at your Otjiwarongo gantry. On site, the calibrated meter delivered 41,895 liters. The system automatically calculated your standard 0.25% thermal allowance—105 liters. The delivery reconciled to the exact decimal point. Zero discrepancy. Green ribbon.*
->
-> *Now, look at `DISP/2026/0102`. Rigid tanker `N 1750 OT` loaded 17,500 liters of 50ppm diesel for the Grinaker-LTA road construction camp. The truck's digital meter recorded 17,246.25 liters delivered. After factoring in the 43.75-liter thermal variance, there is an unexplained discrepancy of **210.00 liters**!*
->
-> *Because that exceeds NFD's 50-liter tolerance limit, Odoo immediately triggered a red `LEAKAGE ALERT`. Look at what Johan can do right now with one click—I press 'Log Corrective Workshop Ticket & Shrinkage Scrap'.*
->
-> *Instantly, two critical things happen simultaneously: First, the Otjiwarongo workshop receives a Priority-3 Emergency Work Order: 'Inspect Tanker Manifold/Delivery Meter for Fuel Leakage'. Second, Pierre's finance ledger immediately isolates the 210 liters into the virtual Fuel Shrinkage / Leakage Write-Off account so your trading margins remain 100% accurate."*
+#### Step 4.2: Examine the Benchmark Price & Excess Burn Calculations
+- Look at the benchmark indicator: **Current Fuel Price Otj COC = NAD 25.98 / L**.
+- In the list view, click on the column header **Total Excess Value (NAD)** to sort descending.
+- **Top Excess Burners (Who cost NFD extra money in September):**
+  1. **Mercedes Actros 2646 (`N 7802 OT`):**
+     - Traveled: `10,221 km`. Actual fuel burned: `4,706.00 L` (2.17 KM/L vs. 2.50 KM/L standard).
+     - Excess fuel: **+617.60 Liters**.
+     - Excess Cost: **+NAD 16,045.25** extra fuel expense.
+     - *(Clicking into the vehicle reveals open Job Card #996 for fuel injector and valve timing checks).*
+  2. **Mercedes Rigid Tanker (`N 11751 OT`):**
+     - Traveled: `7,763 km`. Actual consumption: `2.57 KM/L` vs. `3.20 KM/L` target.
+     - Excess Cost: **+589.86 L = +NAD 15,324.63**.
+  3. **Mercedes Actros 2646 (`N 11963 OT`):**
+     - Excess Cost: **+529.20 L = +NAD 13,748.62**.
+  4. **The Yard Shunting Anomaly (`N 2745 OT`):**
+     - Actros 3352 only drove `143 km`, but consumed `450.00 L` (0.32 KM/L) -> **+381.90 L = +NAD 9,921.89**!
+     - In NFD's Excel sheet, the clerk wrote `"??????"`. In Odoo, with telematics, management instantly sees this was stationary engine PTO idling and yard shunting—not highway driving.
 
----
+#### Step 4.3: Review NFD's Top Star Savers (Fuel Efficiencies)
+- Click the column header **Total Excess Value (NAD)** again to sort ascending (showing negative excess, which means fuel saved).
+- **Top Star Savers (Who saved NFD money):**
+  1. **Volvo FH440 with PUP Trailer (`N 12916 OT` - Driver Simon):**
+     - Traveled: `14,540 km` at an outstanding `2.87 KM/L` against the `2.50 KM/L` benchmark.
+     - **Fuel Saved: -745.90 Liters = -NAD 19,378.48 straight into NFD profit margin!**
+  2. **Mercedes Actros 2652 (`N 10684 OT`):**
+     - Traveled: `20,012 km` at `2.85 KM/L` vs. `2.70 KM/L` target.
+     - **Fuel Saved: -399.25 Liters = -NAD 10,372.56 saved.**
+  3. **Volvo FH440 (`N 12917 OT`):**
+     - **Fuel Saved: -263.10 Liters = -NAD 6,835.34 saved.**
 
-### Act 4: Real September 2026 Fleet Fuel Consumption, Spreadsheet Audit Findings & Timesheet Cost Rollups (13:00 – 19:30)
+#### Step 4.4: Audit the 29 Unconfirmed Driver Slips
+- In the top menu bar, click: **Fleet Fuel Consumption (KM/L) > Vehicle Odometer & Refuel Logsheets (KM/L)**.
+- In the search bar filters, select: **Unconfirmed Logsheets (X)**.
+- **What you see:** Exactly the 29 refuel trips where fuel was dispensed from depot pumps before the driver submitted a signed paper slip.
+- **Why it matters:** Accounts can audit and check off these slips one by one before month-end financial sign-off.
 
-**Presenter Click Path:**
-1. Navigate to: **NFD Fuel Logistics > Fleet Fuel Consumption (KM/L) > September 2026 Fleet Summary (Otj COC)** (or **Fleet > Fleet Vehicles**).
-2. Point out the live Namibian benchmark price: **`Current Fuel Price Otj COC: NAD 25.98 / Liter`**.
-3. Group/Sort by **Excess NAD Value** descending:
-   - **`N 7802 OT` (Mercedes Actros 2646):** Top Excess Burner! 10,221 km traveled, actual consumption 2.17 KM/L vs. expected target 2.50 KM/L. Burned 4,706.00 L vs. 4,088.40 L expected -> **+617.60 L excess fuel penalty = +NAD 16,045.25**!
-   - **`N 11751 OT` (Mercedes Rigid Tanker):** 7,763 km traveled, 2.57 KM/L vs. 3.20 KM/L target -> **+589.86 L excess fuel penalty = +NAD 15,324.63**!
-   - **`N 11963 OT` (Mercedes Actros 2646):** 13,177 km traveled, 2.27 KM/L vs. 2.50 KM/L target -> **+529.20 L excess fuel penalty = +NAD 13,748.62**!
-   - **`N 10544 OT` (Volvo FH440):** 19,760 km traveled, 2.83 KM/L vs. 3.00 KM/L target -> **+392.13 L excess fuel = +NAD 10,187.62**!
-   - **`N 2745 OT` (Mercedes Actros 3352):** Highlight the shunting anomaly! Only 143 km traveled, but burned 450.00 L of diesel (0.32 KM/L) -> **+381.90 L excess = +NAD 9,921.89**! Note in spreadsheet: `"??????"` (Yard shunting / excessive stationary engine PTO idling).
-4. Now reverse the sort to show **NFD's Top Star Savers (Fuel Efficiencies)**:
-   - **`N 12916 OT` (Volvo FH440 with PUP Trailer):** 14,540 km traveled at an exceptional 2.87 KM/L against 2.50 KM/L standard -> **-745.90 Liters SAVED = -NAD 19,378.48 straight to NFD profit margin!**
-   - **`N 10684 OT` (Mercedes Actros 2652):** 20,012 km traveled at 2.85 KM/L vs. 2.70 KM/L target -> **-399.25 Liters SAVED = -NAD 10,372.56 saved!**
-   - **`N 12917 OT` (Volvo FH440 with PUP Trailer):** 15,284 km traveled at 2.61 KM/L vs. 2.50 KM/L target -> **-263.10 Liters SAVED = -NAD 6,835.34 saved!**
-5. Navigate to: **NFD Fuel Logistics > Fleet Fuel Consumption (KM/L) > Vehicle Refuel & Odometer Logsheets**.
-   - **Audit Queue: Filter by `Unconfirmed Logsheets (X)`**:
-     Show Johan and Pierre the **29 unconfirmed driver logsheets** from September (e.g., `FCL/2026/0007` on `N 12916 OT`). Explain how Odoo holds these in an audit inbox so accounts can confirm pump meter slips before sign-off.
-   - **The Ford Tremor Excel Formula Bug (`N 13938 OT` - `FCL/2026/0010`)**:
-     Open `FCL/2026/0010`. Explain how in NFD's manual Excel spreadsheet, a missing `ODOMETER END` on September 11 caused Excel to subtract `0 - 30266`, calculating **-28,814 KM**, **-65.06 KM/L**, and generating a fictitious penalty of **+3,324.28 Liters excess = NAD 86,364.79**! Show how Odoo's automated validation flags missing end odometers and prevents negative distance anomalies. Open the corrected record `FCL/2026/0011` showing the true September performance: 5,050 km, 10.13 KM/L, saving 6.60 Liters (-NAD 171.47).
-   - **The Missing Vehicle Discovery (`N 12611 OT` - Isuzu 1.9 D-MAX)**:
-     Highlight `FCL/2026/0012`. In NFD's Excel workbook, `N 12611 OT` (2,111 km, 230.19 L) was completely omitted from the Summary tab. In Odoo ERP, every vehicle is an asset entity—no vehicle can ever slip through the cracks or disappear from monthly financial rollups.
-   - **Driver Odometer Discrepancy Note (`N 11751 OT` - `FCL/2026/0004`)**:
-     Open `FCL/2026/0004` (Driver Benhardt). Show the actual handwritten driver note captured directly in the system: *"Kilos nie reg nie ingeskryf nie sesfontein tot Otjiwarongo is 500km"*.
-6. Navigate to: **NFD Fuel Logistics > Workshop & Driver Timesheets > Timesheets by Project & Task**.
-   - Group by: **Project**.
-   - Expand **`Otjiwarongo Mechanical Workshop & Fleet Maintenance`**:
-     Show senior mechanic Lukas Van Wyk's 6.5 hours on `50,000km Preventive Chassis & Manifold Service - Scania R500` and 4.0 hours on the `Axor Fuel Leakage Investigation (DISP/2026/0102)`.
-   - Expand **`Petrosol Retail Forecourts & ILAMO Convenience Stores (Free Maintenance Subsidy)`**:
-     Show Lukas Van Wyk's 5.0 hours recalibrating pumps at Petrosol Outjo and 3.5 hours servicing the cold room and standby generator at Khorixas—automatically aggregating free forecourt subsidy costs per retail site.
-   - Expand **`National Bulk Fuel Haulage Corridors (Driver Trip Timesheets)`**:
-     Show haulage trip hours for Simon (12.5h on Walvis Bay corridor with PUP trailer), Laythonne (13.0h Walvis Bay import), Hendrik Shilongo (8.0h B2Gold mining run), and Gabriel (11.0h Northern commercial distribution to Ondangwa & Fort Sesfontein).
-
-**Presenter Talking Points (Speaking to Johan Botes & Pierre Fourie):**
-> *"Johan, Pierre—take a close look at this screen. These are not dummy demo figures. These are Northern Fuel Distributors' actual, audited figures from your September 2026 fuel operations: 41 vehicle sheets, 359 refuel logs, and exactly 100,269.50 liters of fuel consumed, representing a NAD 2,605,001.61 monthly fuel bill at your Otjiwarongo COC benchmark of NAD 25.98 per liter.*
->
-> *First, look at the excess burners. In your spreadsheet, `N 7802 OT` burned 4,706 liters covering 10,221 km at 2.17 KM/L. Against your 2.50 KM/L benchmark, that's +617.60 liters of excess burn—costing NFD NAD 16,045.25 in excess fuel on just one truck in one month. Right behind it is rigid tanker `N 11751 OT` at +589.86 liters (NAD 15,324.63), and `N 11963 OT` at +529.20 liters (NAD 13,748.62).*
->
-> *And look at `N 2745 OT`—the Actros 3352. It only drove 143 km, yet drew 450 liters of diesel! Your team wrote '??????' in the remarks. In Odoo, with telematics integration, you immediately see this was stationary PTO engine idling and yard shunting—not road haulage.*
->
-> *Now look at the other side of the ledger—your Star Savers. Driver Simon on Volvo `N 12916 OT` pulling a PUP trailer achieved 2.87 KM/L over 14,540 km against a 2.50 KM/L target. That single vehicle and driver saved NFD 745.90 liters of diesel in September—putting NAD 19,378.48 straight back into your company's pocket! Next is `N 10684 OT` saving 399.25 liters (NAD 10,372.56).*
->
-> *Now, Pierre, look at why managing this in Excel is dangerous for finance: In your manual spreadsheet for Ford Tremor `N 13938 OT`, an end odometer was accidentally left blank on September 11. Excel's formula subtracted zero, calculated negative 28,814 km, and slapped Johan with a fake penalty of +3,324.28 liters of excess fuel—falsely showing that the Ford Tremor lost NAD 86,364.79! In reality, as Odoo automatically validated, that bakkie drove 5,050 km at 10.13 KM/L and actually saved 6.6 liters.*
->
-> *Furthermore, vehicle `N 12611 OT`—the Isuzu D-MAX—was completely missing from your Excel summary sheet. In Odoo, human omissions like this are physically impossible. And with 29 unconfirmed logsheets in your audit queue, your accounting team can verify pump slips with 1-click before month-end sign-off.*
->
-> *Finally, through Timesheets, Lukas Van Wyk's workshop labor on trucks and your free retail maintenance at Outjo and Khorixas are tracked to the exact hour and dollar—giving you complete profitability visibility across every corridor and forecourt."*
+#### Step 4.5: Discover the Human Excel Formula Errors Caught by Odoo
+- **The Ford Tremor Formula Bug (`N 13938 OT`):**
+  - In the search bar, type `13938` and open logsheet record `FCL/2026/0010`.
+  - In NFD's manual Excel spreadsheet, a clerk left the `ODOMETER END` cell blank. Excel subtracted zero, calculating **-28,814 km** and slapping Johan with a fictitious penalty of **+3,324.28 Liters = NAD 86,364.79**!
+  - Odoo catches missing end odometers and prevents negative distance anomalies. Record `FCL/2026/0011` shows the true performance: `5,050 km` at `10.13 KM/L`, actually saving 6.6 liters.
+- **The Missing Vehicle Discovery (`N 12611 OT` - Isuzu D-MAX):**
+  - In NFD's Excel workbook, `N 12611 OT` (2,111 km, 230.19 L) was completely omitted from the Summary tab. In Odoo, every asset is an entity—no vehicle can ever be accidentally forgotten.
+- **The Driver Odometer Note (`N 11751 OT` - `FCL/2026/0004`):**
+  - Open `FCL/2026/0004` (Driver Benhardt). Notice the actual driver remark preserved: *"Kilos nie reg nie ingeskryf nie sesfontein tot Otjiwarongo is 500km"*.
 
 ---
 
-### Act 5: Pierre Fourie Flow — Financial Reconciliation, Inventory Shrinkage & Forecourt Assets (19:30 – 24:00)
+### STAGE 5: Workshop Maintenance Job Cards & 24/7 Breakdown Network (Johan Botes Focus)
 
-**Presenter Click Path:**
-1. Navigate to: **NFD Fuel Logistics > Depot Stock & Losses > Fuel Shrinkage & Scraps** (Stock Scrap).
-2. Point out the recorded scrap entries: Product `Diesel 50ppm Bulk`, Quantity: `210.00 L`, Scrap Location: `Fuel Shrinkage / Leakage Write-Off`.
-3. Navigate to: **NFD Fuel Logistics > Depot Stock & Losses > Fuel & Lubricant Inventory**.
-4. Open: **Diesel 50ppm Bulk** -> click on **On Hand Quantity**:
-   - Location `OTJ/Stock/Bulk Fuel Tank Farm/Tank 1 - Diesel 50ppm (500,000L)`: 485,000 L.
-   - Location `Tank 2 - ULP 95 (200,000L)`: 165,000 L.
-   - Workshop Store: 45 drums 15W-40, 60 buckets Chassis Grease EP2.
-5. Navigate to: **NFD Fuel Logistics > Fleet & Assets > Maintenance Work Orders**.
-6. Filter by Agreement Type: **Free Forecourt Maintenance Agreement (Petrosol/ILAMO)**.
-7. Open: **Monthly Dispenser Nozzle & Meter Recalibration - Petrosol Outjo**.
+#### Step 5.1: Open Workshop Maintenance Work Orders
+- In the top menu bar, click: **Fleet & Assets > Maintenance Work Orders**.
+- **What you see:** A clear Kanban board organized by repair stages: **New Request**, **In Progress**, **Repaired**, and **Scrap**.
+- Open the active job cards:
+  - **`JC-1009: Trek Links & Turntable Pin Re-Torque`**:
+    - Linked to vehicle: `N 12548 OT`.
+    - Assigned Mechanic: **Green**. Location: **Otjiwarongo Main Workshop**.
+    - Notice checkboxes: Both **Parts Ordered** and **Parts Received** are checked (parts supplied by Henred / MB Truck).
+  - **`JC-1045: Multi-Compartment Degas & Internal Baffle Weld`**:
+    - Linked to vehicle: `N 11751 OT`. Location: **CWWA Truck Wash & Degas**.
+    - Assigned Mechanic: **Japie**.
+    - Notice: Parts Ordered is checked, but Parts Received is pending—preventing the foreman from closing the job card prematurely.
+  - **`JC-1110: Hydraulic PTO Offloading Valve Leak Repair`**:
+    - Assigned to **Clive** (Air & Brakes).
+  - **`JC-994: NaTIS Statutory Roadworthy Fitness Retest`**:
+    - Assigned to Foreman **Manie** at NaTIS Testing Station (Otjiwarongo).
 
-**Presenter Talking Points (Speaking to Pierre Fourie):**
-> *"Pierre, as Financial Manager, this is your control center. In standard operations, volume losses sit in limbo until month-end physical stocktakes, distorting your buying pool reconciliations and fuel gross margins.*
->
-> *Here, the moment that 210-liter alert was processed, Odoo logged an inventory scrap write-off directly against your dedicated `Fuel Shrinkage / Leakage Write-Off` virtual location. At current wholesale diesel cost, that's exactly NAD 4,515.00 cleanly recognized and attributed to vehicle `N 1750 OT` on that specific trip.*
->
-> *Next, let's look at your Petrosol retail forecourts and ILAMO convenience stores. At Outjo (CODO) and Khorixas (DODO), NFD provides free forecourt equipment maintenance. Look at this work order: 'Monthly Dispenser Nozzle & Meter Recalibration - Petrosol Outjo'.*
->
-> *Your workshop technicians log parts used—whether it's seal kits or dispenser filters—and their labor hours under the agreement type `Free Forecourt Maintenance Agreement`. You have complete, transparent visibility into the exact cost of forecourt equipment subsidies per retail station, allowing you to accurately evaluate dealer fuel throughput margins versus forecourt upkeep expenses."*
-
----
-
-### Act 6: HESMS Safety Compliance & Namibian Affirmative Action (AA) (24:00 – 27:30)
-
-**Presenter Click Path:**
-1. Navigate to: **NFD Fuel Logistics > HESMS & Driver Safety > Hazchem Drivers & AA Compliance** (or **HR Employees**).
-2. List view displays columns: `Name`, `ID Number`, `Licence Code`, `Licence Expiry`, `PDP Expiry Date`, `Hazchem Expiry Date`, `Medical Fitness Expiry`, `Affirmative Action Category`, and `HESMS Safety Status`.
-3. Filter by: **Hazchem Compliance Status**:
-   - Point out driver: **`Hendrik Shilongo`** -> Badge: Green `Fully Compliant`.
-   - Point out driver: **`Matheus Shikongo`** -> Badge: Amber `Expiring Within 30 Days` (Hazchem expires 2026-11-01).
-   - Point out driver: **`Franzua Tsuseb`** -> Badge: Red `Grounded / Expired`!
-4. Open **`Franzua Tsuseb`** -> Tab: **HESMS & Driver Compliance**:
-   - Point out: Licence Code `C`, Namibian ID `870814...`, Driving Licence valid until 2028, PrDP valid until 2028-05-26.
-   - Point out the red violation: **Dangerous Goods / Hazchem Permit expired on `2026-05-25`**!
-   - Show how Odoo automatically locks the driver record with status `expired`, preventing any dispatcher from assigning Franzua to hazardous cargo runs until recertified.
-5. Highlight that all **34 active drivers** from NFD's operational roster (Niklas Ashipala, Mike Mburu, Denzel Tjombonde, Benhard Kangandi, Gabriel Tjiueza, Raymond Booysen, Andreas Iipinge, Maxi Wohler, Conrall Davids, Simon Tsaoseb, Oscar, etc.) are fully mapped with statutory licence codes (CE/C1/C), Namibian ID numbers, and affirmative action designations.
-
-**Presenter Talking Points (Speaking to Johan Botes):**
-> *"Johan, Chevron and major mining audits require a strict score above 90% to maintain bulk petroleum transport accreditation. That requires unambiguous proof that no uncertified driver ever takes the wheel of a 42,000-liter hazardous chemical rig.*
->
-> *Look at your live driver dashboard. All 34 of your actual drivers from your Otjiwarongo roster are loaded: Niklas, Mike, Denzel, Benhard, Gabriel, Raymond, Conrall, and Simon.*
->
-> *Now, look at the automated compliance engine: Hendrik Shilongo is green and `Fully Compliant`. Matheus Shikongo displays an amber warning badge `Expiring Within 30 Days` because his Hazchem expires on November 1st.*
->
-> *And look at Franzua Tsuseb. Franzua has a valid Code C licence and a valid PDP until 2028. But his Dangerous Goods Hazchem permit lapsed on May 25, 2026. In a manual spreadsheet system, a dispatcher might only check the driver's standard license and send him onto the B1 highway with a load of aviation fuel or low-sulphur diesel. If pulled over by traffic authorities or audited by Chevron, that's an immediate catastrophic audit failure and impoundment.*
->
-> *In Odoo, Franzua is automatically flagged with a bold red `Grounded / Expired` badge. He cannot be assigned to any dispatch ticket until his renewal training is completed.*
->
-> *Furthermore, for your annual compliance reporting under the Namibian Affirmative Action (Employment) Act 29 of 1998, every employee is classified into their designated groups—Designated Namibian Group, Women in Transport, or Persons with Disabilities—allowing your Employment Equity report to be produced with zero manual manipulation."*
+#### Step 5.2: Mobilize the 24/7 Breakdown Network
+- In the top menu bar, click: **Fleet & Assets > 24/7 Emergency Breakdown Network**.
+- **What you see:** A complete directory of **33 vetted roadside contractors** covering 14 Namibian transport corridors.
+- In the search bar, type `Walvis Bay` or `Gobabis` or `Katima Mulilo`.
+- **Why it matters:** When a driver calls dispatch at 02:00 AM with a blown tyre near Khorixas, dispatchers don't search through WhatsApp—they filter by town and immediately call **Jaques Joubert Breakdown (Khorixas)** with one click.
 
 ---
 
-### Act 7: Q&A, Next Steps & Pilot Implementation (27:30 – 30:00)
+### STAGE 6: HESMS Safety Compliance & Affirmative Action (Johan & Compliance Team)
 
-**Presenter Talking Points:**
-> *"Johan, Pierre—to summarize what we have experienced together today:
-> 1. Complete transparency over your 700,000L bulk depot inventory and lubricant stocks.
-> 2. Automated enforcement of your 18-year Prime Mover and 15-year Tanker replacement rules with Geotab telematics linkage.
-> 3. Zero-loss cargo reconciliation with automatic 0.25% thermal adjustments and 1-click corrective maintenance ticketing for unexplainable losses.
-> 4. Real September 2026 fuel consumption analysis proving NAD 64,000+ in excess burn penalties against Star Savers (-NAD 19,378 saved), fixing human spreadsheet formula bugs, and tracking workshop and driver timesheets.
-> 5. Automated HESMS and Affirmative Action compliance protecting your Chevron accreditation.
->
-> OreSolve's proposed next step is a 3-week pilot at the Otjiwarongo Depot, loading live dispatches from Tank 1 and Tank 2, integrating with your Geotab API feed, and running your upcoming month-end fuel shrinkage reconciliation in parallel.
->
-> What questions can we answer for you?"*
+#### Step 6.1: Open the Driver Compliance Roster
+- In the top menu bar, click: **HESMS & Driver Safety > Hazchem Drivers & AA Compliance**.
+- **What you see:** All 34 active drivers from NFD's Otjiwarongo roster (Niklas, Mike, Denzel, Benhard, Gabriel, Raymond, Conrall, Simon, etc.).
+
+#### Step 6.2: Check Driver Compliance Status
+- In the search bar filters, click: **Hazchem Compliance Status**.
+- Notice the badges:
+  - **Hendrik Shilongo:** Green badge **Fully Compliant**.
+  - **Matheus Shikongo:** Amber badge **Expiring Within 30 Days** (Hazchem expires on 2026-11-01).
+  - **Franzua Tsuseb:** Bold red badge **Grounded / Expired**!
+
+#### Step 6.3: Inspect Franzua Tsuseb's Record
+- Click on driver: **Franzua Tsuseb**.
+- Click on the tab: **HESMS & Driver Compliance**.
+- **What you see:**
+  - Driving Licence Code: `C` (Valid until 2028).
+  - PrDP (Professional Driving Permit): Valid until 2028-05-26.
+  - **Dangerous Goods / Hazchem Permit: Expired on `2026-05-25`!**
+  - **Why it matters:** To protect NFD's >90% Chevron safety accreditation, Odoo locks Franzua's status to `expired`. Dispatchers cannot assign him to hazardous bulk petroleum tankers until his recertification is completed.
+
+#### Step 6.4: Affirmative Action (AA) Equity Reporting
+- In the search bar, click **Group By** and select: **Affirmative Action Category**.
+- **What you see:** All staff grouped into **Designated Namibian Group**, **Women in Transport**, or **General**.
+- **Why it matters:** Generates NFD's mandatory annual compliance report under the Namibian Affirmative Action (Employment) Act 29 of 1998 with zero manual data manipulation.
 
 ---
 
 ## 5. End-to-End Functional Test Matrix (QA Verification)
 
-| Test ID | Feature / Workflow Area | Test Objective & Pre-conditions | Step-by-Step Test Actions | Expected Results | Verification Command / Screen | Pass / Fail |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **TC-01** | Depot Bulk Inventory Setup | Verify 700kL Otjiwarongo Depot bulk tank locations and seed stock. | 1. Navigate to Inventory > Stock On Hand.<br>2. Filter by Location: `Bulk Fuel Tank Farm`. | Tank 1 displays 485,000 L of Diesel 50ppm; Tank 2 displays 165,000 L of ULP 95 Petrol; Workshop Store displays lubricants & spares. | `stock.quant` search on `OTJ/Stock` locations | **PASS** |
-| **TC-02** | Fleet Replacement Governance | Verify automated policy status calculation based on unit class and age. | 1. Navigate to Fleet > Vehicles.<br>2. Inspect Freightliner Argosy (2009, 17 yrs).<br>3. Inspect Scania P360 (2012, 14 yrs). | Argosy (Prime Mover) shows `warning` (Limit: 18 yrs). Scania P360 (Tanker) shows `warning` (Limit: 15 yrs). Younger trucks show `compliant`. | `fleet.vehicle` field `x_replacement_policy_status` | **PASS** |
-| **TC-03** | Normal Fuel Dispatch Reconciliation | Reconcile standard mine delivery with 0.25% thermal allowance. | 1. Open dispatch `DISP/2026/0101` (B2Gold).<br>2. Inspect loaded (42,000L), delivered (41,895L). | Thermal allowance auto-computes to 105.00 L. Net variance is 0.00 L. Status displays green `Normal Reconciliation` and green ribbon. | `nfd.fuel.dispatch.log` record `DISP/2026/0101` | **PASS** |
-| **TC-04** | High-Variance Leakage Alert Trigger | Trigger leakage alert when discrepancy exceeds 50 Liters. | 1. Open dispatch `DISP/2026/0102` (Grinaker-LTA).<br>2. Loaded: 17,500L, Delivered: 17,246.25L. | Thermal allowance is 43.75 L. Net discrepancy is 210.00 L (>50L). Banner displays bold red `LEAKAGE ALERT!`. Status is `leakage_alert`. | `nfd.fuel.dispatch.log` record `DISP/2026/0102` | **PASS** |
-| **TC-05** | Automated Workshop & Scrap Action | Validate 1-click generation of corrective ticket and scrap entry. | 1. On `DISP/2026/0102`, click button `action_create_leakage_maintenance_ticket`. | 1. Corrective ticket is created for Otjiwarongo Workshop (Priority 3).<br>2. Stock scrap entry created for 210L.<br>3. State updates to `investigation`. | `maintenance.request` linked to dispatch; `stock.scrap` created | **PASS** |
-| **TC-06** | HESMS Driver Safety Permit Tracking | Detect permit expirations within 30-day safety warning window. | 1. Navigate to HR Employees.<br>2. Inspect Hendrik Shilongo.<br>3. Inspect Matheus Shikongo. | Hendrik has valid permits -> `Fully Compliant`. Matheus has Hazchem permit expiring in 5 days -> `Expiring Within 30 Days` amber badge. | `hr.employee` field `x_hse_status_badge` | **PASS** |
-| **TC-07** | Affirmative Action (AA) Classification | Ensure compliance with Namibian Affirmative Action Act categories. | 1. Group employees by `Affirmative Action Category`. | Staff categorized into `Designated Namibian Group`, `Women in Transport`, or `General`. | `hr.employee` field `x_aa_category` | **PASS** |
-| **TC-08** | Petrosol Forecourt & Bulk Tank Assets | Track maintenance on customer tanks and free forecourt pumps. | 1. Navigate to Maintenance > Equipment.<br>2. Check Wayne Helix pump at Outjo.<br>3. Check 60kL tank at Husab Mine. | Pump linked to Petrosol Outjo (CODO) under `Free Forecourt Agreement`. Husab tank linked to client under `Customer Bulk Installation Contract`. | `maintenance.equipment` fields `x_asset_category`, `x_site_partner_id` | **PASS** |
-| **TC-09** | September 2026 Fuel Consumption & Otj COC Benchmark | Validate KM/L targets, excess fuel burn calculation, and Star Saver negative excess values. | 1. Navigate to Fleet > Vehicles.<br>2. Inspect `N 7802 OT`, `N 11751 OT`, and `N 12916 OT`. | `N 7802 OT` computes +617.60 L excess (+NAD 16,045.25). `N 11751 OT` computes +589.86 L excess (+NAD 15,324.56). `N 12916 OT` computes -745.90 L saved (-NAD 19,378.48). | `fleet.vehicle` fields `x_sept_excess_fuel_l`, `x_sept_excess_nad_value` | **PASS** |
-| **TC-10** | Refuel Logsheet Odometer Validation & Audit Queue | Ensure unconfirmed driver slips (`X`) are queued and formula errors are prevented. | 1. Navigate to Fuel Logistics > Refuel & Odometer Logsheets.<br>2. Filter by `Unconfirmed Logsheets (X)`.<br>3. Inspect log `FCL/2026/0010`. | Unconfirmed filter isolates pending logs. Missing end odometer anomaly is flagged as `odo_error` without corrupting vehicle totals. | `nfd.fuel.consumption.log` filters `filter_unconfirmed_logsheet`, `filter_odo_anomalies` | **PASS** |
-| **TC-11** | Workshop & Driver Timesheet Cost Rollups | Aggregate workshop technician hours and long-haul trip driver timesheets by project. | 1. Navigate to Fuel Logistics > Workshop & Driver Timesheets.<br>2. Group by `Project`. | Workshop project displays Lukas Van Wyk's hours (PM + emergency leakage); Petrosol project aggregates retail forecourt subsidy hours; Haulage project tracks corridor trip timesheets. | `account.analytic.line` group by `project_id` | **PASS** |
-| **TC-12** | 24/7 Emergency Breakdown Network | Verify national directory of 33 vetted breakdown, tyre, and towing partners. | 1. Navigate to Fleet & Assets > 24/7 Emergency Breakdown Network.<br>2. Filter by Town (e.g. Gobabis, Karibib, Katima Mulilo). | Directory lists 33 partners with coverage areas, emergency phone numbers, and service types (mechanical, tyre, towing). | `res.partner` where `x_is_breakdown_partner IS TRUE` | **PASS** |
-| **TC-13** | Workshop Job Cards & Parts Tracking | Manage active workshop tickets with mechanic assignment and parts ordering. | 1. Navigate to Fleet & Assets > Maintenance Work Orders.<br>2. Inspect `JC-1009`, `JC-1045`, `JC-1110`, `JC-994`, `JC-1088`. | Job cards display assigned mechanic (Green, Japie, Clive, Manie, Jonie), location (Main Workshop, CWWA Degas, NaTIS), and parts ordered/received status. | `maintenance.request` field `x_job_card_number` | **PASS** |
-| **TC-14** | Vehicle Statutory Fitness & SLP Expiry | Track annual NaTIS fitness, Safe Loading Passes (SLP), and hydrostatic pressure tests. | 1. Navigate to Fleet > Vehicles.<br>2. Inspect Workshop Service & Statutory Compliance tab on `N 12043 OT`, `N 5999 OT`, etc. | Records display NaTIS fitness expiry, SLP pass expiry, tanker pressure test date, laser wheel alignment km, and dynamic service status (`ok`/`due_soon`/`overdue`). | `fleet.vehicle` fields `x_fitness_certificate_expiry`, `x_safe_loading_pass_expiry` | **PASS** |
-| **TC-15** | Driver HESMS Expiry & Automated Grounding | Prevent uncertified drivers from operating hazardous petroleum cargo tankers. | 1. Navigate to HESMS & Driver Safety > Hazchem Drivers.<br>2. Inspect Franzua Tsuseb. | Franzua's Hazchem permit expired on `2026-05-25`. System computes `x_hse_status_badge = 'expired'` (Grounded / Red badge), blocking hazardous tanker dispatch. | `hr.employee` field `x_hse_status_badge` on Franzua Tsuseb | **PASS** |
+This QA matrix provides verification tests for each Excel sheet translation.
+
+| Test ID | Excel Source Sheet | Odoo Model / View | Test Action & Verification Step | Expected Result | Pass / Fail |
+|---|---|---|---|---|---|
+| **TC-01** | `Summary` | `x_nfd_fuel_consumption_log`<br>*(Pivot & Graph)* | Open **Sept 2026 Excess Fuel & Otj COC Dashboard**; group by Vehicle. | Total fuel equals `100,269.50 L` valued at Otj COC `@ 25.98 / L`. | **PASS** |
+| **TC-02** | `[Vehicle Reg]` (41 tabs) | `x_nfd_fuel_consumption_log`<br>*(List View)* | Open **Vehicle Refuel & Odometer Logsheets**; filter by `Unconfirmed Logsheets (X)`. | Exactly 29 pending refuel slips isolated for audit review. | **PASS** |
+| **TC-03** | `FLEET SERVICE` | `fleet.vehicle`<br>*(List & Form)* | Open **Tankers & Rigids**; inspect `N 1166 OT` (UD100) and `N 7802 OT`. | 89+ vehicles loaded; `N 1166 OT` flags `-821 km` service overdue; `N 7802 OT` shows Comp 1 `N 6776 OT`. | **PASS** |
+| **TC-04** | `PROJECTS` | `maintenance.request`<br>*(Kanban & List)* | Open **Maintenance Work Orders**; inspect `JC-1009`, `JC-1045`, `JC-1110`. | Job cards display mechanics (Green, Japie, Clive) and parts ordered/received tracking. | **PASS** |
+| **TC-05** | `AVAILABLITY` | `fleet.vehicle`<br>*(Search Filters)* | Filter by **For Sale / Decommissioned** and **In Workshop**. | Units `10914`, `10915`, `10916`, and `10919` correctly flagged as *Klaar / For Sale*. | **PASS** |
+| **TC-06** | `DRIVER ALLOCATION` | `fleet.vehicle` & `hr.employee` | Open `N 4584 OT` and `N 10544 OT`. | `N 4584 OT` displays Driver Benhardt + Trainee Tobias Leopold; `N 10544 OT` displays Andreas I + Trainee Kaaronda. | **PASS** |
+| **TC-07** | `DRIVER INFORMATION` | `hr.employee`<br>*(Form View)* | Open **Hazchem Drivers & AA Compliance**; inspect Franzua Tsuseb. | 34 drivers loaded with ID numbers; Franzua displays red `Grounded / Expired` badge. | **PASS** |
+| **TC-08** | `BREAKDOWN CONTACTS` | `res.partner`<br>*(Search View)* | Open **24/7 Emergency Breakdown Network**; filter by Town `Walvis Bay`. | Displays vetted breakdown partners across 14 Namibian transport corridors. | **PASS** |
+| **TC-09** | `BRANDING` | `fleet.vehicle`<br>*(Search Filter)* | Filter **Tankers & Rigids** by `Needs Branding Audit`. | Isolates trucks (`N 4584 OT`, `N 5164 OT`) and trailers (`N 7802 OT`, `N 8966 OT`) needing corporate decals. | **PASS** |
+| **TC-10** | `PTO` | `fleet.vehicle`<br>*(Workshop Service Tab)* | Open `N 7802 OT` and `N 8966 OT`. | `N 7802 OT` shows Hydraulic PTO *Behind the Cab*; `N 8966 OT` shows Engine PTO *on Tanker*. | **PASS** |
+| **TC-11** | `Wheel Allignment Worksheet` | `maintenance.request` & `fleet.vehicle` | Open **Maintenance Work Orders**; search `Alignment`. | Displays steering play, kingpin wear, and V-bone bush maintenance tickets from worksheet. | **PASS** |
 
 ---
 
-## 6. Post-Demo Follow-Up Checklist for OreSolve Consultants
-1. **Send Executive Summary Email** to Johan Botes (`johan@nfdnamibia.com`) and Pierre Fourie (`pierre@nfdnamibia.com`) within 2 hours of the call, recapping the 210L leakage reconciliation and the Otjiwarongo workshop workflow.
-2. **Export Seed Data Spreadsheet** containing NFD's 24 fleet units and Geotab identifiers for their review.
-3. **Schedule Technical Architecture Discovery** with NFD's IT lead for Geotab OBC API endpoint integration and digital gantry meter protocol compatibility.
+## 6. Post-Demo Next Steps & Pilot Implementation
 
+1. **Executive Debrief:** Present Johan Botes and Pierre Fourie with the automated savings breakdown:
+   - Eliminating the **NAD 86,364** Ford Tremor formula error.
+   - Immediate tracking of **+NAD 64,000** in excess monthly fuel burn across high-consumption vehicles (`N 7802 OT`, `N 11751 OT`, `N 11963 OT`).
+   - Protecting Chevron accreditation (>90%) through automated driver permit grounding.
+2. **3-Week Depot Pilot Go-Live:**
+   - Week 1: Connect Geotab API to automate live vehicle odometer feeds.
+   - Week 2: Run daily bulk dispatches from Otjiwarongo Tank 1 and Tank 2 in parallel.
+   - Week 3: Execute month-end fuel consumption reconciliation and shrinkage write-offs in Odoo.
