@@ -207,6 +207,30 @@
         <field name="name">Tadano Mobile Cranes</field>
     </record>
 
+    <record id="brand_chevrolet" model="fleet.vehicle.model.brand">
+        <field name="name">Chevrolet</field>
+    </record>
+    <record id="brand_powerstar" model="fleet.vehicle.model.brand">
+        <field name="name">Powerstar</field>
+    </record>
+
+    <record id="model_chev_utility" model="fleet.vehicle.model">
+        <field name="name">Utility 1.4i Pool Bakkie</field>
+        <field name="brand_id" ref="brand_chevrolet" />
+    </record>
+    <record id="model_nissan_np300" model="fleet.vehicle.model">
+        <field name="name">NP300 Hardbody 2.5/3.2d Single Cab</field>
+        <field name="brand_id" ref="brand_nissan" />
+    </record>
+    <record id="model_powerstar_tipper" model="fleet.vehicle.model">
+        <field name="name">Powerstar 2628/2642 Tipper</field>
+        <field name="brand_id" ref="brand_powerstar" />
+    </record>
+    <record id="model_mercedes_rigid" model="fleet.vehicle.model">
+        <field name="name">Mercedes-Benz Rigid Tanker</field>
+        <field name="brand_id" ref="brand_mercedes" />
+    </record>
+
     <record id="model_scania_r500" model="fleet.vehicle.model">
         <field name="name">R500 6x4 Heavy Hauler</field>
         <field name="brand_id" ref="brand_scania" />
@@ -1751,7 +1775,7 @@
     
 
     <record id="vehicle_n317ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_mercedes_rigid" />
         <field name="license_plate">N 317 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">32000.0</field>
@@ -1810,7 +1834,7 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n1072ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_mercedes_rigid" />
         <field name="license_plate">N 1072 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">19000.0</field>
@@ -1950,9 +1974,9 @@
         <field name="odometer">275385.0</field>
     </record>
     <record id="vehicle_n3069ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_nissan_ud100" />
+        <field name="model_id" ref="model_nissan_np300" />
         <field name="license_plate">N 3069 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -1981,7 +2005,7 @@
         <field name="odometer">276258.0</field>
     </record>
     <record id="vehicle_n4467ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_mercedes_rigid" />
         <field name="license_plate">N 4467 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">32000.0</field>
@@ -2016,7 +2040,7 @@
         <field name="odometer">895091.0</field>
     </record>
     <record id="vehicle_n4584ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_mercedes_rigid" />
         <field name="license_plate">N 4584 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">32000.0</field>
@@ -2497,9 +2521,9 @@
         <field name="odometer">199110.0</field>
     </record>
     <record id="vehicle_n10420ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_chev_utility" />
         <field name="license_plate">N 10420 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -2525,7 +2549,7 @@
         <field name="x_sept_excess_fuel_l">0.0</field>
         <field name="x_otj_coc_fuel_price">25.98</field>
         <field name="x_sept_excess_nad_value">0.0</field>
-    </record>
+    <field name="x_availability_group">pool</field></record>
     <record id="vehicle_n10424ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
         <field name="license_plate">N 10424 OT</field>
@@ -2757,7 +2781,7 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n10918ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_actros_3344" />
         <field name="license_plate">N 10918 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
@@ -2817,9 +2841,9 @@
         <field name="x_pto_type">none</field>
     </record>
     <record id="vehicle_n11028ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_powerstar_tipper" />
         <field name="license_plate">N 11028 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -2890,7 +2914,7 @@
         <field name="odometer">879491.0</field>
     </record>
     <record id="vehicle_n11255ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440" />
+        <field name="model_id" ref="model_volvo_fh520" />
         <field name="license_plate">N 11255 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">99000.0</field>
@@ -2991,7 +3015,7 @@
         <field name="odometer">250587.0</field>
     </record>
     <record id="vehicle_n11751ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_mercedes_rigid" />
         <field name="license_plate">N 11751 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">36000.0</field>
@@ -3075,7 +3099,7 @@
         <field name="odometer">1294474.0</field>
     </record>
     <record id="vehicle_n11964ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_actros_2646" />
         <field name="license_plate">N 11964 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">0.0</field>
@@ -3144,7 +3168,7 @@
         <field name="odometer">79579.0</field>
     </record>
     <record id="vehicle_n12043ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440" />
+        <field name="model_id" ref="model_volvo_fh520" />
         <field name="license_plate">N 12043 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">80000.0</field>
@@ -3181,7 +3205,7 @@
         <field name="odometer">494623.0</field>
     </record>
     <record id="vehicle_n12548ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_mercedes_rigid" />
         <field name="license_plate">N 12548 OT</field>
         <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">18000.0</field>
@@ -3400,7 +3424,7 @@
         <field name="odometer">361442.0</field>
     </record>
     <record id="vehicle_n13566ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_volvo_fh440" />
+        <field name="model_id" ref="model_volvo_fh520" />
         <field name="license_plate">N 13566 OT</field>
         <field name="x_unit_classification">prime_mover</field>
         <field name="x_max_volume_liters">94500.0</field>
@@ -3475,9 +3499,9 @@
         <field name="odometer">409620.0</field>
     </record>
     <record id="vehicle_n13831ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_suzuki_carry" />
         <field name="license_plate">N 13831 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>
@@ -3504,9 +3528,9 @@
         <field name="odometer">6342.0</field>
     </record>
     <record id="vehicle_n13938ot" model="fleet.vehicle">
-        <field name="model_id" ref="model_actros_2645" />
+        <field name="model_id" ref="model_ford_tremor" />
         <field name="license_plate">N 13938 OT</field>
-        <field name="x_unit_classification">prime_mover</field>
+        <field name="x_unit_classification">rigid_tanker</field>
         <field name="x_max_volume_liters">0.0</field>
         <field name="x_diesel_capacity">0.0</field>
         <field name="x_ulp_capacity">0.0</field>

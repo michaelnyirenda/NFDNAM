@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <!-- ============================================================== -->
-    <!-- 1. DECLARATIVE CUSTOM MODEL: x_nfd_fuel_dispatch_log          -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="model_x_nfd_fuel_dispatch_log" model="ir.model">
         <field name="name">NFD Cargo Fuel Dispatch &amp; Leakage Log</field>
         <field name="model">x_nfd_fuel_dispatch_log</field>
         <field name="state">manual</field>
     </record>
 
-    <!-- Fields on x_nfd_fuel_dispatch_log -->
+    
     <record id="field_x_nfd_fuel_dispatch_log_x_name" model="ir.model.fields">
         <field name="name">x_name</field>
         <field name="field_description">Dispatch Reference</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -22,7 +22,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_date" model="ir.model.fields">
         <field name="name">x_date</field>
         <field name="field_description">Dispatch Date &amp; Time</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">datetime</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -31,7 +31,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_vehicle_id" model="ir.model.fields">
         <field name="name">x_vehicle_id</field>
         <field name="field_description">Delivery Tanker / Rig</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
@@ -42,7 +42,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_driver_id" model="ir.model.fields">
         <field name="name">x_driver_id</field>
         <field name="field_description">Certified Hazchem Driver</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">many2one</field>
         <field name="relation">hr.employee</field>
         <field name="state">manual</field>
@@ -53,7 +53,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_customer_id" model="ir.model.fields">
         <field name="name">x_customer_id</field>
         <field name="field_description">Receiving Customer / Site</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
@@ -64,7 +64,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_fuel_product_id" model="ir.model.fields">
         <field name="name">x_fuel_product_id</field>
         <field name="field_description">Bulk Fuel Product</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">many2one</field>
         <field name="relation">product.product</field>
         <field name="state">manual</field>
@@ -75,7 +75,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_source_location_id" model="ir.model.fields">
         <field name="name">x_source_location_id</field>
         <field name="field_description">Depot Source Location</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">many2one</field>
         <field name="relation">stock.location</field>
         <field name="state">manual</field>
@@ -85,7 +85,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_destination_location_id" model="ir.model.fields">
         <field name="name">x_destination_location_id</field>
         <field name="field_description">Customer Storage Tank Location</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">many2one</field>
         <field name="relation">stock.location</field>
         <field name="state">manual</field>
@@ -95,7 +95,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_depot_loaded_liters" model="ir.model.fields">
         <field name="name">x_depot_loaded_liters</field>
         <field name="field_description">Depot Gantry Loaded (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -104,7 +104,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_compartment_seal_numbers" model="ir.model.fields">
         <field name="name">x_compartment_seal_numbers</field>
         <field name="field_description">Compartment Seal #s</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -112,7 +112,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_truck_meter_delivered_liters" model="ir.model.fields">
         <field name="name">x_truck_meter_delivered_liters</field>
         <field name="field_description">Truck Diesel Meter Reading (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -120,7 +120,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_customer_dip_received_liters" model="ir.model.fields">
         <field name="name">x_customer_dip_received_liters</field>
         <field name="field_description">Customer Tank Dip Received (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -128,7 +128,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_temp_allowance_liters" model="ir.model.fields">
         <field name="name">x_temp_allowance_liters</field>
         <field name="field_description">Thermal Variance Allowance (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
         <field name="store">True</field>
@@ -143,7 +143,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_net_variance_liters" model="ir.model.fields">
         <field name="name">x_net_variance_liters</field>
         <field name="field_description">Net Discrepancy / Variance (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
         <field name="store">True</field>
@@ -161,34 +161,34 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_leakage_status" model="ir.model.fields">
         <field name="name">x_leakage_status</field>
         <field name="field_description">Reconciliation Status</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
         <field name="store">True</field>
         <field name="depends">x_net_variance_liters</field>
         <field name="compute">for record in self:
     variance = record.x_net_variance_liters or 0.0
-    if variance > 50.0:
+    if variance &gt; 50.0:
         record['x_leakage_status'] = 'leakage_alert'
-    elif variance > 10.0:
+    elif variance &gt; 10.0:
         record['x_leakage_status'] = 'minor_variance'
     else:
         record['x_leakage_status'] = 'normal'</field>
     </record>
     <record id="sel_leakage_status_normal" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_leakage_status"/>
+        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_leakage_status" />
         <field name="value">normal</field>
         <field name="name">Normal Reconciliation</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_leakage_status_minor" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_leakage_status"/>
+        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_leakage_status" />
         <field name="value">minor_variance</field>
         <field name="name">Minor Thermal Variance</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_leakage_status_alert" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_leakage_status"/>
+        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_leakage_status" />
         <field name="value">leakage_alert</field>
         <field name="name">Leakage / Pilferage Alert!</field>
         <field name="sequence">3</field>
@@ -197,7 +197,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_pre_trip_hse_passed" model="ir.model.fields">
         <field name="name">x_pre_trip_hse_passed</field>
         <field name="field_description">HESMS Pre-Trip Safety &amp; Valve Check Passed</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -205,30 +205,30 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_state" model="ir.model.fields">
         <field name="name">x_state</field>
         <field name="field_description">Status</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_disp_state_draft" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state"/>
+        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state" />
         <field name="value">draft</field>
         <field name="name">Draft / Loading</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_disp_state_in_transit" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state"/>
+        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state" />
         <field name="value">in_transit</field>
         <field name="name">In Transit</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_disp_state_delivered" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state"/>
+        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state" />
         <field name="value">delivered</field>
         <field name="name">Delivered &amp; Reconciled</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_disp_state_investigation" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state"/>
+        <field name="field_id" ref="field_x_nfd_fuel_dispatch_log_x_state" />
         <field name="value">investigation</field>
         <field name="name">Under HSE Investigation</field>
         <field name="sequence">4</field>
@@ -237,7 +237,7 @@
     <record id="field_x_nfd_fuel_dispatch_log_x_maintenance_request_id" model="ir.model.fields">
         <field name="name">x_maintenance_request_id</field>
         <field name="field_description">Corrective Maintenance Ticket</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">many2one</field>
         <field name="relation">maintenance.request</field>
         <field name="state">manual</field>
@@ -245,64 +245,53 @@
         <field name="on_delete">restrict</field>
     </record>
 
-    <!-- Commented out: stock.scrap relation causes import ParseError on SaaS when stock app is not yet registered -->
-    <!--
-    <record id="field_x_nfd_fuel_dispatch_log_x_scrap_id" model="ir.model.fields">
-        <field name="name">x_scrap_id</field>
-        <field name="field_description">Stock Shrinkage Entry</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
-        <field name="ttype">many2one</field>
-        <field name="relation">stock.scrap</field>
-        <field name="state">manual</field>
-        <field name="readonly">True</field>
-        <field name="on_delete">restrict</field>
-    </record>
-    -->
+    
+    
 
     <record id="field_x_nfd_fuel_dispatch_log_x_notes" model="ir.model.fields">
         <field name="name">x_notes</field>
         <field name="field_description">Operational Notes</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log" />
         <field name="ttype">text</field>
         <field name="state">manual</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 2. CUSTOM FIELDS ON fleet.vehicle                              -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_fleet_vehicle_x_unit_classification" model="ir.model.fields">
         <field name="name">x_unit_classification</field>
         <field name="field_description">Unit Classification</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_fleet_prime_mover" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification" />
         <field name="value">prime_mover</field>
         <field name="name">Prime Mover / Tractor</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_fleet_rigid_tanker" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification" />
         <field name="value">rigid_tanker</field>
         <field name="name">Rigid Tanker</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_fleet_semi_trailer" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification" />
         <field name="value">semi_trailer</field>
         <field name="name">Tri-Axle Semi-Trailer Tanker</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_fleet_pup_trailer" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification" />
         <field name="value">pup_trailer</field>
         <field name="name">Pup Trailer Tanker</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_fleet_drawbar_trailer" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_unit_classification" />
         <field name="value">drawbar_trailer</field>
         <field name="name">Drawbar Trailer Tanker</field>
         <field name="sequence">5</field>
@@ -311,7 +300,7 @@
     <record id="field_fleet_vehicle_x_max_volume_liters" model="ir.model.fields">
         <field name="name">x_max_volume_liters</field>
         <field name="field_description">Max Fuel Capacity (L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -319,7 +308,7 @@
     <record id="field_fleet_vehicle_x_compartment_count" model="ir.model.fields">
         <field name="name">x_compartment_count</field>
         <field name="field_description">Number of Compartments</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">integer</field>
         <field name="state">manual</field>
     </record>
@@ -327,7 +316,7 @@
     <record id="field_fleet_vehicle_x_has_diesel_meter" model="ir.model.fields">
         <field name="name">x_has_diesel_meter</field>
         <field name="field_description">Fitted with Calibrated Diesel Meter</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -335,7 +324,7 @@
     <record id="field_fleet_vehicle_x_geotab_device_id" model="ir.model.fields">
         <field name="name">x_geotab_device_id</field>
         <field name="field_description">Geotab OBC Unit ID</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -343,7 +332,7 @@
     <record id="field_fleet_vehicle_x_avg_fuel_consumption" model="ir.model.fields">
         <field name="name">x_avg_fuel_consumption</field>
         <field name="field_description">Avg Engine Burn (L/100km)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -351,7 +340,7 @@
     <record id="field_fleet_vehicle_x_manufacture_year" model="ir.model.fields">
         <field name="name">x_manufacture_year</field>
         <field name="field_description">Manufacture Year</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">integer</field>
         <field name="state">manual</field>
     </record>
@@ -359,7 +348,7 @@
     <record id="field_fleet_vehicle_x_vehicle_age" model="ir.model.fields">
         <field name="name">x_vehicle_age</field>
         <field name="field_description">Vehicle Age (Years)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">integer</field>
         <field name="state">manual</field>
         <field name="store">True</field>
@@ -375,7 +364,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_replacement_policy_status" model="ir.model.fields">
         <field name="name">x_replacement_policy_status</field>
         <field name="field_description">Fleet Replacement Status</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
         <field name="store">True</field>
@@ -384,69 +373,69 @@ for record in self:
     age = record.x_vehicle_age or 0
     classification = record.x_unit_classification or 'prime_mover'
     if classification == 'prime_mover':
-        if age >= 18:
+        if age &gt;= 18:
             record['x_replacement_policy_status'] = 'replace_due'
-        elif age >= 17:
+        elif age &gt;= 17:
             record['x_replacement_policy_status'] = 'warning'
         else:
             record['x_replacement_policy_status'] = 'compliant'
     else:
-        if age >= 15:
+        if age &gt;= 15:
             record['x_replacement_policy_status'] = 'replace_due'
-        elif age >= 14:
+        elif age &gt;= 14:
             record['x_replacement_policy_status'] = 'warning'
         else:
             record['x_replacement_policy_status'] = 'compliant'</field>
     </record>
     <record id="sel_fleet_policy_compliant" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_replacement_policy_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_replacement_policy_status" />
         <field name="value">compliant</field>
         <field name="name">Compliant</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_fleet_policy_warning" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_replacement_policy_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_replacement_policy_status" />
         <field name="value">warning</field>
         <field name="name">Warning (Near Policy Limit)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_fleet_policy_replace_due" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_replacement_policy_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_replacement_policy_status" />
         <field name="value">replace_due</field>
         <field name="name">Replacement Due</field>
         <field name="sequence">3</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 3. CUSTOM FIELDS ON hr.employee                                -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_hr_employee_x_aa_category" model="ir.model.fields">
         <field name="name">x_aa_category</field>
         <field name="field_description">Affirmative Action Category</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_aa_designated_namibian" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_aa_category"/>
+        <field name="field_id" ref="field_hr_employee_x_aa_category" />
         <field name="value">designated_namibian</field>
         <field name="name">Designated Namibian Group</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_aa_women_in_transport" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_aa_category"/>
+        <field name="field_id" ref="field_hr_employee_x_aa_category" />
         <field name="value">women_in_transport</field>
         <field name="name">Women in Transport Initiative</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_aa_pw_disabilities" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_aa_category"/>
+        <field name="field_id" ref="field_hr_employee_x_aa_category" />
         <field name="value">pw_disabilities</field>
         <field name="name">Persons with Disabilities</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_aa_general" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_aa_category"/>
+        <field name="field_id" ref="field_hr_employee_x_aa_category" />
         <field name="value">general</field>
         <field name="name">General / Non-Designated Group</field>
         <field name="sequence">4</field>
@@ -455,7 +444,7 @@ for record in self:
     <record id="field_hr_employee_x_hazchem_expiry" model="ir.model.fields">
         <field name="name">x_hazchem_expiry</field>
         <field name="field_description">Dangerous Goods / Hazchem Permit Expiry</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -463,7 +452,7 @@ for record in self:
     <record id="field_hr_employee_x_defensive_driving_expiry" model="ir.model.fields">
         <field name="name">x_defensive_driving_expiry</field>
         <field name="field_description">HESMS Defensive Driving Expiry</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -471,7 +460,7 @@ for record in self:
     <record id="field_hr_employee_x_medical_fitness_expiry" model="ir.model.fields">
         <field name="name">x_medical_fitness_expiry</field>
         <field name="field_description">Annual Medical Fitness Expiry</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -479,7 +468,7 @@ for record in self:
     <record id="field_hr_employee_x_hse_compliant" model="ir.model.fields">
         <field name="name">x_hse_compliant</field>
         <field name="field_description">HESMS Compliant</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
         <field name="store">True</field>
@@ -488,9 +477,9 @@ for record in self:
 for record in self:
     if record.x_hazchem_expiry and record.x_defensive_driving_expiry and record.x_medical_fitness_expiry:
         record['x_hse_compliant'] = (
-            record.x_hazchem_expiry >= today and
-            record.x_defensive_driving_expiry >= today and
-            record.x_medical_fitness_expiry >= today
+            record.x_hazchem_expiry &gt;= today and
+            record.x_defensive_driving_expiry &gt;= today and
+            record.x_medical_fitness_expiry &gt;= today
         )
     else:
         record['x_hse_compliant'] = False</field>
@@ -499,7 +488,7 @@ for record in self:
     <record id="field_hr_employee_x_hse_status_badge" model="ir.model.fields">
         <field name="name">x_hse_status_badge</field>
         <field name="field_description">HESMS Safety Status</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
         <field name="store">True</field>
@@ -511,9 +500,9 @@ for record in self:
     if not has_certs:
         record['x_hse_status_badge'] = 'not_applicable'
     else:
-        hazchem_ok = record.x_hazchem_expiry and record.x_hazchem_expiry >= today
-        defensive_ok = record.x_defensive_driving_expiry and record.x_defensive_driving_expiry >= today
-        medical_ok = record.x_medical_fitness_expiry and record.x_medical_fitness_expiry >= today
+        hazchem_ok = record.x_hazchem_expiry and record.x_hazchem_expiry &gt;= today
+        defensive_ok = record.x_defensive_driving_expiry and record.x_defensive_driving_expiry &gt;= today
+        medical_ok = record.x_medical_fitness_expiry and record.x_medical_fitness_expiry &gt;= today
         if hazchem_ok and defensive_ok and medical_ok:
             expiring = any([
                 record.x_hazchem_expiry &lt;= warning_window,
@@ -525,60 +514,60 @@ for record in self:
             record['x_hse_status_badge'] = 'expired'</field>
     </record>
     <record id="sel_hse_compliant" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_hse_status_badge"/>
+        <field name="field_id" ref="field_hr_employee_x_hse_status_badge" />
         <field name="value">compliant</field>
         <field name="name">Fully Compliant</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_hse_expiring_soon" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_hse_status_badge"/>
+        <field name="field_id" ref="field_hr_employee_x_hse_status_badge" />
         <field name="value">expiring_soon</field>
         <field name="name">Expiring Within 30 Days</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_hse_expired" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_hse_status_badge"/>
+        <field name="field_id" ref="field_hr_employee_x_hse_status_badge" />
         <field name="value">expired</field>
         <field name="name">Permit Expired / Non-Compliant</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_hse_not_applicable" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_hse_status_badge"/>
+        <field name="field_id" ref="field_hr_employee_x_hse_status_badge" />
         <field name="value">not_applicable</field>
         <field name="name">Non-Driver / Exempt</field>
         <field name="sequence">4</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 4. CUSTOM FIELDS ON maintenance.equipment                      -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_maintenance_equipment_x_asset_category" model="ir.model.fields">
         <field name="name">x_asset_category</field>
         <field name="field_description">NFD Asset Category</field>
-        <field name="model_id" ref="maintenance.model_maintenance_equipment"/>
+        <field name="model_id" ref="maintenance.model_maintenance_equipment" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_eq_asset_fleet_truck" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_equipment_x_asset_category"/>
+        <field name="field_id" ref="field_maintenance_equipment_x_asset_category" />
         <field name="value">fleet_truck</field>
         <field name="name">Fleet Tanker / Heavy Vehicle</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_eq_asset_depot_gantry" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_equipment_x_asset_category"/>
+        <field name="field_id" ref="field_maintenance_equipment_x_asset_category" />
         <field name="value">depot_gantry</field>
         <field name="name">Otjiwarongo Depot Gantry &amp; Tanks</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_eq_asset_customer_bulk_tank" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_equipment_x_asset_category"/>
+        <field name="field_id" ref="field_maintenance_equipment_x_asset_category" />
         <field name="value">customer_bulk_tank</field>
         <field name="name">Customer On-Site Bulk Storage Tank</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_eq_asset_forecourt_pump" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_equipment_x_asset_category"/>
+        <field name="field_id" ref="field_maintenance_equipment_x_asset_category" />
         <field name="value">petrosol_forecourt_pump</field>
         <field name="name">Petrosol Forecourt Dispenser Pump</field>
         <field name="sequence">4</field>
@@ -587,7 +576,7 @@ for record in self:
     <record id="field_maintenance_equipment_x_linked_vehicle_id" model="ir.model.fields">
         <field name="name">x_linked_vehicle_id</field>
         <field name="field_description">Linked Fleet Vehicle</field>
-        <field name="model_id" ref="maintenance.model_maintenance_equipment"/>
+        <field name="model_id" ref="maintenance.model_maintenance_equipment" />
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
@@ -597,7 +586,7 @@ for record in self:
     <record id="field_maintenance_equipment_x_site_partner_id" model="ir.model.fields">
         <field name="name">x_site_partner_id</field>
         <field name="field_description">Site Owner / Client Partner</field>
-        <field name="model_id" ref="maintenance.model_maintenance_equipment"/>
+        <field name="model_id" ref="maintenance.model_maintenance_equipment" />
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
@@ -607,18 +596,18 @@ for record in self:
     <record id="field_maintenance_equipment_x_tank_capacity_liters" model="ir.model.fields">
         <field name="name">x_tank_capacity_liters</field>
         <field name="field_description">Tank / Gantry Capacity (L)</field>
-        <field name="model_id" ref="maintenance.model_maintenance_equipment"/>
+        <field name="model_id" ref="maintenance.model_maintenance_equipment" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 5. CUSTOM FIELDS ON maintenance.request                        -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_maintenance_request_x_asset_category" model="ir.model.fields">
         <field name="name">x_asset_category</field>
         <field name="field_description">Asset Category</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">selection</field>
         <field name="related">equipment_id.x_asset_category</field>
         <field name="readonly">True</field>
@@ -628,7 +617,7 @@ for record in self:
     <record id="field_maintenance_request_x_linked_vehicle_id" model="ir.model.fields">
         <field name="name">x_linked_vehicle_id</field>
         <field name="field_description">Linked Vehicle</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="related">equipment_id.x_linked_vehicle_id</field>
@@ -640,7 +629,7 @@ for record in self:
     <record id="field_maintenance_request_x_site_partner_id" model="ir.model.fields">
         <field name="name">x_site_partner_id</field>
         <field name="field_description">Service Site / Client Partner</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
@@ -650,7 +639,7 @@ for record in self:
     <record id="field_maintenance_request_x_dispatch_log_id" model="ir.model.fields">
         <field name="name">x_dispatch_log_id</field>
         <field name="field_description">Originating Dispatch Log</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">many2one</field>
         <field name="relation">x_nfd_fuel_dispatch_log</field>
         <field name="state">manual</field>
@@ -661,35 +650,35 @@ for record in self:
     <record id="field_maintenance_request_x_service_agreement_type" model="ir.model.fields">
         <field name="name">x_service_agreement_type</field>
         <field name="field_description">Service Agreement Type</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_req_service_free_forecourt" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_service_agreement_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_service_agreement_type" />
         <field name="value">free_retail_forecourt</field>
         <field name="name">Free Forecourt Maintenance Agreement (Petrosol/ILAMO)</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_req_service_internal_fleet" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_service_agreement_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_service_agreement_type" />
         <field name="value">internal_fleet</field>
         <field name="name">Internal Fleet Maintenance (Otjiwarongo Workshop)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_req_service_customer_contract" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_service_agreement_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_service_agreement_type" />
         <field name="value">customer_contract</field>
         <field name="name">Customer Bulk Installation Contract (Mine/Road Project)</field>
         <field name="sequence">3</field>
     </record>
-    <!-- ============================================================== -->
-    <!-- 6. ADDITIONAL SEPT 2026 METRICS ON fleet.vehicle               -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_fleet_vehicle_x_expected_km_per_liter" model="ir.model.fields">
         <field name="name">x_expected_km_per_liter</field>
         <field name="field_description">Expected (KM/L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -697,7 +686,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_actual_km_per_liter" model="ir.model.fields">
         <field name="name">x_actual_km_per_liter</field>
         <field name="field_description">Actual (KM/L) - Sept 2026</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -705,7 +694,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_sept_distance_km" model="ir.model.fields">
         <field name="name">x_sept_distance_km</field>
         <field name="field_description">Distance Covered (KM) - Sept 2026</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -713,7 +702,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_sept_expected_fuel_l" model="ir.model.fields">
         <field name="name">x_sept_expected_fuel_l</field>
         <field name="field_description">Expected Total Fuel Used (L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -721,7 +710,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_sept_actual_fuel_l" model="ir.model.fields">
         <field name="name">x_sept_actual_fuel_l</field>
         <field name="field_description">Actual Total Fuel Used (L) - Sept 2026</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -729,7 +718,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_sept_excess_fuel_l" model="ir.model.fields">
         <field name="name">x_sept_excess_fuel_l</field>
         <field name="field_description">Excess Use (L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -737,7 +726,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_otj_coc_fuel_price" model="ir.model.fields">
         <field name="name">x_otj_coc_fuel_price</field>
         <field name="field_description">Current Fuel Price Otj COC (NAD/L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -745,14 +734,14 @@ for record in self:
     <record id="field_fleet_vehicle_x_sept_excess_nad_value" model="ir.model.fields">
         <field name="name">x_sept_excess_nad_value</field>
         <field name="field_description">Excess NAD Value (@ 25.98/L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 7. DECLARATIVE CUSTOM MODEL: x_nfd_fuel_consumption_log       -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="model_x_nfd_fuel_consumption_log" model="ir.model">
         <field name="name">NFD Vehicle Refuel &amp; Odometer LogSheet</field>
         <field name="model">x_nfd_fuel_consumption_log</field>
@@ -762,7 +751,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_name" model="ir.model.fields">
         <field name="name">x_name</field>
         <field name="field_description">Log Reference</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -771,7 +760,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_date" model="ir.model.fields">
         <field name="name">x_date</field>
         <field name="field_description">Date</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -780,7 +769,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_vehicle_id" model="ir.model.fields">
         <field name="name">x_vehicle_id</field>
         <field name="field_description">Vehicle Registration</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
@@ -791,7 +780,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_driver_id" model="ir.model.fields">
         <field name="name">x_driver_id</field>
         <field name="field_description">Driver</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">many2one</field>
         <field name="relation">hr.employee</field>
         <field name="state">manual</field>
@@ -802,85 +791,85 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_place" model="ir.model.fields">
         <field name="name">x_place</field>
         <field name="field_description">Refueling Place / Facility</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
         <field name="required">True</field>
     </record>
     <record id="sel_fcl_place_depot" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Depot</field>
         <field name="name">Depot (Otjiwarongo)</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_fcl_place_okh" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">OKH</field>
         <field name="name">OKH (Okahandja)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_fcl_place_office" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Office</field>
         <field name="name">Office</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_fcl_place_walvis" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Walvis</field>
         <field name="name">Walvis Bay</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_fcl_place_ohakane" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Ohakane</field>
         <field name="name">Ohakane</field>
         <field name="sequence">5</field>
     </record>
     <record id="sel_fcl_place_fort_sesfontein" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Fort Sesfontein</field>
         <field name="name">Fort Sesfontein</field>
         <field name="sequence">6</field>
     </record>
     <record id="sel_fcl_place_mareintal" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Mareintal</field>
         <field name="name">Mariental</field>
         <field name="sequence">7</field>
     </record>
     <record id="sel_fcl_place_ondangwa" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Ondangwa</field>
         <field name="name">Ondangwa</field>
         <field name="sequence">8</field>
     </record>
     <record id="sel_fcl_place_omakange" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Omakange</field>
         <field name="name">Omakange</field>
         <field name="sequence">9</field>
     </record>
     <record id="sel_fcl_place_otavi_shell" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Otavi Shell</field>
         <field name="name">Otavi Shell</field>
         <field name="sequence">10</field>
     </record>
     <record id="sel_fcl_place_b1_puma" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">B1 PUMA</field>
         <field name="name">B1 PUMA</field>
         <field name="sequence">11</field>
     </record>
     <record id="sel_fcl_place_agra_karibib" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Agra Karibib</field>
         <field name="name">Agra Karibib</field>
         <field name="sequence">12</field>
     </record>
     <record id="sel_fcl_place_agra_gobabis" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
         <field name="value">Agra Gobabis</field>
         <field name="name">Agra Gobabis</field>
         <field name="sequence">13</field>
@@ -889,7 +878,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_odometer_start" model="ir.model.fields">
         <field name="name">x_odometer_start</field>
         <field name="field_description">Odometer Start</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -898,7 +887,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_odometer_end" model="ir.model.fields">
         <field name="name">x_odometer_end</field>
         <field name="field_description">Odometer End</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -907,7 +896,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_distance_traveled_km" model="ir.model.fields">
         <field name="name">x_distance_traveled_km</field>
         <field name="field_description">Distance Traveled (KM)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -915,7 +904,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_fuel_liters" model="ir.model.fields">
         <field name="name">x_fuel_liters</field>
         <field name="field_description">Fuel (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
         <field name="required">True</field>
@@ -924,7 +913,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_expected_km_per_liter" model="ir.model.fields">
         <field name="name">x_expected_km_per_liter</field>
         <field name="field_description">Expected Fuel Consumption (KM/L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -932,7 +921,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_actual_km_per_liter" model="ir.model.fields">
         <field name="name">x_actual_km_per_liter</field>
         <field name="field_description">Fuel Consumption (KM/L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -940,7 +929,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_fuel_usage_difference" model="ir.model.fields">
         <field name="name">x_fuel_usage_difference</field>
         <field name="field_description">Fuel Usage Difference (KM/L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -948,7 +937,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_expected_fuel_liters" model="ir.model.fields">
         <field name="name">x_expected_fuel_liters</field>
         <field name="field_description">Expected Fuel Used (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -956,7 +945,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_excess_use_liters" model="ir.model.fields">
         <field name="name">x_excess_use_liters</field>
         <field name="field_description">Excess Use (L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -964,7 +953,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_otj_coc_fuel_price" model="ir.model.fields">
         <field name="name">x_otj_coc_fuel_price</field>
         <field name="field_description">Current Fuel Price Otj COC (NAD/L)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -972,7 +961,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_nad_value" model="ir.model.fields">
         <field name="name">x_nad_value</field>
         <field name="field_description">NAD Value (@ 25.98 Otj COC)</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -980,19 +969,19 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_confirm_logsheet" model="ir.model.fields">
         <field name="name">x_confirm_logsheet</field>
         <field name="field_description">Confirm Logsheet</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
         <field name="required">True</field>
     </record>
     <record id="sel_fcl_logsheet_confirmed" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_logsheet"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_logsheet" />
         <field name="value">confirmed</field>
         <field name="name">√ Confirmed</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_fcl_logsheet_unconfirmed" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_logsheet"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_logsheet" />
         <field name="value">unconfirmed</field>
         <field name="name">X Unconfirmed Logsheet</field>
         <field name="sequence">2</field>
@@ -1001,19 +990,19 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_confirm_stock" model="ir.model.fields">
         <field name="name">x_confirm_stock</field>
         <field name="field_description">Confirm Stock</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
         <field name="required">True</field>
     </record>
     <record id="sel_fcl_stock_confirmed" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_stock"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_stock" />
         <field name="value">confirmed</field>
         <field name="name">√ Confirmed</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_fcl_stock_unconfirmed" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_stock"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_confirm_stock" />
         <field name="value">unconfirmed</field>
         <field name="name">X Unconfirmed Stock</field>
         <field name="sequence">2</field>
@@ -1022,7 +1011,7 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_notes" model="ir.model.fields">
         <field name="name">x_notes</field>
         <field name="field_description">Notes / Audit Remarks</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1030,36 +1019,36 @@ for record in self:
     <record id="field_x_nfd_fuel_consumption_log_x_anomaly_flag" model="ir.model.fields">
         <field name="name">x_anomaly_flag</field>
         <field name="field_description">Audit Status</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
+        <field name="model_id" ref="model_x_nfd_fuel_consumption_log" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_fcl_anomaly_normal" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag" />
         <field name="value">normal</field>
         <field name="name">Within Target</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_fcl_anomaly_excess_burn" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag" />
         <field name="value">excess_burn</field>
         <field name="name">Excess Burn</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_fcl_anomaly_odo_error" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag"/>
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_anomaly_flag" />
         <field name="value">odo_error</field>
         <field name="name">Odometer / Logsheet Anomaly</field>
         <field name="sequence">3</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 8. EXTENSION: FLEET WORKSHOP, STATUTORY & COUPLING FIELDS      -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_fleet_vehicle_x_trailer_comp1_id" model="ir.model.fields">
         <field name="name">x_trailer_comp1_id</field>
         <field name="field_description">Coupled Trailer 1 / Comp 1</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
@@ -1069,7 +1058,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_trailer_comp2_id" model="ir.model.fields">
         <field name="name">x_trailer_comp2_id</field>
         <field name="field_description">Coupled Trailer 2 / Comp 2</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">many2one</field>
         <field name="relation">fleet.vehicle</field>
         <field name="state">manual</field>
@@ -1079,7 +1068,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_diesel_capacity" model="ir.model.fields">
         <field name="name">x_diesel_capacity</field>
         <field name="field_description">Diesel Carrying Capacity (L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1087,7 +1076,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_ulp_capacity" model="ir.model.fields">
         <field name="name">x_ulp_capacity</field>
         <field name="field_description">ULP 95 Carrying Capacity (L)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1095,7 +1084,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_last_service_date" model="ir.model.fields">
         <field name="name">x_last_service_date</field>
         <field name="field_description">Last Service Date</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1103,7 +1092,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_last_service_km" model="ir.model.fields">
         <field name="name">x_last_service_km</field>
         <field name="field_description">Last Service Odometer (KM)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1111,7 +1100,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_service_interval_km" model="ir.model.fields">
         <field name="name">x_service_interval_km</field>
         <field name="field_description">Service Interval (KM)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1119,7 +1108,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_next_service_km" model="ir.model.fields">
         <field name="name">x_next_service_km</field>
         <field name="field_description">Next Service Milestone (KM)</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1127,7 +1116,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_km_until_service" model="ir.model.fields">
         <field name="name">x_km_until_service</field>
         <field name="field_description">KM Until Service Due</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1135,24 +1124,24 @@ for record in self:
     <record id="field_fleet_vehicle_x_service_status" model="ir.model.fields">
         <field name="name">x_service_status</field>
         <field name="field_description">Service Status</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_veh_srv_ok" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_service_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_service_status" />
         <field name="value">ok</field>
         <field name="name">Service OK</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_veh_srv_due_soon" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_service_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_service_status" />
         <field name="value">due_soon</field>
         <field name="name">Service Due Soon (&lt; 5,000 KM)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_veh_srv_overdue" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_service_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_service_status" />
         <field name="value">overdue</field>
         <field name="name">Service Overdue</field>
         <field name="sequence">3</field>
@@ -1161,7 +1150,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_licence_expiry_date" model="ir.model.fields">
         <field name="name">x_licence_expiry_date</field>
         <field name="field_description">NaTIS Vehicle Licence Expiry</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1169,7 +1158,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_fitness_certificate_expiry" model="ir.model.fields">
         <field name="name">x_fitness_certificate_expiry</field>
         <field name="field_description">NaTIS Roadworthy Fitness Expiry</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1177,7 +1166,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_safe_loading_pass_expiry" model="ir.model.fields">
         <field name="name">x_safe_loading_pass_expiry</field>
         <field name="field_description">Safe Loading Pass (SLP) Expiry</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1185,7 +1174,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_pressure_test_expiry" model="ir.model.fields">
         <field name="name">x_pressure_test_expiry</field>
         <field name="field_description">Tanker Pressure Test Expiry</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1193,7 +1182,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_tanker_calibration_date" model="ir.model.fields">
         <field name="name">x_tanker_calibration_date</field>
         <field name="field_description">Depot Calibration Date</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1201,7 +1190,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_last_wheel_alignment_date" model="ir.model.fields">
         <field name="name">x_last_wheel_alignment_date</field>
         <field name="field_description">Last Wheel Alignment Date</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1209,30 +1198,30 @@ for record in self:
     <record id="field_fleet_vehicle_x_pto_type" model="ir.model.fields">
         <field name="name">x_pto_type</field>
         <field name="field_description">PTO Drive Type</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_veh_pto_hyd" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type" />
         <field name="value">hydraulic_pto</field>
         <field name="name">Hydraulic PTO</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_veh_pto_eng" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type" />
         <field name="value">engine_pto</field>
         <field name="name">Auxiliary Engine PTO</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_veh_pto_both" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type" />
         <field name="value">both</field>
         <field name="name">Dual PTO (Engine &amp; Hydraulic)</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_veh_pto_none" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_pto_type"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_pto_type" />
         <field name="value">none</field>
         <field name="name">None / Gravity Discharge</field>
         <field name="sequence">4</field>
@@ -1241,7 +1230,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_pto_location" model="ir.model.fields">
         <field name="name">x_pto_location</field>
         <field name="field_description">PTO Mounting Position</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1249,42 +1238,42 @@ for record in self:
     <record id="field_fleet_vehicle_x_operational_availability" model="ir.model.fields">
         <field name="name">x_operational_availability</field>
         <field name="field_description">Operational Availability</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_veh_avail_active" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability" />
         <field name="value">active</field>
         <field name="name">Active In Service</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_veh_avail_standby" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability" />
         <field name="value">standby</field>
         <field name="name">Standby Unit</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_veh_avail_maint" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability" />
         <field name="value">maintenance</field>
         <field name="name">In Maintenance / Workshop</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_veh_avail_accident" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability" />
         <field name="value">accident</field>
         <field name="name">Grounded - Accident Damage</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_veh_avail_roadworthy" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability" />
         <field name="value">roadworthy</field>
         <field name="name">Awaiting NaTIS Roadworthy</field>
         <field name="sequence">5</field>
     </record>
     <record id="sel_veh_avail_for_sale" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_operational_availability" />
         <field name="value">for_sale</field>
         <field name="name">Decommissioned - For Sale</field>
         <field name="sequence">6</field>
@@ -1293,7 +1282,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_driver_trainee_id" model="ir.model.fields">
         <field name="name">x_driver_trainee_id</field>
         <field name="field_description">Trainee Driver / Co-Driver</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">many2one</field>
         <field name="relation">hr.employee</field>
         <field name="state">manual</field>
@@ -1303,30 +1292,30 @@ for record in self:
     <record id="field_fleet_vehicle_x_branding_status" model="ir.model.fields">
         <field name="name">x_branding_status</field>
         <field name="field_description">Corporate Branding Status</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_veh_branding_branded" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_branding_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_branding_status" />
         <field name="value">branded</field>
         <field name="name">Fully Branded / Compliant</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_veh_branding_truck_needs_branding" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_branding_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_branding_status" />
         <field name="value">truck_needs_branding</field>
         <field name="name">Truck Needs Branding</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_veh_branding_trailer_needs_branding" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_branding_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_branding_status" />
         <field name="value">trailer_needs_branding</field>
         <field name="name">Trailer Needs Branding</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_veh_branding_both_need_branding" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_branding_status"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_branding_status" />
         <field name="value">both_need_branding</field>
         <field name="name">Truck &amp; Trailer Need Branding</field>
         <field name="sequence">4</field>
@@ -1335,7 +1324,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_branding_notes" model="ir.model.fields">
         <field name="name">x_branding_notes</field>
         <field name="field_description">Branding / Location Notes</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1343,7 +1332,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_allocation_note" model="ir.model.fields">
         <field name="name">x_allocation_note</field>
         <field name="field_description">Driver Allocation / Availability Note</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1351,7 +1340,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_pto_engine" model="ir.model.fields">
         <field name="name">x_pto_engine</field>
         <field name="field_description">PTO ENGINE</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1359,7 +1348,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_hydraulic_pto" model="ir.model.fields">
         <field name="name">x_hydraulic_pto</field>
         <field name="field_description">HYDRAULIC PTO</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1367,7 +1356,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_alignment_desc" model="ir.model.fields">
         <field name="name">x_alignment_desc</field>
         <field name="field_description">Alignment Desc.</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1375,7 +1364,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_alignment_skip" model="ir.model.fields">
         <field name="name">x_alignment_skip</field>
         <field name="field_description">Skip</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1383,7 +1372,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_alignment_in" model="ir.model.fields">
         <field name="name">x_alignment_in</field>
         <field name="field_description">In</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1391,7 +1380,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_alignment_faults" model="ir.model.fields">
         <field name="name">x_alignment_faults</field>
         <field name="field_description">Faults</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1399,7 +1388,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_alignment_repaired" model="ir.model.fields">
         <field name="name">x_alignment_repaired</field>
         <field name="field_description">Repaired</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1407,7 +1396,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_alignment_done" model="ir.model.fields">
         <field name="name">x_alignment_done</field>
         <field name="field_description">Done</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1415,7 +1404,7 @@ for record in self:
     <record id="field_fleet_vehicle_x_alignment_notes" model="ir.model.fields">
         <field name="name">x_alignment_notes</field>
         <field name="field_description">Wheel Alignment Notes / Faults</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1423,60 +1412,60 @@ for record in self:
     <record id="field_fleet_vehicle_x_availability_group" model="ir.model.fields">
         <field name="name">x_availability_group</field>
         <field name="field_description">Availability Category</field>
-        <field name="model_id" ref="fleet.model_fleet_vehicle"/>
+        <field name="model_id" ref="fleet.model_fleet_vehicle" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_veh_grp_rigid" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group" />
         <field name="value">rigid</field>
         <field name="name">Rigid Trucks (44% -&gt; 77%)</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_veh_grp_tanker" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group" />
         <field name="value">tanker</field>
         <field name="name">Tankers (88%)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_veh_grp_standby" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group" />
         <field name="value">standby</field>
         <field name="name">Standby Trucks (50%)</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_veh_grp_maintenance" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group" />
         <field name="value">maintenance</field>
         <field name="name">Maintenance (100%)</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_veh_grp_installations" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group" />
         <field name="value">installations</field>
         <field name="name">Installations (60%)</field>
         <field name="sequence">5</field>
     </record>
     <record id="sel_veh_grp_for_sale" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group" />
         <field name="value">for_sale</field>
         <field name="name">For Sale - Klaar (100%)</field>
         <field name="sequence">6</field>
     </record>
     <record id="sel_veh_grp_pool" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_fleet_vehicle_x_availability_group"/>
+        <field name="field_id" ref="field_fleet_vehicle_x_availability_group" />
         <field name="value">pool</field>
         <field name="name">Pool (100%)</field>
         <field name="sequence">7</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 9. EXTENSION: HR EMPLOYEE DRIVER LICENSING & STATUTORY FIELDS   -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_hr_employee_x_id_number" model="ir.model.fields">
         <field name="name">x_id_number</field>
         <field name="field_description">National ID Number</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1484,36 +1473,36 @@ for record in self:
     <record id="field_hr_employee_x_licence_code" model="ir.model.fields">
         <field name="name">x_licence_code</field>
         <field name="field_description">Driver Licence Code</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_emp_lic_ce" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="field_id" ref="field_hr_employee_x_licence_code" />
         <field name="value">CE</field>
         <field name="name">Code CE (Heavy Articulated Motor Vehicle)</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_emp_lic_c" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="field_id" ref="field_hr_employee_x_licence_code" />
         <field name="value">C</field>
         <field name="name">Code C (Heavy Rigid Motor Vehicle)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_emp_lic_c1" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="field_id" ref="field_hr_employee_x_licence_code" />
         <field name="value">C1</field>
         <field name="name">Code C1 (Medium Heavy Motor Vehicle)</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_emp_lic_be" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="field_id" ref="field_hr_employee_x_licence_code" />
         <field name="value">BE</field>
         <field name="name">Code BE (Articulated Light Motor Vehicle)</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_emp_lic_b" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_hr_employee_x_licence_code"/>
+        <field name="field_id" ref="field_hr_employee_x_licence_code" />
         <field name="value">B</field>
         <field name="name">Code B (Light Motor Vehicle)</field>
         <field name="sequence">5</field>
@@ -1522,7 +1511,7 @@ for record in self:
     <record id="field_hr_employee_x_licence_expiry_date" model="ir.model.fields">
         <field name="name">x_licence_expiry_date</field>
         <field name="field_description">Driver Licence Expiry Date</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1530,7 +1519,7 @@ for record in self:
     <record id="field_hr_employee_x_pdp_expiry_date" model="ir.model.fields">
         <field name="name">x_pdp_expiry_date</field>
         <field name="field_description">Public Driving Permit (PDP) Expiry</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1538,7 +1527,7 @@ for record in self:
     <record id="field_hr_employee_x_eye_test_expiry_date" model="ir.model.fields">
         <field name="name">x_eye_test_expiry_date</field>
         <field name="field_description">Eye Examination Expiry Date</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1546,7 +1535,7 @@ for record in self:
     <record id="field_hr_employee_x_start_date" model="ir.model.fields">
         <field name="name">x_start_date</field>
         <field name="field_description">Start Date</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">date</field>
         <field name="state">manual</field>
     </record>
@@ -1554,18 +1543,18 @@ for record in self:
     <record id="field_hr_employee_x_trainee_payment_date" model="ir.model.fields">
         <field name="name">x_trainee_payment_date</field>
         <field name="field_description">Trainee Payment Date</field>
-        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="model_id" ref="hr.model_hr_employee" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 10. EXTENSION: MAINTENANCE REQUEST WORKSHOP FIELDS             -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_maintenance_request_x_job_card_number" model="ir.model.fields">
         <field name="name">x_job_card_number</field>
         <field name="field_description">Job Card #</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1573,42 +1562,42 @@ for record in self:
     <record id="field_maintenance_request_x_workshop_location" model="ir.model.fields">
         <field name="name">x_workshop_location</field>
         <field name="field_description">Service Location</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_mr_loc_otj" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location" />
         <field name="value">workshop_otj</field>
         <field name="name">Otjiwarongo Main Workshop</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_mr_loc_natis" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location" />
         <field name="value">natis_otj</field>
         <field name="name">NaTIS Testing Station (Otjiwarongo)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_mr_loc_vivo" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location" />
         <field name="value">vivo_depo</field>
         <field name="name">Vivo Energy Depo</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_mr_loc_cwwa" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location" />
         <field name="value">cwwa</field>
         <field name="name">CWWA Truck Wash &amp; Degas</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_mr_loc_vinyl" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location" />
         <field name="value">gt_vinyl</field>
         <field name="name">GT Vinyl Livery &amp; Branding</field>
         <field name="sequence">5</field>
     </record>
     <record id="sel_mr_loc_breakdown" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_workshop_location"/>
+        <field name="field_id" ref="field_maintenance_request_x_workshop_location" />
         <field name="value">field_breakdown</field>
         <field name="name">Field Breakdown Site</field>
         <field name="sequence">6</field>
@@ -1617,42 +1606,42 @@ for record in self:
     <record id="field_maintenance_request_x_assigned_mechanic" model="ir.model.fields">
         <field name="name">x_assigned_mechanic</field>
         <field name="field_description">Assigned Mechanic</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_mr_mech_green" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic" />
         <field name="value">green</field>
         <field name="name">Green (Master Mechanic)</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_mr_mech_japie" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic" />
         <field name="value">japie</field>
         <field name="name">Japie (Re-Build Specialist)</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_mr_mech_clive" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic" />
         <field name="value">clive</field>
         <field name="name">Clive (Air &amp; Brakes)</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_mr_mech_jonie" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic" />
         <field name="value">jonie</field>
         <field name="name">Jonie (Auto Electrician)</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_mr_mech_siisii" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic" />
         <field name="value">siisii</field>
         <field name="name">Siisii (Suspension)</field>
         <field name="sequence">5</field>
     </record>
     <record id="sel_mr_mech_manie" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic"/>
+        <field name="field_id" ref="field_maintenance_request_x_assigned_mechanic" />
         <field name="value">manie</field>
         <field name="name">Manie (Workshop Foreman)</field>
         <field name="sequence">6</field>
@@ -1661,7 +1650,7 @@ for record in self:
     <record id="field_maintenance_request_x_parts_supplier_id" model="ir.model.fields">
         <field name="name">x_parts_supplier_id</field>
         <field name="field_description">Spare Parts Supplier</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">many2one</field>
         <field name="relation">res.partner</field>
         <field name="state">manual</field>
@@ -1671,42 +1660,42 @@ for record in self:
     <record id="field_maintenance_request_x_job_type" model="ir.model.fields">
         <field name="name">x_job_type</field>
         <field name="field_description">Job Type</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_mr_type_repair" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_job_type" />
         <field name="value">repair</field>
         <field name="name">Corrective Repair</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_mr_type_service" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_job_type" />
         <field name="value">service</field>
         <field name="name">Scheduled Routine Service</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_mr_type_roadworthy" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_job_type" />
         <field name="value">roadworthy</field>
         <field name="name">NaTIS Roadworthy Inspection</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_mr_type_rebuild" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_job_type" />
         <field name="value">rebuild</field>
         <field name="name">Full Tanker / Engine Rebuild</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_mr_type_degas" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_job_type" />
         <field name="value">degas</field>
         <field name="name">Tanker Multi-Compartment Degas</field>
         <field name="sequence">5</field>
     </record>
     <record id="sel_mr_type_wheel" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_maintenance_request_x_job_type"/>
+        <field name="field_id" ref="field_maintenance_request_x_job_type" />
         <field name="value">wheel_alignment</field>
         <field name="name">Laser Axle Alignment</field>
         <field name="sequence">6</field>
@@ -1715,7 +1704,7 @@ for record in self:
     <record id="field_maintenance_request_x_parts_ordered" model="ir.model.fields">
         <field name="name">x_parts_ordered</field>
         <field name="field_description">Parts Ordered</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1723,7 +1712,7 @@ for record in self:
     <record id="field_maintenance_request_x_parts_received" model="ir.model.fields">
         <field name="name">x_parts_received</field>
         <field name="field_description">Parts Received</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1731,7 +1720,7 @@ for record in self:
     <record id="field_maintenance_request_x_hours_days" model="ir.model.fields">
         <field name="name">x_hours_days</field>
         <field name="field_description">Hours / Days</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1739,7 +1728,7 @@ for record in self:
     <record id="field_maintenance_request_x_kms_left_checkin" model="ir.model.fields">
         <field name="name">x_kms_left_checkin</field>
         <field name="field_description">Kms Left at Check-In</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">float</field>
         <field name="state">manual</field>
     </record>
@@ -1747,18 +1736,18 @@ for record in self:
     <record id="field_maintenance_request_x_trailer_reg" model="ir.model.fields">
         <field name="name">x_trailer_reg</field>
         <field name="field_description">Trailer Reg No</field>
-        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="model_id" ref="maintenance.model_maintenance_request" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 11. EXTENSION: RES PARTNER BREAKDOWN NETWORK FIELDS            -->
-    <!-- ============================================================== -->
+    
+    
+    
     <record id="field_res_partner_x_is_breakdown_partner" model="ir.model.fields">
         <field name="name">x_is_breakdown_partner</field>
         <field name="field_description">24/7 Breakdown Response Partner</field>
-        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="model_id" ref="base.model_res_partner" />
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
     </record>
@@ -1766,7 +1755,7 @@ for record in self:
     <record id="field_res_partner_x_breakdown_coverage_area" model="ir.model.fields">
         <field name="name">x_breakdown_coverage_area</field>
         <field name="field_description">Breakdown Coverage Area / Town</field>
-        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="model_id" ref="base.model_res_partner" />
         <field name="ttype">char</field>
         <field name="state">manual</field>
     </record>
@@ -1774,61 +1763,42 @@ for record in self:
     <record id="field_res_partner_x_breakdown_service_type" model="ir.model.fields">
         <field name="name">x_breakdown_service_type</field>
         <field name="field_description">Breakdown Service Capability</field>
-        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="model_id" ref="base.model_res_partner" />
         <field name="ttype">selection</field>
         <field name="state">manual</field>
     </record>
     <record id="sel_rp_st_mech" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type" />
         <field name="value">mechanical</field>
         <field name="name">Heavy Mechanical Repairs</field>
         <field name="sequence">1</field>
     </record>
     <record id="sel_rp_st_elec" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type" />
         <field name="value">auto_electrical</field>
         <field name="name">Auto Electrical &amp; Diagnostic</field>
         <field name="sequence">2</field>
     </record>
     <record id="sel_rp_st_tow" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type" />
         <field name="value">towing</field>
         <field name="name">Heavy Recovery &amp; Towing</field>
         <field name="sequence">3</field>
     </record>
     <record id="sel_rp_st_tyres" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type" />
         <field name="value">tyres</field>
         <field name="name">Commercial Tyres &amp; Alignment</field>
         <field name="sequence">4</field>
     </record>
     <record id="sel_rp_st_all" model="ir.model.fields.selection">
-        <field name="field_id" ref="field_res_partner_x_breakdown_service_type"/>
+        <field name="field_id" ref="field_res_partner_x_breakdown_service_type" />
         <field name="value">all_round</field>
         <field name="name">Full Breakdown &amp; Field Service</field>
         <field name="sequence">5</field>
     </record>
 
-    <!-- ============================================================== -->
-    <!-- 12. ACCESS RIGHTS: BASE GROUP USER FOR CUSTOM SAAS MODELS      -->
-    <!-- ============================================================== -->
-    <record id="access_x_nfd_fuel_consumption_log_user" model="ir.model.access">
-        <field name="name">access.x.nfd.fuel.consumption.log.user</field>
-        <field name="model_id" ref="model_x_nfd_fuel_consumption_log"/>
-        <field name="group_id" ref="base.group_user"/>
-        <field name="perm_read">1</field>
-        <field name="perm_write">1</field>
-        <field name="perm_create">1</field>
-        <field name="perm_unlink">1</field>
-    </record>
-
-    <record id="access_x_nfd_fuel_dispatch_log_user" model="ir.model.access">
-        <field name="name">access.x.nfd.fuel.dispatch.log.user</field>
-        <field name="model_id" ref="model_x_nfd_fuel_dispatch_log"/>
-        <field name="group_id" ref="base.group_user"/>
-        <field name="perm_read">1</field>
-        <field name="perm_write">1</field>
-        <field name="perm_create">1</field>
-        <field name="perm_unlink">1</field>
-    </record>
-</odoo>
+    
+    
+    
+    </odoo>

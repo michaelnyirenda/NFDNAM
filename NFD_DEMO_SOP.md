@@ -246,7 +246,7 @@ Follow these 4 simple steps during a live client demonstration to show how Odoo 
 
 ### Step 1: Open Vehicle Form
 1. Click **Fleet & Assets** > **Fleet Service Schedule**.
-2. Click on vehicle **`N 10420 OT`** (Mercedes Actros 2645).
+2. Click on vehicle **`N 10420 OT`** (Chevrolet Utility 1.4i Pool Bakkie).
 3. Note its current odometer (e.g. `0.0 km`) and next service milestone (`150,000.0 km`). Service status shows **`Service OK`**.
 
 ### Step 2: Log a Driver Refueling Slip
@@ -259,7 +259,7 @@ Follow these 4 simple steps during a live client demonstration to show how Odoo 
    - **Place:** `Otjiwarongo Depot`
    - **Start Odometer:** `150,000.0`
    - **End Odometer:** `152,000.0`
-   - **Fuel Liters:** `650.0`
+   - **Fuel Liters:** `48.0`
 4. Click the cloud icon (Save).
 
 ### Step 3: Observe Automated Cross-App Triggers
@@ -273,7 +273,7 @@ Follow these 4 simple steps during a live client demonstration to show how Odoo 
 1. Click on the **Job Cards** smart button on the vehicle form (or navigate to **Workshop & Engineering** > **Workshop Job Cards & Projects**).
 2. **Result:** An automated job card has been generated:
    - **Job Card Number:** `JC-AUTO-49`
-   - **Description:** `[AUTOMATED] Routine Service Milestone Overdue - Mercedes-Benz/Actros 2645 6x4/N 10420 OT`
+   - **Description:** `[AUTOMATED] Routine Service Milestone Overdue - Chevrolet/Utility 1.4i Pool Bakkie/N 10420 OT`
    - **Assigned Mechanic:** `Green` (Workshop Lead Mechanic)
    - **Workshop Location:** `Otjiwarongo Mechanical Workshop`
    - **Priority:** High (`3`)
