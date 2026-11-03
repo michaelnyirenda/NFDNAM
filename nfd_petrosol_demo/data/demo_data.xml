@@ -1951,7 +1951,10 @@
         <field name="x_licence_expiry_date">2027-01-31</field>
         <field name="x_fitness_certificate_expiry">2026-05-18</field>
         <field name="x_last_wheel_alignment_date">2026-10-07</field>
-        <field name="x_pto_type">none</field>
+        <field name="x_pto_type">hydraulic_pto</field>
+        <field name="driver_employee_id" ref="employee_benhardt" />
+        <field name="x_driver_trainee_id" ref="employee_tobias_leopold" />
+        <field name="x_branding_status">truck_needs_branding</field>
     </record>
     <record id="vehicle_n5045ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2001,6 +2004,7 @@
         <field name="x_last_wheel_alignment_date">2026-04-12</field>
         <field name="x_pto_type">none</field>
         <field name="driver_employee_id" ref="employee_elrico" />
+        <field name="x_branding_status">truck_needs_branding</field>
     </record>
     <record id="vehicle_n5915ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2047,6 +2051,7 @@
         <field name="x_fitness_certificate_expiry">2023-11-07</field>
         <field name="x_last_wheel_alignment_date">2023-05-15</field>
         <field name="x_pto_type">none</field>
+        <field name="x_branding_status">truck_needs_branding</field>
     </record>
     <record id="vehicle_n6170ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />
@@ -2142,6 +2147,7 @@
         <field name="x_pto_type">hydraulic_pto</field>
         <field name="x_pto_location">On Cab next to COC Tank</field>
         <field name="x_trailer_comp1_id" ref="vehicle_n8961ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
     </record>
     <record id="vehicle_n7802ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2646" />
@@ -2171,6 +2177,7 @@
         <field name="x_pto_location">Behind the Cab</field>
         <field name="driver_employee_id" ref="employee_mike" />
         <field name="x_trailer_comp1_id" ref="vehicle_n6776ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
         <field name="x_expected_km_per_liter">2.3</field>
         <field name="x_actual_km_per_liter">2.05</field>
         <field name="x_sept_distance_km">13024.0</field>
@@ -2229,6 +2236,7 @@
         <field name="x_pto_location">PTO Engine on Tanker</field>
         <field name="driver_employee_id" ref="employee_denzel" />
         <field name="x_trailer_comp1_id" ref="vehicle_n5999ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
     </record>
     <record id="vehicle_n9120ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2646" />
@@ -2257,6 +2265,7 @@
         <field name="x_pto_location">Behind the Cab</field>
         <field name="driver_employee_id" ref="employee_martin_kapinga" />
         <field name="x_trailer_comp1_id" ref="vehicle_n6897ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
     </record>
     <record id="vehicle_n9173ot" model="fleet.vehicle">
         <field name="model_id" ref="model_toyota_hilux" />
@@ -2413,6 +2422,8 @@
         <field name="x_last_wheel_alignment_date">2026-04-11</field>
         <field name="x_pto_type">none</field>
         <field name="x_trailer_comp1_id" ref="vehicle_n13001ot" />
+        <field name="driver_employee_id" ref="employee_andreas_i" />
+        <field name="x_driver_trainee_id" ref="employee_nounongoue_kaaronda" />
         <field name="x_expected_km_per_liter">2.5</field>
         <field name="x_actual_km_per_liter">2.36</field>
         <field name="x_sept_distance_km">6825.0</field>
@@ -2576,6 +2587,7 @@
         <field name="x_last_wheel_alignment_date">2026-04-18</field>
         <field name="x_pto_type">none</field>
         <field name="x_trailer_comp1_id" ref="vehicle_n5999ot" />
+        <field name="x_branding_status">truck_needs_branding</field>
     </record>
     <record id="vehicle_n10919ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_3344" />
@@ -2755,8 +2767,9 @@
         <field name="x_fitness_certificate_expiry">2026-04-23</field>
         <field name="x_safe_loading_pass_expiry">2026-10-02</field>
         <field name="x_last_wheel_alignment_date">2026-10-16</field>
-        <field name="x_pto_type">none</field>
+        <field name="x_pto_type">engine_pto</field>
         <field name="driver_employee_id" ref="employee_gabriel" />
+        <field name="x_branding_status">trailer_needs_branding</field>
         <field name="x_expected_km_per_liter">2.2</field>
         <field name="x_actual_km_per_liter">2.04</field>
         <field name="x_sept_distance_km">6415.0</field>
@@ -2793,6 +2806,7 @@
         <field name="x_pto_location">Behind the Cab</field>
         <field name="driver_employee_id" ref="employee_jackson_kuhanga" />
         <field name="x_trailer_comp1_id" ref="vehicle_n7850ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
         <field name="x_expected_km_per_liter">2.4</field>
         <field name="x_actual_km_per_liter">2.29</field>
         <field name="x_sept_distance_km">10582.0</field>
@@ -2880,6 +2894,7 @@
         <field name="x_pto_type">engine_pto</field>
         <field name="x_pto_location">Roadside on tanker</field>
         <field name="x_trailer_comp1_id" ref="vehicle_n3589ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
         <field name="x_expected_km_per_liter">2.4</field>
         <field name="x_actual_km_per_liter">2.38</field>
         <field name="x_sept_distance_km">8950.0</field>
@@ -3042,6 +3057,7 @@
         <field name="x_pto_type">hydraulic_pto</field>
         <field name="driver_employee_id" ref="employee_simon" />
         <field name="x_trailer_comp1_id" ref="vehicle_n8964ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
         <field name="x_expected_km_per_liter">2.5</field>
         <field name="x_actual_km_per_liter">2.65</field>
         <field name="x_sept_distance_km">10118.0</field>
@@ -3077,6 +3093,7 @@
         <field name="x_pto_type">engine_pto</field>
         <field name="x_pto_location">PTO Engine on Tanker</field>
         <field name="x_trailer_comp1_id" ref="vehicle_n4824ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
         <field name="x_expected_km_per_liter">2.4</field>
         <field name="x_actual_km_per_liter">2.47</field>
         <field name="x_sept_distance_km">9840.0</field>
@@ -3149,6 +3166,7 @@
         <field name="x_pto_location">PTO Engine on Tanker</field>
         <field name="driver_employee_id" ref="employee_elvis_kanganga" />
         <field name="x_trailer_comp1_id" ref="vehicle_n6423ot" />
+        <field name="x_branding_status">trailer_needs_branding</field>
     </record>
     <record id="vehicle_n13831ot" model="fleet.vehicle">
         <field name="model_id" ref="model_actros_2645" />

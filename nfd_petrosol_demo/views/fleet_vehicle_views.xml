@@ -16,6 +16,8 @@
                             <field name="x_has_diesel_meter" widget="boolean_toggle"/>
                             <field name="x_geotab_device_id"/>
                             <field name="x_avg_fuel_consumption"/>
+                            <field name="x_driver_trainee_id"/>
+                            <field name="x_branding_status"/>
                         </group>
                         <group string="Fleet Replacement Policy (NFD Governance)">
                             <field name="x_manufacture_year"/>
@@ -109,6 +111,11 @@
                        decoration-warning="x_operational_availability in ['maintenance', 'roadworthy']"
                        decoration-danger="x_operational_availability in ['accident', 'for_sale']"
                        optional="show"/>
+                <field name="x_branding_status" widget="badge"
+                       decoration-success="x_branding_status == 'branded'"
+                       decoration-warning="x_branding_status in ['truck_needs_branding', 'trailer_needs_branding']"
+                       decoration-danger="x_branding_status == 'both_need_branding'"
+                       optional="show"/>
                 <field name="x_service_status" widget="badge"
                        decoration-success="x_service_status == 'ok'"
                        decoration-warning="x_service_status == 'due_soon'"
@@ -144,6 +151,8 @@
                         domain="[('x_service_status', 'in', ['due_soon', 'overdue'])]"/>
                 <filter string="In Workshop / Maintenance" name="filter_in_maintenance"
                         domain="[('x_operational_availability', 'in', ['maintenance', 'roadworthy', 'accident'])]"/>
+                <filter string="Needs Branding Audit" name="filter_needs_branding"
+                        domain="[('x_branding_status', 'in', ['truck_needs_branding', 'trailer_needs_branding', 'both_need_branding'])]"/>
                 <filter string="For Sale / Decommissioned" name="filter_for_sale"
                         domain="[('x_operational_availability', '=', 'for_sale')]"/>
                 <filter string="Replacement Due / Warning" name="filter_replacement_alert"
@@ -154,6 +163,8 @@
             <xpath expr="//group" position="inside">
                 <filter string="Operational Availability" name="group_availability"
                         domain="[]" context="{'group_by': 'x_operational_availability'}"/>
+                <filter string="Corporate Branding Status" name="group_branding_status"
+                        domain="[]" context="{'group_by': 'x_branding_status'}"/>
                 <filter string="Service Due Status" name="group_service_status"
                         domain="[]" context="{'group_by': 'x_service_status'}"/>
                 <filter string="Unit Classification" name="group_unit_classification"
