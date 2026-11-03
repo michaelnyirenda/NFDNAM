@@ -97,9 +97,9 @@
               action="project.open_view_project_all"
               sequence="20"/>
 
-    <!-- 5. Bulk Stock & Shrinkage Category -->
+    <!-- 5. Bulk Stock & Inventory Category -->
     <menuitem id="menu_nfd_stock_category"
-              name="Depot Stock &amp; Losses"
+              name="Depot Stock &amp; Inventory"
               parent="menu_nfd_root"
               sequence="40"/>
 
@@ -108,12 +108,6 @@
               parent="menu_nfd_stock_category"
               action="stock.product_template_action_product"
               sequence="10"/>
-
-    <menuitem id="menu_nfd_shrinkage_scraps"
-              name="Fuel Shrinkage &amp; Scraps"
-              parent="menu_nfd_stock_category"
-              action="stock.action_stock_scrap"
-              sequence="20"/>
 
     <!-- Integration: Also inject under standard Fleet App -->
     <menuitem id="menu_fleet_nfd_dispatch_log"
