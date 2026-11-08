@@ -874,6 +874,42 @@ for record in self:
         <field name="name">Agra Gobabis</field>
         <field name="sequence">13</field>
     </record>
+    <record id="sel_fcl_place_agra_vivo" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
+        <field name="value">Agra Vivo</field>
+        <field name="name">Agra Vivo</field>
+        <field name="sequence">14</field>
+    </record>
+    <record id="sel_fcl_place_cj_steenkamp" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
+        <field name="value">CJ Steenkamp</field>
+        <field name="name">CJ Steenkamp</field>
+        <field name="sequence">15</field>
+    </record>
+    <record id="sel_fcl_place_ndama" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
+        <field name="value">Ndama</field>
+        <field name="name">Ndama</field>
+        <field name="sequence">16</field>
+    </record>
+    <record id="sel_fcl_place_tokat" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
+        <field name="value">Tokat</field>
+        <field name="name">Tokat</field>
+        <field name="sequence">17</field>
+    </record>
+    <record id="sel_fcl_place_veronika" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
+        <field name="value">Veronika</field>
+        <field name="name">Veronika</field>
+        <field name="sequence">18</field>
+    </record>
+    <record id="sel_fcl_place_weimans" model="ir.model.fields.selection">
+        <field name="field_id" ref="field_x_nfd_fuel_consumption_log_x_place" />
+        <field name="value">Weimans</field>
+        <field name="name">Weimans</field>
+        <field name="sequence">19</field>
+    </record>
 
     <record id="field_x_nfd_fuel_consumption_log_x_odometer_start" model="ir.model.fields">
         <field name="name">x_odometer_start</field>
