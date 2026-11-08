@@ -112,13 +112,13 @@
     </record>
 
     <record id="action_nfd_driver_compliance" model="ir.actions.act_window">
-        <field name="name">Hazchem Drivers &amp; Statutory Compliance</field>
+        <field name="name">Drivers &amp; Licences</field>
         <field name="res_model">hr.employee</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_hr_employee_sheet_driver_info_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Hazchem Drivers &amp; Statutory Compliance
+                Drivers &amp; Licences
             </p>
             <p>
                 Driver statutory credentials, PDP, Hazchem dangerous goods certifications, medical fitness, and trainee payment dates.
@@ -128,7 +128,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_sheet_driver_info" model="ir.actions.act_window">
-        <field name="name">Hazchem Drivers &amp; Statutory Compliance</field>
+        <field name="name">Drivers &amp; Licences</field>
         <field name="res_model">hr.employee</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_hr_employee_sheet_driver_info_list"/>

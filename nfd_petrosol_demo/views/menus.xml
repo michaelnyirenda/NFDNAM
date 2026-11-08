@@ -7,39 +7,39 @@
               sequence="10"/>
 
     <!-- ============================================================== -->
-    <!-- 1. EXECUTIVE DASHBOARDS                                        -->
+    <!-- 1. DASHBOARDS                                                  -->
     <!-- ============================================================== -->
     <menuitem id="menu_nfd_dashboards_category"
-              name="Executive Dashboards"
+              name="Dashboards"
               parent="menu_nfd_root"
               sequence="1"/>
 
     <menuitem id="menu_nfd_dash_command_center"
-              name="NFD Executive Command Center"
+              name="Fuel Review (Cards)"
               parent="menu_nfd_dashboards_category"
               action="action_nfd_dash_command_center"
               sequence="1"/>
 
     <menuitem id="menu_nfd_dash_fuel_variance"
-              name="Fuel &amp; Otj COC Variance"
+              name="Fuel Costs &amp; Savings"
               parent="menu_nfd_dashboards_category"
               action="action_nfd_dash_fuel_variance"
               sequence="2"/>
 
     <menuitem id="menu_nfd_dash_driver_site"
-              name="Driver &amp; Refueling Site Analytics"
+              name="Fuel by Station"
               parent="menu_nfd_dashboards_category"
               action="action_nfd_dash_driver_site"
               sequence="3"/>
 
     <menuitem id="menu_nfd_dash_fleet_radar"
-              name="Fleet Readiness &amp; Service Radar"
+              name="Fleet Availability"
               parent="menu_nfd_dashboards_category"
               action="action_nfd_dash_fleet_radar"
               sequence="4"/>
 
     <menuitem id="menu_nfd_dash_workshop_alignment"
-              name="Workshop, Alignment &amp; Timesheets"
+              name="Mechanic Hours &amp; Progress"
               parent="menu_nfd_dashboards_category"
               action="action_nfd_dash_workshop_alignment"
               sequence="5"/>
@@ -53,19 +53,19 @@
               sequence="2"/>
 
     <menuitem id="menu_nfd_excel_fuel_summary"
-              name="Fuel Consumption Summary"
+              name="Monthly Fuel Summary"
               parent="menu_nfd_fuel_ops_category"
               action="action_nfd_fuel_summary"
               sequence="1"/>
 
     <menuitem id="menu_nfd_fuel_consumption_log"
-              name="Vehicle Refuel Logsheets"
+              name="Driver Fuel Receipts"
               parent="menu_nfd_fuel_ops_category"
               action="action_nfd_fuel_consumption_log"
               sequence="2"/>
 
     <menuitem id="menu_nfd_fuel_dispatch_log"
-              name="Cargo Fuel Dispatches &amp; Loss"
+              name="Fuel Dispatches &amp; Deliveries"
               parent="menu_nfd_fuel_ops_category"
               action="action_nfd_fuel_dispatch_log"
               sequence="3"/>
@@ -79,103 +79,103 @@
               sequence="3"/>
 
     <menuitem id="menu_nfd_sheet1_service"
-              name="Fleet Service Schedule"
+              name="Vehicle Service Due Dates"
               parent="menu_nfd_fleet_assets_category"
               action="action_nfd_fleet_service_schedule"
               sequence="1"/>
 
     <menuitem id="menu_nfd_sheet2_availability"
-              name="Fleet Availability &amp; Grouping"
+              name="Truck Groups"
               parent="menu_nfd_fleet_assets_category"
               action="action_nfd_fleet_availability"
               sequence="2"/>
 
     <menuitem id="menu_nfd_sheet3_allocation"
-              name="Driver &amp; Trailer Allocation"
+              name="Driver &amp; Trailer Assigned"
               parent="menu_nfd_fleet_assets_category"
               action="action_nfd_driver_trailer_allocation"
               sequence="3"/>
 
     <menuitem id="menu_nfd_sheet4_branding"
-              name="Corporate Livery &amp; Branding"
+              name="Truck Decals &amp; Livery"
               parent="menu_nfd_fleet_assets_category"
               action="action_nfd_corporate_branding"
               sequence="4"/>
 
     <menuitem id="menu_nfd_sheet6_pto"
-              name="PTO &amp; Hydraulic Systems"
+              name="Hydraulic Pumps (PTO)"
               parent="menu_nfd_fleet_assets_category"
               action="action_nfd_pto_systems"
               sequence="5"/>
 
     <menuitem id="menu_nfd_sheet7_alignment"
-              name="Wheel Alignment &amp; Chassis Audit"
+              name="Wheel Alignment Check"
               parent="menu_nfd_fleet_assets_category"
               action="action_nfd_wheel_alignment"
               sequence="6"/>
 
     <!-- ============================================================== -->
-    <!-- 4. WORKSHOP & ENGINEERING                                      -->
+    <!-- 4. WORKSHOP                                                    -->
     <!-- ============================================================== -->
     <menuitem id="menu_nfd_workshop_category"
-              name="Workshop &amp; Engineering"
+              name="Workshop"
               parent="menu_nfd_root"
               sequence="4"/>
 
     <menuitem id="menu_nfd_sheet8_projects"
-              name="Workshop Job Cards &amp; Projects"
+              name="Workshop Job Cards"
               parent="menu_nfd_workshop_category"
               action="action_nfd_workshop_job_cards"
               sequence="1"/>
 
     <menuitem id="menu_nfd_sheet5_breakdown"
-              name="24/7 Breakdown &amp; Corridors"
+              name="Emergency Repair Contacts"
               parent="menu_nfd_workshop_category"
               action="action_nfd_breakdown_corridors"
               sequence="2"/>
 
     <menuitem id="menu_nfd_workshop_assets"
-              name="Workshop Equipment &amp; Pumps"
+              name="Workshop Tools &amp; Pumps"
               parent="menu_nfd_workshop_category"
               action="maintenance.hr_equipment_action"
               sequence="3"/>
 
     <menuitem id="menu_nfd_timesheets"
-              name="Mechanic Labor Timesheets"
+              name="Mechanic Timesheets"
               parent="menu_nfd_workshop_category"
               action="hr_timesheet.act_hr_timesheet_line"
               sequence="4"/>
 
     <!-- ============================================================== -->
-    <!-- 5. PERSONNEL & COMPLIANCE                                      -->
+    <!-- 5. DRIVERS                                                     -->
     <!-- ============================================================== -->
     <menuitem id="menu_nfd_personnel_category"
-              name="Personnel &amp; Compliance"
+              name="Drivers"
               parent="menu_nfd_root"
               sequence="5"/>
 
     <menuitem id="menu_nfd_sheet9_driver_info"
-              name="Hazchem Drivers &amp; Licensing"
+              name="Drivers &amp; Licences"
               parent="menu_nfd_personnel_category"
               action="action_nfd_driver_compliance"
               sequence="1"/>
 
     <!-- ============================================================== -->
-    <!-- 6. DEPOT INVENTORY                                             -->
+    <!-- 6. DEPOT STOCK                                                 -->
     <!-- ============================================================== -->
     <menuitem id="menu_nfd_stock_category"
-              name="Depot Inventory"
+              name="Depot Stock"
               parent="menu_nfd_root"
               sequence="6"/>
 
     <menuitem id="menu_nfd_depot_inventory"
-              name="Bulk Fuel &amp; Lubricant Stock"
+              name="Spare Parts in Depot"
               parent="menu_nfd_stock_category"
               action="stock.product_template_action_product"
               sequence="1"/>
 
     <menuitem id="menu_nfd_projects"
-              name="Retail Forecourts &amp; Subsidies"
+              name="Service Station Pumps"
               parent="menu_nfd_stock_category"
               action="project.open_view_project_all"
               sequence="2"/>

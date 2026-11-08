@@ -222,12 +222,12 @@
 
     <!-- Action -->
     <record id="action_nfd_fuel_dispatch_log" model="ir.actions.act_window">
-        <field name="name">Cargo Fuel Dispatch &amp; Leakage Logs</field>
+        <field name="name">Fuel Dispatches &amp; Deliveries</field>
         <field name="res_model">nfd.fuel.dispatch.log</field>
         <field name="view_mode">list,kanban,form,pivot,graph</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Record your first Bulk Cargo Fuel Dispatch!
+                Fuel Dispatches &amp; Deliveries
             </p>
             <p>
                 Track bulk fuel loaded at Otjiwarongo Depot, compare against truck flow meter and customer dips,
