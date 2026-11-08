@@ -11715,5 +11715,496 @@
         <field name="amount">0.0</field>
     </record>
 
+    
+    <!-- ============================================================== -->
+    <!-- PHASE 2: CROSS-APP DEMO SEED RECORDS (PURCHASES, SALES, INVOICING, CALENDAR, TASKS) -->
+    <!-- ============================================================== -->
+
+    <!-- 1. Additional Workshop & Commercial Partners -->
+    <record id="partner_supplier_mz_comm" model="res.partner">
+        <field name="name">M &amp; Z Commercial Vehicles Namibia</field>
+        <field name="is_company">True</field>
+        <field name="city">Windhoek</field>
+        <field name="phone">+264 61 280 4800</field>
+        <field name="email">service@mz.com.na</field>
+    </record>
+
+    <record id="partner_supplier_propbel" model="res.partner">
+        <field name="name">Propbel Engineering &amp; Propshaft Services CC</field>
+        <field name="is_company">True</field>
+        <field name="city">Otjiwarongo</field>
+        <field name="phone">+264 67 302 990</field>
+    </record>
+
+    <!-- 2. Fleet & Maintenance Spare Parts Products -->
+    <record id="product_actros_filter_kit" model="product.product">
+        <field name="name">Mercedes Actros 2646/2652 A-Service Filter &amp; Seal Kit</field>
+        <field name="default_code">KIT-MB-ACTROS-A</field>
+        <field name="type">consu</field>
+        <field name="list_price">4850.00</field>
+        <field name="standard_price">3800.00</field>
+    </record>
+
+    <record id="product_fuel_tank_assembly" model="product.product">
+        <field name="name">Replacement 407T Aluminum Fuel Tank Assembly (N 4584 OT)</field>
+        <field name="default_code">TANK-ALUM-407T</field>
+        <field name="type">consu</field>
+        <field name="list_price">24500.00</field>
+        <field name="standard_price">19800.00</field>
+    </record>
+
+    <record id="product_volvo_pneumatic_line" model="product.product">
+        <field name="name">Volvo FH520 High-Pressure Pneumatic Air Line &amp; Fittings Kit</field>
+        <field name="default_code">PNEU-VOLVO-FH520</field>
+        <field name="type">consu</field>
+        <field name="list_price">3200.00</field>
+        <field name="standard_price">2450.00</field>
+    </record>
+
+    <record id="product_api_coupler_kit" model="product.product">
+        <field name="name">Bottom-Loading API Coupler &amp; Foot-Valve Seal Kit (Trailer 4824)</field>
+        <field name="default_code">KIT-API-VALVE-4824</field>
+        <field name="type">consu</field>
+        <field name="list_price">8750.00</field>
+        <field name="standard_price">6900.00</field>
+    </record>
+
+    <record id="product_trek_links" model="product.product">
+        <field name="name">Heavy Duty Suspension Trek Links &amp; Bushings (N 282 OT)</field>
+        <field name="default_code">SUSP-TREK-LINKS-282</field>
+        <field name="type">consu</field>
+        <field name="list_price">5400.00</field>
+        <field name="standard_price">4100.00</field>
+    </record>
+
+    <record id="product_gearbox_actuator" model="product.product">
+        <field name="name">Henred Gearbox Pneumatic Actuator &amp; Brake Shoe Kit</field>
+        <field name="default_code">BRK-ACTUATOR-HENRED</field>
+        <field name="type">consu</field>
+        <field name="list_price">12500.00</field>
+        <field name="standard_price">9800.00</field>
+    </record>
+
+    <record id="product_propshaft_assembly" model="product.product">
+        <field name="name">Heavy Rigid Balanced Propshaft Assembly &amp; U-Bolts (N 11751 OT)</field>
+        <field name="default_code">PROP-HEAVY-11751</field>
+        <field name="type">consu</field>
+        <field name="list_price">18900.00</field>
+        <field name="standard_price">15200.00</field>
+    </record>
+
+    <record id="product_fleet_asset_actros" model="product.product">
+        <field name="name">Decommissioned Mercedes-Benz Actros Prime Mover (Fleet Disposal)</field>
+        <field name="default_code">ASSET-ACTROS-DISPOSAL</field>
+        <field name="type">consu</field>
+        <field name="list_price">450000.00</field>
+        <field name="standard_price">380000.00</field>
+    </record>
+
+    <!-- 3. Purchase Orders (PO00001 to PO00008) -->
+    <record id="po_00001" model="purchase.order">
+        <field name="partner_id" ref="partner_mb_truck" />
+        <field name="date_order">2026-09-04 08:30:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00001_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00001" />
+        <field name="name">N 7802 OT (JC-996 &amp; JC-1137+1138) Actros 2646 A-Service Filter Kit &amp; Manifold Seals</field>
+        <field name="product_id" ref="product_actros_filter_kit" />
+        <field name="product_qty">2.0</field>
+        <field name="price_unit">3800.00</field>
+    </record>
+    <record id="pol_00001_2" model="purchase.order.line">
+        <field name="order_id" ref="po_00001" />
+        <field name="name">N 7802 OT &amp; Trailer 6776 Heavy Duty Engine Oil 15W-40 (210L Drum)</field>
+        <field name="product_id" ref="product_engine_oil_15w40" />
+        <field name="product_qty">2.0</field>
+        <field name="price_unit">9500.00</field>
+    </record>
+
+    <record id="po_00002" model="purchase.order">
+        <field name="partner_id" ref="partner_mb_truck" />
+        <field name="date_order">2026-09-17 10:15:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00002_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00002" />
+        <field name="name">N 4584 OT (JC-953) Replacement 407T Aluminum Fuel Tank Assembly</field>
+        <field name="product_id" ref="product_fuel_tank_assembly" />
+        <field name="product_qty">1.0</field>
+        <field name="price_unit">19800.00</field>
+    </record>
+    <record id="pol_00002_2" model="purchase.order.line">
+        <field name="order_id" ref="po_00002" />
+        <field name="name">N 4584 OT (JC-1129) Steering Axle Kingpin &amp; Bushing Overhaul Kit</field>
+        <field name="product_id" ref="product_trek_links" />
+        <field name="product_qty">1.0</field>
+        <field name="price_unit">4100.00</field>
+    </record>
+
+    <record id="po_00003" model="purchase.order">
+        <field name="partner_id" ref="partner_nors" />
+        <field name="date_order">2026-09-30 14:00:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00003_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00003" />
+        <field name="name">N 11255 OT (JC-1160) Volvo FH520 High-Pressure Pneumatic Air Line (Wind pyp lek)</field>
+        <field name="product_id" ref="product_volvo_pneumatic_line" />
+        <field name="product_qty">2.0</field>
+        <field name="price_unit">2450.00</field>
+    </record>
+    <record id="pol_00003_2" model="purchase.order.line">
+        <field name="order_id" ref="po_00003" />
+        <field name="name">N 13566 OT (JC-1033) Scania R500 Full Service Filter Kit</field>
+        <field name="product_id" ref="product_scania_filter_kit" />
+        <field name="product_qty">1.0</field>
+        <field name="price_unit">4500.00</field>
+    </record>
+
+    <record id="po_00004" model="purchase.order">
+        <field name="partner_id" ref="partner_supplier_mz_comm" />
+        <field name="date_order">2026-09-01 09:00:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00004_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00004" />
+        <field name="name">N 10684 OT, N 12007 OT (JC-991), N 13777 OT (JC-1017) Actros 2652 OEM Service Kits</field>
+        <field name="product_id" ref="product_actros_filter_kit" />
+        <field name="product_qty">3.0</field>
+        <field name="price_unit">3800.00</field>
+    </record>
+
+    <record id="po_00005" model="purchase.order">
+        <field name="partner_id" ref="partner_smart_fuels" />
+        <field name="date_order">2026-09-02 11:30:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00005_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00005" />
+        <field name="name">N 12007 OT &amp; N 12043 OT (Trailer 4824) Bottom-Loading API Couplers &amp; Seal Kit</field>
+        <field name="product_id" ref="product_api_coupler_kit" />
+        <field name="product_qty">2.0</field>
+        <field name="price_unit">6900.00</field>
+    </record>
+
+    <record id="po_00006" model="purchase.order">
+        <field name="partner_id" ref="partner_master_parts" />
+        <field name="date_order">2026-09-08 08:00:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00006_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00006" />
+        <field name="name">N 282 OT (JC-1009) Heavy Duty Suspension Trek Links</field>
+        <field name="product_id" ref="product_trek_links" />
+        <field name="product_qty">2.0</field>
+        <field name="price_unit">4100.00</field>
+    </record>
+
+    <record id="po_00007" model="purchase.order">
+        <field name="partner_id" ref="partner_henred" />
+        <field name="date_order">2026-09-11 13:45:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00007_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00007" />
+        <field name="name">N 12917 OT + Trailer 4824 Henred Gearbox Pneumatic Actuator &amp; Brake Shoe Kit</field>
+        <field name="product_id" ref="product_gearbox_actuator" />
+        <field name="product_qty">1.0</field>
+        <field name="price_unit">9800.00</field>
+    </record>
+
+    <record id="po_00008" model="purchase.order">
+        <field name="partner_id" ref="partner_supplier_propbel" />
+        <field name="date_order">2026-09-01 16:00:00</field>
+        <field name="state">purchase</field>
+    </record>
+    <record id="pol_00008_1" model="purchase.order.line">
+        <field name="order_id" ref="po_00008" />
+        <field name="name">N 11751 OT (JC-1019 &amp; JC-1112) Heavy Rigid Propshaft Assembly, U-Bolts &amp; PTO Line</field>
+        <field name="product_id" ref="product_propshaft_assembly" />
+        <field name="product_qty">1.0</field>
+        <field name="price_unit">15200.00</field>
+    </record>
+
+    <!-- 4. Sales Orders (SO00001 to SO00006) -->
+    <record id="so_00001" model="sale.order">
+        <field name="partner_id" ref="partner_b2gold_mine" />
+        <field name="date_order">2026-09-05 08:00:00</field>
+        <field name="state">sale</field>
+    </record>
+    <record id="sol_00001_1" model="sale.order.line">
+        <field name="order_id" ref="so_00001" />
+        <field name="name">Bulk Diesel 50ppm Delivery to B2Gold Otjikoto Mine via N 7802 OT (DISP/2026/0101)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="product_uom_qty">42000.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+
+    <record id="so_00002" model="sale.order">
+        <field name="partner_id" ref="partner_husab_mine" />
+        <field name="date_order">2026-09-03 07:30:00</field>
+        <field name="state">sale</field>
+    </record>
+    <record id="sol_00002_1" model="sale.order.line">
+        <field name="order_id" ref="so_00002" />
+        <field name="name">Monthly Contract Supply of 84,000L Diesel 50ppm (2 x B-Double loads via N 11255 OT &amp; N 12916 OT)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="product_uom_qty">84000.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+
+    <record id="so_00003" model="sale.order">
+        <field name="partner_id" ref="partner_grinaker_lta" />
+        <field name="date_order">2026-09-10 10:00:00</field>
+        <field name="state">sale</field>
+    </record>
+    <record id="sol_00003_1" model="sale.order.line">
+        <field name="order_id" ref="so_00003" />
+        <field name="name">Civil Road Works Fuel Supply - 17,500L Diesel 50ppm via N 1750 OT / N 4584 OT (DISP/2026/0102)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="product_uom_qty">17500.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+
+    <record id="so_00004" model="sale.order">
+        <field name="partner_id" ref="partner_petrosol_outjo" />
+        <field name="date_order">2026-09-12 09:15:00</field>
+        <field name="state">sale</field>
+    </record>
+    <record id="sol_00004_1" model="sale.order.line">
+        <field name="order_id" ref="so_00004" />
+        <field name="name">Forecourt Replenishment - 24,000L Diesel 50ppm (Petrosol Outjo CODO)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="product_uom_qty">24000.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+    <record id="sol_00004_2" model="sale.order.line">
+        <field name="order_id" ref="so_00004" />
+        <field name="name">Forecourt Replenishment - 15,000L ULP 95 Petrol (Petrosol Outjo CODO)</field>
+        <field name="product_id" ref="product_ulp_95" />
+        <field name="product_uom_qty">15000.0</field>
+        <field name="price_unit">24.85</field>
+    </record>
+
+    <record id="so_00005" model="sale.order">
+        <field name="partner_id" ref="partner_petrosol_khorixas" />
+        <field name="date_order">2026-09-15 11:30:00</field>
+        <field name="state">sale</field>
+    </record>
+    <record id="sol_00005_1" model="sale.order.line">
+        <field name="order_id" ref="so_00005" />
+        <field name="name">Forecourt Replenishment - 18,000L Diesel 50ppm (Petrosol Khorixas DODO)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="product_uom_qty">18000.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+    <record id="sol_00005_2" model="sale.order.line">
+        <field name="order_id" ref="so_00005" />
+        <field name="name">Forecourt Replenishment - 12,000L ULP 95 Petrol (Petrosol Khorixas DODO)</field>
+        <field name="product_id" ref="product_ulp_95" />
+        <field name="product_uom_qty">12000.0</field>
+        <field name="price_unit">24.85</field>
+    </record>
+
+    <record id="so_00006" model="sale.order">
+        <field name="partner_id" ref="partner_mb_truck" />
+        <field name="date_order">2026-09-20 14:00:00</field>
+        <field name="state">sent</field>
+    </record>
+    <record id="sol_00006_1" model="sale.order.line">
+        <field name="order_id" ref="so_00006" />
+        <field name="name">Fleet Asset Disposal Quotation: 4 Decommissioned Mercedes Actros Units (10914, 10915, 10916, 10919) prepped 'Klaar - Maak reg vir verkoop'</field>
+        <field name="product_id" ref="product_fleet_asset_actros" />
+        <field name="product_uom_qty">4.0</field>
+        <field name="price_unit">450000.00</field>
+    </record>
+
+    <!-- 5. Customer Invoices & Vendor Bills (account.move) -->
+    <record id="inv_b2gold_001" model="account.move">
+        <field name="move_type">out_invoice</field>
+        <field name="partner_id" ref="partner_b2gold_mine" />
+        <field name="invoice_date">2026-09-05</field>
+        <field name="date">2026-09-05</field>
+    </record>
+    <record id="inv_line_b2gold_001" model="account.move.line">
+        <field name="move_id" ref="inv_b2gold_001" />
+        <field name="name">Tax Invoice: Bulk Diesel 50ppm Delivery - B2Gold Otjikoto Mine (DISP/2026/0101)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="quantity">42000.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+
+    <record id="inv_husab_001" model="account.move">
+        <field name="move_type">out_invoice</field>
+        <field name="partner_id" ref="partner_husab_mine" />
+        <field name="invoice_date">2026-09-03</field>
+        <field name="date">2026-09-03</field>
+    </record>
+    <record id="inv_line_husab_001" model="account.move.line">
+        <field name="move_id" ref="inv_husab_001" />
+        <field name="name">Tax Invoice: Monthly Bulk Diesel 50ppm Mining Supply - Husab Mine (84,000L)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="quantity">84000.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+
+    <record id="inv_petrosol_outjo_001" model="account.move">
+        <field name="move_type">out_invoice</field>
+        <field name="partner_id" ref="partner_petrosol_outjo" />
+        <field name="invoice_date">2026-09-12</field>
+        <field name="date">2026-09-12</field>
+    </record>
+    <record id="inv_line_outjo_1" model="account.move.line">
+        <field name="move_id" ref="inv_petrosol_outjo_001" />
+        <field name="name">Tax Invoice: Forecourt Fuel Replenishment Diesel 50ppm (24,000L)</field>
+        <field name="product_id" ref="product_diesel_50ppm" />
+        <field name="quantity">24000.0</field>
+        <field name="price_unit">25.98</field>
+    </record>
+
+    <record id="bill_mb_truck_001" model="account.move">
+        <field name="move_type">in_invoice</field>
+        <field name="partner_id" ref="partner_mb_truck" />
+        <field name="invoice_date">2026-09-04</field>
+        <field name="date">2026-09-04</field>
+    </record>
+    <record id="bill_line_mb_1" model="account.move.line">
+        <field name="move_id" ref="bill_mb_truck_001" />
+        <field name="name">Vendor Bill: Mercedes Actros 2646 A-Service Parts (JC-996, N 7802 OT)</field>
+        <field name="product_id" ref="product_actros_filter_kit" />
+        <field name="quantity">2.0</field>
+        <field name="price_unit">3800.00</field>
+    </record>
+
+    <record id="bill_nors_001" model="account.move">
+        <field name="move_type">in_invoice</field>
+        <field name="partner_id" ref="partner_nors" />
+        <field name="invoice_date">2026-09-30</field>
+        <field name="date">2026-09-30</field>
+    </record>
+    <record id="bill_line_nors_1" model="account.move.line">
+        <field name="move_id" ref="bill_nors_001" />
+        <field name="name">Vendor Bill: Volvo FH520 High-Pressure Pneumatics (JC-1160, N 11255 OT)</field>
+        <field name="product_id" ref="product_volvo_pneumatic_line" />
+        <field name="quantity">2.0</field>
+        <field name="price_unit">2450.00</field>
+    </record>
+
+    <record id="bill_smart_fuels_001" model="account.move">
+        <field name="move_type">in_invoice</field>
+        <field name="partner_id" ref="partner_smart_fuels" />
+        <field name="invoice_date">2026-09-02</field>
+        <field name="date">2026-09-02</field>
+    </record>
+    <record id="bill_line_smart_1" model="account.move.line">
+        <field name="move_id" ref="bill_smart_fuels_001" />
+        <field name="name">Vendor Bill: Bottom Loading Couplers (Trailer 4824)</field>
+        <field name="product_id" ref="product_api_coupler_kit" />
+        <field name="quantity">2.0</field>
+        <field name="price_unit">6900.00</field>
+    </record>
+
+    <!-- 6. Calendar Events (calendar.event) -->
+    <record id="cal_trainee_stipend_1" model="calendar.event">
+        <field name="name">Every Monday: Trainee Driver Stipend Payment (Tobias Leopold &amp; Nounongoue Kaaronda)</field>
+        <field name="start">2026-11-09 08:00:00</field>
+        <field name="stop">2026-11-09 09:00:00</field>
+        <field name="location">NFD Otjiwarongo Head Office Finance</field>
+        <field name="description">Weekly stipend disbursement for apprentice drivers per DRIVER INFORMATION tab Rows 26 &amp; 33.</field>
+    </record>
+
+    <record id="cal_natis_roadworthy_1" model="calendar.event">
+        <field name="name">NaTIS OTJ Roadworthy Test: N 7802 OT + Trailer 6776 &amp; N 11964 OT + Trailer 4824</field>
+        <field name="start">2026-11-10 09:00:00</field>
+        <field name="stop">2026-11-10 12:00:00</field>
+        <field name="location">NaTIS Vehicle Testing Station Otjiwarongo</field>
+        <field name="description">Mandatory annual roadworthy compliance inspection for long-haul tanker rigs (PROJECTS Rows 156-157).</field>
+    </record>
+
+    <record id="cal_prdp_renewal_largo" model="calendar.event">
+        <field name="name">CRITICAL: Largo Green Public Drivers Permit (PrDP) Expiry Deadline</field>
+        <field name="start">2026-11-14 08:00:00</field>
+        <field name="stop">2026-11-14 17:00:00</field>
+        <field name="location">NaTIS Licensing Office Otjiwarongo</field>
+        <field name="description">Urgent license renewal for driver Largo Green before grounding (DRIVER INFORMATION Row 18 Cell K18).</field>
+    </record>
+
+    <record id="cal_laser_alignment_slot" model="calendar.event">
+        <field name="name">Laser Wheel Alignment &amp; Kingpin Overhaul: N 2455 OT, N 4584 OT, N 11028 OT &amp; N 11963 OT</field>
+        <field name="start">2026-11-12 07:30:00</field>
+        <field name="stop">2026-11-12 16:30:00</field>
+        <field name="location">Otjiwarongo Mechanical Workshop - Alignment Bay</field>
+        <field name="description">Chassis alignment, kingpin play adjustment, and tyre pressure correction on top 4 fuel burning rigs.</field>
+    </record>
+
+    <record id="cal_hazchem_renewal_maxi" model="calendar.event">
+        <field name="name">Maxi Wohler (Driver N 11255 OT) Hazchem Permit Renewal</field>
+        <field name="start">2026-12-08 08:00:00</field>
+        <field name="stop">2026-12-08 17:00:00</field>
+        <field name="location">Ministry of Mines &amp; Energy / Hazchem Authority</field>
+        <field name="description">Dangerous goods transport certification refresher and medical renewal (DRIVER INFORMATION Row 23 Cell M23).</field>
+    </record>
+
+    <record id="cal_depot_meter_calib" model="calendar.event">
+        <field name="name">Otjiwarongo 700kL Depot Gantry LC Master Meter Calibration (Jonie Useb)</field>
+        <field name="start">2026-11-15 08:00:00</field>
+        <field name="stop">2026-11-15 12:00:00</field>
+        <field name="location">Otjiwarongo Bulk Fuel Depot Gantry</field>
+        <field name="description">Recalibration of LC M-15 master flow meter using prover tank to maintain &lt;0.05% dispensing accuracy.</field>
+    </record>
+
+    <record id="cal_forecourt_prover_visit" model="calendar.event">
+        <field name="name">Monthly Wayne Helix Nozzle Prover Test &amp; ILAMO Coldroom Service (Lukas Van Wyk)</field>
+        <field name="start">2026-11-18 07:00:00</field>
+        <field name="stop">2026-11-18 17:00:00</field>
+        <field name="location">Petrosol Outjo &amp; Khorixas Retail Forecourts</field>
+        <field name="description">Retail forecourt subsidy compliance audit: 10L/20L measure can test on 4-hose Wayne Helix dispensers.</field>
+    </record>
+
+    <record id="cal_chevron_hesms_audit" model="calendar.event">
+        <field name="name">Chevron &gt;90% HESMS Bulk Transport Accreditation Audit (Johan Botes &amp; Pierre Fourie)</field>
+        <field name="start">2026-11-25 09:00:00</field>
+        <field name="stop">2026-11-25 15:00:00</field>
+        <field name="location">NFD Otjiwarongo Depot &amp; Boardroom</field>
+        <field name="description">Annual oil major compliance verification: driver training records, tanker hydro tests, and spill kits.</field>
+    </record>
+
+    <!-- 7. Project & To-Do Action Items (project.task) -->
+    <record id="task_audit_29_unconfirmed" model="project.task">
+        <field name="name">[AUDIT] Reconcile 29 Unconfirmed ('X') September Driver Fuel Logsheets (10 on N 4584 OT)</field>
+        <field name="priority">1</field>
+        <field name="date_deadline">2026-11-15</field>
+        <field name="description">Cross-check physical paper fuel slips against depot gantry dip meter logs for all 29 slips marked with X in CONFIRM LOGSHEET, prioritizing rigid tanker N 4584 OT.</field>
+    </record>
+
+    <record id="task_complete_jc_7802" model="project.task">
+        <field name="name">[WORKSHOP] Complete Open Job Cards JC-1137+1138 &amp; JC-1158+1159 on Flagship Rig N 7802 OT + 6776</field>
+        <field name="priority">1</field>
+        <field name="date_deadline">2026-11-11</field>
+        <field name="description">Finalize oil leak repair, aircon compressor belt tensioning, trailer mudguard mount, and NaTIS roadworthy signoff before long-haul mining corridor dispatch.</field>
+    </record>
+
+    <record id="task_repair_alignment_burners" model="project.task">
+        <field name="name">[ALIGNMENT] Repair Kingpin Play &amp; Rear Axle Skew on Top Fuel Burners N 4584 OT, N 2455 OT &amp; N 11963 OT</field>
+        <field name="priority">1</field>
+        <field name="date_deadline">2026-11-13</field>
+        <field name="description">Address 3.43x excess fuel burn penalty identified in cross-workbook audit by executing laser chassis alignment and kingpin bushing replacements.</field>
+    </record>
+
+    <record id="task_ground_expired_drivers" model="project.task">
+        <field name="name">[HESMS] Ground Franzua Tsuseb (Expired Permit) &amp; Renew Largo Green PrDP (Expires 14 Nov 2026)</field>
+        <field name="priority">1</field>
+        <field name="date_deadline">2026-11-14</field>
+        <field name="description">Strict transport compliance enforcement: enforce immediate grounding of driver Franzua Tsuseb until Hazchem recertification, and schedule Largo Green for urgent PrDP renewal.</field>
+    </record>
+
+    <record id="task_asset_disposal_actros" model="project.task">
+        <field name="name">[FINANCE] Finalize Asset Disposal Sale of 4 'Klaar' Mercedes Actros Units (10914, 10915, 10916, 10919)</field>
+        <field name="priority">0</field>
+        <field name="date_deadline">2026-11-30</field>
+        <field name="description">Execute commercial fleet disposal quotation SO00006 for aging prime movers exceeding NFD's 18-year replacement policy threshold.</field>
+    </record>
+
     </data>
 </odoo>
