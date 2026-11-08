@@ -155,29 +155,27 @@
                 <field name="x_nad_value"/>
                 <field name="x_anomaly_flag"/>
                 <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_global_click">
-                            <div class="o_kanban_record_top mb-2">
-                                <div class="o_kanban_record_headings">
-                                    <strong class="o_kanban_record_title"><field name="x_name"/> - <field name="x_vehicle_id"/></strong>
-                                </div>
-                                <span class="badge rounded-pill text-bg-warning" t-if="record.x_anomaly_flag.raw_value == 'excess_burn'">Excess Burn</span>
-                                <span class="badge rounded-pill text-bg-danger" t-if="record.x_anomaly_flag.raw_value == 'odo_error'">Odo Anomaly</span>
-                                <span class="badge rounded-pill text-bg-success" t-if="record.x_anomaly_flag.raw_value == 'normal'">Normal</span>
-                            </div>
-                            <div class="o_kanban_record_body">
-                                <div><strong>Driver:</strong> <field name="x_driver_id"/></div>
-                                <div><strong>Place:</strong> <field name="x_place"/></div>
-                                <div><strong>Distance:</strong> <field name="x_distance_traveled_km"/> km | <strong>Fuel:</strong> <field name="x_fuel_liters"/> L</div>
-                                <div><strong>Efficiency:</strong> <field name="x_actual_km_per_liter"/> KM/L</div>
-                            </div>
-                            <div class="o_kanban_record_bottom mt-2">
-                                <div class="oe_kanban_bottom_left">
-                                    <span t-attf-class="fw-bold #{record.x_excess_use_liters.raw_value &gt; 0 ? 'text-danger' : 'text-success'}">
-                                        Variance: <field name="x_excess_use_liters"/> L (NAD <field name="x_nad_value"/>)
-                                    </span>
-                                </div>
-                            </div>
+                    <t t-name="card">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <strong class="o_kanban_record_title"><field name="x_name"/> - <field name="x_vehicle_id"/></strong>
+                            <field name="x_anomaly_flag" widget="badge"
+                                   decoration-warning="x_anomaly_flag == 'excess_burn'"
+                                   decoration-danger="x_anomaly_flag == 'odo_error'"
+                                   decoration-success="x_anomaly_flag == 'normal'"/>
+                        </div>
+                        <div class="o_kanban_record_body">
+                            <div><strong>Driver:</strong> <field name="x_driver_id"/></div>
+                            <div><strong>Place:</strong> <field name="x_place"/></div>
+                            <div><strong>Distance:</strong> <field name="x_distance_traveled_km"/> km | <strong>Fuel:</strong> <field name="x_fuel_liters"/> L</div>
+                            <div><strong>Efficiency:</strong> <field name="x_actual_km_per_liter"/> KM/L</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-2 pt-2 border-top">
+                            <span class="fw-bold" invisible="x_excess_use_liters &lt;= 0" style="color: #dc3545;">
+                                Excess: +<field name="x_excess_use_liters"/> L (NAD <field name="x_nad_value"/>)
+                            </span>
+                            <span class="fw-bold" invisible="x_excess_use_liters &gt; 0" style="color: #198754;">
+                                Savings: <field name="x_excess_use_liters"/> L (NAD <field name="x_nad_value"/>)
+                            </span>
                         </div>
                     </t>
                 </templates>
