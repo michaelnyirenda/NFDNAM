@@ -39,6 +39,7 @@ Key Capabilities:
         'project',
         'hr_timesheet',
         'sale_timesheet',
+        'calendar',
         'spreadsheet_dashboard',
     ],
     'data': [
