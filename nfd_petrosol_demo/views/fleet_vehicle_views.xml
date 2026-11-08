@@ -6,7 +6,17 @@
         <field name="model">fleet.vehicle</field>
         <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
         <field name="arch" type="xml">
-            
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_fuel_logs" type="object" class="oe_stat_button" icon="fa-tint">
+                    <field name="fuel_log_count" widget="statinfo" string="Refuel Logs"/>
+                </button>
+                <button name="action_view_job_cards" type="object" class="oe_stat_button" icon="fa-wrench">
+                    <field name="job_card_count" widget="statinfo" string="Job Cards"/>
+                </button>
+                <button name="action_view_dispatches" type="object" class="oe_stat_button" icon="fa-truck">
+                    <field name="dispatch_count" widget="statinfo" string="Dispatches"/>
+                </button>
+            </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string="NFD Fuel Fleet &amp; Policy Specs" name="nfd_fuel_specs">
                     <group>
@@ -232,14 +242,14 @@
     </record>
 
     <record id="action_nfd_fuel_summary" model="ir.actions.act_window">
-        <field name="name">Fuel Consumption Summary</field>
+        <field name="name">Monthly Fuel Summary</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_fuel_summary_list"/>
         <field name="domain">[('x_sept_distance_km', '>', 0)]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Fuel Consumption Summary
+                Monthly Fuel Summary
             </p>
             <p>
                 Exact reconciliation of distance traveled, benchmark KM/L, actual diesel burn, and monetary excess penalty @ NAD 25.98/L Otj COC benchmark across all fleet assets.
@@ -249,7 +259,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_excel_fuel_summary" model="ir.actions.act_window">
-        <field name="name">Fuel Consumption Summary</field>
+        <field name="name">Monthly Fuel Summary</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_fuel_summary_list"/>
@@ -289,13 +299,13 @@
     </record>
 
     <record id="action_nfd_fleet_service_schedule" model="ir.actions.act_window">
-        <field name="name">Fleet Service Schedule</field>
+        <field name="name">Vehicle Service Due Dates</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_fleet_service_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Fleet Service Schedule
+                Vehicle Service Due Dates
             </p>
             <p>
                 Tracks routine odometer service intervals, NaTIS roadworthy fitness dates, SLP gantry passes, and tanker pressure testing.
@@ -305,7 +315,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_sheet_fleet_service" model="ir.actions.act_window">
-        <field name="name">Fleet Service Schedule</field>
+        <field name="name">Vehicle Service Due Dates</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_fleet_service_list"/>
@@ -316,7 +326,7 @@
         <field name="name">fleet.vehicle.availability.list</field>
         <field name="model">fleet.vehicle</field>
         <field name="arch" type="xml">
-            <list string="Fleet Availability &amp; Grouping">
+            <list string="Truck Groups">
                 <field name="license_plate" string="Registration"/>
                 <field name="model_id" string="Make / Model"/>
                 <field name="x_availability_group" string="Availability Category"/>
@@ -331,14 +341,14 @@
     </record>
 
     <record id="action_nfd_fleet_availability" model="ir.actions.act_window">
-        <field name="name">Fleet Availability &amp; Grouping</field>
+        <field name="name">Truck Groups</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_availability_list"/>
         <field name="context">{'search_default_group_availability_category': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Fleet Availability &amp; Grouping
+                Truck Groups
             </p>
             <p>
                 Monitors operational availability targets across Rigid Trucks (77%), Tankers (88%), Standby Units (50%), Maintenance (100%), and Installations (60%).
@@ -348,7 +358,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_sheet_availability" model="ir.actions.act_window">
-        <field name="name">Fleet Availability &amp; Grouping</field>
+        <field name="name">Truck Groups</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_availability_list"/>
@@ -373,13 +383,13 @@
     </record>
 
     <record id="action_nfd_driver_trailer_allocation" model="ir.actions.act_window">
-        <field name="name">Driver &amp; Trailer Allocation</field>
+        <field name="name">Driver &amp; Trailer Assigned</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_driver_allocation_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Driver &amp; Trailer Allocation
+                Driver &amp; Trailer Assigned
             </p>
             <p>
                 Roster of prime mover assignments, designated permanent drivers, trainee drivers, coupled multi-trailer links, and standby notes.
@@ -389,7 +399,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_sheet_driver_allocation" model="ir.actions.act_window">
-        <field name="name">Driver &amp; Trailer Allocation</field>
+        <field name="name">Driver &amp; Trailer Assigned</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_driver_allocation_list"/>
@@ -400,7 +410,7 @@
         <field name="name">fleet.vehicle.branding.list</field>
         <field name="model">fleet.vehicle</field>
         <field name="arch" type="xml">
-            <list string="Corporate Livery &amp; Branding">
+            <list string="Truck Decals &amp; Livery">
                 <field name="license_plate" string="Registration"/>
                 <field name="model_id" string="Vehicle Model"/>
                 <field name="x_branding_status" widget="badge"
@@ -418,13 +428,13 @@
     </record>
 
     <record id="action_nfd_corporate_branding" model="ir.actions.act_window">
-        <field name="name">Corporate Livery &amp; Branding</field>
+        <field name="name">Truck Decals &amp; Livery</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_branding_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Corporate Livery &amp; Branding
+                Truck Decals &amp; Livery
             </p>
             <p>
                 Corporate livery audit tracking branded units vs trucks and trailers requiring vinyl installation at GT Vinyl.
@@ -434,7 +444,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_sheet_branding" model="ir.actions.act_window">
-        <field name="name">Corporate Livery &amp; Branding</field>
+        <field name="name">Truck Decals &amp; Livery</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_branding_list"/>
@@ -445,7 +455,7 @@
         <field name="name">fleet.vehicle.pto.list</field>
         <field name="model">fleet.vehicle</field>
         <field name="arch" type="xml">
-            <list string="PTO &amp; Hydraulic Discharge Systems">
+            <list string="Hydraulic Pumps (PTO)">
                 <field name="license_plate" string="Registration"/>
                 <field name="model_id" string="Vehicle Model"/>
                 <field name="x_pto_engine" widget="boolean_toggle" string="PTO ENGINE"/>
@@ -457,13 +467,13 @@
     </record>
 
     <record id="action_nfd_pto_systems" model="ir.actions.act_window">
-        <field name="name">PTO &amp; Hydraulic Discharge Systems</field>
+        <field name="name">Hydraulic Pumps (PTO)</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_pto_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                PTO &amp; Hydraulic Discharge Systems
+                Hydraulic Pumps (PTO)
             </p>
             <p>
                 Audit of auxiliary engine PTOs, transmission hydraulic PTOs, and pump mounting locations for fuel discharge.
@@ -473,7 +483,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_sheet_pto" model="ir.actions.act_window">
-        <field name="name">PTO &amp; Hydraulic Discharge Systems</field>
+        <field name="name">Hydraulic Pumps (PTO)</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_pto_list"/>
@@ -502,13 +512,13 @@
     </record>
 
     <record id="action_nfd_wheel_alignment" model="ir.actions.act_window">
-        <field name="name">Wheel Alignment &amp; Chassis Audit</field>
+        <field name="name">Wheel Alignment Check</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_wheel_alignment_list"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Wheel Alignment &amp; Chassis Audit
+                Wheel Alignment Check
             </p>
             <p>
                 Laser axle, kingpin, and suspension alignment audit. Red highlighting flags unresolved chassis faults directly linked to tyre drag and fuel consumption penalties.
@@ -518,7 +528,7 @@
 
     <!-- Backward compatibility alias -->
     <record id="action_nfd_sheet_wheel_alignment" model="ir.actions.act_window">
-        <field name="name">Wheel Alignment &amp; Chassis Audit</field>
+        <field name="name">Wheel Alignment Check</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_sheet_wheel_alignment_list"/>
@@ -543,7 +553,7 @@
         <field name="name">fleet.vehicle.radar.pivot</field>
         <field name="model">fleet.vehicle</field>
         <field name="arch" type="xml">
-            <pivot string="Fleet Readiness &amp; Service Radar" sample="1">
+            <pivot string="Fleet Availability" sample="1">
                 <field name="x_availability_group" type="row"/>
                 <field name="x_service_status" type="col"/>
                 <field name="x_km_until_service" type="measure"/>
@@ -552,7 +562,7 @@
     </record>
 
     <record id="action_nfd_dash_fleet_radar" model="ir.actions.act_window">
-        <field name="name">Fleet Readiness &amp; Service Radar</field>
+        <field name="name">Fleet Availability</field>
         <field name="res_model">fleet.vehicle</field>
         <field name="view_mode">graph,pivot,list,form</field>
         <field name="view_id" ref="view_fleet_vehicle_radar_graph"/>
